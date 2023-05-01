@@ -1,0 +1,3 @@
+# pyside6-rcc icon_01_rc.qrc -o icon_01.py
+# pyside6-uic ui_Il_Translit.ui -o ui_Il_Translit.py
+# (if error change icon_01.py to icon_01_rc.py)
