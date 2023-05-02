@@ -1,7 +1,4 @@
 from PySide6.QtWidgets import QMainWindow
-from ui.ui_Il_Translit import Ui_MainWindow
-from base import translit
-import pyperclip as pc
 
 
 class PySideMainWindow(QMainWindow):
