@@ -16,8 +16,8 @@ class MainWindow(QMainWindow):
         # self.directory_list = QListWidget(self)
 
         # self.ui.translit_button.setShortcut('Ctrl+t')
-        self.ui.dir.clicked.connect(self.test())
-        self.ui.test.clicked.connect(self.test2())
+        self.ui.dir.clicked.connect(self.test)
+        self.ui.test.clicked.connect(self.test2)
         # self.ui.files.clicked.connect(self.open_file_dialog())
 
         # clear button
