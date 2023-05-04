@@ -29,7 +29,7 @@ class Ui_MainWindow(object):
         self.out.setObjectName(u"out")
         self.out.setGeometry(QRect(20, 20, 360, 75))
         self.out.setStyleSheet(u"background-color: rgb(32, 28, 139);\n"
-"font: 20pt \"Segoe UI\";\n"
+"font: 10pt \"Segoe UI\";\n"
 "color: rgb(209, 209, 209);")
         self.out.setScaledContents(False)
         self.dir = QPushButton(self.centralwidget)
