@@ -25,12 +25,13 @@ class Ui_MainWindow(object):
         MainWindow.resize(400, 600)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
-        self.label_2 = QLabel(self.centralwidget)
-        self.label_2.setObjectName(u"label_2")
-        self.label_2.setGeometry(QRect(20, 20, 360, 75))
-        self.label_2.setStyleSheet(u"background-color: rgb(32, 28, 139);\n"
+        self.out = QLabel(self.centralwidget)
+        self.out.setObjectName(u"out")
+        self.out.setGeometry(QRect(20, 20, 360, 75))
+        self.out.setStyleSheet(u"background-color: rgb(32, 28, 139);\n"
+"font: 20pt \"Segoe UI\";\n"
 "color: rgb(209, 209, 209);")
-        self.label_2.setScaledContents(False)
+        self.out.setScaledContents(False)
         self.dir = QPushButton(self.centralwidget)
         self.dir.setObjectName(u"dir")
         self.dir.setEnabled(True)
@@ -61,7 +62,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.label_2.setText(QCoreApplication.translate("MainWindow", u"RESTORE SELECTED", None))
+        self.out.setText("")
         self.dir.setText(QCoreApplication.translate("MainWindow", u"directory", None))
         self.files.setText(QCoreApplication.translate("MainWindow", u"files", None))
         self.test.setText(QCoreApplication.translate("MainWindow", u"test", None))

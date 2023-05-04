@@ -1,6 +1,7 @@
 from pathlib import Path
 
 from PySide6.QtWidgets import QFileDialog, QMainWindow
+from PySide6.QtCore import Slot
 from ui_MainWindow import Ui_MainWindow
 
 
@@ -15,8 +16,8 @@ class MainWindow(QMainWindow):
         # self.directory_list = QListWidget(self)
 
         # self.ui.translit_button.setShortcut('Ctrl+t')
-        self.ui.dir.clicked.connect(self.test2())
-        self.ui.test.clicked.connect(self.test())
+        self.ui.dir.clicked.connect(self.test())
+        self.ui.test.clicked.connect(self.test2())
         # self.ui.files.clicked.connect(self.open_file_dialog())
 
         # clear button
@@ -24,7 +25,8 @@ class MainWindow(QMainWindow):
         # self.ui.clear_button.clicked.connect(self.clear_all_windows)
 
     def test(self):
-        print('buttun on')
+        self.ui.out.setText(self.ui.out.text() + '*')
+        print('button on')
 
     def test2(self):
         print('**********')

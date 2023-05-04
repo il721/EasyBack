@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="label_2">
+   <widget class="QLabel" name="out">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -25,10 +25,11 @@
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(32, 28, 139);
+font: 20pt &quot;Segoe UI&quot;;
 color: rgb(209, 209, 209);</string>
     </property>
     <property name="text">
-     <string>RESTORE SELECTED</string>
+     <string/>
     </property>
     <property name="scaledContents">
      <bool>false</bool>
