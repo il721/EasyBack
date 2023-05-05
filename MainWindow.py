@@ -17,8 +17,6 @@ class MainWindow(QMainWindow):
 
         # self.ui.translit_button.setShortcut('Ctrl+t')
         self.ui.dir.clicked.connect(self.open_directory_dialog)
-        self.ui.files.clicked.connect(self.open_file_dialog)
-        self.ui.test.clicked.connect(self.show_files_and_dir)
         # self.ui.files.clicked.connect(self.open_file_dialog())
 
         # clear button
