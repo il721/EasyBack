@@ -15,10 +15,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QHBoxLayout, QMainWindow, QMenuBar,
-    QPushButton, QSizePolicy, QStatusBar, QVBoxLayout,
-    QWidget)
-import main_rc
+from PySide6.QtWidgets import (QApplication, QMainWindow, QMenuBar, QPushButton,
+    QSizePolicy, QStatusBar, QWidget)
+import main_rc_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -26,164 +25,108 @@ class Ui_MainWindow(object):
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(600, 800)
         MainWindow.setMaximumSize(QSize(600, 800))
-        MainWindow.setWindowOpacity(0.900000000000000)
+        MainWindow.setWindowOpacity(1.000000000000000)
         MainWindow.setStyleSheet(u"*{\n"
-"	background-image: url(:/images/images/bg_Main.png);\n"
+"	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(0, 21, 106, 255), stop:1 rgba(0, 14, 13, 255));\n"
 "}\n"
 "\n"
-"centralwidget {\n"
-"	background-image: url(:/images/images/bg_Main.png);\n"
+"\n"
+"QPushButton {\n"
+"border: 2px solid;\n"
+"color: rgb(69, 246, 255);\n"
+"border-color: rgb(0, 36, 109);\n"
+"border-radius: 20px;\n"
+"background-color: rgba(0, 0, 0, 80);\n"
 "}\n"
-"QPushBatton {\n"
-"	background-color: rgb(0, 13, 40);\n"
-"	border-color: rgb(0, 36, 109);\n"
+"\n"
+"QPushButton:hover {\n"
+"border: 3px solid;\n"
+"background-color: rgba(4, 7, 208, 80);\n"
+"border-color: rgb(0, 36, 109);\n"
 "}\n"
-"QPushBatton:hover {\n"
-"	background-color: rgb(63, 121, 197);\n"
-"	border-color: rgb(0, 36, 109);\n"
-"}\n"
-"QPushBatton:pressed {\n"
-"	background-color: rgb(100,100,100);\n"
-"	border-color: rgb(0, 36, 109);\n"
+"\n"
+"QPushButton:pressed {\n"
+"border: 2px solid;\n"
+"background-color: rgba(4, 7, 208, 100);\n"
+"border-color: rgb(170, 170 ,170);\n"
 "}")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
-        self.widget = QWidget(self.centralwidget)
-        self.widget.setObjectName(u"widget")
-        self.widget.setGeometry(QRect(20, 0, 561, 763))
-        self.verticalLayout = QVBoxLayout(self.widget)
-        self.verticalLayout.setSpacing(15)
-        self.verticalLayout.setObjectName(u"verticalLayout")
-        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
-        self.dir = QPushButton(self.widget)
-        self.dir.setObjectName(u"dir")
-        self.dir.setEnabled(True)
+        self.centralwidget.setMinimumSize(QSize(600, 800))
+        self.centralwidget.setMaximumSize(QSize(600, 800))
+        self.centralwidget.setStyleSheet(u"")
+        self.backup_all = QPushButton(self.centralwidget)
+        self.backup_all.setObjectName(u"backup_all")
+        self.backup_all.setEnabled(True)
+        self.backup_all.setGeometry(QRect(20, 340, 559, 90))
         sizePolicy = QSizePolicy(QSizePolicy.Maximum, QSizePolicy.Maximum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.dir.sizePolicy().hasHeightForWidth())
-        self.dir.setSizePolicy(sizePolicy)
-        self.dir.setMinimumSize(QSize(559, 90))
-        self.dir.setMaximumSize(QSize(559, 45))
+        sizePolicy.setHeightForWidth(self.backup_all.sizePolicy().hasHeightForWidth())
+        self.backup_all.setSizePolicy(sizePolicy)
+        self.backup_all.setMinimumSize(QSize(559, 90))
+        self.backup_all.setMaximumSize(QSize(559, 45))
         font = QFont()
         font.setFamilies([u"Lexend Light"])
         font.setPointSize(25)
         font.setBold(False)
         font.setItalic(False)
-        self.dir.setFont(font)
-        self.dir.setLayoutDirection(Qt.LeftToRight)
-        self.dir.setStyleSheet(u"border: 2px solid rgb(0, 36, 109);\n"
-"color: rgb(69, 246, 255);\n"
-"\n"
-"background-color: rgb(0, 13, 40);\n"
-"border-color: rgb(0, 36, 109);\n"
-"border-radius: 20px;")
-        self.dir.setIconSize(QSize(42, 42))
-
-        self.verticalLayout.addWidget(self.dir)
-
-        self.dir_2 = QPushButton(self.widget)
-        self.dir_2.setObjectName(u"dir_2")
-        self.dir_2.setEnabled(True)
-        sizePolicy.setHeightForWidth(self.dir_2.sizePolicy().hasHeightForWidth())
-        self.dir_2.setSizePolicy(sizePolicy)
-        self.dir_2.setMinimumSize(QSize(559, 90))
-        self.dir_2.setMaximumSize(QSize(559, 45))
-        self.dir_2.setFont(font)
-        self.dir_2.setLayoutDirection(Qt.LeftToRight)
-        self.dir_2.setStyleSheet(u"border: 2px solid rgb(0, 36, 109);\n"
-"color: rgb(69, 246, 255);\n"
-"\n"
-"background-color: rgb(0, 13, 40);\n"
-"border-color: rgb(0, 36, 109);\n"
-"border-radius: 20px;")
-        self.dir_2.setIconSize(QSize(42, 42))
-
-        self.verticalLayout.addWidget(self.dir_2)
-
-        self.dir_3 = QPushButton(self.widget)
-        self.dir_3.setObjectName(u"dir_3")
-        self.dir_3.setEnabled(True)
-        sizePolicy.setHeightForWidth(self.dir_3.sizePolicy().hasHeightForWidth())
-        self.dir_3.setSizePolicy(sizePolicy)
-        self.dir_3.setMinimumSize(QSize(559, 90))
-        self.dir_3.setMaximumSize(QSize(559, 45))
-        self.dir_3.setFont(font)
-        self.dir_3.setLayoutDirection(Qt.LeftToRight)
-        self.dir_3.setStyleSheet(u"border: 2px solid rgb(0, 36, 109);\n"
-"color: rgb(69, 246, 255);\n"
-"\n"
-"background-color: rgb(0, 13, 40);\n"
-"border-color: rgb(0, 36, 109);\n"
-"border-radius: 20px;")
-        self.dir_3.setIconSize(QSize(42, 42))
-
-        self.verticalLayout.addWidget(self.dir_3)
-
-        self.dir_4 = QPushButton(self.widget)
-        self.dir_4.setObjectName(u"dir_4")
-        self.dir_4.setEnabled(True)
-        sizePolicy.setHeightForWidth(self.dir_4.sizePolicy().hasHeightForWidth())
-        self.dir_4.setSizePolicy(sizePolicy)
-        self.dir_4.setMinimumSize(QSize(559, 90))
-        self.dir_4.setMaximumSize(QSize(559, 45))
-        self.dir_4.setFont(font)
-        self.dir_4.setLayoutDirection(Qt.LeftToRight)
-        self.dir_4.setStyleSheet(u"border: 2px solid rgb(0, 36, 109);\n"
-"color: rgb(69, 246, 255);\n"
-"\n"
-"background-color: rgb(0, 13, 40);\n"
-"border-color: rgb(0, 36, 109);\n"
-"border-radius: 20px;")
-        self.dir_4.setIconSize(QSize(42, 42))
-
-        self.verticalLayout.addWidget(self.dir_4)
-
-        self.dir_5 = QPushButton(self.widget)
-        self.dir_5.setObjectName(u"dir_5")
-        self.dir_5.setEnabled(True)
-        sizePolicy.setHeightForWidth(self.dir_5.sizePolicy().hasHeightForWidth())
-        self.dir_5.setSizePolicy(sizePolicy)
-        self.dir_5.setMinimumSize(QSize(559, 90))
-        self.dir_5.setMaximumSize(QSize(559, 45))
-        self.dir_5.setFont(font)
-        self.dir_5.setLayoutDirection(Qt.LeftToRight)
-        self.dir_5.setStyleSheet(u"border: 2px solid rgb(0, 36, 109);\n"
-"color: rgb(69, 246, 255);\n"
-"\n"
-"background-color: rgb(0, 13, 40);\n"
-"border-color: rgb(0, 36, 109);\n"
-"border-radius: 20px;")
-        self.dir_5.setIconSize(QSize(42, 42))
-
-        self.verticalLayout.addWidget(self.dir_5)
-
-        self.dir_6 = QPushButton(self.widget)
-        self.dir_6.setObjectName(u"dir_6")
-        self.dir_6.setEnabled(True)
-        sizePolicy.setHeightForWidth(self.dir_6.sizePolicy().hasHeightForWidth())
-        self.dir_6.setSizePolicy(sizePolicy)
-        self.dir_6.setMinimumSize(QSize(559, 90))
-        self.dir_6.setMaximumSize(QSize(559, 45))
-        self.dir_6.setFont(font)
-        self.dir_6.setLayoutDirection(Qt.LeftToRight)
-        self.dir_6.setStyleSheet(u"border: 2px solid rgb(0, 36, 109);\n"
-"color: rgb(69, 246, 255);\n"
-"\n"
-"background-color: rgb(0, 13, 40);\n"
-"border-color: rgb(0, 36, 109);\n"
-"border-radius: 20px;")
-        self.dir_6.setIconSize(QSize(42, 42))
-
-        self.verticalLayout.addWidget(self.dir_6)
-
-        self.horizontalLayout = QHBoxLayout()
-        self.horizontalLayout.setSpacing(20)
-        self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.horizontalLayout.setContentsMargins(-1, 50, -1, -1)
-        self.settings = QPushButton(self.widget)
+        self.backup_all.setFont(font)
+        self.backup_all.setLayoutDirection(Qt.LeftToRight)
+        self.backup_all.setStyleSheet(u"")
+        icon = QIcon()
+        icon.addFile(u":/icons/icons/safe_in_all.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.backup_all.setIcon(icon)
+        self.backup_all.setIconSize(QSize(110, 110))
+        self.add_item = QPushButton(self.centralwidget)
+        self.add_item.setObjectName(u"add_item")
+        self.add_item.setEnabled(True)
+        self.add_item.setGeometry(QRect(20, 60, 559, 90))
+        sizePolicy.setHeightForWidth(self.add_item.sizePolicy().hasHeightForWidth())
+        self.add_item.setSizePolicy(sizePolicy)
+        self.add_item.setMinimumSize(QSize(559, 90))
+        self.add_item.setMaximumSize(QSize(559, 45))
+        self.add_item.setFont(font)
+        self.add_item.setLayoutDirection(Qt.LeftToRight)
+        self.add_item.setStyleSheet(u"")
+        icon1 = QIcon()
+        icon1.addFile(u":/icons/icons/add_item.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.add_item.setIcon(icon1)
+        self.add_item.setIconSize(QSize(80, 80))
+        self.remove_item = QPushButton(self.centralwidget)
+        self.remove_item.setObjectName(u"remove_item")
+        self.remove_item.setEnabled(True)
+        self.remove_item.setGeometry(QRect(20, 210, 559, 90))
+        sizePolicy.setHeightForWidth(self.remove_item.sizePolicy().hasHeightForWidth())
+        self.remove_item.setSizePolicy(sizePolicy)
+        self.remove_item.setMinimumSize(QSize(559, 90))
+        self.remove_item.setMaximumSize(QSize(559, 45))
+        self.remove_item.setFont(font)
+        self.remove_item.setLayoutDirection(Qt.LeftToRight)
+        self.remove_item.setStyleSheet(u"")
+        icon2 = QIcon()
+        icon2.addFile(u":/icons/icons/remove_item.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.remove_item.setIcon(icon2)
+        self.remove_item.setIconSize(QSize(72, 72))
+        self.restore_all = QPushButton(self.centralwidget)
+        self.restore_all.setObjectName(u"restore_all")
+        self.restore_all.setEnabled(True)
+        self.restore_all.setGeometry(QRect(20, 470, 559, 90))
+        sizePolicy.setHeightForWidth(self.restore_all.sizePolicy().hasHeightForWidth())
+        self.restore_all.setSizePolicy(sizePolicy)
+        self.restore_all.setMinimumSize(QSize(559, 90))
+        self.restore_all.setMaximumSize(QSize(559, 45))
+        self.restore_all.setFont(font)
+        self.restore_all.setLayoutDirection(Qt.LeftToRight)
+        self.restore_all.setStyleSheet(u"")
+        icon3 = QIcon()
+        icon3.addFile(u":/icons/icons/restore_all.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.restore_all.setIcon(icon3)
+        self.restore_all.setIconSize(QSize(110, 110))
+        self.settings = QPushButton(self.centralwidget)
         self.settings.setObjectName(u"settings")
         self.settings.setEnabled(True)
+        self.settings.setGeometry(QRect(50, 620, 260, 70))
         sizePolicy.setHeightForWidth(self.settings.sizePolicy().hasHeightForWidth())
         self.settings.setSizePolicy(sizePolicy)
         self.settings.setMinimumSize(QSize(260, 70))
@@ -202,12 +145,10 @@ class Ui_MainWindow(object):
 "border-color: rgb(0, 36, 109);\n"
 "border-radius: 20px;")
         self.settings.setIconSize(QSize(42, 42))
-
-        self.horizontalLayout.addWidget(self.settings)
-
-        self.exit = QPushButton(self.widget)
+        self.exit = QPushButton(self.centralwidget)
         self.exit.setObjectName(u"exit")
         self.exit.setEnabled(True)
+        self.exit.setGeometry(QRect(320, 620, 260, 70))
         sizePolicy.setHeightForWidth(self.exit.sizePolicy().hasHeightForWidth())
         self.exit.setSizePolicy(sizePolicy)
         self.exit.setMinimumSize(QSize(260, 70))
@@ -221,12 +162,6 @@ class Ui_MainWindow(object):
 "border-color: rgb(0, 36, 109);\n"
 "border-radius: 20px;")
         self.exit.setIconSize(QSize(42, 42))
-
-        self.horizontalLayout.addWidget(self.exit)
-
-
-        self.verticalLayout.addLayout(self.horizontalLayout)
-
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
@@ -243,12 +178,10 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.dir.setText(QCoreApplication.translate("MainWindow", u"ADD ITEM TO BASE", None))
-        self.dir_2.setText(QCoreApplication.translate("MainWindow", u"ADD ITEM TO BASE", None))
-        self.dir_3.setText(QCoreApplication.translate("MainWindow", u"ADD ITEM TO BASE", None))
-        self.dir_4.setText(QCoreApplication.translate("MainWindow", u"ADD ITEM TO BASE", None))
-        self.dir_5.setText(QCoreApplication.translate("MainWindow", u"ADD ITEM TO BASE", None))
-        self.dir_6.setText(QCoreApplication.translate("MainWindow", u"ADD ITEM TO BASE", None))
+        self.backup_all.setText(QCoreApplication.translate("MainWindow", u"                        Back Up All", None))
+        self.add_item.setText(QCoreApplication.translate("MainWindow", u"                    Add Item To Base", None))
+        self.remove_item.setText(QCoreApplication.translate("MainWindow", u"        Remove Item From Base", None))
+        self.restore_all.setText(QCoreApplication.translate("MainWindow", u"                          Restore All", None))
         self.settings.setText(QCoreApplication.translate("MainWindow", u"SETTINGS", None))
         self.exit.setText(QCoreApplication.translate("MainWindow", u"EXIT", None))
     # retranslateUi

@@ -1,0 +1,11 @@
+<RCC>
+  <qresource prefix="images">
+    <file>images/bg_Main.png</file>
+  </qresource>
+  <qresource prefix="icons">
+    <file>icons/restore_all.svg</file>
+    <file>icons/remove_item.svg</file>
+    <file>icons/add_item.svg</file>
+    <file>icons/safe_in_all.svg</file>
+  </qresource>
+</RCC>
