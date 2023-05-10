@@ -30,13 +30,14 @@
 
 QPushButton {
 border: 2px solid;
-color: rgb(69, 246, 255);
+color: rgb(230, 230, 115);
 border-color: rgb(0, 36, 109);
 border-radius: 20px;
 background-color: rgba(0, 0, 0, 80);
 }
 
 QPushButton:hover {
+color: rgb(69, 246, 255);
 border: 3px solid;
 background-color: rgba(4, 7, 208, 80);
 border-color: rgb(0, 36, 109);
@@ -117,8 +118,8 @@ border-color: rgb(170, 170 ,170);
     </property>
     <property name="iconSize">
      <size>
-      <width>110</width>
-      <height>110</height>
+      <width>115</width>
+      <height>115</height>
      </size>
     </property>
    </widget>

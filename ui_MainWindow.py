@@ -33,13 +33,14 @@ class Ui_MainWindow(object):
 "\n"
 "QPushButton {\n"
 "border: 2px solid;\n"
-"color: rgb(69, 246, 255);\n"
+"color: rgb(230, 230, 115);\n"
 "border-color: rgb(0, 36, 109);\n"
 "border-radius: 20px;\n"
 "background-color: rgba(0, 0, 0, 80);\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
+"color: rgb(69, 246, 255);\n"
 "border: 3px solid;\n"
 "background-color: rgba(4, 7, 208, 80);\n"
 "border-color: rgb(0, 36, 109);\n"
@@ -77,7 +78,7 @@ class Ui_MainWindow(object):
         icon = QIcon()
         icon.addFile(u":/icons/icons/safe_in_all.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.backup_all.setIcon(icon)
-        self.backup_all.setIconSize(QSize(110, 110))
+        self.backup_all.setIconSize(QSize(115, 115))
         self.add_item = QPushButton(self.centralwidget)
         self.add_item.setObjectName(u"add_item")
         self.add_item.setEnabled(True)
