@@ -3,6 +3,8 @@
     <file>images/bg_Main.png</file>
   </qresource>
   <qresource prefix="icons">
+    <file>icons/exit.svg</file>
+    <file>icons/settings.svg</file>
     <file>icons/backup_selected.svg</file>
     <file>icons/restore_selected.svg</file>
     <file>icons/restore_all.svg</file>
