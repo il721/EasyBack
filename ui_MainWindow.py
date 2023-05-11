@@ -16,8 +16,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QHBoxLayout, QLayout, QMainWindow,
-    QMenuBar, QPushButton, QSizePolicy, QStatusBar,
-    QVBoxLayout, QWidget)
+    QPushButton, QSizePolicy, QVBoxLayout, QWidget)
 import main_rc
 
 class Ui_MainWindow(object):
@@ -218,7 +217,7 @@ class Ui_MainWindow(object):
         icon7 = QIcon()
         icon7.addFile(u":/icons/icons/exit.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.exit.setIcon(icon7)
-        self.exit.setIconSize(QSize(90, 90))
+        self.exit.setIconSize(QSize(100, 100))
 
         self.horizontalLayout.addWidget(self.exit)
 
@@ -226,13 +225,6 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.addLayout(self.horizontalLayout)
 
         MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QMenuBar(MainWindow)
-        self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 600, 22))
-        MainWindow.setMenuBar(self.menubar)
-        self.statusbar = QStatusBar(MainWindow)
-        self.statusbar.setObjectName(u"statusbar")
-        MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
 
