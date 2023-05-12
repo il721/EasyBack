@@ -123,7 +123,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
         <string>                    Add Item To Base</string>
        </property>
        <property name="icon">
-        <iconset resource="main_rc.qrc">
+        <iconset>
          <normaloff>:/icons/icons/add_item.svg</normaloff>:/icons/icons/add_item.svg</iconset>
        </property>
        <property name="iconSize">
@@ -175,7 +175,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
         <string>        Remove Item From Base</string>
        </property>
        <property name="icon">
-        <iconset resource="main_rc.qrc">
+        <iconset>
          <normaloff>:/icons/icons/remove_item.svg</normaloff>:/icons/icons/remove_item.svg</iconset>
        </property>
        <property name="iconSize">
@@ -227,7 +227,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
         <string>                        Back Up All</string>
        </property>
        <property name="icon">
-        <iconset resource="main_rc.qrc">
+        <iconset>
          <normaloff>:/icons/icons/safe_in_all.svg</normaloff>:/icons/icons/safe_in_all.svg</iconset>
        </property>
        <property name="iconSize">
@@ -279,7 +279,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
         <string>                          Restore All</string>
        </property>
        <property name="icon">
-        <iconset resource="main_rc.qrc">
+        <iconset>
          <normaloff>:/icons/icons/restore_all.svg</normaloff>:/icons/icons/restore_all.svg</iconset>
        </property>
        <property name="iconSize">
@@ -331,7 +331,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
         <string>             Back Up Selected</string>
        </property>
        <property name="icon">
-        <iconset resource="main_rc.qrc">
+        <iconset>
          <normaloff>:/icons/icons/backup_selected.svg</normaloff>:/icons/icons/backup_selected.svg</iconset>
        </property>
        <property name="iconSize">
@@ -383,7 +383,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
         <string>               Restore Selected</string>
        </property>
        <property name="icon">
-        <iconset resource="main_rc.qrc">
+        <iconset>
          <normaloff>:/icons/icons/restore_selected.svg</normaloff>:/icons/icons/restore_selected.svg</iconset>
        </property>
        <property name="iconSize">
@@ -447,7 +447,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
           <string>     Settings</string>
          </property>
          <property name="icon">
-          <iconset resource="main_rc.qrc">
+          <iconset>
            <normaloff>:/icons/icons/settings.svg</normaloff>:/icons/icons/settings.svg</iconset>
          </property>
          <property name="iconSize">
@@ -499,7 +499,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
           <string>       Exit</string>
          </property>
          <property name="icon">
-          <iconset resource="main_rc.qrc">
+          <iconset>
            <normaloff>:/icons/icons/exit.svg</normaloff>:/icons/icons/exit.svg</iconset>
          </property>
          <property name="iconSize">
