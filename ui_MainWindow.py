@@ -9,15 +9,16 @@
 ################################################################################
 
 from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
-    QMetaObject, QObject, QPoint, QRect,
-    QSize, QTime, QUrl, Qt)
+                            QMetaObject, QObject, QPoint, QRect,
+                            QSize, QTime, QUrl, Qt)
 from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
-    QFont, QFontDatabase, QGradient, QIcon,
-    QImage, QKeySequence, QLinearGradient, QPainter,
-    QPalette, QPixmap, QRadialGradient, QTransform)
+                           QFont, QFontDatabase, QGradient, QIcon,
+                           QImage, QKeySequence, QLinearGradient, QPainter,
+                           QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QHBoxLayout, QLayout, QMainWindow,
-    QPushButton, QSizePolicy, QVBoxLayout, QWidget)
+                               QPushButton, QSizePolicy, QVBoxLayout, QWidget)
 import main_rc
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -27,34 +28,34 @@ class Ui_MainWindow(object):
         MainWindow.setMaximumSize(QSize(600, 800))
         MainWindow.setWindowOpacity(1.000000000000000)
         MainWindow.setStyleSheet(u"*{\n"
-"	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(0, 21, 106, 255), stop:1 rgba(0, 14, 13, 255));\n"
-"}\n"
-"\n"
-"\n"
-"QPushButton {\n"
-"border: 2px solid;\n"
-"color: rgb(230, 230, 115);\n"
-"border-color: rgb(0, 36, 109);\n"
-"border-radius: 20px;\n"
-"background-color: rgba(0, 0, 0, 80);\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"color: rgb(69, 246, 255);\n"
-"border: 3px solid;\n"
-"background-color: rgba(4, 7, 208, 80);\n"
-"border-color: rgb(0, 36, 109);\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"border: 2px solid;\n"
-"background-color: rgba(4, 7, 208, 100);\n"
-"border-color: rgb(170, 170 ,170);\n"
-"}\n"
-"\n"
-"page {\n"
-"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(0, 21, 106, 255), stop:1 rgba(0, 14, 13, 255));\n"
-"}")
+                                 "	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(0, 21, 106, 255), stop:1 rgba(0, 14, 13, 255));\n"
+                                 "}\n"
+                                 "\n"
+                                 "\n"
+                                 "QPushButton {\n"
+                                 "border: 2px solid;\n"
+                                 "color: rgb(230, 230, 115);\n"
+                                 "border-color: rgb(0, 36, 109);\n"
+                                 "border-radius: 20px;\n"
+                                 "background-color: rgba(0, 0, 0, 80);\n"
+                                 "}\n"
+                                 "\n"
+                                 "QPushButton:hover {\n"
+                                 "color: rgb(69, 246, 255);\n"
+                                 "border: 3px solid;\n"
+                                 "background-color: rgba(4, 7, 208, 80);\n"
+                                 "border-color: rgb(0, 36, 109);\n"
+                                 "}\n"
+                                 "\n"
+                                 "QPushButton:pressed {\n"
+                                 "border: 2px solid;\n"
+                                 "background-color: rgba(4, 7, 208, 100);\n"
+                                 "border-color: rgb(170, 170 ,170);\n"
+                                 "}\n"
+                                 "\n"
+                                 "page {\n"
+                                 "background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(0, 21, 106, 255), stop:1 rgba(0, 14, 13, 255));\n"
+                                 "}")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.centralwidget.setMinimumSize(QSize(600, 800))
@@ -221,7 +222,6 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout.addWidget(self.exit)
 
-
         self.verticalLayout_2.addLayout(self.horizontalLayout)
 
         MainWindow.setCentralWidget(self.centralwidget)
@@ -229,17 +229,24 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         QMetaObject.connectSlotsByName(MainWindow)
+
     # setupUi
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.add_item.setText(QCoreApplication.translate("MainWindow", u"                    Add Item To Base", None))
-        self.remove_item.setText(QCoreApplication.translate("MainWindow", u"        Remove Item From Base", None))
-        self.backup_all.setText(QCoreApplication.translate("MainWindow", u"                        Back Up All", None))
-        self.restore_all.setText(QCoreApplication.translate("MainWindow", u"                          Restore All", None))
-        self.backup_selected.setText(QCoreApplication.translate("MainWindow", u"             Back Up Selected", None))
-        self.restore_selected.setText(QCoreApplication.translate("MainWindow", u"               Restore Selected", None))
+        self.add_item.setText(
+            QCoreApplication.translate("MainWindow", u"                    Add Item To Base", None))
+        self.remove_item.setText(
+            QCoreApplication.translate("MainWindow", u"        Remove Item From Base", None))
+        self.backup_all.setText(
+            QCoreApplication.translate("MainWindow", u"                        Back Up All", None))
+        self.restore_all.setText(
+            QCoreApplication.translate("MainWindow", u"                          Restore All",
+                                       None))
+        self.backup_selected.setText(
+            QCoreApplication.translate("MainWindow", u"             Back Up Selected", None))
+        self.restore_selected.setText(
+            QCoreApplication.translate("MainWindow", u"               Restore Selected", None))
         self.settings.setText(QCoreApplication.translate("MainWindow", u"     Settings", None))
         self.exit.setText(QCoreApplication.translate("MainWindow", u"       Exit", None))
     # retranslateUi
-
