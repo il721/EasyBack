@@ -3,6 +3,7 @@
     <file>images/bg_Main.png</file>
   </qresource>
   <qresource prefix="icons">
+    <file>icons/backup_all.svg</file>
     <file>icons/exit.svg</file>
     <file>icons/settings.svg</file>
     <file>icons/backup_selected.svg</file>
@@ -11,5 +12,15 @@
     <file>icons/remove_item.svg</file>
     <file>icons/add_item.svg</file>
     <file>icons/safe_in_all.svg</file>
+  </qresource>
+  <qresource prefix="icons_grey">
+    <file>icons/GREY/gr_add.svg</file>
+    <file>icons/GREY/gr_back_all.svg</file>
+    <file>icons/GREY/gr_back_sel.svg</file>
+    <file>icons/GREY/gr_exit.svg</file>
+    <file>icons/GREY/gr_remove.svg</file>
+    <file>icons/GREY/gr_rest_all.svg</file>
+    <file>icons/GREY/gr_rest_sel.svg</file>
+    <file>icons/GREY/gr_settings.svg</file>
   </qresource>
 </RCC>

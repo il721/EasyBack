@@ -24,34 +24,32 @@
   </property>
   <property name="styleSheet">
    <string notr="true">*{
-	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(0, 21, 106, 255), stop:1 rgba(0, 14, 13, 255));
+	background-color: rgb(30, 30, 30);
 }
 
 
 QPushButton {
 border: 2px solid;
-color: rgb(230, 230, 115);
-border-color: rgb(0, 36, 109);
+color: rgb(230, 230, 230);
+border-color: rgb(110, 110, 110);
 border-radius: 20px;
-background-color: rgba(0, 0, 0, 80);
+background-color: rgba(60,60, 60, 80);
 }
 
 QPushButton:hover {
-color: rgb(69, 246, 255);
+color: #2B79C2;
 border: 3px solid;
-background-color: rgba(4, 7, 208, 80);
-border-color: rgb(0, 36, 109);
+background-color: rgba(30, 30, 30, 180);
+border-color: rgb(150,150, 150);
 }
 
 QPushButton:pressed {
+color: rgb(30, 30, 30);
 border: 2px solid;
-background-color: rgba(4, 7, 208, 100);
-border-color: rgb(170, 170 ,170);
+background-color: #2B79C2;
+border-color: rgb(230, 230, 230);
 }
-
-page {
-background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(0, 21, 106, 255), stop:1 rgba(0, 14, 13, 255));
-}</string>
+</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="minimumSize">
@@ -69,18 +67,18 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
    <property name="styleSheet">
     <string notr="true"/>
    </property>
-   <widget class="QWidget" name="layoutWidget">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>-10</y>
-      <width>564</width>
-      <height>803</height>
+      <x>21</x>
+      <y>13</y>
+      <width>561</width>
+      <height>753</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout_2">
+    <layout class="QVBoxLayout" name="verticalLayout">
      <property name="spacing">
-      <number>5</number>
+      <number>10</number>
      </property>
      <item>
       <widget class="QPushButton" name="add_item">
@@ -124,12 +122,12 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
        </property>
        <property name="icon">
         <iconset resource="main_rc.qrc">
-         <normaloff>:/icons/icons/add_item.svg</normaloff>:/icons/icons/add_item.svg</iconset>
+         <normaloff>:/icons_grey/icons/GREY/gr_add.svg</normaloff>:/icons_grey/icons/GREY/gr_add.svg</iconset>
        </property>
        <property name="iconSize">
         <size>
-         <width>80</width>
-         <height>80</height>
+         <width>70</width>
+         <height>70</height>
         </size>
        </property>
       </widget>
@@ -176,12 +174,12 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
        </property>
        <property name="icon">
         <iconset resource="main_rc.qrc">
-         <normaloff>:/icons/icons/remove_item.svg</normaloff>:/icons/icons/remove_item.svg</iconset>
+         <normaloff>:/icons_grey/icons/GREY/gr_remove.svg</normaloff>:/icons_grey/icons/GREY/gr_remove.svg</iconset>
        </property>
        <property name="iconSize">
         <size>
-         <width>72</width>
-         <height>72</height>
+         <width>70</width>
+         <height>70</height>
         </size>
        </property>
       </widget>
@@ -228,59 +226,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
        </property>
        <property name="icon">
         <iconset resource="main_rc.qrc">
-         <normaloff>:/icons/icons/backup_all.svg</normaloff>:/icons/icons/backup_all.svg</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>117</width>
-         <height>117</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="restore_all">
-       <property name="enabled">
-        <bool>true</bool>
-       </property>
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>559</width>
-         <height>90</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>559</width>
-         <height>45</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <family>Lexend Light</family>
-         <pointsize>25</pointsize>
-         <italic>false</italic>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="layoutDirection">
-        <enum>Qt::LeftToRight</enum>
-       </property>
-       <property name="styleSheet">
-        <string notr="true"/>
-       </property>
-       <property name="text">
-        <string>                          Restore All</string>
-       </property>
-       <property name="icon">
-        <iconset resource="main_rc.qrc">
-         <normaloff>:/icons/icons/restore_all.svg</normaloff>:/icons/icons/restore_all.svg</iconset>
+         <normaloff>:/icons_grey/icons/GREY/gr_back_all.svg</normaloff>:/icons_grey/icons/GREY/gr_back_all.svg</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -328,16 +274,68 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
         <string notr="true"/>
        </property>
        <property name="text">
-        <string>             Back Up Selected</string>
+        <string>              Back Up Selected</string>
        </property>
        <property name="icon">
         <iconset resource="main_rc.qrc">
-         <normaloff>:/icons/icons/backup_selected.svg</normaloff>:/icons/icons/backup_selected.svg</iconset>
+         <normaloff>:/icons_grey/icons/GREY/gr_back_sel.svg</normaloff>:/icons_grey/icons/GREY/gr_back_sel.svg</iconset>
        </property>
        <property name="iconSize">
         <size>
-         <width>106</width>
-         <height>106</height>
+         <width>110</width>
+         <height>110</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="restore_all">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>559</width>
+         <height>90</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>559</width>
+         <height>45</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Lexend Light</family>
+         <pointsize>25</pointsize>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::LeftToRight</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string>                          Restore All</string>
+       </property>
+       <property name="icon">
+        <iconset resource="main_rc.qrc">
+         <normaloff>:/icons_grey/icons/GREY/gr_rest_all.svg</normaloff>:/icons_grey/icons/GREY/gr_rest_all.svg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>110</width>
+         <height>110</height>
         </size>
        </property>
       </widget>
@@ -384,12 +382,12 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
        </property>
        <property name="icon">
         <iconset resource="main_rc.qrc">
-         <normaloff>:/icons/icons/restore_selected.svg</normaloff>:/icons/icons/restore_selected.svg</iconset>
+         <normaloff>:/icons_grey/icons/GREY/gr_rest_sel.svg</normaloff>:/icons_grey/icons/GREY/gr_rest_sel.svg</iconset>
        </property>
        <property name="iconSize">
         <size>
-         <width>105</width>
-         <height>105</height>
+         <width>110</width>
+         <height>110</height>
         </size>
        </property>
       </widget>
@@ -403,7 +401,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
         <enum>QLayout::SetDefaultConstraint</enum>
        </property>
        <property name="topMargin">
-        <number>40</number>
+        <number>50</number>
        </property>
        <item>
         <widget class="QPushButton" name="settings">
@@ -447,12 +445,12 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
          </property>
          <property name="icon">
           <iconset resource="main_rc.qrc">
-           <normaloff>:/icons/icons/settings.svg</normaloff>:/icons/icons/settings.svg</iconset>
+           <normaloff>:/icons_grey/icons/GREY/gr_settings.svg</normaloff>:/icons_grey/icons/GREY/gr_settings.svg</iconset>
          </property>
          <property name="iconSize">
           <size>
-           <width>65</width>
-           <height>65</height>
+           <width>60</width>
+           <height>60</height>
           </size>
          </property>
         </widget>
@@ -499,12 +497,12 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
          </property>
          <property name="icon">
           <iconset resource="main_rc.qrc">
-           <normaloff>:/icons/icons/exit.svg</normaloff>:/icons/icons/exit.svg</iconset>
+           <normaloff>:/icons_grey/icons/GREY/gr_exit.svg</normaloff>:/icons_grey/icons/GREY/gr_exit.svg</iconset>
          </property>
          <property name="iconSize">
           <size>
-           <width>100</width>
-           <height>100</height>
+           <width>60</width>
+           <height>60</height>
           </size>
          </property>
         </widget>
