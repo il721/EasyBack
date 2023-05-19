@@ -20,7 +20,7 @@ from PySide6.QtWidgets import (QApplication, QDialog, QHBoxLayout, QListView,
     QWidget)
 import dop_win_rc
 
-class Ui_Dialog(object):
+class AddItemDial01(object):
     def setupUi(self, Dialog):
         if not Dialog.objectName():
             Dialog.setObjectName(u"Dialog")
@@ -77,33 +77,33 @@ class Ui_Dialog(object):
 
         self.horizontalLayout_2.addItem(self.horizontalSpacer_2)
 
-        self.add_file_2 = QPushButton(Dialog)
-        self.add_file_2.setObjectName(u"add_file_2")
-        sizePolicy.setHeightForWidth(self.add_file_2.sizePolicy().hasHeightForWidth())
-        self.add_file_2.setSizePolicy(sizePolicy)
-        self.add_file_2.setMinimumSize(QSize(180, 60))
-        icon1 = QIcon()
-        icon1.addFile(u":/icon/icons/GREY/file.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.add_file_2.setIcon(icon1)
-        self.add_file_2.setIconSize(QSize(35, 35))
-
-        self.horizontalLayout_2.addWidget(self.add_file_2)
-
-        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.horizontalLayout_2.addItem(self.horizontalSpacer_3)
-
         self.add_file = QPushButton(Dialog)
         self.add_file.setObjectName(u"add_file")
         sizePolicy.setHeightForWidth(self.add_file.sizePolicy().hasHeightForWidth())
         self.add_file.setSizePolicy(sizePolicy)
         self.add_file.setMinimumSize(QSize(180, 60))
-        icon2 = QIcon()
-        icon2.addFile(u":/icon/icons/GREY/edit_list.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.add_file.setIcon(icon2)
+        icon1 = QIcon()
+        icon1.addFile(u":/icon/icons/GREY/file.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.add_file.setIcon(icon1)
         self.add_file.setIconSize(QSize(35, 35))
 
         self.horizontalLayout_2.addWidget(self.add_file)
+
+        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_2.addItem(self.horizontalSpacer_3)
+
+        self.edit_list = QPushButton(Dialog)
+        self.edit_list.setObjectName(u"edit_list")
+        sizePolicy.setHeightForWidth(self.edit_list.sizePolicy().hasHeightForWidth())
+        self.edit_list.setSizePolicy(sizePolicy)
+        self.edit_list.setMinimumSize(QSize(180, 60))
+        icon2 = QIcon()
+        icon2.addFile(u":/icon/icons/GREY/edit_list.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.edit_list.setIcon(icon2)
+        self.edit_list.setIconSize(QSize(35, 35))
+
+        self.horizontalLayout_2.addWidget(self.edit_list)
 
 
         self.verticalLayout.addLayout(self.horizontalLayout_2)
@@ -158,8 +158,8 @@ class Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Dialog", None))
         self.add_folder.setText(QCoreApplication.translate("Dialog", u"  Add Folder", None))
-        self.add_file_2.setText(QCoreApplication.translate("Dialog", u"    Add File", None))
-        self.add_file.setText(QCoreApplication.translate("Dialog", u"    Edit List", None))
+        self.add_file.setText(QCoreApplication.translate("Dialog", u"    Add File", None))
+        self.edit_list.setText(QCoreApplication.translate("Dialog", u"    Edit List", None))
         self.ok.setText(QCoreApplication.translate("Dialog", u"  Ok", None))
         self.cancel.setText(QCoreApplication.translate("Dialog", u"  Cancel", None))
     # retranslateUi

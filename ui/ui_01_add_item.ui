@@ -95,7 +95,7 @@ border-color: rgb(230, 230, 230);
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="add_file_2">
+      <widget class="QPushButton" name="add_file">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
          <horstretch>0</horstretch>
@@ -137,7 +137,7 @@ border-color: rgb(230, 230, 230);
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="add_file">
+      <widget class="QPushButton" name="edit_list">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
          <horstretch>0</horstretch>

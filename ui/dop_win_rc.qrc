@@ -1,0 +1,9 @@
+<RCC>
+  <qresource prefix="icon">
+    <file>icons/GREY/edit_list.svg</file>
+    <file>icons/GREY/cancel.svg</file>
+    <file>icons/GREY/ok.svg</file>
+    <file>icons/GREY/file.svg</file>
+    <file>icons/GREY/folder.svg</file>
+  </qresource>
+</RCC>
