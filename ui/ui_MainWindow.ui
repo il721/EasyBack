@@ -67,18 +67,18 @@ border-color: rgb(230, 230, 230);
    <property name="styleSheet">
     <string notr="true"/>
    </property>
-   <widget class="QWidget" name="layoutWidget">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>21</x>
-      <y>13</y>
+      <x>22</x>
+      <y>10</y>
       <width>561</width>
-      <height>753</height>
+      <height>763</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <property name="spacing">
-      <number>10</number>
+      <number>15</number>
      </property>
      <item>
       <widget class="QPushButton" name="add_item">

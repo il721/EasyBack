@@ -1,8 +1,10 @@
+import sys
 from pathlib import Path
 
-from PySide6.QtWidgets import QFileDialog, QMainWindow
+from PySide6.QtWidgets import QFileDialog, QMainWindow, QDialog
 from PySide6.QtCore import Slot
 from ui_MainWindow import Ui_MainWindow
+from ui_01_add_item import AddItemDial01
 
 
 class MainWindow(QMainWindow):
@@ -12,16 +14,57 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         # self.file_list = QListWidget(self)
-        self.directory_list: list = []
-        self.file_list: list = []
-
         # self.ui.translit_button.setShortcut('Ctrl+t')
-        self.ui.add_item.clicked.connect(self.open_directory_dialog)
+        self.ui.add_item.clicked.connect(self.add_item_01)
+        self.ui.exit.clicked.connect(self.exit)
+
+        # self.ui.add_item.clicked.connect(self.open_directory_dialog)
         # self.ui.files.clicked.connect(self.open_file_dialog())
 
         # clear button
         # self.ui.clear_button.setShortcut('Ctrl+d')
         # self.ui.clear_button.clicked.connect(self.clear_all_windows)
+
+    def add_item_01(self):
+        dialog = QDialog()
+        ui = AddItemDial01()
+        ui.setupUi(dialog)
+        dialog.exec()
+
+    def exit(self):
+        sys.exit()
+
+
+class AddItem(QMainWindow):
+
+    def __init__(self):
+        super().__init__()
+        self.ui = AddItemDial01()
+        self.ui.setupUi(self)
+        self.directory_list: list = []
+        self.file_list: list = []
+
+        # self.ui.translit_button.setShortcut('Ctrl+t')
+        self.ui.cancel.clicked.connect(self.cancel_01_05)
+
+        # self.ui.add_item.clicked.connect(self.open_directory_dialog)
+        # self.ui.files.clicked.connect(self.open_file_dialog())
+
+        # clear button
+        # self.ui.clear_button.setShortcut('Ctrl+d')
+        # self.ui.clear_button.clicked.connect(self.clear_all_windows)
+
+    def add_item_01(self):
+        dialog = QDialog()
+        ui = AddItemDial01()
+        ui.setupUi(dialog)
+        dialog.exec()
+
+    def cancel_01_05(self):
+        dialog = QDialog()
+        ui = AddItemDial01()
+        ui.setupUi(dialog)
+        dialog.close()
 
     def open_directory_dialog(self):
         dialog = QFileDialog(self)

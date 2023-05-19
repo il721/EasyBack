@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Form</class>
- <widget class="QWidget" name="Form">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -10,109 +10,251 @@
     <height>800</height>
    </rect>
   </property>
+  <property name="maximumSize">
+   <size>
+    <width>600</width>
+    <height>800</height>
+   </size>
+  </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Dialog</string>
   </property>
   <property name="styleSheet">
    <string notr="true">*{
-	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(0, 21, 106, 255), stop:1 rgba(0, 14, 13, 255));
-	font: 300 20pt &quot;Lexend Light&quot;;
+background-color: rgb(30, 30, 30);
+font: 16pt &quot;Lexend Light&quot;;
 }
 
 
 QPushButton {
 border: 2px solid;
-color: rgb(230, 230, 115);
-border-color: rgb(0, 36, 109);
+color: rgb(230, 230, 230);
+border-color: rgb(110, 110, 110);
 border-radius: 20px;
-background-color: rgba(0, 0, 0, 80);
+background-color: rgba(60,60, 60, 80);
 }
 
 QPushButton:hover {
-color: rgb(69, 246, 255);
+color: #2B79C2;
 border: 3px solid;
-background-color: rgba(4, 7, 208, 80);
-border-color: rgb(0, 36, 109);
+background-color: rgba(30, 30, 30, 180);
+border-color: rgb(150,150, 150);
 }
 
 QPushButton:pressed {
+color: rgb(30, 30, 30);
 border: 2px solid;
-background-color: rgba(4, 7, 208, 100);
-border-color: rgb(170, 170 ,170);
+background-color: #2B79C2;
+border-color: rgb(230, 230, 230);
 }
-
-page {
-background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(0, 21, 106, 255), stop:1 rgba(0, 14, 13, 255));
-}</string>
+</string>
   </property>
-  <widget class="QListView" name="list_files_and_folders">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>171</y>
-     <width>560</width>
-     <height>491</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(0, 0, 75);
-color: rgb(227, 227, 227);
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QPushButton" name="add_folder">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>180</width>
+         <height>60</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>  Add Folder</string>
+       </property>
+       <property name="icon">
+        <iconset resource="dop_win_rc.qrc">
+         <normaloff>:/icon/icons/GREY/folder.svg</normaloff>:/icon/icons/GREY/folder.svg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>35</width>
+         <height>35</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="add_file_2">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>180</width>
+         <height>60</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>    Add File</string>
+       </property>
+       <property name="icon">
+        <iconset resource="dop_win_rc.qrc">
+         <normaloff>:/icon/icons/GREY/file.svg</normaloff>:/icon/icons/GREY/file.svg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>35</width>
+         <height>35</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="add_file">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>180</width>
+         <height>60</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>    Edit List</string>
+       </property>
+       <property name="icon">
+        <iconset resource="dop_win_rc.qrc">
+         <normaloff>:/icon/icons/GREY/edit_list.svg</normaloff>:/icon/icons/GREY/edit_list.svg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>35</width>
+         <height>35</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QListView" name="list_files_and_folders">
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(50, 50,50);
+color: rgb(10,10,10);
 font: 300 12pt &quot;Lexend Light&quot;;</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="ok">
-   <property name="geometry">
-    <rect>
-     <x>120</x>
-     <y>710</y>
-     <width>150</width>
-     <height>50</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>ok</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="cancel">
-   <property name="geometry">
-    <rect>
-     <x>360</x>
-     <y>710</y>
-     <width>150</width>
-     <height>50</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>cancel</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="add_folder">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>80</y>
-     <width>271</width>
-     <height>61</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>add folder</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="add_file">
-   <property name="geometry">
-    <rect>
-     <x>310</x>
-     <y>80</y>
-     <width>271</width>
-     <height>61</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>add file</string>
-   </property>
-  </widget>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="ok">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>170</width>
+         <height>60</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>  Ok</string>
+       </property>
+       <property name="icon">
+        <iconset resource="dop_win_rc.qrc">
+         <normaloff>:/icon/icons/GREY/ok.svg</normaloff>:/icon/icons/GREY/ok.svg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>35</width>
+         <height>35</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="cancel">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>170</width>
+         <height>60</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>  Cancel</string>
+       </property>
+       <property name="icon">
+        <iconset resource="dop_win_rc.qrc">
+         <normaloff>:/icon/icons/GREY/cancel.svg</normaloff>:/icon/icons/GREY/cancel.svg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>35</width>
+         <height>35</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="dop_win_rc.qrc"/>
+ </resources>
  <connections/>
 </ui>

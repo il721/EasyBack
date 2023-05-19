@@ -15,73 +15,152 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QListView, QPushButton, QSizePolicy,
+from PySide6.QtWidgets import (QApplication, QDialog, QHBoxLayout, QListView,
+    QPushButton, QSizePolicy, QSpacerItem, QVBoxLayout,
     QWidget)
+import dop_win_rc
 
-class Ui_Form(object):
-    def setupUi(self, Form):
-        if not Form.objectName():
-            Form.setObjectName(u"Form")
-        Form.resize(600, 800)
-        Form.setStyleSheet(u"*{\n"
-"	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(0, 21, 106, 255), stop:1 rgba(0, 14, 13, 255));\n"
-"	font: 300 20pt \"Lexend Light\";\n"
+class Ui_Dialog(object):
+    def setupUi(self, Dialog):
+        if not Dialog.objectName():
+            Dialog.setObjectName(u"Dialog")
+        Dialog.resize(600, 800)
+        Dialog.setMaximumSize(QSize(600, 800))
+        Dialog.setStyleSheet(u"*{\n"
+"background-color: rgb(30, 30, 30);\n"
+"font: 16pt \"Lexend Light\";\n"
 "}\n"
 "\n"
 "\n"
 "QPushButton {\n"
 "border: 2px solid;\n"
-"color: rgb(230, 230, 115);\n"
-"border-color: rgb(0, 36, 109);\n"
+"color: rgb(230, 230, 230);\n"
+"border-color: rgb(110, 110, 110);\n"
 "border-radius: 20px;\n"
-"background-color: rgba(0, 0, 0, 80);\n"
+"background-color: rgba(60,60, 60, 80);\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
-"color: rgb(69, 246, 255);\n"
+"color: #2B79C2;\n"
 "border: 3px solid;\n"
-"background-color: rgba(4, 7, 208, 80);\n"
-"border-color: rgb(0, 36, 109);\n"
+"background-color: rgba(30, 30, 30, 180);\n"
+"border-color: rgb(150,150, 150);\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
+"color: rgb(30, 30, 30);\n"
 "border: 2px solid;\n"
-"background-color: rgba(4, 7, 208, 100);\n"
-"border-color: rgb(170, 170 ,170);\n"
+"background-color: #2B79C2;\n"
+"border-color: rgb(230, 230, 230);\n"
 "}\n"
-"\n"
-"page {\n"
-"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(0, 21, 106, 255), stop:1 rgba(0, 14, 13, 255));\n"
-"}")
-        self.list_files_and_folders = QListView(Form)
-        self.list_files_and_folders.setObjectName(u"list_files_and_folders")
-        self.list_files_and_folders.setGeometry(QRect(20, 171, 560, 491))
-        self.list_files_and_folders.setStyleSheet(u"background-color: rgb(0, 0, 75);\n"
-"color: rgb(227, 227, 227);\n"
-"font: 300 12pt \"Lexend Light\";")
-        self.ok = QPushButton(Form)
-        self.ok.setObjectName(u"ok")
-        self.ok.setGeometry(QRect(120, 710, 150, 50))
-        self.cancel = QPushButton(Form)
-        self.cancel.setObjectName(u"cancel")
-        self.cancel.setGeometry(QRect(360, 710, 150, 50))
-        self.add_folder = QPushButton(Form)
+"")
+        self.verticalLayout = QVBoxLayout(Dialog)
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.horizontalLayout_2 = QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.add_folder = QPushButton(Dialog)
         self.add_folder.setObjectName(u"add_folder")
-        self.add_folder.setGeometry(QRect(20, 80, 271, 61))
-        self.add_file = QPushButton(Form)
+        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.add_folder.sizePolicy().hasHeightForWidth())
+        self.add_folder.setSizePolicy(sizePolicy)
+        self.add_folder.setMinimumSize(QSize(180, 60))
+        icon = QIcon()
+        icon.addFile(u":/icon/icons/GREY/folder.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.add_folder.setIcon(icon)
+        self.add_folder.setIconSize(QSize(35, 35))
+
+        self.horizontalLayout_2.addWidget(self.add_folder)
+
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_2.addItem(self.horizontalSpacer_2)
+
+        self.add_file_2 = QPushButton(Dialog)
+        self.add_file_2.setObjectName(u"add_file_2")
+        sizePolicy.setHeightForWidth(self.add_file_2.sizePolicy().hasHeightForWidth())
+        self.add_file_2.setSizePolicy(sizePolicy)
+        self.add_file_2.setMinimumSize(QSize(180, 60))
+        icon1 = QIcon()
+        icon1.addFile(u":/icon/icons/GREY/file.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.add_file_2.setIcon(icon1)
+        self.add_file_2.setIconSize(QSize(35, 35))
+
+        self.horizontalLayout_2.addWidget(self.add_file_2)
+
+        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_2.addItem(self.horizontalSpacer_3)
+
+        self.add_file = QPushButton(Dialog)
         self.add_file.setObjectName(u"add_file")
-        self.add_file.setGeometry(QRect(310, 80, 271, 61))
+        sizePolicy.setHeightForWidth(self.add_file.sizePolicy().hasHeightForWidth())
+        self.add_file.setSizePolicy(sizePolicy)
+        self.add_file.setMinimumSize(QSize(180, 60))
+        icon2 = QIcon()
+        icon2.addFile(u":/icon/icons/GREY/edit_list.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.add_file.setIcon(icon2)
+        self.add_file.setIconSize(QSize(35, 35))
 
-        self.retranslateUi(Form)
+        self.horizontalLayout_2.addWidget(self.add_file)
 
-        QMetaObject.connectSlotsByName(Form)
+
+        self.verticalLayout.addLayout(self.horizontalLayout_2)
+
+        self.list_files_and_folders = QListView(Dialog)
+        self.list_files_and_folders.setObjectName(u"list_files_and_folders")
+        self.list_files_and_folders.setStyleSheet(u"background-color: rgb(50, 50,50);\n"
+"color: rgb(10,10,10);\n"
+"font: 300 12pt \"Lexend Light\";")
+
+        self.verticalLayout.addWidget(self.list_files_and_folders)
+
+        self.horizontalLayout = QHBoxLayout()
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.ok = QPushButton(Dialog)
+        self.ok.setObjectName(u"ok")
+        sizePolicy.setHeightForWidth(self.ok.sizePolicy().hasHeightForWidth())
+        self.ok.setSizePolicy(sizePolicy)
+        self.ok.setMinimumSize(QSize(170, 60))
+        icon3 = QIcon()
+        icon3.addFile(u":/icon/icons/GREY/ok.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.ok.setIcon(icon3)
+        self.ok.setIconSize(QSize(35, 35))
+
+        self.horizontalLayout.addWidget(self.ok)
+
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer)
+
+        self.cancel = QPushButton(Dialog)
+        self.cancel.setObjectName(u"cancel")
+        sizePolicy.setHeightForWidth(self.cancel.sizePolicy().hasHeightForWidth())
+        self.cancel.setSizePolicy(sizePolicy)
+        self.cancel.setMinimumSize(QSize(170, 60))
+        icon4 = QIcon()
+        icon4.addFile(u":/icon/icons/GREY/cancel.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.cancel.setIcon(icon4)
+        self.cancel.setIconSize(QSize(35, 35))
+
+        self.horizontalLayout.addWidget(self.cancel)
+
+
+        self.verticalLayout.addLayout(self.horizontalLayout)
+
+
+        self.retranslateUi(Dialog)
+
+        QMetaObject.connectSlotsByName(Dialog)
     # setupUi
 
-    def retranslateUi(self, Form):
-        Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
-        self.ok.setText(QCoreApplication.translate("Form", u"ok", None))
-        self.cancel.setText(QCoreApplication.translate("Form", u"cancel", None))
-        self.add_folder.setText(QCoreApplication.translate("Form", u"add folder", None))
-        self.add_file.setText(QCoreApplication.translate("Form", u"add file", None))
+    def retranslateUi(self, Dialog):
+        Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Dialog", None))
+        self.add_folder.setText(QCoreApplication.translate("Dialog", u"  Add Folder", None))
+        self.add_file_2.setText(QCoreApplication.translate("Dialog", u"    Add File", None))
+        self.add_file.setText(QCoreApplication.translate("Dialog", u"    Edit List", None))
+        self.ok.setText(QCoreApplication.translate("Dialog", u"  Ok", None))
+        self.cancel.setText(QCoreApplication.translate("Dialog", u"  Cancel", None))
     # retranslateUi
 
