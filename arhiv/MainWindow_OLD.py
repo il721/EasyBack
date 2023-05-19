@@ -2,7 +2,7 @@ from pathlib import Path
 
 from PySide6.QtWidgets import QFileDialog, QMainWindow
 from PySide6.QtCore import Slot
-from ui_MainWindowGray import Ui_MainWindow
+from ui_MainWindow import Ui_MainWindow
 
 
 class MainWindow(QMainWindow):

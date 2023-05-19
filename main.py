@@ -1,6 +1,6 @@
 import sys
 from PySide6.QtWidgets import QApplication
-from MainWindowGrey import MainWindow
+from MainWindow import MainWindow
 # from MainWindow import MainWindow
 
 if __name__ == '__main__':
