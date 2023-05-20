@@ -4,7 +4,7 @@ import sys
 from PySide6.QtWidgets import QFileDialog, QMainWindow, QDialog
 from ui_MainWindow import Ui_MainWindow
 # from ui_01_add_item import AddItemDial01
-from ui_01_add_item import AddItemDial01
+from d__01_add_item import AddItemDial01
 
 
 class MainWindow(QMainWindow):
@@ -17,6 +17,7 @@ class MainWindow(QMainWindow):
         # self.ui.translit_button.setShortcut('Ctrl+t')
         self.ui.add_item.clicked.connect(self.add_item_01)
         self.ui.remove_item.clicked.connect(self.remove_item)
+
         self.ui.exit.clicked.connect(self.exit)
 
         # self.ui.add_item.clicked.connect(self.open_directory_dialog)
@@ -34,16 +35,6 @@ class MainWindow(QMainWindow):
 
     def remove_item(self):
         pass
-
-    def open_directory_dialog(self):
-        dialog = QFileDialog(self)
-        dialog.setDirectory(r'F:')
-        dialog.setFileMode(QFileDialog.FileMode.Directory)
-        dialog.setViewMode(QFileDialog.ViewMode.List)
-        if dialog.exec():
-            filenames = dialog.selectedFiles()
-            if filenames:
-                self.directory_list.extend(filenames)
 
     def exit(self):
         sys.exit()

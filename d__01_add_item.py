@@ -1,24 +1,10 @@
-# -*- coding: utf-8 -*-
-
-################################################################################
-## Form generated from reading UI file 'ui_01_add_item.ui'
-##
-## Created by: Qt User Interface Compiler version 6.5.0
-##
-## WARNING! All changes made in this file will be lost when recompiling UI file!
-################################################################################
-
-from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
-    QMetaObject, QObject, QPoint, QRect,
-    QSize, QTime, QUrl, Qt)
-from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
-    QFont, QFontDatabase, QGradient, QIcon,
-    QImage, QKeySequence, QLinearGradient, QPainter,
-    QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QDialog, QHBoxLayout, QListView,
-    QPushButton, QSizePolicy, QSpacerItem, QVBoxLayout,
-    QWidget)
+from PySide6.QtCore import (QCoreApplication, QMetaObject, QSize, )
+from PySide6.QtGui import (QIcon)
+from PySide6.QtWidgets import (QFileDialog, QDialog, QHBoxLayout, QListView,
+                               QPushButton, QSizePolicy, QSpacerItem, QVBoxLayout,
+                               QWidget)
 import dop_win_rc
+
 
 class AddItemDial01(object):
     def setupUi(self, Dialog):
@@ -27,33 +13,33 @@ class AddItemDial01(object):
         Dialog.resize(600, 800)
         Dialog.setMaximumSize(QSize(600, 800))
         Dialog.setStyleSheet(u"*{\n"
-"background-color: rgb(30, 30, 30);\n"
-"font: 16pt \"Lexend Light\";\n"
-"}\n"
-"\n"
-"\n"
-"QPushButton {\n"
-"border: 2px solid;\n"
-"color: rgb(230, 230, 230);\n"
-"border-color: rgb(110, 110, 110);\n"
-"border-radius: 20px;\n"
-"background-color: rgba(60,60, 60, 80);\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"color: #2B79C2;\n"
-"border: 3px solid;\n"
-"background-color: rgba(30, 30, 30, 180);\n"
-"border-color: rgb(150,150, 150);\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"color: rgb(30, 30, 30);\n"
-"border: 2px solid;\n"
-"background-color: #2B79C2;\n"
-"border-color: rgb(230, 230, 230);\n"
-"}\n"
-"")
+                             "background-color: rgb(30, 30, 30);\n"
+                             "font: 16pt \"Lexend Light\";\n"
+                             "}\n"
+                             "\n"
+                             "\n"
+                             "QPushButton {\n"
+                             "border: 2px solid;\n"
+                             "color: rgb(230, 230, 230);\n"
+                             "border-color: rgb(110, 110, 110);\n"
+                             "border-radius: 20px;\n"
+                             "background-color: rgba(60,60, 60, 80);\n"
+                             "}\n"
+                             "\n"
+                             "QPushButton:hover {\n"
+                             "color: #2B79C2;\n"
+                             "border: 3px solid;\n"
+                             "background-color: rgba(30, 30, 30, 180);\n"
+                             "border-color: rgb(150,150, 150);\n"
+                             "}\n"
+                             "\n"
+                             "QPushButton:pressed {\n"
+                             "color: rgb(30, 30, 30);\n"
+                             "border: 2px solid;\n"
+                             "background-color: #2B79C2;\n"
+                             "border-color: rgb(230, 230, 230);\n"
+                             "}\n"
+                             "")
         self.verticalLayout = QVBoxLayout(Dialog)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.horizontalLayout_2 = QHBoxLayout()
@@ -105,14 +91,13 @@ class AddItemDial01(object):
 
         self.horizontalLayout_2.addWidget(self.edit_list)
 
-
         self.verticalLayout.addLayout(self.horizontalLayout_2)
 
         self.list_files_and_folders = QListView(Dialog)
         self.list_files_and_folders.setObjectName(u"list_files_and_folders")
         self.list_files_and_folders.setStyleSheet(u"background-color: rgb(50, 50,50);\n"
-"color: rgb(10,10,10);\n"
-"font: 300 12pt \"Lexend Light\";")
+                                                  "color: rgb(10,10,10);\n"
+                                                  "font: 300 12pt \"Lexend Light\";")
 
         self.verticalLayout.addWidget(self.list_files_and_folders)
 
@@ -146,13 +131,12 @@ class AddItemDial01(object):
 
         self.horizontalLayout.addWidget(self.cancel)
 
-
         self.verticalLayout.addLayout(self.horizontalLayout)
-
 
         self.retranslateUi(Dialog)
 
         QMetaObject.connectSlotsByName(Dialog)
+
     # setupUi
 
     def retranslateUi(self, Dialog):
@@ -162,5 +146,16 @@ class AddItemDial01(object):
         self.edit_list.setText(QCoreApplication.translate("Dialog", u"    Edit List", None))
         self.ok.setText(QCoreApplication.translate("Dialog", u"  Ok", None))
         self.cancel.setText(QCoreApplication.translate("Dialog", u"  Cancel", None))
-    # retranslateUi
 
+    # ******************************************************************************************
+    # ************************    MY CODE    ***************************************************
+    # ******************************************************************************************
+    def open_directory_dialog(self):
+        dialog = QFileDialog(self)
+        dialog.setDirectory(r'F:')
+        dialog.setFileMode(QFileDialog.FileMode.Directory)
+        dialog.setViewMode(QFileDialog.ViewMode.List)
+        if dialog.exec():
+            filenames = dialog.selectedFiles()
+            if filenames:
+                self.directory_list.extend(filenames)
