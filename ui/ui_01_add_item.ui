@@ -23,8 +23,14 @@
    <string notr="true">*{
 background-color: rgb(30, 30, 30);
 font: 16pt &quot;Lexend Light&quot;;
+border: 2px solid;
+color: rgb(230, 230, 230);
+border-color: rgb(110, 110, 110);
 }
 
+QLineEdit{
+background-color: rgb(30, 30, 30);
+}
 
 QPushButton {
 border: 2px solid;
@@ -50,6 +56,9 @@ border-color: rgb(230, 230, 230);
 </string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>15</number>
+   </property>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
@@ -166,6 +175,69 @@ border-color: rgb(230, 230, 230);
       </widget>
      </item>
     </layout>
+   </item>
+   <item>
+    <widget class="QLineEdit" name="input_name">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>40</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>40</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <family>Lexend Light</family>
+       <pointsize>16</pointsize>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(202, 202, 202);</string>
+     </property>
+     <property name="text">
+      <string>Input name of backup item</string>
+     </property>
+     <property name="placeholderText">
+      <string>Input name of backup item</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="ListOfItem">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>50</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>50</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <family>Lexend Light</family>
+       <pointsize>16</pointsize>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: no</string>
+     </property>
+     <property name="text">
+      <string>List of files and folders in backup item:</string>
+     </property>
+    </widget>
    </item>
    <item>
     <widget class="QListWidget" name="list_files_and_folders">

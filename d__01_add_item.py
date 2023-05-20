@@ -1,6 +1,6 @@
 from PySide6.QtCore import (QCoreApplication, QMetaObject, QSize, )
-from PySide6.QtGui import (QIcon)
-from PySide6.QtWidgets import (QFileDialog, QDialog, QHBoxLayout, QListView,
+from PySide6.QtGui import (QFont, QIcon)
+from PySide6.QtWidgets import (QFileDialog, QDialog, QHBoxLayout, QLabel, QLineEdit, QListView,
                                QListWidget, QPushButton, QSizePolicy, QSpacerItem, QVBoxLayout,
                                QWidget)
 import dop_win_rc
@@ -10,16 +10,23 @@ class AddItemDial01(object):
     def __init__(self):
         self.directory_list: list = []
         self.file_list: list = []
-    def setupUi(self, Dialog):
+
+    def setupUi_(self, Dialog):
         if not Dialog.objectName():
-            Dialog.setObjectName(u"Dialog")
+            Dialog.setObjectName(u"Add Item")
         Dialog.resize(600, 800)
         Dialog.setMaximumSize(QSize(600, 800))
         Dialog.setStyleSheet(u"*{\n"
                              "background-color: rgb(30, 30, 30);\n"
                              "font: 16pt \"Lexend Light\";\n"
+                             "border: 2px solid;\n"
+                             "color: rgb(230, 230, 230);\n"
+                             "border-color: rgb(110, 110, 110);\n"
                              "}\n"
                              "\n"
+                             "QLineEdit{\n"
+                             "background-color: rgb(30, 30, 30);\n"
+                             "}\n"
                              "\n"
                              "QPushButton {\n"
                              "border: 2px solid;\n"
@@ -44,6 +51,7 @@ class AddItemDial01(object):
                              "}\n"
                              "")
         self.verticalLayout = QVBoxLayout(Dialog)
+        self.verticalLayout.setSpacing(15)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
@@ -96,13 +104,34 @@ class AddItemDial01(object):
 
         self.verticalLayout.addLayout(self.horizontalLayout_2)
 
-        # QListWidget
+        self.input_name = QLineEdit(Dialog)
+        self.input_name.setObjectName(u"input_name")
+        self.input_name.setMinimumSize(QSize(0, 40))
+        self.input_name.setMaximumSize(QSize(16777215, 40))
+        font = QFont()
+        font.setFamilies([u"Lexend Light"])
+        font.setPointSize(16)
+        font.setBold(False)
+        font.setItalic(False)
+        self.input_name.setFont(font)
+        self.input_name.setStyleSheet(u"color: rgb(202, 202, 202);")
+
+        self.verticalLayout.addWidget(self.input_name)
+
+        self.ListOfItem = QLabel(Dialog)
+        self.ListOfItem.setObjectName(u"ListOfItem")
+        self.ListOfItem.setMinimumSize(QSize(0, 50))
+        self.ListOfItem.setMaximumSize(QSize(16777215, 50))
+        self.ListOfItem.setFont(font)
+        self.ListOfItem.setStyleSheet(u"border: no")
+
+        self.verticalLayout.addWidget(self.ListOfItem)
+
         self.list_files_and_folders = QListWidget(Dialog)
         self.list_files_and_folders.setObjectName(u"list_files_and_folders")
         self.list_files_and_folders.setStyleSheet(u"background-color: rgb(50, 50,50);\n"
-                                                  "color: rgb(200,200,200);\n"
-                                                  "font: 300 16pt \"Lexend Light\";")
-
+                                                  "color: rgb(10,10,10);\n"
+                                                  "font: 300 12pt \"Lexend Light\";")
 
         self.verticalLayout.addWidget(self.list_files_and_folders)
 
@@ -141,7 +170,7 @@ class AddItemDial01(object):
         self.retranslateUi(Dialog)
 
         QMetaObject.connectSlotsByName(Dialog)
-    # setupUi
+        # setupUi
 
         # ******************************************************************************************
         # ************************    MY CODE    ***************************************************

@@ -30,7 +30,7 @@ class MainWindow(QMainWindow):
     def add_item_01(self):
         dialog = QDialog()
         ui = AddItemDial01()
-        ui.setupUi(dialog)
+        ui.setupUi_(dialog)
         dialog.exec()
 
     def remove_item(self):
