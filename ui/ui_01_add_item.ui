@@ -168,7 +168,7 @@ border-color: rgb(230, 230, 230);
     </layout>
    </item>
    <item>
-    <widget class="QListView" name="list_files_and_folders">
+    <widget class="QListWidget" name="list_files_and_folders">
      <property name="styleSheet">
       <string notr="true">background-color: rgb(50, 50,50);
 color: rgb(10,10,10);

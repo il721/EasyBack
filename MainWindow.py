@@ -2,7 +2,7 @@ import sys
 # from pathlib import Path
 
 from PySide6.QtWidgets import QFileDialog, QMainWindow, QDialog
-from ui_MainWindow import Ui_MainWindow
+from d_MainWindow import Ui_MainWindow
 # from ui_01_add_item import AddItemDial01
 from d__01_add_item import AddItemDial01
 
@@ -52,13 +52,6 @@ class AddItem(MainWindow):
         # self.ui.translit_button.setShortcut('Ctrl+t')
         self.ui.add_folder.clicked.connect(self.remove_item)
         # self.ui.add_file.clicked.connect(self.open_file_dialog)
-
-        # self.ui.add_item.clicked.connect(self.open_directory_dialog)
-        # self.ui.files.clicked.connect(self.open_file_dialog())
-
-        # clear button
-        # self.ui.clear_button.setShortcut('Ctrl+d')
-        # self.ui.clear_button.clicked.connect(self.clear_all_windows)
 
     def cancel_01_05(self):
         dialog = QDialog()
