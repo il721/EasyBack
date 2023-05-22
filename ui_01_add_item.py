@@ -62,7 +62,7 @@ class Ui_Dialog(object):
                              "}\n"
                              "")
         self.verticalLayout = QVBoxLayout(Dialog)
-        self.verticalLayout.setSpacing(15)
+        self.verticalLayout.setSpacing(10)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
@@ -97,22 +97,6 @@ class Ui_Dialog(object):
 
         self.horizontalLayout_2.addWidget(self.add_file)
 
-        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.horizontalLayout_2.addItem(self.horizontalSpacer_3)
-
-        self.edit_list = QPushButton(Dialog)
-        self.edit_list.setObjectName(u"edit_list")
-        sizePolicy.setHeightForWidth(self.edit_list.sizePolicy().hasHeightForWidth())
-        self.edit_list.setSizePolicy(sizePolicy)
-        self.edit_list.setMinimumSize(QSize(180, 60))
-        icon2 = QIcon()
-        icon2.addFile(u":/icon/icons/GREY/edit_list.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.edit_list.setIcon(icon2)
-        self.edit_list.setIconSize(QSize(35, 35))
-
-        self.horizontalLayout_2.addWidget(self.edit_list)
-
         self.verticalLayout.addLayout(self.horizontalLayout_2)
 
         self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
@@ -141,7 +125,7 @@ class Ui_Dialog(object):
 
         self.info = QLabel(Dialog)
         self.info.setObjectName(u"info")
-        self.info.setStyleSheet(u"color: #2B79C2;\n"
+        self.info.setStyleSheet(u"color: rgb(255, 255, 127);\n"
                                 "border: no")
 
         self.verticalLayout.addWidget(self.info)
@@ -162,9 +146,9 @@ class Ui_Dialog(object):
         sizePolicy.setHeightForWidth(self.ok.sizePolicy().hasHeightForWidth())
         self.ok.setSizePolicy(sizePolicy)
         self.ok.setMinimumSize(QSize(170, 60))
-        icon3 = QIcon()
-        icon3.addFile(u":/icon/icons/GREY/ok.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.ok.setIcon(icon3)
+        icon2 = QIcon()
+        icon2.addFile(u":/icon/icons/GREY/ok.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.ok.setIcon(icon2)
         self.ok.setIconSize(QSize(35, 35))
 
         self.horizontalLayout.addWidget(self.ok)
@@ -178,9 +162,9 @@ class Ui_Dialog(object):
         sizePolicy.setHeightForWidth(self.cancel.sizePolicy().hasHeightForWidth())
         self.cancel.setSizePolicy(sizePolicy)
         self.cancel.setMinimumSize(QSize(170, 60))
-        icon4 = QIcon()
-        icon4.addFile(u":/icon/icons/GREY/cancel.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.cancel.setIcon(icon4)
+        icon3 = QIcon()
+        icon3.addFile(u":/icon/icons/GREY/cancel.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.cancel.setIcon(icon3)
         self.cancel.setIconSize(QSize(35, 35))
 
         self.horizontalLayout.addWidget(self.cancel)
@@ -197,11 +181,12 @@ class Ui_Dialog(object):
         Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Dialog", None))
         self.add_folder.setText(QCoreApplication.translate("Dialog", u"  Add Folder", None))
         self.add_file.setText(QCoreApplication.translate("Dialog", u"    Add File", None))
-        self.edit_list.setText(QCoreApplication.translate("Dialog", u"    Edit List", None))
-        self.input_name.setText("")
-        self.input_name.setPlaceholderText(
-            QCoreApplication.translate("Dialog", u"tttest", None))
-        self.info.setText(QCoreApplication.translate("Dialog", u"test", None))
+        self.input_name.setText(
+            QCoreApplication.translate("Dialog", u"Input name of backup item here", None))
+        self.input_name.setPlaceholderText(QCoreApplication.translate("Dialog", u"tttest", None))
+        self.info.setText(
+            QCoreApplication.translate("Dialog", u"To remove line from list below just select them",
+                                       None))
         self.ok.setText(QCoreApplication.translate("Dialog", u"  Ok", None))
         self.cancel.setText(QCoreApplication.translate("Dialog", u"  Cancel", None))
     # retranslateUi

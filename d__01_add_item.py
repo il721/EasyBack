@@ -1,8 +1,7 @@
 from PySide6.QtCore import (QCoreApplication, QMetaObject, QSize, )
 from PySide6.QtGui import (QFont, QIcon)
-from PySide6.QtWidgets import (QFileDialog, QDialog, QHBoxLayout, QLabel, QLineEdit, QListView,
-                               QListWidget, QPushButton, QSizePolicy, QSpacerItem, QVBoxLayout,
-                               QWidget)
+from PySide6.QtWidgets import (QFileDialog, QHBoxLayout, QLabel, QLineEdit,
+                               QListWidget, QPushButton, QSizePolicy, QSpacerItem, QVBoxLayout, )
 import dop_win_rc
 
 
@@ -51,7 +50,7 @@ class AddItemDial01(object):
                              "}\n"
                              "")
         self.verticalLayout = QVBoxLayout(Dialog)
-        self.verticalLayout.setSpacing(15)
+        self.verticalLayout.setSpacing(10)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
@@ -86,22 +85,6 @@ class AddItemDial01(object):
 
         self.horizontalLayout_2.addWidget(self.add_file)
 
-        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.horizontalLayout_2.addItem(self.horizontalSpacer_3)
-
-        self.edit_list = QPushButton(Dialog)
-        self.edit_list.setObjectName(u"edit_list")
-        sizePolicy.setHeightForWidth(self.edit_list.sizePolicy().hasHeightForWidth())
-        self.edit_list.setSizePolicy(sizePolicy)
-        self.edit_list.setMinimumSize(QSize(180, 60))
-        icon2 = QIcon()
-        icon2.addFile(u":/icon/icons/GREY/edit_list.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.edit_list.setIcon(icon2)
-        self.edit_list.setIconSize(QSize(35, 35))
-
-        self.horizontalLayout_2.addWidget(self.edit_list)
-
         self.verticalLayout.addLayout(self.horizontalLayout_2)
 
         self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
@@ -130,7 +113,7 @@ class AddItemDial01(object):
 
         self.info = QLabel(Dialog)
         self.info.setObjectName(u"info")
-        self.info.setStyleSheet(u"color: #2B79C2;\n"
+        self.info.setStyleSheet(u"color: rgb(255, 255, 127);\n"
                                 "border: no")
 
         self.verticalLayout.addWidget(self.info)
@@ -151,9 +134,9 @@ class AddItemDial01(object):
         sizePolicy.setHeightForWidth(self.ok.sizePolicy().hasHeightForWidth())
         self.ok.setSizePolicy(sizePolicy)
         self.ok.setMinimumSize(QSize(170, 60))
-        icon3 = QIcon()
-        icon3.addFile(u":/icon/icons/GREY/ok.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.ok.setIcon(icon3)
+        icon2 = QIcon()
+        icon2.addFile(u":/icon/icons/GREY/ok.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.ok.setIcon(icon2)
         self.ok.setIconSize(QSize(35, 35))
 
         self.horizontalLayout.addWidget(self.ok)
@@ -167,9 +150,9 @@ class AddItemDial01(object):
         sizePolicy.setHeightForWidth(self.cancel.sizePolicy().hasHeightForWidth())
         self.cancel.setSizePolicy(sizePolicy)
         self.cancel.setMinimumSize(QSize(170, 60))
-        icon4 = QIcon()
-        icon4.addFile(u":/icon/icons/GREY/cancel.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.cancel.setIcon(icon4)
+        icon3 = QIcon()
+        icon3.addFile(u":/icon/icons/GREY/cancel.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.cancel.setIcon(icon3)
         self.cancel.setIconSize(QSize(35, 35))
 
         self.horizontalLayout.addWidget(self.cancel)
@@ -184,20 +167,19 @@ class AddItemDial01(object):
         # ******************************************************************************************
         # ************************    MY CODE    ***************************************************
         # ******************************************************************************************
-        self.add_folder.clicked.connect(self.open_directory_dialog)
-        self.add_file.clicked.connect(self.open_file_dialog)
+        self.add_folder.clicked.connect(self.add_directory_dial)
+        self.add_file.clicked.connect(self.add_file_dial)
+        self.list_files_and_folders.clicked.connect(self.remove_line_dial)
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Dialog", None))
         self.add_folder.setText(QCoreApplication.translate("Dialog", u"  Add Folder", None))
         self.add_file.setText(QCoreApplication.translate("Dialog", u"    Add File", None))
-        self.edit_list.setText(QCoreApplication.translate("Dialog", u"    Edit List", None))
-        self.input_name.setText("")
-        self.input_name.setPlaceholderText(QCoreApplication.translate("Dialog", u"Input name of "
-                                                                                u"backup item "
-                                                                                u"here", None))
+        self.input_name.setText(
+            QCoreApplication.translate("Dialog", u"Input name of backup item here", None))
+        self.input_name.setPlaceholderText(QCoreApplication.translate("Dialog", u"tttest", None))
         self.info.setText(
-            QCoreApplication.translate("Dialog", u"Select any row in list to remove them",
+            QCoreApplication.translate("Dialog", u"To remove line from list below just select them",
                                        None))
         self.ok.setText(QCoreApplication.translate("Dialog", u"  Ok", None))
         self.cancel.setText(QCoreApplication.translate("Dialog", u"  Cancel", None))
@@ -205,7 +187,7 @@ class AddItemDial01(object):
     # ******************************************************************************************
     # ************************    MY CODE    ***************************************************
     # ******************************************************************************************
-    def open_directory_dialog(self):
+    def add_directory_dial(self):
         dialog = QFileDialog()
         dialog.setDirectory(r'F:')
         dialog.setFileMode(QFileDialog.FileMode.Directory)
@@ -216,7 +198,7 @@ class AddItemDial01(object):
                 self.directory_list.extend(filenames)
                 self.list_files_and_folders.addItem(f"{' '.join(filenames)}")
 
-    def open_file_dialog(self):
+    def add_file_dial(self):
         dialog = QFileDialog()
         dialog.setDirectory(r'F:')
         dialog.setFileMode(QFileDialog.FileMode.ExistingFiles)
@@ -227,3 +209,7 @@ class AddItemDial01(object):
             if filenames:
                 self.file_list.extend(filenames)
                 self.list_files_and_folders.addItem(f"{' '.join(filenames)}")
+
+    def remove_line_dial(self):
+        row = self.list_files_and_folders.currentRow()
+        self.list_files_and_folders.takeItem(row)

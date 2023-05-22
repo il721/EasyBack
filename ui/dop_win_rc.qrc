@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="icon">
+    <file>icons/GREY/info.svg</file>
     <file>icons/GREY/edit_list.svg</file>
     <file>icons/GREY/cancel.svg</file>
     <file>icons/GREY/ok.svg</file>

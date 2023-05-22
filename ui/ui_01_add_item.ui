@@ -57,7 +57,7 @@ border-color: rgb(230, 230, 230);
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
-    <number>15</number>
+    <number>10</number>
    </property>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -132,48 +132,6 @@ border-color: rgb(230, 230, 230);
        </property>
       </widget>
      </item>
-     <item>
-      <spacer name="horizontalSpacer_3">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="edit_list">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>180</width>
-         <height>60</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>    Edit List</string>
-       </property>
-       <property name="icon">
-        <iconset resource="dop_win_rc.qrc">
-         <normaloff>:/icon/icons/GREY/edit_list.svg</normaloff>:/icon/icons/GREY/edit_list.svg</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>35</width>
-         <height>35</height>
-        </size>
-       </property>
-      </widget>
-     </item>
     </layout>
    </item>
    <item>
@@ -217,7 +175,7 @@ border-color: #2B79C2;
 </string>
      </property>
      <property name="text">
-      <string/>
+      <string>Input name of backup item here</string>
      </property>
      <property name="placeholderText">
       <string>tttest</string>
@@ -240,11 +198,11 @@ border-color: #2B79C2;
    <item>
     <widget class="QLabel" name="info">
      <property name="styleSheet">
-      <string notr="true">color: #2B79C2;
+      <string notr="true">color: rgb(255, 255, 127);
 border: no</string>
      </property>
      <property name="text">
-      <string>test</string>
+      <string>To remove line from list below just select them</string>
      </property>
     </widget>
    </item>
