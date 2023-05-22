@@ -28,12 +28,18 @@ class MainWindow(QMainWindow):
         # self.ui.clear_button.clicked.connect(self.clear_all_windows)
 
     def add_item_01(self):
+        """
+        Open 'Add Item To Base' dialog window
+        """
         dialog = QDialog()
         ui = AddItemDial01()
         ui.setupUi_(dialog)
         dialog.exec()
 
     def remove_item(self):
+        """
+        Open 'Edit Item In Base' dialog window
+        """
         pass
 
     def exit(self):

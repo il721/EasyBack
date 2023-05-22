@@ -115,6 +115,10 @@ class Ui_Dialog(object):
 
         self.verticalLayout.addLayout(self.horizontalLayout_2)
 
+        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout.addItem(self.verticalSpacer_2)
+
         self.input_name = QLineEdit(Dialog)
         self.input_name.setObjectName(u"input_name")
         self.input_name.setMinimumSize(QSize(0, 40))
@@ -125,24 +129,29 @@ class Ui_Dialog(object):
         font.setBold(False)
         font.setItalic(False)
         self.input_name.setFont(font)
-        self.input_name.setStyleSheet(u"color: rgb(202, 202, 202);")
+        self.input_name.setStyleSheet(u"color: rgb(202, 202, 202);\n"
+                                      "border-color: #2B79C2;\n"
+                                      "")
 
         self.verticalLayout.addWidget(self.input_name)
 
-        self.ListOfItem = QLabel(Dialog)
-        self.ListOfItem.setObjectName(u"ListOfItem")
-        self.ListOfItem.setMinimumSize(QSize(0, 50))
-        self.ListOfItem.setMaximumSize(QSize(16777215, 50))
-        self.ListOfItem.setFont(font)
-        self.ListOfItem.setStyleSheet(u"border: no")
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.verticalLayout.addWidget(self.ListOfItem)
+        self.verticalLayout.addItem(self.verticalSpacer)
+
+        self.info = QLabel(Dialog)
+        self.info.setObjectName(u"info")
+        self.info.setStyleSheet(u"color: #2B79C2;\n"
+                                "border: no")
+
+        self.verticalLayout.addWidget(self.info)
 
         self.list_files_and_folders = QListWidget(Dialog)
         self.list_files_and_folders.setObjectName(u"list_files_and_folders")
+        self.list_files_and_folders.setMinimumSize(QSize(0, 480))
         self.list_files_and_folders.setStyleSheet(u"background-color: rgb(50, 50,50);\n"
-                                                  "color: rgb(10,10,10);\n"
-                                                  "font: 300 12pt \"Lexend Light\";")
+                                                  "color: rgb(230, 230, 230);\n"
+                                                  "font: 300 16pt \"Lexend Light\";")
 
         self.verticalLayout.addWidget(self.list_files_and_folders)
 
@@ -189,13 +198,10 @@ class Ui_Dialog(object):
         self.add_folder.setText(QCoreApplication.translate("Dialog", u"  Add Folder", None))
         self.add_file.setText(QCoreApplication.translate("Dialog", u"    Add File", None))
         self.edit_list.setText(QCoreApplication.translate("Dialog", u"    Edit List", None))
-        self.input_name.setText(
-            QCoreApplication.translate("Dialog", u"Input name of backup item", None))
+        self.input_name.setText("")
         self.input_name.setPlaceholderText(
-            QCoreApplication.translate("Dialog", u"Input name of backup item", None))
-        self.ListOfItem.setText(
-            QCoreApplication.translate("Dialog", u"List of files and folders in backup item:",
-                                       None))
+            QCoreApplication.translate("Dialog", u"tttest", None))
+        self.info.setText(QCoreApplication.translate("Dialog", u"test", None))
         self.ok.setText(QCoreApplication.translate("Dialog", u"  Ok", None))
         self.cancel.setText(QCoreApplication.translate("Dialog", u"  Cancel", None))
     # retranslateUi

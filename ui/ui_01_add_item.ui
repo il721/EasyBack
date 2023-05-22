@@ -177,6 +177,19 @@ border-color: rgb(230, 230, 230);
     </layout>
    </item>
    <item>
+    <spacer name="verticalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
     <widget class="QLineEdit" name="input_name">
      <property name="minimumSize">
       <size>
@@ -199,52 +212,54 @@ border-color: rgb(230, 230, 230);
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: rgb(202, 202, 202);</string>
+      <string notr="true">color: rgb(202, 202, 202);
+border-color: #2B79C2;
+</string>
      </property>
      <property name="text">
-      <string>Input name of backup item</string>
+      <string/>
      </property>
      <property name="placeholderText">
-      <string>Input name of backup item</string>
+      <string>tttest</string>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="QLabel" name="ListOfItem">
-     <property name="minimumSize">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
       <size>
-       <width>0</width>
-       <height>50</height>
+       <width>20</width>
+       <height>40</height>
       </size>
      </property>
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>50</height>
-      </size>
-     </property>
-     <property name="font">
-      <font>
-       <family>Lexend Light</family>
-       <pointsize>16</pointsize>
-       <italic>false</italic>
-       <bold>false</bold>
-      </font>
-     </property>
+    </spacer>
+   </item>
+   <item>
+    <widget class="QLabel" name="info">
      <property name="styleSheet">
-      <string notr="true">border: no</string>
+      <string notr="true">color: #2B79C2;
+border: no</string>
      </property>
      <property name="text">
-      <string>List of files and folders in backup item:</string>
+      <string>test</string>
      </property>
     </widget>
    </item>
    <item>
     <widget class="QListWidget" name="list_files_and_folders">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>480</height>
+      </size>
+     </property>
      <property name="styleSheet">
       <string notr="true">background-color: rgb(50, 50,50);
-color: rgb(10,10,10);
-font: 300 12pt &quot;Lexend Light&quot;;</string>
+color: rgb(230, 230, 230);
+font: 300 16pt &quot;Lexend Light&quot;;</string>
      </property>
     </widget>
    </item>
