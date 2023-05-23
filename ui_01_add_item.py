@@ -9,17 +9,16 @@
 ################################################################################
 
 from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
-                            QMetaObject, QObject, QPoint, QRect,
-                            QSize, QTime, QUrl, Qt)
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
 from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
-                           QFont, QFontDatabase, QGradient, QIcon,
-                           QImage, QKeySequence, QLinearGradient, QPainter,
-                           QPalette, QPixmap, QRadialGradient, QTransform)
+    QFont, QFontDatabase, QGradient, QIcon,
+    QImage, QKeySequence, QLinearGradient, QPainter,
+    QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QDialog, QHBoxLayout, QLabel,
-                               QLineEdit, QListWidget, QListWidgetItem, QPushButton,
-                               QSizePolicy, QSpacerItem, QVBoxLayout, QWidget)
+    QLineEdit, QListWidget, QListWidgetItem, QPushButton,
+    QSizePolicy, QSpacerItem, QVBoxLayout, QWidget)
 import dop_win_rc_rc
-
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
@@ -28,39 +27,39 @@ class Ui_Dialog(object):
         Dialog.resize(600, 800)
         Dialog.setMaximumSize(QSize(600, 800))
         Dialog.setStyleSheet(u"*{\n"
-                             "background-color: rgb(30, 30, 30);\n"
-                             "font: 16pt \"Lexend Light\";\n"
-                             "border: 2px solid;\n"
-                             "color: rgb(230, 230, 230);\n"
-                             "border-color: rgb(110, 110, 110);\n"
-                             "}\n"
-                             "\n"
-                             "QLineEdit{\n"
-                             "background-color: rgb(30, 30, 30);\n"
-                             "}\n"
-                             "\n"
-                             "QPushButton {\n"
-                             "border: 2px solid;\n"
-                             "color: rgb(230, 230, 230);\n"
-                             "border-color: rgb(110, 110, 110);\n"
-                             "border-radius: 20px;\n"
-                             "background-color: rgba(60,60, 60, 80);\n"
-                             "}\n"
-                             "\n"
-                             "QPushButton:hover {\n"
-                             "color: #2B79C2;\n"
-                             "border: 3px solid;\n"
-                             "background-color: rgba(30, 30, 30, 180);\n"
-                             "border-color: rgb(150,150, 150);\n"
-                             "}\n"
-                             "\n"
-                             "QPushButton:pressed {\n"
-                             "color: rgb(30, 30, 30);\n"
-                             "border: 2px solid;\n"
-                             "background-color: #2B79C2;\n"
-                             "border-color: rgb(230, 230, 230);\n"
-                             "}\n"
-                             "")
+"background-color: rgb(30, 30, 30);\n"
+"font: 16pt \"Lexend Light\";\n"
+"border: 2px solid;\n"
+"color: rgb(230, 230, 230);\n"
+"border-color: rgb(110, 110, 110);\n"
+"}\n"
+"\n"
+"QLineEdit{\n"
+"background-color: rgb(30, 30, 30);\n"
+"}\n"
+"\n"
+"QPushButton {\n"
+"border: 2px solid;\n"
+"color: rgb(230, 230, 230);\n"
+"border-color: rgb(110, 110, 110);\n"
+"border-radius: 20px;\n"
+"background-color: rgba(60,60, 60, 80);\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"color: #2B79C2;\n"
+"border: 3px solid;\n"
+"background-color: rgba(30, 30, 30, 180);\n"
+"border-color: rgb(150,150, 150);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"color: rgb(30, 30, 30);\n"
+"border: 2px solid;\n"
+"background-color: #2B79C2;\n"
+"border-color: rgb(230, 230, 230);\n"
+"}\n"
+"")
         self.verticalLayout = QVBoxLayout(Dialog)
         self.verticalLayout.setSpacing(10)
         self.verticalLayout.setObjectName(u"verticalLayout")
@@ -97,6 +96,7 @@ class Ui_Dialog(object):
 
         self.horizontalLayout_2.addWidget(self.add_file)
 
+
         self.verticalLayout.addLayout(self.horizontalLayout_2)
 
         self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
@@ -114,8 +114,8 @@ class Ui_Dialog(object):
         font.setItalic(False)
         self.input_name.setFont(font)
         self.input_name.setStyleSheet(u"color: rgb(202, 202, 202);\n"
-                                      "border-color: #2B79C2;\n"
-                                      "")
+"border-color: #2B79C2;\n"
+"")
 
         self.verticalLayout.addWidget(self.input_name)
 
@@ -126,7 +126,7 @@ class Ui_Dialog(object):
         self.info = QLabel(Dialog)
         self.info.setObjectName(u"info")
         self.info.setStyleSheet(u"color: rgb(255, 255, 127);\n"
-                                "border: no")
+"border: no")
 
         self.verticalLayout.addWidget(self.info)
 
@@ -134,8 +134,8 @@ class Ui_Dialog(object):
         self.list_files_and_folders.setObjectName(u"list_files_and_folders")
         self.list_files_and_folders.setMinimumSize(QSize(0, 480))
         self.list_files_and_folders.setStyleSheet(u"background-color: rgb(50, 50,50);\n"
-                                                  "color: rgb(230, 230, 230);\n"
-                                                  "font: 300 16pt \"Lexend Light\";")
+"color: rgb(230, 230, 230);\n"
+"font: 300 16pt \"Lexend Light\";")
 
         self.verticalLayout.addWidget(self.list_files_and_folders)
 
@@ -169,24 +169,23 @@ class Ui_Dialog(object):
 
         self.horizontalLayout.addWidget(self.cancel)
 
+
         self.verticalLayout.addLayout(self.horizontalLayout)
+
 
         self.retranslateUi(Dialog)
 
         QMetaObject.connectSlotsByName(Dialog)
-
     # setupUi
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Dialog", None))
         self.add_folder.setText(QCoreApplication.translate("Dialog", u"  Add Folder", None))
         self.add_file.setText(QCoreApplication.translate("Dialog", u"    Add File", None))
-        self.input_name.setText(
-            QCoreApplication.translate("Dialog", u"Input name of backup item here", None))
+        self.input_name.setText(QCoreApplication.translate("Dialog", u"Input name of backup item here", None))
         self.input_name.setPlaceholderText(QCoreApplication.translate("Dialog", u"tttest", None))
-        self.info.setText(
-            QCoreApplication.translate("Dialog", u"To remove line from list below just select them",
-                                       None))
+        self.info.setText(QCoreApplication.translate("Dialog", u"To remove line from list below just select them", None))
         self.ok.setText(QCoreApplication.translate("Dialog", u"  Ok", None))
         self.cancel.setText(QCoreApplication.translate("Dialog", u"  Cancel", None))
     # retranslateUi
+

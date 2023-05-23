@@ -1,6 +1,8 @@
-class BuckUpList:
-    def __init__(self, ):
-        self.app_list: list[AppForBuckup] = []
+class BuckUpItem:
+    def __init__(self, name: str, dirs: list[str], files: list[str]):
+        self.files = files
+        self.dirs = dirs
+        self.name = name
 
     def add_app(self):
         """ Add programs to BuckAppList"""
@@ -14,9 +16,3 @@ class BuckUpList:
     #     TODO: add functional
 
 
-class AppForBuckup:
-    def __init__(self, ):
-        self.name: str = ''
-        self.items_for_backup: list[tuple[str, str]] = []
-        pass
-    #     TODO: add functional

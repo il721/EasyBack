@@ -1,14 +1,15 @@
 from PySide6.QtCore import (QCoreApplication, QMetaObject, QSize, )
 from PySide6.QtGui import (QFont, QIcon)
-from PySide6.QtWidgets import (QFileDialog, QHBoxLayout, QLabel, QLineEdit,
+from PySide6.QtWidgets import (QDialogButtonBox, QFileDialog, QHBoxLayout, QLabel, QLineEdit,
                                QListWidget, QPushButton, QSizePolicy, QSpacerItem, QVBoxLayout, )
+from base_cls import *
 import dop_win_rc
 
 
 class AddItemDial01(object):
     def __init__(self):
-        self.directory_list: list = []
-        self.file_list: list = []
+        self.all_backup_item: dict = {}
+        self.backup_item_list: list = []
 
     def setupUi_(self, Dialog):
         if not Dialog.objectName():
@@ -155,21 +156,32 @@ class AddItemDial01(object):
         self.cancel.setIcon(icon3)
         self.cancel.setIconSize(QSize(35, 35))
 
+        # ************************    MY CODE    ***************************************************
+        self.buttonBox = QDialogButtonBox(Dialog)
+        self.buttonBox.setObjectName(u"buttonBox")
+        self.buttonBox.addButton(self.ok, QDialogButtonBox.AcceptRole)
+        self.buttonBox.addButton(self.cancel, QDialogButtonBox.RejectRole)
+        # ------------------------------------------------------------------------------------------
+
         self.horizontalLayout.addWidget(self.cancel)
-
         self.verticalLayout.addLayout(self.horizontalLayout)
-
         self.retranslateUi(Dialog)
+
+        # ************************    MY CODE    ***************************************************
+        self.buttonBox.accepted.connect(Dialog.accept)
+        self.buttonBox.rejected.connect(Dialog.reject)
+        # ------------------------------------------------------------------------------------------
 
         QMetaObject.connectSlotsByName(Dialog)
         # setupUi
 
-        # ******************************************************************************************
         # ************************    MY CODE    ***************************************************
-        # ******************************************************************************************
-        self.add_folder.clicked.connect(self.add_directory_dial)
-        self.add_file.clicked.connect(self.add_file_dial)
-        self.list_files_and_folders.clicked.connect(self.remove_line_dial)
+        self.add_folder.clicked.connect(self.add_folder_bt)
+        self.add_file.clicked.connect(self.add_file_bt)
+        self.list_files_and_folders.clicked.connect(self.remove_line_bt)
+        self.ok.clicked.connect(self.ok_01_bt)
+        self.cancel.clicked.connect(self.cancel_01_bt)
+        # ------------------------------------------------------------------------------------------
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Dialog", None))
@@ -184,10 +196,8 @@ class AddItemDial01(object):
         self.ok.setText(QCoreApplication.translate("Dialog", u"  Ok", None))
         self.cancel.setText(QCoreApplication.translate("Dialog", u"  Cancel", None))
 
-    # ******************************************************************************************
     # ************************    MY CODE    ***************************************************
-    # ******************************************************************************************
-    def add_directory_dial(self):
+    def add_folder_bt(self):
         dialog = QFileDialog()
         dialog.setDirectory(r'F:')
         dialog.setFileMode(QFileDialog.FileMode.Directory)
@@ -195,21 +205,31 @@ class AddItemDial01(object):
         if dialog.exec():
             filenames = dialog.selectedFiles()
             if filenames:
-                self.directory_list.extend(filenames)
+                self.backup_item_list.extend(filenames)
                 self.list_files_and_folders.addItem(f"{' '.join(filenames)}")
 
-    def add_file_dial(self):
+    def add_file_bt(self):
         dialog = QFileDialog()
         dialog.setDirectory(r'F:')
         dialog.setFileMode(QFileDialog.FileMode.ExistingFiles)
         dialog.setViewMode(QFileDialog.ViewMode.List)
-        dialog.setViewMode(QFileDialog.ViewMode.List)
         if dialog.exec():
             filenames = dialog.selectedFiles()
-            if filenames:
-                self.file_list.extend(filenames)
+            print(filenames)
+            if len(filenames) == 1:
+                self.backup_item_list.extend(filenames)
                 self.list_files_and_folders.addItem(f"{' '.join(filenames)}")
+                # self.list_files_and_folders.addItem(f"{' '.join(filenames)}")
 
-    def remove_line_dial(self):
+    def remove_line_bt(self):
         row = self.list_files_and_folders.currentRow()
-        self.list_files_and_folders.takeItem(row)
+        removed_row = self.list_files_and_folders.takeItem(row)
+        print(removed_row.text())
+        self.backup_item_list.remove(removed_row.text())
+
+    def ok_01_bt(self):
+        print("ok")
+        print(self.backup_item_list, sep="\n")
+
+    def cancel_01_bt(self):
+        print("cancel")
