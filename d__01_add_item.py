@@ -198,6 +198,10 @@ class AddItemDial01(object):
 
     # ************************    MY CODE    ***************************************************
     def add_folder_bt(self):
+        """
+        Add folder (only one in each time, when press "Add folder" button) to ListWidget and
+        backup_list_item
+        """
         dialog = QFileDialog()
         dialog.setDirectory(r'F:')
         dialog.setFileMode(QFileDialog.FileMode.Directory)
@@ -209,6 +213,9 @@ class AddItemDial01(object):
                 self.list_files_and_folders.addItem(f"{' '.join(filenames)}")
 
     def add_file_bt(self):
+        """
+        Add file(`s) to ListWidget and backup_list_item when press "Add file" button
+        """
         dialog = QFileDialog()
         dialog.setDirectory(r'F:')
         dialog.setFileMode(QFileDialog.FileMode.ExistingFiles)
@@ -219,13 +226,16 @@ class AddItemDial01(object):
             if len(filenames) == 1:
                 self.backup_item_list.extend(filenames)
                 self.list_files_and_folders.addItem(f"{' '.join(filenames)}")
-                # self.list_files_and_folders.addItem(f"{' '.join(filenames)}")
-
+                # TODO Add mulitifail select functionality (else)
     def remove_line_bt(self):
+        """
+        Remove selected line from ListWidget and backup_list_item
+        """
         row = self.list_files_and_folders.currentRow()
         removed_row = self.list_files_and_folders.takeItem(row)
         print(removed_row.text())
         self.backup_item_list.remove(removed_row.text())
+        #TODO add warning dialog
 
     def ok_01_bt(self):
         print("ok")
