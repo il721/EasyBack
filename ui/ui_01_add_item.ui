@@ -277,21 +277,21 @@ font: 300 16pt &quot;Lexend Light&quot;;</string>
        </property>
        <property name="minimumSize">
         <size>
-         <width>170</width>
+         <width>220</width>
          <height>60</height>
         </size>
        </property>
        <property name="text">
-        <string>    Ok</string>
+        <string>   Main Menu</string>
        </property>
        <property name="icon">
         <iconset resource="dop_win_rc.qrc">
-         <normaloff>:/icon/icons/GREY/ok.svg</normaloff>:/icon/icons/GREY/ok.svg</iconset>
+         <normaloff>:/icon/icons/GREY/gr_to_main_menu.svg</normaloff>:/icon/icons/GREY/gr_to_main_menu.svg</iconset>
        </property>
        <property name="iconSize">
         <size>
-         <width>35</width>
-         <height>35</height>
+         <width>60</width>
+         <height>60</height>
         </size>
        </property>
       </widget>

@@ -163,11 +163,11 @@ class Ui_Dialog(object):
         self.ok.setObjectName(u"ok")
         sizePolicy.setHeightForWidth(self.ok.sizePolicy().hasHeightForWidth())
         self.ok.setSizePolicy(sizePolicy)
-        self.ok.setMinimumSize(QSize(170, 60))
+        self.ok.setMinimumSize(QSize(220, 60))
         icon3 = QIcon()
-        icon3.addFile(u":/icon/icons/GREY/ok.svg", QSize(), QIcon.Normal, QIcon.Off)
+        icon3.addFile(u":/icon/icons/GREY/gr_to_main_menu.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.ok.setIcon(icon3)
-        self.ok.setIconSize(QSize(35, 35))
+        self.ok.setIconSize(QSize(60, 60))
 
         self.horizontalLayout.addWidget(self.ok)
 
@@ -184,10 +184,10 @@ class Ui_Dialog(object):
         Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Dialog", None))
         self.add_folder.setText(QCoreApplication.translate("Dialog", u"  Add Folder", None))
         self.add_file.setText(QCoreApplication.translate("Dialog", u"    Add File", None))
-        self.input_name.setText(QCoreApplication.translate("Dialog", u"Input name of backup item here", None))
-        self.input_name.setPlaceholderText(QCoreApplication.translate("Dialog", u"tttest", None))
+        self.input_name.setText("")
+        self.input_name.setPlaceholderText(QCoreApplication.translate("Dialog", u"Input name of backup item here", None))
         self.info.setText(QCoreApplication.translate("Dialog", u"To remove line from list below just select them", None))
         self.add_item.setText(QCoreApplication.translate("Dialog", u"  Add Item", None))
-        self.ok.setText(QCoreApplication.translate("Dialog", u"    Ok", None))
+        self.ok.setText(QCoreApplication.translate("Dialog", u"   Main Menu", None))
     # retranslateUi
 

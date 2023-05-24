@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="icon">
+    <file>icons/GREY/gr_to_main_menu.svg</file>
     <file>icons/GREY/info.svg</file>
     <file>icons/GREY/gr_add_item.svg</file>
     <file>icons/GREY/edit_list.svg</file>

@@ -8,7 +8,7 @@ import dop_win_rc
 
 class AddItemDial01(object):
     def __init__(self):
-        self.all_backup_item: dict = {"q": ["zsdxg"]}  # TODO !!!!! DON`T REMEMBER MAKE {}
+        self.all_backup_item: dict = {}
         self.backup_item_list: list = []
         self.name_item: str = ""
 
@@ -153,11 +153,11 @@ class AddItemDial01(object):
         self.ok.setObjectName(u"ok")
         sizePolicy.setHeightForWidth(self.ok.sizePolicy().hasHeightForWidth())
         self.ok.setSizePolicy(sizePolicy)
-        self.ok.setMinimumSize(QSize(170, 60))
+        self.ok.setMinimumSize(QSize(220, 60))
         icon3 = QIcon()
-        icon3.addFile(u":/icon/icons/GREY/ok.svg", QSize(), QIcon.Normal, QIcon.Off)
+        icon3.addFile(u":/icon/icons/GREY/gr_to_main_menu.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.ok.setIcon(icon3)
-        self.ok.setIconSize(QSize(35, 35))
+        self.ok.setIconSize(QSize(60, 60))
 
         self.horizontalLayout.addWidget(self.ok)
 
@@ -192,13 +192,14 @@ class AddItemDial01(object):
         Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Dialog", None))
         self.add_folder.setText(QCoreApplication.translate("Dialog", u"  Add Folder", None))
         self.add_file.setText(QCoreApplication.translate("Dialog", u"    Add File", None))
+        self.input_name.setText("")
         self.input_name.setPlaceholderText(
             QCoreApplication.translate("Dialog", u"Input name of backup item here", None))
         self.info.setText(
             QCoreApplication.translate("Dialog", u"To remove line from list below just select them",
                                        None))
         self.add_item.setText(QCoreApplication.translate("Dialog", u"  Add Item", None))
-        self.ok.setText(QCoreApplication.translate("Dialog", u"    Ok", None))
+        self.ok.setText(QCoreApplication.translate("Dialog", u"   Main Menu", None))
 
     # ************************    MY CODE    ***************************************************
     def add_folder_bt(self):
@@ -247,7 +248,7 @@ class AddItemDial01(object):
         if reply == QMessageBox.StandardButton.Yes:
             removed_row = self.list_files_and_folders.takeItem(row)
             self.backup_item_list.remove(removed_row.text())
-        # TODO chenge style of question message
+        # TODO change style of question message
 
     def add_item_01_bt(self):
         """
@@ -257,19 +258,27 @@ class AddItemDial01(object):
         If "name_item" is already exist in all_backup_item, open warning dialog and? if "ok"
         pressed, owerwrite key in dict
         """
-        # TODO check all fields and open warning dialog if some of it was empty
         # TODO change style of wrning window
+
         self.name_item = self.input_name.text()
+        if not self.name_item or not self.backup_item_list:
+            QMessageBox.warning(self.list_files_and_folders, "WARNING!", "Some fields are empty",
+                                QMessageBox.StandardButton.Ok)
+            return
         if self.name_item in self.all_backup_item:
             reply = QMessageBox.question(self.list_files_and_folders, "WARNING!",
                                          "This name is already exist in base and wil be "
-                                         "owerwrited if you press 'Ok'.\n Are you shure?",
+                                         "owerwrited if you press 'Yes'\n Press 'No' to cancel",
                                          QMessageBox.StandardButton.Yes |
                                          QMessageBox.StandardButton.No)
             if reply == QMessageBox.StandardButton.Yes:
                 self.all_backup_item[self.name_item] = self.backup_item_list
-
-        print(self.name_item)
-        # print(self.backup_item_list)
+            else:
+                return
+        self.all_backup_item[self.name_item] = self.backup_item_list
+        QMessageBox.information(self.list_files_and_folders, "Congradulations!",
+                                f"Entry with name: '{self.name_item}'\n successfully added to "
+                                f"backup base",
+                                QMessageBox.StandardButton.Ok)
         print(self.all_backup_item)
         # print(self.backup_item_list, sep="\n")

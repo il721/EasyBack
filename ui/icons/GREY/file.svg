@@ -3,21 +3,25 @@
   <defs>
     <style>
       .cls-1 {
-        stroke-linecap: round;
+        stroke-width: 1.5px;
       }
 
       .cls-1, .cls-2 {
-        fill: #2b79c2;
-        stroke: #e6e7e8;
+        fill: #e6e7e8;
+        stroke: #2b79c2;
         stroke-miterlimit: 10;
-        stroke-width: 1.5px;
+      }
+
+      .cls-2 {
+        stroke-linecap: round;
+        stroke-width: 3px;
       }
     </style>
   </defs>
   <g id="NEW_GREY">
     <g>
-      <path class="cls-2" d="m17.87.75H4.17c-1.89,0-3.42,1.41-3.42,3.15v25.23c0,1.74,1.53,3.15,3.42,3.15h20.55c1.89,0,3.42-1.41,3.42-3.15V10.21S17.87.75,17.87.75Z"/>
-      <path class="cls-1" d="m17.87,1.75v8.46s9.27,0,9.27,0m-5.85,7.89H7.6m13.7,6.31H7.6m3.42-12.62h-3.42"/>
+      <path class="cls-1" d="m17.87.75H4.17c-1.89,0-3.42,1.41-3.42,3.15v25.23c0,1.74,1.53,3.15,3.42,3.15h20.55c1.89,0,3.42-1.41,3.42-3.15V10.21S17.87.75,17.87.75Z"/>
+      <path class="cls-2" d="m17.87,1.75v8.46s9.27,0,9.27,0m-5.85,7.89H7.6m13.7,6.31H7.6m3.42-12.62h-3.42"/>
     </g>
   </g>
 </svg>
