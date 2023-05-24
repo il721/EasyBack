@@ -1,15 +1,16 @@
 from PySide6.QtCore import (QCoreApplication, QMetaObject, QSize, )
-from PySide6.QtGui import (QFont, QIcon)
+from PySide6.QtGui import (QFont, QIcon, QPixmap)
 from PySide6.QtWidgets import (QDialogButtonBox, QFileDialog, QHBoxLayout, QLabel, QLineEdit,
-                               QListWidget, QPushButton, QSizePolicy, QSpacerItem, QVBoxLayout, )
-from base_cls import *
+                               QListWidget, QPushButton, QSizePolicy, QSpacerItem, QVBoxLayout,
+                               QMessageBox, )
 import dop_win_rc
 
 
 class AddItemDial01(object):
     def __init__(self):
-        self.all_backup_item: dict = {}
+        self.all_backup_item: dict = {"q": ["zsdxg"]}  # TODO !!!!! DON`T REMEMBER MAKE {}
         self.backup_item_list: list = []
+        self.name_item: str = ""
 
     def setupUi_(self, Dialog):
         if not Dialog.objectName():
@@ -49,7 +50,9 @@ class AddItemDial01(object):
                              "background-color: #2B79C2;\n"
                              "border-color: rgb(230, 230, 230);\n"
                              "}\n"
-                             "")
+                             "QMessageBox {\n"
+                             "border: no\n"
+                             "}")
         self.verticalLayout = QVBoxLayout(Dialog)
         self.verticalLayout.setSpacing(10)
         self.verticalLayout.setObjectName(u"verticalLayout")
@@ -130,71 +133,72 @@ class AddItemDial01(object):
 
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.ok = QPushButton(Dialog)
-        self.ok.setObjectName(u"ok")
-        sizePolicy.setHeightForWidth(self.ok.sizePolicy().hasHeightForWidth())
-        self.ok.setSizePolicy(sizePolicy)
-        self.ok.setMinimumSize(QSize(170, 60))
+        self.add_item = QPushButton(Dialog)
+        self.add_item.setObjectName(u"add_item")
+        sizePolicy.setHeightForWidth(self.add_item.sizePolicy().hasHeightForWidth())
+        self.add_item.setSizePolicy(sizePolicy)
+        self.add_item.setMinimumSize(QSize(170, 60))
         icon2 = QIcon()
-        icon2.addFile(u":/icon/icons/GREY/ok.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.ok.setIcon(icon2)
-        self.ok.setIconSize(QSize(35, 35))
+        icon2.addFile(u":/icon/icons/GREY/gr_add_item.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.add_item.setIcon(icon2)
+        self.add_item.setIconSize(QSize(35, 35))
 
-        self.horizontalLayout.addWidget(self.ok)
+        self.horizontalLayout.addWidget(self.add_item)
 
         self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout.addItem(self.horizontalSpacer)
 
-        self.cancel = QPushButton(Dialog)
-        self.cancel.setObjectName(u"cancel")
-        sizePolicy.setHeightForWidth(self.cancel.sizePolicy().hasHeightForWidth())
-        self.cancel.setSizePolicy(sizePolicy)
-        self.cancel.setMinimumSize(QSize(170, 60))
+        self.ok = QPushButton(Dialog)
+        self.ok.setObjectName(u"ok")
+        sizePolicy.setHeightForWidth(self.ok.sizePolicy().hasHeightForWidth())
+        self.ok.setSizePolicy(sizePolicy)
+        self.ok.setMinimumSize(QSize(170, 60))
         icon3 = QIcon()
-        icon3.addFile(u":/icon/icons/GREY/cancel.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.cancel.setIcon(icon3)
-        self.cancel.setIconSize(QSize(35, 35))
+        icon3.addFile(u":/icon/icons/GREY/ok.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.ok.setIcon(icon3)
+        self.ok.setIconSize(QSize(35, 35))
 
-        # ************************    MY CODE    ***************************************************
-        self.buttonBox = QDialogButtonBox(Dialog)
-        self.buttonBox.setObjectName(u"buttonBox")
-        self.buttonBox.addButton(self.ok, QDialogButtonBox.AcceptRole)
-        self.buttonBox.addButton(self.cancel, QDialogButtonBox.RejectRole)
-        # ------------------------------------------------------------------------------------------
+        self.horizontalLayout.addWidget(self.ok)
 
-        self.horizontalLayout.addWidget(self.cancel)
         self.verticalLayout.addLayout(self.horizontalLayout)
-        self.retranslateUi(Dialog)
 
-        # ************************    MY CODE    ***************************************************
-        self.buttonBox.accepted.connect(Dialog.accept)
-        self.buttonBox.rejected.connect(Dialog.reject)
-        # ------------------------------------------------------------------------------------------
+        self.retranslateUi(Dialog)
 
         QMetaObject.connectSlotsByName(Dialog)
         # setupUi
 
         # ************************    MY CODE    ***************************************************
+        # self.buttonBox = QDialogButtonBox(Dialog)
+        # self.buttonBox.setObjectName(u"buttonBox")
+        # self.buttonBox.addButton(self.ok, QDialogButtonBox.AcceptRole)
+        # self.buttonBox.addButton(self.cancel, QDialogButtonBox.RejectRole)
+        # ------------------------------------------------------------------------------------------
+        # self.retranslateUi(Dialog)
+        # ************************    MY CODE    ***************************************************
+        # self.buttonBox.accepted.connect(Dialog.accept)
+        # self.buttonBox.rejected.connect(Dialog.reject)
+        # ------------------------------------------------------------------------------------------
+
+        # ************************  MY CODE (buttons)  *********************************************
         self.add_folder.clicked.connect(self.add_folder_bt)
         self.add_file.clicked.connect(self.add_file_bt)
         self.list_files_and_folders.clicked.connect(self.remove_line_bt)
-        self.ok.clicked.connect(self.ok_01_bt)
-        self.cancel.clicked.connect(self.cancel_01_bt)
+        self.add_item.clicked.connect(self.add_item_01_bt)
+        self.ok.clicked.connect(Dialog.reject)
         # ------------------------------------------------------------------------------------------
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Dialog", None))
         self.add_folder.setText(QCoreApplication.translate("Dialog", u"  Add Folder", None))
         self.add_file.setText(QCoreApplication.translate("Dialog", u"    Add File", None))
-        self.input_name.setText(
+        self.input_name.setPlaceholderText(
             QCoreApplication.translate("Dialog", u"Input name of backup item here", None))
-        self.input_name.setPlaceholderText(QCoreApplication.translate("Dialog", u"tttest", None))
         self.info.setText(
             QCoreApplication.translate("Dialog", u"To remove line from list below just select them",
                                        None))
-        self.ok.setText(QCoreApplication.translate("Dialog", u"  Ok", None))
-        self.cancel.setText(QCoreApplication.translate("Dialog", u"  Cancel", None))
+        self.add_item.setText(QCoreApplication.translate("Dialog", u"  Add Item", None))
+        self.ok.setText(QCoreApplication.translate("Dialog", u"    Ok", None))
 
     # ************************    MY CODE    ***************************************************
     def add_folder_bt(self):
@@ -222,24 +226,50 @@ class AddItemDial01(object):
         dialog.setViewMode(QFileDialog.ViewMode.List)
         if dialog.exec():
             filenames = dialog.selectedFiles()
-            print(filenames)
-            if len(filenames) == 1:
-                self.backup_item_list.extend(filenames)
-                self.list_files_and_folders.addItem(f"{' '.join(filenames)}")
-                # TODO Add mulitifail select functionality (else)
+            for _ in filenames:
+                self.backup_item_list.append(_)
+                self.list_files_and_folders.addItem(_)
+
     def remove_line_bt(self):
         """
-        Remove selected line from ListWidget and backup_list_item
+        Remove line from ListWidget and backup_list_item whem it will be selected in ListWidget
         """
         row = self.list_files_and_folders.currentRow()
-        removed_row = self.list_files_and_folders.takeItem(row)
-        print(removed_row.text())
-        self.backup_item_list.remove(removed_row.text())
-        #TODO add warning dialog
 
-    def ok_01_bt(self):
-        print("ok")
-        print(self.backup_item_list, sep="\n")
+        # icon1 = QPixmap()
+        # icon1.load(u":/icon/icons/GREY/info.svg")
+        # QMessageBox.setIconPixmap(icon1)
+        # self.add_file.setIconSize(QSize(35, 35))
 
-    def cancel_01_bt(self):
-        print("cancel")
+        reply = QMessageBox.question(self.list_files_and_folders, "Remove Item",
+                                     "Do You Want to Remove Item?",
+                                     QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
+        if reply == QMessageBox.StandardButton.Yes:
+            removed_row = self.list_files_and_folders.takeItem(row)
+            self.backup_item_list.remove(removed_row.text())
+        # TODO chenge style of question message
+
+    def add_item_01_bt(self):
+        """
+        Checking fields and if all of them is not emty - add new entry of backup item to
+        main dict (all_backup_item):
+        "name_item": [list_files_and_folders]
+        If "name_item" is already exist in all_backup_item, open warning dialog and? if "ok"
+        pressed, owerwrite key in dict
+        """
+        # TODO check all fields and open warning dialog if some of it was empty
+        # TODO change style of wrning window
+        self.name_item = self.input_name.text()
+        if self.name_item in self.all_backup_item:
+            reply = QMessageBox.question(self.list_files_and_folders, "WARNING!",
+                                         "This name is already exist in base and wil be "
+                                         "owerwrited if you press 'Ok'.\n Are you shure?",
+                                         QMessageBox.StandardButton.Yes |
+                                         QMessageBox.StandardButton.No)
+            if reply == QMessageBox.StandardButton.Yes:
+                self.all_backup_item[self.name_item] = self.backup_item_list
+
+        print(self.name_item)
+        # print(self.backup_item_list)
+        print(self.all_backup_item)
+        # print(self.backup_item_list, sep="\n")

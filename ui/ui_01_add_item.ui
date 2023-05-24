@@ -53,7 +53,9 @@ border: 2px solid;
 background-color: #2B79C2;
 border-color: rgb(230, 230, 230);
 }
-</string>
+QMessageBox {
+border: no
+}</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
@@ -175,10 +177,10 @@ border-color: #2B79C2;
 </string>
      </property>
      <property name="text">
-      <string>Input name of backup item here</string>
+      <string/>
      </property>
      <property name="placeholderText">
-      <string>tttest</string>
+      <string>Input name of backup item here</string>
      </property>
     </widget>
    </item>
@@ -224,7 +226,7 @@ font: 300 16pt &quot;Lexend Light&quot;;</string>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QPushButton" name="ok">
+      <widget class="QPushButton" name="add_item">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
          <horstretch>0</horstretch>
@@ -238,11 +240,11 @@ font: 300 16pt &quot;Lexend Light&quot;;</string>
         </size>
        </property>
        <property name="text">
-        <string>  Ok</string>
+        <string>  Add Item</string>
        </property>
        <property name="icon">
         <iconset resource="dop_win_rc.qrc">
-         <normaloff>:/icon/icons/GREY/ok.svg</normaloff>:/icon/icons/GREY/ok.svg</iconset>
+         <normaloff>:/icon/icons/GREY/gr_add_item.svg</normaloff>:/icon/icons/GREY/gr_add_item.svg</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -266,7 +268,7 @@ font: 300 16pt &quot;Lexend Light&quot;;</string>
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="cancel">
+      <widget class="QPushButton" name="ok">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
          <horstretch>0</horstretch>
@@ -280,11 +282,11 @@ font: 300 16pt &quot;Lexend Light&quot;;</string>
         </size>
        </property>
        <property name="text">
-        <string>  Cancel</string>
+        <string>    Ok</string>
        </property>
        <property name="icon">
         <iconset resource="dop_win_rc.qrc">
-         <normaloff>:/icon/icons/GREY/cancel.svg</normaloff>:/icon/icons/GREY/cancel.svg</iconset>
+         <normaloff>:/icon/icons/GREY/ok.svg</normaloff>:/icon/icons/GREY/ok.svg</iconset>
        </property>
        <property name="iconSize">
         <size>

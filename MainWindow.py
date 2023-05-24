@@ -4,7 +4,6 @@ import sys
 from PySide6.QtWidgets import QFileDialog, QMainWindow, QDialog
 from d_MainWindow import Ui_MainWindow
 from d__01_add_item import AddItemDial01
-from ok_cancel_test import Ui_Dialog_ok
 
 
 class MainWindow(QMainWindow):
@@ -34,8 +33,6 @@ class MainWindow(QMainWindow):
         dialog = QDialog()
         ui = AddItemDial01()
         ui.setupUi_(dialog)
-        # ui = Ui_Dialog_ok()
-        # ui.setupUi(dialog)
         dialog.exec()
 
     def remove_item(self):

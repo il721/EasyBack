@@ -59,7 +59,9 @@ class Ui_Dialog(object):
 "background-color: #2B79C2;\n"
 "border-color: rgb(230, 230, 230);\n"
 "}\n"
-"")
+"QMessageBox {\n"
+"border: no\n"
+"}")
         self.verticalLayout = QVBoxLayout(Dialog)
         self.verticalLayout.setSpacing(10)
         self.verticalLayout.setObjectName(u"verticalLayout")
@@ -141,33 +143,33 @@ class Ui_Dialog(object):
 
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.ok = QPushButton(Dialog)
-        self.ok.setObjectName(u"ok")
-        sizePolicy.setHeightForWidth(self.ok.sizePolicy().hasHeightForWidth())
-        self.ok.setSizePolicy(sizePolicy)
-        self.ok.setMinimumSize(QSize(170, 60))
+        self.add_item = QPushButton(Dialog)
+        self.add_item.setObjectName(u"add_item")
+        sizePolicy.setHeightForWidth(self.add_item.sizePolicy().hasHeightForWidth())
+        self.add_item.setSizePolicy(sizePolicy)
+        self.add_item.setMinimumSize(QSize(170, 60))
         icon2 = QIcon()
-        icon2.addFile(u":/icon/icons/GREY/ok.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.ok.setIcon(icon2)
-        self.ok.setIconSize(QSize(35, 35))
+        icon2.addFile(u":/icon/icons/GREY/gr_add_item.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.add_item.setIcon(icon2)
+        self.add_item.setIconSize(QSize(35, 35))
 
-        self.horizontalLayout.addWidget(self.ok)
+        self.horizontalLayout.addWidget(self.add_item)
 
         self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout.addItem(self.horizontalSpacer)
 
-        self.cancel = QPushButton(Dialog)
-        self.cancel.setObjectName(u"cancel")
-        sizePolicy.setHeightForWidth(self.cancel.sizePolicy().hasHeightForWidth())
-        self.cancel.setSizePolicy(sizePolicy)
-        self.cancel.setMinimumSize(QSize(170, 60))
+        self.ok = QPushButton(Dialog)
+        self.ok.setObjectName(u"ok")
+        sizePolicy.setHeightForWidth(self.ok.sizePolicy().hasHeightForWidth())
+        self.ok.setSizePolicy(sizePolicy)
+        self.ok.setMinimumSize(QSize(170, 60))
         icon3 = QIcon()
-        icon3.addFile(u":/icon/icons/GREY/cancel.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.cancel.setIcon(icon3)
-        self.cancel.setIconSize(QSize(35, 35))
+        icon3.addFile(u":/icon/icons/GREY/ok.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.ok.setIcon(icon3)
+        self.ok.setIconSize(QSize(35, 35))
 
-        self.horizontalLayout.addWidget(self.cancel)
+        self.horizontalLayout.addWidget(self.ok)
 
 
         self.verticalLayout.addLayout(self.horizontalLayout)
@@ -185,7 +187,7 @@ class Ui_Dialog(object):
         self.input_name.setText(QCoreApplication.translate("Dialog", u"Input name of backup item here", None))
         self.input_name.setPlaceholderText(QCoreApplication.translate("Dialog", u"tttest", None))
         self.info.setText(QCoreApplication.translate("Dialog", u"To remove line from list below just select them", None))
-        self.ok.setText(QCoreApplication.translate("Dialog", u"  Ok", None))
-        self.cancel.setText(QCoreApplication.translate("Dialog", u"  Cancel", None))
+        self.add_item.setText(QCoreApplication.translate("Dialog", u"  Add Item", None))
+        self.ok.setText(QCoreApplication.translate("Dialog", u"    Ok", None))
     # retranslateUi
 
