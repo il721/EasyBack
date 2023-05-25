@@ -1,4 +1,4 @@
-class MianBase:
+class MainBase:
     def __init__(self):
         self.all_items: dict = {}
         self.list_of_file: list[str] = []
@@ -10,8 +10,8 @@ class MianBase:
             return True
         return False
 
-    def add_item(self) -> None:
-        pass
+    def add_item(self, name_: str, list_: list[str]) -> None:
+        self.all_items[name_] = list_
 
     def save_base(self):
         pass

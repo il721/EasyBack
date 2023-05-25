@@ -4,12 +4,14 @@ from PySide6.QtWidgets import (QDialogButtonBox, QFileDialog, QHBoxLayout, QLabe
                                QListWidget, QPushButton, QSizePolicy, QSpacerItem, QVBoxLayout,
                                QMessageBox, )
 import dop_win_rc
+from main_base import MainBase
 
+base = MainBase()
 
 class AddItemDial01(object):
     def __init__(self):
         self.all_backup_item: dict = {}
-        self.backup_item_list: list = []
+        self.list_of_file: list = []
         self.name_item: str = ""
 
     def setupUi_(self, Dialog):
@@ -214,7 +216,7 @@ class AddItemDial01(object):
         if dialog.exec():
             filenames = dialog.selectedFiles()
             if filenames:
-                self.backup_item_list.extend(filenames)
+                self.list_of_file.extend(filenames)
                 self.list_files_and_folders.addItem(f"{' '.join(filenames)}")
 
     def add_file_bt(self):
@@ -228,7 +230,7 @@ class AddItemDial01(object):
         if dialog.exec():
             filenames = dialog.selectedFiles()
             for _ in filenames:
-                self.backup_item_list.append(_)
+                self.list_of_file.append(_)
                 self.list_files_and_folders.addItem(_)
 
     def remove_line_bt(self):
@@ -247,7 +249,7 @@ class AddItemDial01(object):
                                      QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
         if reply == QMessageBox.StandardButton.Yes:
             removed_row = self.list_files_and_folders.takeItem(row)
-            self.backup_item_list.remove(removed_row.text())
+            self.list_of_file.remove(removed_row.text())
         # TODO change style of question message
 
     def add_item_01_bt(self):
@@ -261,7 +263,7 @@ class AddItemDial01(object):
         # TODO change style of wrning window
 
         self.name_item = self.input_name.text()
-        if not self.name_item or not self.backup_item_list:
+        if not self.name_item or not self.list_of_file:
             QMessageBox.warning(self.list_files_and_folders, "WARNING!", "Some fields are empty",
                                 QMessageBox.StandardButton.Ok)
             return
@@ -272,13 +274,14 @@ class AddItemDial01(object):
                                          QMessageBox.StandardButton.Yes |
                                          QMessageBox.StandardButton.No)
             if reply == QMessageBox.StandardButton.Yes:
-                self.all_backup_item[self.name_item] = self.backup_item_list
+                base.add_item(self.name_item, self.list_of_file)
             else:
                 return
-        self.all_backup_item[self.name_item] = self.backup_item_list
+        self.all_backup_item[self.name_item] = self.list_of_file
         QMessageBox.information(self.list_files_and_folders, "Congradulations!",
                                 f"Entry with name: '{self.name_item}'\n successfully added to "
                                 f"backup base",
                                 QMessageBox.StandardButton.Ok)
-        print(self.all_backup_item)
+        print(base.all_items)
+        # print(self.all_backup_item)
         # print(self.backup_item_list, sep="\n")
