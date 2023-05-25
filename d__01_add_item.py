@@ -1,18 +1,23 @@
 from PySide6.QtCore import (QCoreApplication, QMetaObject, QSize, )
 from PySide6.QtGui import (QFont, QIcon, QPixmap)
-from PySide6.QtWidgets import (QDialogButtonBox, QFileDialog, QHBoxLayout, QLabel, QLineEdit,
-                               QListWidget, QPushButton, QSizePolicy, QSpacerItem, QVBoxLayout,
+from PySide6.QtWidgets import (QFileDialog, QFrame, QHBoxLayout,
+                               QLabel,
+                               QLineEdit,
+                               QListWidget, QPushButton, QRadioButton, QSizePolicy, QSpacerItem,
+                               QVBoxLayout,
                                QMessageBox, )
 import dop_win_rc
 from main_base import MainBase
 
 base = MainBase()
 
+
 class AddItemDial01(object):
     def __init__(self):
-        self.all_backup_item: dict = {}
+        self.temp_dict: dict = {}
         self.list_of_file: list = []
         self.name_item: str = ""
+        self.suffix: str = ""
 
     def setupUi_(self, Dialog):
         if not Dialog.objectName():
@@ -22,11 +27,15 @@ class AddItemDial01(object):
         Dialog.setStyleSheet(u"*{\n"
                              "background-color: rgb(30, 30, 30);\n"
                              "font: 16pt \"Lexend Light\";\n"
-                             "border: 2px solid;\n"
+                             "border: 1px solid;\n"
                              "color: rgb(230, 230, 230);\n"
-                             "border-color: rgb(110, 110, 110);\n"
+                             "border-color: #2B79C2;\n"
                              "}\n"
-                             "\n"
+                             "QLabel{\n"
+                             "font: 12pt \"Lexend Light\";\n"
+                             "color: #2B79C2;\n"
+                             "border: no\n"
+                             "}\n"
                              "QLineEdit{\n"
                              "background-color: rgb(30, 30, 30);\n"
                              "}\n"
@@ -35,7 +44,7 @@ class AddItemDial01(object):
                              "border: 2px solid;\n"
                              "color: rgb(230, 230, 230);\n"
                              "border-color: rgb(110, 110, 110);\n"
-                             "border-radius: 20px;\n"
+                             "border-radius: 15px;\n"
                              "background-color: rgba(60,60, 60, 80);\n"
                              "}\n"
                              "\n"
@@ -52,51 +61,12 @@ class AddItemDial01(object):
                              "background-color: #2B79C2;\n"
                              "border-color: rgb(230, 230, 230);\n"
                              "}\n"
-                             "QMessageBox {\n"
+                             "QRadioButton {\n"
                              "border: no\n"
                              "}")
         self.verticalLayout = QVBoxLayout(Dialog)
         self.verticalLayout.setSpacing(10)
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.horizontalLayout_2 = QHBoxLayout()
-        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.add_folder = QPushButton(Dialog)
-        self.add_folder.setObjectName(u"add_folder")
-        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.add_folder.sizePolicy().hasHeightForWidth())
-        self.add_folder.setSizePolicy(sizePolicy)
-        self.add_folder.setMinimumSize(QSize(180, 60))
-        icon = QIcon()
-        icon.addFile(u":/icon/icons/GREY/folder.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.add_folder.setIcon(icon)
-        self.add_folder.setIconSize(QSize(35, 35))
-
-        self.horizontalLayout_2.addWidget(self.add_folder)
-
-        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.horizontalLayout_2.addItem(self.horizontalSpacer_2)
-
-        self.add_file = QPushButton(Dialog)
-        self.add_file.setObjectName(u"add_file")
-        sizePolicy.setHeightForWidth(self.add_file.sizePolicy().hasHeightForWidth())
-        self.add_file.setSizePolicy(sizePolicy)
-        self.add_file.setMinimumSize(QSize(180, 60))
-        icon1 = QIcon()
-        icon1.addFile(u":/icon/icons/GREY/file.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.add_file.setIcon(icon1)
-        self.add_file.setIconSize(QSize(35, 35))
-
-        self.horizontalLayout_2.addWidget(self.add_file)
-
-        self.verticalLayout.addLayout(self.horizontalLayout_2)
-
-        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
-
-        self.verticalLayout.addItem(self.verticalSpacer_2)
-
         self.input_name = QLineEdit(Dialog)
         self.input_name.setObjectName(u"input_name")
         self.input_name.setMinimumSize(QSize(0, 40))
@@ -117,10 +87,82 @@ class AddItemDial01(object):
 
         self.verticalLayout.addItem(self.verticalSpacer)
 
+        self.checkbox = QFrame(Dialog)
+        self.checkbox.setObjectName(u"checkbox")
+        self.checkbox.setStyleSheet(u"border-color: #2B79C2;")
+        self.verticalLayout_2 = QVBoxLayout(self.checkbox)
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.label = QLabel(self.checkbox)
+        self.label.setObjectName(u"label")
+        self.label.setStyleSheet(u"")
+
+        self.verticalLayout_2.addWidget(self.label)
+
+        self.settings_radio = QRadioButton(self.checkbox)
+        self.settings_radio.setObjectName(u"settings_radio")
+        self.settings_radio.setChecked(True)
+
+        self.verticalLayout_2.addWidget(self.settings_radio)
+
+        self.data_radio = QRadioButton(self.checkbox)
+        self.data_radio.setObjectName(u"data_radio")
+
+        self.verticalLayout_2.addWidget(self.data_radio)
+
+        self.verticalLayout.addWidget(self.checkbox)
+
+        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout.addItem(self.verticalSpacer_2)
+
+        self.horizontalLayout_2 = QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.add_folder = QPushButton(Dialog)
+        self.add_folder.setObjectName(u"add_folder")
+        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.add_folder.sizePolicy().hasHeightForWidth())
+        self.add_folder.setSizePolicy(sizePolicy)
+        self.add_folder.setMinimumSize(QSize(220, 60))
+        icon = QIcon()
+        icon.addFile(u":/icon/icons/GREY/folder.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.add_folder.setIcon(icon)
+        self.add_folder.setIconSize(QSize(35, 35))
+
+        self.horizontalLayout_2.addWidget(self.add_folder)
+
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_2.addItem(self.horizontalSpacer_2)
+
+        self.add_file = QPushButton(Dialog)
+        self.add_file.setObjectName(u"add_file")
+        sizePolicy.setHeightForWidth(self.add_file.sizePolicy().hasHeightForWidth())
+        self.add_file.setSizePolicy(sizePolicy)
+        self.add_file.setMinimumSize(QSize(220, 60))
+        icon1 = QIcon()
+        icon1.addFile(u":/icon/icons/GREY/file.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.add_file.setIcon(icon1)
+        self.add_file.setIconSize(QSize(35, 35))
+
+        self.horizontalLayout_2.addWidget(self.add_file)
+
+        self.verticalLayout.addLayout(self.horizontalLayout_2)
+
+        self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout.addItem(self.verticalSpacer_3)
+
         self.info = QLabel(Dialog)
         self.info.setObjectName(u"info")
-        self.info.setStyleSheet(u"color: rgb(255, 255, 127);\n"
-                                "border: no")
+        font1 = QFont()
+        font1.setFamilies([u"Lexend Light"])
+        font1.setPointSize(12)
+        font1.setBold(False)
+        font1.setItalic(False)
+        self.info.setFont(font1)
+        self.info.setStyleSheet(u"")
 
         self.verticalLayout.addWidget(self.info)
 
@@ -139,7 +181,7 @@ class AddItemDial01(object):
         self.add_item.setObjectName(u"add_item")
         sizePolicy.setHeightForWidth(self.add_item.sizePolicy().hasHeightForWidth())
         self.add_item.setSizePolicy(sizePolicy)
-        self.add_item.setMinimumSize(QSize(170, 60))
+        self.add_item.setMinimumSize(QSize(220, 60))
         icon2 = QIcon()
         icon2.addFile(u":/icon/icons/GREY/gr_add_item.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.add_item.setIcon(icon2)
@@ -185,6 +227,8 @@ class AddItemDial01(object):
         # ************************  MY CODE (buttons)  *********************************************
         self.add_folder.clicked.connect(self.add_folder_bt)
         self.add_file.clicked.connect(self.add_file_bt)
+        self.settings_radio.clicked.connect(self.radio_settings)
+        self.data_radio.clicked.connect(self.radio_data)
         self.list_files_and_folders.clicked.connect(self.remove_line_bt)
         self.add_item.clicked.connect(self.add_item_01_bt)
         self.ok.clicked.connect(Dialog.reject)
@@ -192,15 +236,30 @@ class AddItemDial01(object):
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Dialog", None))
-        self.add_folder.setText(QCoreApplication.translate("Dialog", u"  Add Folder", None))
-        self.add_file.setText(QCoreApplication.translate("Dialog", u"    Add File", None))
         self.input_name.setText("")
         self.input_name.setPlaceholderText(
             QCoreApplication.translate("Dialog", u"Input name of backup item here", None))
+        self.label.setText(QCoreApplication.translate("Dialog",
+                                                      u"Please, select backup item type (by default you item has SETTINS type):",
+                                                      None))
+        # if QT_CONFIG(tooltip)
+        self.settings_radio.setToolTip(QCoreApplication.translate("Dialog",
+                                                                  u"Select this if you want to backup programm settings like MS Word, Adobe Photoshop etc.",
+                                                                  None))
+        # endif // QT_CONFIG(tooltip)
+        self.settings_radio.setText(QCoreApplication.translate("Dialog", u"SETTINGS Backup", None))
+        # if QT_CONFIG(tooltip)
+        self.data_radio.setToolTip(QCoreApplication.translate("Dialog",
+                                                              u"Select this if you want to backup some personal data like MyWork, Foto, Doc`s etc.",
+                                                              None))
+        # endif // QT_CONFIG(tooltip)
+        self.data_radio.setText(QCoreApplication.translate("Dialog", u"DATA Backup", None))
+        self.add_folder.setText(QCoreApplication.translate("Dialog", u"    Add Folder", None))
+        self.add_file.setText(QCoreApplication.translate("Dialog", u"     Add Files", None))
         self.info.setText(
             QCoreApplication.translate("Dialog", u"To remove line from list below just select them",
                                        None))
-        self.add_item.setText(QCoreApplication.translate("Dialog", u"  Add Item", None))
+        self.add_item.setText(QCoreApplication.translate("Dialog", u"    Add Item", None))
         self.ok.setText(QCoreApplication.translate("Dialog", u"   Main Menu", None))
 
     # ************************    MY CODE    ***************************************************
@@ -233,6 +292,12 @@ class AddItemDial01(object):
                 self.list_of_file.append(_)
                 self.list_files_and_folders.addItem(_)
 
+    def radio_settings(self):
+        self.suffix = "s_"
+
+    def radio_data(self):
+        self.suffix = "d_"
+
     def remove_line_bt(self):
         """
         Remove line from ListWidget and backup_list_item whem it will be selected in ListWidget
@@ -260,7 +325,8 @@ class AddItemDial01(object):
         If "name_item" is already exist in all_backup_item, open warning dialog and? if "ok"
         pressed, owerwrite key in dict
         """
-        # TODO change style of wrning window
+        # TODO !! add radioButton functionality
+        # TODO change style of warning window
 
         self.name_item = self.input_name.text()
 
@@ -271,6 +337,8 @@ class AddItemDial01(object):
             return
 
         # check name is already exist in backup base
+        self.name_item = f"{self.suffix}{self.input_name.text()}"
+        self.temp_dict[self.name_item] = self.list_of_file
         if base.check_name(self.name_item):
             reply = QMessageBox.question(self.list_files_and_folders, "WARNING!",
                                          "This name is already exist in base and wil be "
@@ -278,15 +346,16 @@ class AddItemDial01(object):
                                          QMessageBox.StandardButton.Yes |
                                          QMessageBox.StandardButton.No)
             if reply == QMessageBox.StandardButton.Yes:
-                base.add_item(self.name_item, self.list_of_file)
+                base.add_item(self.temp_dict)
             else:
                 return
-        base.add_item(self.name_item, self.list_of_file)
-        # self.all_backup_item[self.name_item] = self.list_of_file
-        QMessageBox.information(self.list_files_and_folders, "Congradulations!",
-                                f"Entry with name: '{self.name_item}'\n successfully added to "
-                                f"backup base",
-                                QMessageBox.StandardButton.Ok)
+        else:
+            base.add_item(self.temp_dict)
+            # QMessageBox.information(self.list_files_and_folders, "Congradulations!",
+            #                         f"Entry with name: '{self.name_item}'\n successfully added to "
+            #                         f"backup base",
+            #                         QMessageBox.StandardButton.Ok)
+
+        print(self.temp_dict)
+        self.temp_dict.clear()
         print(base.all_items)
-        # print(self.all_backup_item)
-        # print(self.backup_item_list, sep="\n")

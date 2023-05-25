@@ -7,8 +7,8 @@ class MainBase:
     def check_name(self, name_: str) -> bool:
         return name_ in self.all_items
 
-    def add_item(self, name_: str, list_: list[str]) -> None:
-        self.all_items[name_] = list_
+    def add_item(self, temp_dict: dict) -> None:
+        self.all_items.update(temp_dict)
 
     def save_base(self):
         pass
