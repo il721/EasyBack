@@ -263,11 +263,15 @@ class AddItemDial01(object):
         # TODO change style of wrning window
 
         self.name_item = self.input_name.text()
+
+        # check for empty fields
         if not self.name_item or not self.list_of_file:
             QMessageBox.warning(self.list_files_and_folders, "WARNING!", "Some fields are empty",
                                 QMessageBox.StandardButton.Ok)
             return
-        if self.name_item in self.all_backup_item:
+
+        # check name is already exist in backup base
+        if base.check_name(self.name_item):
             reply = QMessageBox.question(self.list_files_and_folders, "WARNING!",
                                          "This name is already exist in base and wil be "
                                          "owerwrited if you press 'Yes'\n Press 'No' to cancel",
@@ -277,7 +281,8 @@ class AddItemDial01(object):
                 base.add_item(self.name_item, self.list_of_file)
             else:
                 return
-        self.all_backup_item[self.name_item] = self.list_of_file
+        base.add_item(self.name_item, self.list_of_file)
+        # self.all_backup_item[self.name_item] = self.list_of_file
         QMessageBox.information(self.list_files_and_folders, "Congradulations!",
                                 f"Entry with name: '{self.name_item}'\n successfully added to "
                                 f"backup base",
