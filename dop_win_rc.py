@@ -1,449 +1,462 @@
 # Resource object code (Python 3)
 # Created by: object code
-# Created by: The Resource Compiler for Qt version 6.5.0
+# Created by: The Resource Compiler for Qt version 6.5.1
 # WARNING! All changes made in this file will be lost!
 
 from PySide6 import QtCore
 
 qt_resource_data = b"\
-\x00\x00\x02\xb8\
+\x00\x00\x02\xd0\
 <\
 ?xml version=\x221.\
 0\x22 encoding=\x22UTF\
--8\x22?>\x0a<svg id=\x22L\
-ayer_2\x22 data-nam\
-e=\x22Layer 2\x22 xmln\
-s=\x22http://www.w3\
-.org/2000/svg\x22 v\
-iewBox=\x220 0 41.4\
-7 25.43\x22>\x0a  <def\
-s>\x0a    <style>\x0a \
-     .cls-1 {\x0a  \
-      fill: #e6e\
-7e8;\x0a        str\
-oke: #e6e7e8;\x0a  \
-      stroke-mit\
-erlimit: 10;\x0a   \
-   }\x0a\x0a      .cls\
--2 {\x0a        fil\
-l: #2b79c2;\x0a    \
-  }\x0a    </style>\
-\x0a  </defs>\x0a  <g \
-id=\x22NEW_GREY\x22>\x0a \
+-8\x22?>\x0d\x0a<svg id=\x22\
+Layer_2\x22 data-na\
+me=\x22Layer 2\x22 xml\
+ns=\x22http://www.w\
+3.org/2000/svg\x22 \
+viewBox=\x220 0 41.\
+47 25.43\x22>\x0d\x0a  <d\
+efs>\x0d\x0a    <style\
+>\x0d\x0a      .cls-1 \
+{\x0d\x0a        fill:\
+ #e6e7e8;\x0d\x0a     \
+   stroke: #e6e7\
+e8;\x0d\x0a        str\
+oke-miterlimit: \
+10;\x0d\x0a      }\x0d\x0a\x0d\x0a\
+      .cls-2 {\x0d\x0a\
+        fill: #2\
+b79c2;\x0d\x0a      }\x0d\
+\x0a    </style>\x0d\x0a \
+ </defs>\x0d\x0a  <g i\
+d=\x22NEW_GREY\x22>\x0d\x0a \
    <g id=\x22NEW_GR\
 EY-2\x22 data-name=\
-\x22NEW GREY\x22>\x0a    \
-  <g>\x0a        <p\
-olygon class=\x22cl\
-s-2\x22 points=\x2241.\
-47 7.47 31.92 7.\
-47 31.92 0 10.33\
- 12.47 31.92 24.\
-93 31.92 17.47 4\
-1.47 17.47 41.47\
- 7.47\x22/>\x0a       \
- <circle class=\x22\
-cls-1\x22 cx=\x2210.41\
-\x22 cy=\x2222.74\x22 r=\x22\
-2.19\x22/>\x0a        \
-<circle class=\x22c\
-ls-1\x22 cx=\x222.69\x22 \
-cy=\x2222.74\x22 r=\x222.\
-19\x22/>\x0a      </g>\
-\x0a    </g>\x0a  </g>\
-\x0a</svg>\
-\x00\x00\x02\xf0\
+\x22NEW GREY\x22>\x0d\x0a   \
+   <g>\x0d\x0a        \
+<polygon class=\x22\
+cls-2\x22 points=\x224\
+1.47 7.47 31.92 \
+7.47 31.92 0 10.\
+33 12.47 31.92 2\
+4.93 31.92 17.47\
+ 41.47 17.47 41.\
+47 7.47\x22/>\x0d\x0a    \
+    <circle clas\
+s=\x22cls-1\x22 cx=\x2210\
+.41\x22 cy=\x2222.74\x22 \
+r=\x222.19\x22/>\x0d\x0a    \
+    <circle clas\
+s=\x22cls-1\x22 cx=\x222.\
+69\x22 cy=\x2222.74\x22 r\
+=\x222.19\x22/>\x0d\x0a     \
+ </g>\x0d\x0a    </g>\x0d\
+\x0a  </g>\x0d\x0a</svg>\
+\x00\x00\x03\x0a\
 <\
 ?xml version=\x221.\
 0\x22 encoding=\x22UTF\
--8\x22?>\x0a<svg id=\x22L\
-ayer_2\x22 data-nam\
-e=\x22Layer 2\x22 xmln\
-s=\x22http://www.w3\
-.org/2000/svg\x22 v\
-iewBox=\x220 0 28.9\
- 33.04\x22>\x0a  <defs\
->\x0a    <style>\x0a  \
-    .cls-1 {\x0a   \
-     stroke-widt\
-h: 1.5px;\x0a      \
-}\x0a\x0a      .cls-1,\
- .cls-2 {\x0a      \
-  fill: #e6e7e8;\
-\x0a        stroke:\
- #2b79c2;\x0a      \
-  stroke-miterli\
-mit: 10;\x0a      }\
-\x0a\x0a      .cls-2 {\
-\x0a        stroke-\
-linecap: round;\x0a\
+-8\x22?>\x0d\x0a<svg id=\x22\
+Layer_2\x22 data-na\
+me=\x22Layer 2\x22 xml\
+ns=\x22http://www.w\
+3.org/2000/svg\x22 \
+viewBox=\x220 0 28.\
+9 33.04\x22>\x0d\x0a  <de\
+fs>\x0d\x0a    <style>\
+\x0d\x0a      .cls-1 {\
+\x0d\x0a        stroke\
+-width: 1.5px;\x0d\x0a\
+      }\x0d\x0a\x0d\x0a     \
+ .cls-1, .cls-2 \
+{\x0d\x0a        fill:\
+ #e6e7e8;\x0d\x0a     \
+   stroke: #2b79\
+c2;\x0d\x0a        str\
+oke-miterlimit: \
+10;\x0d\x0a      }\x0d\x0a\x0d\x0a\
+      .cls-2 {\x0d\x0a\
+        stroke-l\
+inecap: round;\x0d\x0a\
         stroke-w\
-idth: 3px;\x0a     \
- }\x0a    </style>\x0a\
-  </defs>\x0a  <g i\
-d=\x22NEW_GREY\x22>\x0a  \
-  <g>\x0a      <pat\
-h class=\x22cls-1\x22 \
-d=\x22m17.87.75H4.1\
-7c-1.89,0-3.42,1\
-.41-3.42,3.15v25\
-.23c0,1.74,1.53,\
-3.15,3.42,3.15h2\
-0.55c1.89,0,3.42\
--1.41,3.42-3.15V\
-10.21S17.87.75,1\
-7.87.75Z\x22/>\x0a    \
+idth: 3px;\x0d\x0a    \
+  }\x0d\x0a    </style\
+>\x0d\x0a  </defs>\x0d\x0a  \
+<g id=\x22NEW_GREY\x22\
+>\x0d\x0a    <g>\x0d\x0a    \
   <path class=\x22c\
-ls-2\x22 d=\x22m17.87,\
-1.75v8.46s9.27,0\
-,9.27,0m-5.85,7.\
-89H7.6m13.7,6.31\
-H7.6m3.42-12.62h\
--3.42\x22/>\x0a    </g\
->\x0a  </g>\x0a</svg>\
-\x00\x00\x03\xcd\
+ls-1\x22 d=\x22m17.87.\
+75H4.17c-1.89,0-\
+3.42,1.41-3.42,3\
+.15v25.23c0,1.74\
+,1.53,3.15,3.42,\
+3.15h20.55c1.89,\
+0,3.42-1.41,3.42\
+-3.15V10.21S17.8\
+7.75,17.87.75Z\x22/\
+>\x0d\x0a      <path c\
+lass=\x22cls-2\x22 d=\x22\
+m17.87,1.75v8.46\
+s9.27,0,9.27,0m-\
+5.85,7.89H7.6m13\
+.7,6.31H7.6m3.42\
+-12.62h-3.42\x22/>\x0d\
+\x0a    </g>\x0d\x0a  </g\
+>\x0d\x0a</svg>\
+\x00\x00\x03\xe7\
 <\
 ?xml version=\x221.\
 0\x22 encoding=\x22UTF\
--8\x22?>\x0a<svg id=\x22L\
-ayer_2\x22 data-nam\
-e=\x22Layer 2\x22 xmln\
-s=\x22http://www.w3\
-.org/2000/svg\x22 v\
-iewBox=\x220 0 35.9\
-8 33.34\x22>\x0a  <def\
-s>\x0a    <style>\x0a \
-     .cls-1 {\x0a  \
-      stroke-mit\
-erlimit: 10;\x0a   \
-   }\x0a\x0a      .cls\
--1, .cls-2 {\x0a   \
-     fill: #2b79\
-c2;\x0a        stro\
-ke: #e6e7e8;\x0a   \
-     stroke-line\
-cap: round;\x0a    \
-    stroke-width\
-: 1.5px;\x0a      }\
-\x0a\x0a      .cls-2 {\
+-8\x22?>\x0d\x0a<svg id=\x22\
+Layer_2\x22 data-na\
+me=\x22Layer 2\x22 xml\
+ns=\x22http://www.w\
+3.org/2000/svg\x22 \
+viewBox=\x220 0 35.\
+98 33.34\x22>\x0d\x0a  <d\
+efs>\x0d\x0a    <style\
+>\x0d\x0a      .cls-1 \
+{\x0d\x0a        strok\
+e-miterlimit: 10\
+;\x0d\x0a      }\x0d\x0a\x0d\x0a  \
+    .cls-1, .cls\
+-2 {\x0d\x0a        fi\
+ll: #2b79c2;\x0d\x0a  \
+      stroke: #e\
+6e7e8;\x0d\x0a        \
+stroke-linecap: \
+round;\x0d\x0a        \
+stroke-width: 1.\
+5px;\x0d\x0a      }\x0d\x0a\x0d\
+\x0a      .cls-2 {\x0d\
 \x0a        stroke-\
 linejoin: round;\
-\x0a      }\x0a    </s\
-tyle>\x0a  </defs>\x0a\
-  <g id=\x22NEW_GRE\
-Y\x22>\x0a    <g>\x0a    \
-  <path class=\x22c\
-ls-2\x22 d=\x22m8.02,1\
-2.69h23.05s0-2.6\
-5,0-2.65c-.03-2.\
-22-1.71-3.99-3.7\
-7-3.98h-7.98c-.3\
-,0-.59-.11-.83-.\
-31L13.56,1.61c-.\
-67-.56-1.48-.86-\
-2.33-.86h-6.71c-\
-2.06-.02-3.74,1.\
-76-3.77,3.98v23.\
-41s3.67-12.66,3.\
-67-12.66c.51-1.6\
-8,1.96-2.81,3.6-\
-2.8Z\x22/>\x0a      <p\
-ath class=\x22cls-1\
-\x22 d=\x22m35.01,15.3\
-4H8.02c-.56-.01-\
-1.06.36-1.24.93l\
--4.51,15.51c.11.\
-08.21.16.33.24s.\
-22.13.33.19c.15.\
-08.31.14.47.19.1\
-.03.18.07.28.09.\
-25.06.51.1.78.11\
-h23.5c1.64,0,3.0\
-9-1.12,3.6-2.8l3\
-.51-11.94c.25-.8\
-2.23-1.7-.05-2.5\
-1Z\x22/>\x0a    </g>\x0a \
- </g>\x0a</svg>\
-\x00\x00\x04\xe7\
+\x0d\x0a      }\x0d\x0a    <\
+/style>\x0d\x0a  </def\
+s>\x0d\x0a  <g id=\x22NEW\
+_GREY\x22>\x0d\x0a    <g>\
+\x0d\x0a      <path cl\
+ass=\x22cls-2\x22 d=\x22m\
+8.02,12.69h23.05\
+s0-2.65,0-2.65c-\
+.03-2.22-1.71-3.\
+99-3.77-3.98h-7.\
+98c-.3,0-.59-.11\
+-.83-.31L13.56,1\
+.61c-.67-.56-1.4\
+8-.86-2.33-.86h-\
+6.71c-2.06-.02-3\
+.74,1.76-3.77,3.\
+98v23.41s3.67-12\
+.66,3.67-12.66c.\
+51-1.68,1.96-2.8\
+1,3.6-2.8Z\x22/>\x0d\x0a \
+     <path class\
+=\x22cls-1\x22 d=\x22m35.\
+01,15.34H8.02c-.\
+56-.01-1.06.36-1\
+.24.93l-4.51,15.\
+51c.11.08.21.16.\
+33.24s.22.13.33.\
+19c.15.08.31.14.\
+47.19.1.03.18.07\
+.28.09.25.06.51.\
+1.78.11h23.5c1.6\
+4,0,3.09-1.12,3.\
+6-2.8l3.51-11.94\
+c.25-.82.23-1.7-\
+.05-2.51Z\x22/>\x0d\x0a  \
+  </g>\x0d\x0a  </g>\x0d\x0a\
+</svg>\
+\x00\x00\x05\x0d\
 <\
 ?xml version=\x221.\
 0\x22 encoding=\x22UTF\
--8\x22?>\x0a<svg id=\x22L\
-ayer_2\x22 data-nam\
-e=\x22Layer 2\x22 xmln\
-s=\x22http://www.w3\
-.org/2000/svg\x22 v\
-iewBox=\x220 0 28.7\
-1 32.84\x22>\x0a  <def\
-s>\x0a    <style>\x0a \
-     .cls-1 {\x0a  \
-      stroke-lin\
-ecap: round;\x0a   \
-     stroke-widt\
-h: 1.5px;\x0a      \
-}\x0a\x0a      .cls-1,\
- .cls-2 {\x0a      \
-  fill: none;\x0a  \
-    }\x0a\x0a      .cl\
-s-1, .cls-2, .cl\
-s-3 {\x0a        st\
-roke: #e6e7e8;\x0a \
-       stroke-mi\
-terlimit: 10;\x0a  \
-    }\x0a\x0a      .cl\
-s-3 {\x0a        fi\
-ll: #2b79c2;\x0a   \
-   }\x0a    </style\
->\x0a  </defs>\x0a  <g\
- id=\x22NEW_GREY\x22>\x0a\
-    <g>\x0a      <r\
-ect class=\x22cls-3\
-\x22 x=\x22.5\x22 y=\x22.5\x22 \
-width=\x2227.71\x22 he\
-ight=\x2231.84\x22 rx=\
-\x222.92\x22 ry=\x222.92\x22\
-/>\x0a      <g>\x0a   \
-     <path class\
-=\x22cls-3\x22 d=\x22m21.\
-34,23.71l-2.83-4\
-.55V5.46c0-1.15.\
-94-2.09,2.09-2.0\
-9h1.47c1.15,0,2.\
-09.94,2.09,2.09v\
-13.7l-2.82,4.55Z\
-\x22/>\x0a        <lin\
-e class=\x22cls-2\x22 \
-x1=\x2218.51\x22 y1=\x221\
-7.32\x22 x2=\x2224.41\x22\
- y2=\x2217.32\x22/>\x0a  \
+-8\x22?>\x0d\x0a<svg id=\x22\
+Layer_2\x22 data-na\
+me=\x22Layer 2\x22 xml\
+ns=\x22http://www.w\
+3.org/2000/svg\x22 \
+viewBox=\x220 0 28.\
+71 32.84\x22>\x0d\x0a  <d\
+efs>\x0d\x0a    <style\
+>\x0d\x0a      .cls-1 \
+{\x0d\x0a        strok\
+e-linecap: round\
+;\x0d\x0a        strok\
+e-width: 1.5px;\x0d\
+\x0a      }\x0d\x0a\x0d\x0a    \
+  .cls-1, .cls-2\
+ {\x0d\x0a        fill\
+: none;\x0d\x0a      }\
+\x0d\x0a\x0d\x0a      .cls-1\
+, .cls-2, .cls-3\
+ {\x0d\x0a        stro\
+ke: #e6e7e8;\x0d\x0a  \
+      stroke-mit\
+erlimit: 10;\x0d\x0a  \
+    }\x0d\x0a\x0d\x0a      .\
+cls-3 {\x0d\x0a       \
+ fill: #2b79c2;\x0d\
+\x0a      }\x0d\x0a    </\
+style>\x0d\x0a  </defs\
+>\x0d\x0a  <g id=\x22NEW_\
+GREY\x22>\x0d\x0a    <g>\x0d\
+\x0a      <rect cla\
+ss=\x22cls-3\x22 x=\x22.5\
+\x22 y=\x22.5\x22 width=\x22\
+27.71\x22 height=\x223\
+1.84\x22 rx=\x222.92\x22 \
+ry=\x222.92\x22/>\x0d\x0a   \
+   <g>\x0d\x0a        \
+<path class=\x22cls\
+-3\x22 d=\x22m21.34,23\
+.71l-2.83-4.55V5\
+.46c0-1.15.94-2.\
+09,2.09-2.09h1.4\
+7c1.15,0,2.09.94\
+,2.09,2.09v13.7l\
+-2.82,4.55Z\x22/>\x0d\x0a\
+        <line cl\
+ass=\x22cls-2\x22 x1=\x22\
+18.51\x22 y1=\x2217.32\
+\x22 x2=\x2224.41\x22 y2=\
+\x2217.32\x22/>\x0d\x0a     \
+   <line class=\x22\
+cls-2\x22 x1=\x2218.68\
+\x22 y1=\x227.32\x22 x2=\x22\
+23.92\x22 y2=\x227.32\x22\
+/>\x0d\x0a      </g>\x0d\x0a\
       <line clas\
-s=\x22cls-2\x22 x1=\x2218\
-.68\x22 y1=\x227.32\x22 x\
-2=\x2223.92\x22 y2=\x227.\
-32\x22/>\x0a      </g>\
-\x0a      <line cla\
-ss=\x22cls-1\x22 x1=\x225\
-.35\x22 y1=\x226.05\x22 x\
-2=\x2214.82\x22 y2=\x226.\
-05\x22/>\x0a      <lin\
+s=\x22cls-1\x22 x1=\x225.\
+35\x22 y1=\x226.05\x22 x2\
+=\x2214.82\x22 y2=\x226.0\
+5\x22/>\x0d\x0a      <lin\
 e class=\x22cls-1\x22 \
 x1=\x225.35\x22 y1=\x2211\
 .42\x22 x2=\x2214.82\x22 \
-y2=\x2211.42\x22/>\x0a   \
-   <line class=\x22\
-cls-1\x22 x1=\x225.35\x22\
- y1=\x2216.8\x22 x2=\x221\
-4.82\x22 y2=\x2216.8\x22/\
->\x0a      <line cl\
-ass=\x22cls-1\x22 x1=\x22\
-5.35\x22 y1=\x2222.18\x22\
- x2=\x2216.34\x22 y2=\x22\
-22.18\x22/>\x0a      <\
-line class=\x22cls-\
-1\x22 x1=\x225.35\x22 y1=\
-\x2227.56\x22 x2=\x2220.2\
-6\x22 y2=\x2227.56\x22/>\x0a\
-    </g>\x0a  </g>\x0a\
-</svg>\
-\x00\x00\x03\xd3\
+y2=\x2211.42\x22/>\x0d\x0a  \
+    <line class=\
+\x22cls-1\x22 x1=\x225.35\
+\x22 y1=\x2216.8\x22 x2=\x22\
+14.82\x22 y2=\x2216.8\x22\
+/>\x0d\x0a      <line \
+class=\x22cls-1\x22 x1\
+=\x225.35\x22 y1=\x2222.1\
+8\x22 x2=\x2216.34\x22 y2\
+=\x2222.18\x22/>\x0d\x0a    \
+  <line class=\x22c\
+ls-1\x22 x1=\x225.35\x22 \
+y1=\x2227.56\x22 x2=\x222\
+0.26\x22 y2=\x2227.56\x22\
+/>\x0d\x0a    </g>\x0d\x0a  \
+</g>\x0d\x0a</svg>\
+\x00\x00\x03\xec\
 <\
 ?xml version=\x221.\
 0\x22 encoding=\x22UTF\
--8\x22?>\x0a<svg id=\x22L\
-ayer_2\x22 data-nam\
-e=\x22Layer 2\x22 xmln\
-s=\x22http://www.w3\
-.org/2000/svg\x22 v\
-iewBox=\x220 0 33.3\
-4 33.34\x22>\x0a  <def\
-s>\x0a    <style>\x0a \
-     .cls-1 {\x0a  \
-      fill: none\
-;\x0a        stroke\
--width: 1.5px;\x0a \
-     }\x0a\x0a      .c\
-ls-1, .cls-2 {\x0a \
-       stroke: #\
-2b79c2;\x0a        \
-stroke-miterlimi\
-t: 10;\x0a      }\x0a\x0a\
-      .cls-2 {\x0a \
-       fill: #2b\
-79c2;\x0a      }\x0a  \
-  </style>\x0a  </d\
-efs>\x0a  <g id=\x22NE\
-W_GREY\x22>\x0a    <g>\
-\x0a      <path cla\
-ss=\x22cls-2\x22 d=\x22m2\
-7.41,11.01l-4.82\
-,4.82c-.46.46-.4\
-6,1.21,0,1.68l4.\
-82,4.82c.46.46.4\
-6,1.21,0,1.68l-3\
-.4,3.4c-.46.46-1\
-.21.46-1.68,0l-4\
-.82-4.82c-.46-.4\
-6-1.21-.46-1.68,\
-0l-4.82,4.82c-.4\
-6.46-1.21.46-1.6\
-8,0l-3.4-3.4c-.4\
-6-.46-.46-1.21,0\
--1.68l4.82-4.82c\
-.46-.46.46-1.21,\
-0-1.68l-4.82-4.8\
-2c-.46-.46-.46-1\
-.21,0-1.68l3.4-3\
-.4c.46-.46,1.21-\
-.46,1.68,0l4.82,\
-4.82c.46.46,1.21\
-.46,1.68,0l4.82-\
-4.82c.46-.46,1.2\
-1-.46,1.68,0l3.4\
-,3.4c.46.46.46,1\
-.21,0,1.68Z\x22/>\x0a \
-     <rect class\
-=\x22cls-1\x22 x=\x22.75\x22\
- y=\x22.75\x22 width=\x22\
-31.84\x22 height=\x223\
-1.84\x22 rx=\x222.23\x22 \
-ry=\x222.23\x22/>\x0a    \
-</g>\x0a  </g>\x0a</sv\
+-8\x22?>\x0d\x0a<svg id=\x22\
+Layer_2\x22 data-na\
+me=\x22Layer 2\x22 xml\
+ns=\x22http://www.w\
+3.org/2000/svg\x22 \
+viewBox=\x220 0 33.\
+34 33.34\x22>\x0d\x0a  <d\
+efs>\x0d\x0a    <style\
+>\x0d\x0a      .cls-1 \
+{\x0d\x0a        fill:\
+ none;\x0d\x0a        \
+stroke-width: 1.\
+5px;\x0d\x0a      }\x0d\x0a\x0d\
+\x0a      .cls-1, .\
+cls-2 {\x0d\x0a       \
+ stroke: #2b79c2\
+;\x0d\x0a        strok\
+e-miterlimit: 10\
+;\x0d\x0a      }\x0d\x0a\x0d\x0a  \
+    .cls-2 {\x0d\x0a  \
+      fill: #2b7\
+9c2;\x0d\x0a      }\x0d\x0a \
+   </style>\x0d\x0a  <\
+/defs>\x0d\x0a  <g id=\
+\x22NEW_GREY\x22>\x0d\x0a   \
+ <g>\x0d\x0a      <pat\
+h class=\x22cls-2\x22 \
+d=\x22m27.41,11.01l\
+-4.82,4.82c-.46.\
+46-.46,1.21,0,1.\
+68l4.82,4.82c.46\
+.46.46,1.21,0,1.\
+68l-3.4,3.4c-.46\
+.46-1.21.46-1.68\
+,0l-4.82-4.82c-.\
+46-.46-1.21-.46-\
+1.68,0l-4.82,4.8\
+2c-.46.46-1.21.4\
+6-1.68,0l-3.4-3.\
+4c-.46-.46-.46-1\
+.21,0-1.68l4.82-\
+4.82c.46-.46.46-\
+1.21,0-1.68l-4.8\
+2-4.82c-.46-.46-\
+.46-1.21,0-1.68l\
+3.4-3.4c.46-.46,\
+1.21-.46,1.68,0l\
+4.82,4.82c.46.46\
+,1.21.46,1.68,0l\
+4.82-4.82c.46-.4\
+6,1.21-.46,1.68,\
+0l3.4,3.4c.46.46\
+.46,1.21,0,1.68Z\
+\x22/>\x0d\x0a      <rect\
+ class=\x22cls-1\x22 x\
+=\x22.75\x22 y=\x22.75\x22 w\
+idth=\x2231.84\x22 hei\
+ght=\x2231.84\x22 rx=\x22\
+2.23\x22 ry=\x222.23\x22/\
+>\x0d\x0a    </g>\x0d\x0a  <\
+/g>\x0d\x0a</svg>\
+\x00\x00\x02\xe3\
+<\
+?xml version=\x221.\
+0\x22 encoding=\x22UTF\
+-8\x22?>\x0d\x0a<svg id=\x22\
+Layer_2\x22 data-na\
+me=\x22Layer 2\x22 xml\
+ns=\x22http://www.w\
+3.org/2000/svg\x22 \
+viewBox=\x220 0 32.\
+84 32.84\x22>\x0d\x0a  <d\
+efs>\x0d\x0a    <style\
+>\x0d\x0a      .cls-1 \
+{\x0d\x0a        fill:\
+ #e6e7e8;\x0d\x0a     \
+   stroke: #e6e7\
+e8;\x0d\x0a        str\
+oke-miterlimit: \
+10;\x0d\x0a      }\x0d\x0a\x0d\x0a\
+      .cls-2 {\x0d\x0a\
+        fill: #2\
+b79c2;\x0d\x0a      }\x0d\
+\x0a    </style>\x0d\x0a \
+ </defs>\x0d\x0a  <g i\
+d=\x22NEW_GREY\x22>\x0d\x0a \
+   <g>\x0d\x0a      <c\
+ircle class=\x22cls\
+-1\x22 cx=\x2216.42\x22 c\
+y=\x2216.42\x22 r=\x2215.\
+92\x22/>\x0d\x0a      <pa\
+th class=\x22cls-2\x22\
+ d=\x22m19.69,5.62l\
+-.85,15.7c-.04.7\
+1-.62,1.27-1.34,\
+1.27h-2.17c-.71,\
+0-1.3-.56-1.34-1\
+.27l-.85-15.7c-.\
+04-.77.57-1.41,1\
+.34-1.41h3.87c.7\
+7,0,1.38.64,1.34\
+,1.41Z\x22/>\x0d\x0a     \
+ <rect class=\x22cl\
+s-2\x22 x=\x2213.57\x22 y\
+=\x2223.74\x22 width=\x22\
+5.7\x22 height=\x224.8\
+9\x22 rx=\x221.52\x22 ry=\
+\x221.52\x22/>\x0d\x0a    </\
+g>\x0d\x0a  </g>\x0d\x0a</sv\
 g>\
-\x00\x00\x02\xcd\
+\x00\x00\x037\
 <\
 ?xml version=\x221.\
 0\x22 encoding=\x22UTF\
--8\x22?>\x0a<svg id=\x22L\
-ayer_2\x22 data-nam\
-e=\x22Layer 2\x22 xmln\
-s=\x22http://www.w3\
-.org/2000/svg\x22 v\
-iewBox=\x220 0 32.8\
-4 32.84\x22>\x0a  <def\
-s>\x0a    <style>\x0a \
-     .cls-1 {\x0a  \
-      fill: #e6e\
-7e8;\x0a        str\
-oke: #e6e7e8;\x0a  \
-      stroke-mit\
-erlimit: 10;\x0a   \
-   }\x0a\x0a      .cls\
--2 {\x0a        fil\
-l: #2b79c2;\x0a    \
-  }\x0a    </style>\
-\x0a  </defs>\x0a  <g \
-id=\x22NEW_GREY\x22>\x0a \
-   <g>\x0a      <ci\
-rcle class=\x22cls-\
-1\x22 cx=\x2216.42\x22 cy\
-=\x2216.42\x22 r=\x2215.9\
-2\x22/>\x0a      <path\
- class=\x22cls-2\x22 d\
-=\x22m19.69,5.62l-.\
-85,15.7c-.04.71-\
-.62,1.27-1.34,1.\
-27h-2.17c-.71,0-\
-1.3-.56-1.34-1.2\
-7l-.85-15.7c-.04\
--.77.57-1.41,1.3\
-4-1.41h3.87c.77,\
-0,1.38.64,1.34,1\
-.41Z\x22/>\x0a      <r\
-ect class=\x22cls-2\
-\x22 x=\x2213.57\x22 y=\x222\
-3.74\x22 width=\x225.7\
-\x22 height=\x224.89\x22 \
-rx=\x221.52\x22 ry=\x221.\
-52\x22/>\x0a    </g>\x0a \
- </g>\x0a</svg>\
-\x00\x00\x03\x18\
-<\
-?xml version=\x221.\
-0\x22 encoding=\x22UTF\
--8\x22?>\x0a<svg id=\x22L\
-ayer_2\x22 data-nam\
-e=\x22Layer 2\x22 xmln\
-s=\x22http://www.w3\
-.org/2000/svg\x22 v\
-iewBox=\x220 0 33.3\
-4 33.34\x22>\x0a  <def\
-s>\x0a    <style>\x0a \
-     .cls-1 {\x0a  \
-      stroke: #e\
-6e7e8;\x0a        s\
-troke-linecap: r\
-ound;\x0a        st\
-roke-linejoin: r\
-ound;\x0a        st\
-roke-width: 6px;\
-\x0a      }\x0a\x0a      \
-.cls-1, .cls-2 {\
-\x0a        fill: n\
-one;\x0a      }\x0a\x0a  \
-    .cls-2 {\x0a   \
+-8\x22?>\x0d\x0a<svg id=\x22\
+Layer_2\x22 data-na\
+me=\x22Layer 2\x22 xml\
+ns=\x22http://www.w\
+3.org/2000/svg\x22 \
+viewBox=\x220 0 33.\
+34 33.34\x22>\x0d\x0a  <d\
+efs>\x0d\x0a    <style\
+>\x0d\x0a      .cls-1 \
+{\x0d\x0a        strok\
+e: #e6e7e8;\x0d\x0a   \
+     stroke-line\
+cap: round;\x0d\x0a   \
+     stroke-line\
+join: round;\x0d\x0a  \
+      stroke-wid\
+th: 6px;\x0d\x0a      \
+}\x0d\x0a\x0d\x0a      .cls-\
+1, .cls-2 {\x0d\x0a   \
+     fill: none;\
+\x0d\x0a      }\x0d\x0a\x0d\x0a   \
+   .cls-2 {\x0d\x0a   \
      stroke: #2b\
-79c2;\x0a        st\
-roke-miterlimit:\
- 10;\x0a        str\
-oke-width: 1.5px\
-;\x0a      }\x0a    </\
-style>\x0a  </defs>\
-\x0a  <g id=\x22NEW_GR\
-EY\x22>\x0a    <g>\x0a   \
-   <rect class=\x22\
-cls-2\x22 x=\x22.75\x22 y\
-=\x22.75\x22 width=\x2231\
-.84\x22 height=\x2231.\
-84\x22 rx=\x223.65\x22 ry\
-=\x223.65\x22/>\x0a      \
-<g>\x0a        <lin\
-e class=\x22cls-1\x22 \
-x1=\x227.18\x22 y1=\x2217\
-.04\x22 x2=\x2226.16\x22 \
-y2=\x2217.04\x22/>\x0a   \
-     <line class\
-=\x22cls-1\x22 x1=\x2216.\
-67\x22 y1=\x227.18\x22 x2\
-=\x2216.67\x22 y2=\x2226.\
-16\x22/>\x0a      </g>\
-\x0a    </g>\x0a  </g>\
-\x0a</svg>\
-\x00\x00\x03l\
+79c2;\x0d\x0a        s\
+troke-miterlimit\
+: 10;\x0d\x0a        s\
+troke-width: 1.5\
+px;\x0d\x0a      }\x0d\x0a  \
+  </style>\x0d\x0a  </\
+defs>\x0d\x0a  <g id=\x22\
+NEW_GREY\x22>\x0d\x0a    \
+<g>\x0d\x0a      <rect\
+ class=\x22cls-2\x22 x\
+=\x22.75\x22 y=\x22.75\x22 w\
+idth=\x2231.84\x22 hei\
+ght=\x2231.84\x22 rx=\x22\
+3.65\x22 ry=\x223.65\x22/\
+>\x0d\x0a      <g>\x0d\x0a  \
+      <line clas\
+s=\x22cls-1\x22 x1=\x227.\
+18\x22 y1=\x2217.04\x22 x\
+2=\x2226.16\x22 y2=\x2217\
+.04\x22/>\x0d\x0a        \
+<line class=\x22cls\
+-1\x22 x1=\x2216.67\x22 y\
+1=\x227.18\x22 x2=\x2216.\
+67\x22 y2=\x2226.16\x22/>\
+\x0d\x0a      </g>\x0d\x0a  \
+  </g>\x0d\x0a  </g>\x0d\x0a\
+</svg>\
+\x00\x00\x03\x7f\
 <\
 ?xml version=\x221.\
 0\x22 encoding=\x22UTF\
--8\x22?>\x0a<svg id=\x22L\
-ayer_2\x22 data-nam\
-e=\x22Layer 2\x22 xmln\
-s=\x22http://www.w3\
-.org/2000/svg\x22 v\
-iewBox=\x220 0 44.2\
-2 25\x22>\x0a  <defs>\x0a\
-    <style>\x0a    \
-  .cls-1 {\x0a     \
-   fill: #e6e7e8\
-;\x0a      }\x0a\x0a     \
- .cls-2 {\x0a      \
-  fill: #2b79c2;\
-\x0a      }\x0a    </s\
-tyle>\x0a  </defs>\x0a\
-  <g id=\x22NEW_GRE\
-Y\x22>\x0a    <g>\x0a    \
-  <path class=\x22c\
-ls-1\x22 d=\x22m22.11,\
-0C13.11,0,4.7,4.\
-77,0,12.5c4.7,7.\
-73,13.11,12.5,22\
-.11,12.5s17.41-4\
-.77,22.11-12.5C3\
-9.52,4.77,31.11,\
-0,22.11,0Zm0,21.\
-74c-5.09,0-9.24-\
-4.15-9.24-9.24S1\
-7.02,3.26,22.11,\
-3.26s9.24,4.15,9\
-.24,9.24-4.15,9.\
-24-9.24,9.24Z\x22/>\
+-8\x22?>\x0d\x0a<svg id=\x22\
+Layer_2\x22 data-na\
+me=\x22Layer 2\x22 xml\
+ns=\x22http://www.w\
+3.org/2000/svg\x22 \
+viewBox=\x220 0 44.\
+22 25\x22>\x0d\x0a  <defs\
+>\x0d\x0a    <style>\x0d\x0a\
+      .cls-1 {\x0d\x0a\
+        fill: #e\
+6e7e8;\x0d\x0a      }\x0d\
+\x0a\x0d\x0a      .cls-2 \
+{\x0d\x0a        fill:\
+ #2b79c2;\x0d\x0a     \
+ }\x0d\x0a    </style>\
+\x0d\x0a  </defs>\x0d\x0a  <\
+g id=\x22NEW_GREY\x22>\
+\x0d\x0a    <g>\x0d\x0a     \
+ <path class=\x22cl\
+s-1\x22 d=\x22m22.11,0\
+C13.11,0,4.7,4.7\
+7,0,12.5c4.7,7.7\
+3,13.11,12.5,22.\
+11,12.5s17.41-4.\
+77,22.11-12.5C39\
+.52,4.77,31.11,0\
+,22.11,0Zm0,21.7\
+4c-5.09,0-9.24-4\
+.15-9.24-9.24S17\
+.02,3.26,22.11,3\
+.26s9.24,4.15,9.\
+24,9.24-4.15,9.2\
+4-9.24,9.24Z\x22/>\x0d\
 \x0a      <path cla\
 ss=\x22cls-2\x22 d=\x22m2\
 2.11,5.43c-3.9,0\
@@ -463,215 +476,218 @@ Zm0,4.35c-.65,0-\
 9-4.89.6,0,1.09.\
 49,1.09,1.09s-.4\
 9,1.09-1.09,1.09\
-Z\x22/>\x0a    </g>\x0a  \
-</g>\x0a</svg>\
-\x00\x00\x03\x04\
+Z\x22/>\x0d\x0a    </g>\x0d\x0a\
+  </g>\x0d\x0a</svg>\
+\x00\x00\x03 \
 <\
 ?xml version=\x221.\
 0\x22 encoding=\x22UTF\
--8\x22?>\x0a<svg id=\x22L\
-ayer_2\x22 data-nam\
-e=\x22Layer 2\x22 xmln\
-s=\x22http://www.w3\
-.org/2000/svg\x22 v\
-iewBox=\x220 0 33.3\
-4 33.34\x22>\x0a  <def\
-s>\x0a    <style>\x0a \
-     .cls-1 {\x0a  \
-      stroke: #e\
-6e7e8;\x0a        s\
-troke-linecap: r\
-ound;\x0a        st\
-roke-linejoin: r\
-ound;\x0a        st\
-roke-width: 6px;\
-\x0a      }\x0a\x0a      \
-.cls-1, .cls-2 {\
-\x0a        fill: n\
-one;\x0a      }\x0a\x0a  \
-    .cls-2 {\x0a   \
+-8\x22?>\x0d\x0a<svg id=\x22\
+Layer_2\x22 data-na\
+me=\x22Layer 2\x22 xml\
+ns=\x22http://www.w\
+3.org/2000/svg\x22 \
+viewBox=\x220 0 33.\
+34 33.34\x22>\x0d\x0a  <d\
+efs>\x0d\x0a    <style\
+>\x0d\x0a      .cls-1 \
+{\x0d\x0a        strok\
+e: #e6e7e8;\x0d\x0a   \
+     stroke-line\
+cap: round;\x0d\x0a   \
+     stroke-line\
+join: round;\x0d\x0a  \
+      stroke-wid\
+th: 6px;\x0d\x0a      \
+}\x0d\x0a\x0d\x0a      .cls-\
+1, .cls-2 {\x0d\x0a   \
+     fill: none;\
+\x0d\x0a      }\x0d\x0a\x0d\x0a   \
+   .cls-2 {\x0d\x0a   \
      stroke: #2b\
-79c2;\x0a        st\
-roke-miterlimit:\
- 10;\x0a        str\
-oke-width: 1.5px\
-;\x0a      }\x0a    </\
-style>\x0a  </defs>\
-\x0a  <g id=\x22NEW_GR\
-EY\x22>\x0a    <g>\x0a   \
-   <path class=\x22\
-cls-2\x22 d=\x22m4.4.7\
-5h24.54c2.01,0,3\
-.65,1.64,3.65,3.\
-65v24.54c0,2.01-\
-1.64,3.65-3.65,3\
-.65H4.4c-2.01,0-\
-3.65-1.64-3.65-3\
-.65V4.4C.75,2.39\
-,2.39.75,4.4.75Z\
-\x22/>\x0a      <polyl\
-ine class=\x22cls-1\
-\x22 points=\x228.54 1\
-1.74 15.43 24.7 \
-24.8 8.64\x22/>\x0a   \
- </g>\x0a  </g>\x0a</s\
-vg>\
-\x00\x00\x04\xb4\
-<\
-?xml version=\x221.\
-0\x22 encoding=\x22UTF\
--8\x22?>\x0a<svg id=\x22L\
-ayer_2\x22 data-nam\
-e=\x22Layer 2\x22 xmln\
-s=\x22http://www.w3\
-.org/2000/svg\x22 v\
-iewBox=\x220 0 32.8\
-4 32.52\x22>\x0a  <def\
-s>\x0a    <style>\x0a \
-     .cls-1 {\x0a  \
-      stroke: #e\
-6e7e8;\x0a        s\
+79c2;\x0d\x0a        s\
 troke-miterlimit\
-: 10;\x0a      }\x0a\x0a \
-     .cls-1, .cl\
-s-2 {\x0a        fi\
-ll: #e6e7e8;\x0a   \
-   }\x0a\x0a      .cls\
--3 {\x0a        fil\
-l: #2b79c2;\x0a    \
-  }\x0a    </style>\
-\x0a  </defs>\x0a  <g \
-id=\x22NEW_GREY\x22>\x0a \
-   <g>\x0a      <re\
-ct class=\x22cls-3\x22\
- x=\x226.47\x22 y=\x2220.\
-24\x22 width=\x2219.9\x22\
- height=\x2211.94\x22 \
-rx=\x221.99\x22 ry=\x221.\
-99\x22/>\x0a      <pat\
-h class=\x22cls-1\x22 \
-d=\x22m28.36.71v11.\
-57c0,1.1-.89,1.9\
-9-1.99,1.99H6.47\
-c-1.1,0-1.99-.89\
--1.99-1.99V.71C2\
-.17,1.53.5,3.72.\
-5,6.31v19.9c0,2.\
-6,1.67,4.78,3.98\
-,5.6v-11.57c0-1.\
-1.89-1.99,1.99-1\
-.99h19.9c1.1,0,1\
-.99.89,1.99,1.99\
-v11.57c2.31-.82,\
-3.98-3.01,3.98-5\
-.6V6.31c0-2.59-1\
-.67-4.78-3.98-5.\
-6Z\x22/>\x0a      <pat\
-h class=\x22cls-3\x22 \
-d=\x22m24.38.34h-11\
-.94c-1.1,0-1.99.\
-89-1.99,1.99v7.9\
-6c0,1.1.89,1.99,\
-1.99,1.99h11.94c\
-1.1,0,1.99-.89,1\
-.99-1.99V2.33c0-\
-1.1-.89-1.99-1.9\
-9-1.99Zm0,7.96c0\
-,1.1-.89,1.99-1.\
-99,1.99s-1.99-.8\
-9-1.99-1.99v-3.9\
-8c0-1.1.89-1.99,\
-1.99-1.99s1.99.8\
-9,1.99,1.99v3.98\
-Z\x22/>\x0a      <poly\
-gon class=\x22cls-2\
-\x22 points=\x2219.27 \
-26.87 19.27 31.2\
-8 13.57 31.28 13\
-.57 26.87 10.45 \
-26.87 16.42 21.1\
-4 22.39 26.87 19\
-.27 26.87\x22/>\x0a   \
- </g>\x0a  </g>\x0a</s\
-vg>\
-\x00\x00\x04\xb4\
+: 10;\x0d\x0a        s\
+troke-width: 1.5\
+px;\x0d\x0a      }\x0d\x0a  \
+  </style>\x0d\x0a  </\
+defs>\x0d\x0a  <g id=\x22\
+NEW_GREY\x22>\x0d\x0a    \
+<g>\x0d\x0a      <path\
+ class=\x22cls-2\x22 d\
+=\x22m4.4.75h24.54c\
+2.01,0,3.65,1.64\
+,3.65,3.65v24.54\
+c0,2.01-1.64,3.6\
+5-3.65,3.65H4.4c\
+-2.01,0-3.65-1.6\
+4-3.65-3.65V4.4C\
+.75,2.39,2.39.75\
+,4.4.75Z\x22/>\x0d\x0a   \
+   <polyline cla\
+ss=\x22cls-1\x22 point\
+s=\x228.54 11.74 15\
+.43 24.7 24.8 8.\
+64\x22/>\x0d\x0a    </g>\x0d\
+\x0a  </g>\x0d\x0a</svg>\
+\x00\x00\x04\xce\
 <\
 ?xml version=\x221.\
 0\x22 encoding=\x22UTF\
--8\x22?>\x0a<svg id=\x22L\
-ayer_2\x22 data-nam\
-e=\x22Layer 2\x22 xmln\
-s=\x22http://www.w3\
-.org/2000/svg\x22 v\
-iewBox=\x220 0 32.8\
-4 32.52\x22>\x0a  <def\
-s>\x0a    <style>\x0a \
-     .cls-1 {\x0a  \
-      fill: #e6e\
-7e8;\x0a      }\x0a\x0a  \
-    .cls-2, .cls\
--3 {\x0a        fil\
-l: #2b79c2;\x0a    \
-  }\x0a\x0a      .cls-\
-3 {\x0a        stro\
-ke: #2b79c2;\x0a   \
+-8\x22?>\x0d\x0a<svg id=\x22\
+Layer_2\x22 data-na\
+me=\x22Layer 2\x22 xml\
+ns=\x22http://www.w\
+3.org/2000/svg\x22 \
+viewBox=\x220 0 32.\
+84 32.52\x22>\x0d\x0a  <d\
+efs>\x0d\x0a    <style\
+>\x0d\x0a      .cls-1 \
+{\x0d\x0a        strok\
+e: #e6e7e8;\x0d\x0a   \
      stroke-mite\
-rlimit: 10;\x0a    \
-  }\x0a    </style>\
-\x0a  </defs>\x0a  <g \
-id=\x22NEW_GREY\x22>\x0a \
-   <g>\x0a      <re\
-ct class=\x22cls-1\x22\
- x=\x226.47\x22 y=\x2220.\
-24\x22 width=\x2219.9\x22\
- height=\x2211.94\x22 \
-rx=\x221.99\x22 ry=\x221.\
-99\x22/>\x0a      <pat\
-h class=\x22cls-3\x22 \
-d=\x22m28.36.71v11.\
-57c0,1.1-.89,1.9\
-9-1.99,1.99H6.47\
-c-1.1,0-1.99-.89\
--1.99-1.99V.71C2\
-.17,1.53.5,3.72.\
-5,6.31v19.9c0,2.\
-6,1.67,4.78,3.98\
-,5.6v-11.57c0-1.\
-1.89-1.99,1.99-1\
-.99h19.9c1.1,0,1\
-.99.89,1.99,1.99\
-v11.57c2.31-.82,\
-3.98-3.01,3.98-5\
-.6V6.31c0-2.59-1\
-.67-4.78-3.98-5.\
-6Z\x22/>\x0a      <pat\
-h class=\x22cls-1\x22 \
-d=\x22m24.38.34h-11\
-.94c-1.1,0-1.99.\
-89-1.99,1.99v7.9\
-6c0,1.1.89,1.99,\
-1.99,1.99h11.94c\
-1.1,0,1.99-.89,1\
-.99-1.99V2.33c0-\
-1.1-.89-1.99-1.9\
-9-1.99Zm0,7.96c0\
-,1.1-.89,1.99-1.\
-99,1.99s-1.99-.8\
-9-1.99-1.99v-3.9\
-8c0-1.1.89-1.99,\
-1.99-1.99s1.99.8\
-9,1.99,1.99v3.98\
-Z\x22/>\x0a      <poly\
-gon class=\x22cls-2\
-\x22 points=\x2219.27 \
-25.55 19.27 21.1\
-4 13.57 21.14 13\
-.57 25.55 10.45 \
-25.55 16.42 31.2\
-8 22.39 25.55 19\
-.27 25.55\x22/>\x0a   \
- </g>\x0a  </g>\x0a</s\
-vg>\
+rlimit: 10;\x0d\x0a   \
+   }\x0d\x0a\x0d\x0a      .c\
+ls-1, .cls-2 {\x0d\x0a\
+        fill: #e\
+6e7e8;\x0d\x0a      }\x0d\
+\x0a\x0d\x0a      .cls-3 \
+{\x0d\x0a        fill:\
+ #2b79c2;\x0d\x0a     \
+ }\x0d\x0a    </style>\
+\x0d\x0a  </defs>\x0d\x0a  <\
+g id=\x22NEW_GREY\x22>\
+\x0d\x0a    <g>\x0d\x0a     \
+ <rect class=\x22cl\
+s-3\x22 x=\x226.47\x22 y=\
+\x2220.24\x22 width=\x221\
+9.9\x22 height=\x2211.\
+94\x22 rx=\x221.99\x22 ry\
+=\x221.99\x22/>\x0d\x0a     \
+ <path class=\x22cl\
+s-1\x22 d=\x22m28.36.7\
+1v11.57c0,1.1-.8\
+9,1.99-1.99,1.99\
+H6.47c-1.1,0-1.9\
+9-.89-1.99-1.99V\
+.71C2.17,1.53.5,\
+3.72.5,6.31v19.9\
+c0,2.6,1.67,4.78\
+,3.98,5.6v-11.57\
+c0-1.1.89-1.99,1\
+.99-1.99h19.9c1.\
+1,0,1.99.89,1.99\
+,1.99v11.57c2.31\
+-.82,3.98-3.01,3\
+.98-5.6V6.31c0-2\
+.59-1.67-4.78-3.\
+98-5.6Z\x22/>\x0d\x0a    \
+  <path class=\x22c\
+ls-3\x22 d=\x22m24.38.\
+34h-11.94c-1.1,0\
+-1.99.89-1.99,1.\
+99v7.96c0,1.1.89\
+,1.99,1.99,1.99h\
+11.94c1.1,0,1.99\
+-.89,1.99-1.99V2\
+.33c0-1.1-.89-1.\
+99-1.99-1.99Zm0,\
+7.96c0,1.1-.89,1\
+.99-1.99,1.99s-1\
+.99-.89-1.99-1.9\
+9v-3.98c0-1.1.89\
+-1.99,1.99-1.99s\
+1.99.89,1.99,1.9\
+9v3.98Z\x22/>\x0d\x0a    \
+  <polygon class\
+=\x22cls-2\x22 points=\
+\x2219.27 26.87 19.\
+27 31.28 13.57 3\
+1.28 13.57 26.87\
+ 10.45 26.87 16.\
+42 21.14 22.39 2\
+6.87 19.27 26.87\
+\x22/>\x0d\x0a    </g>\x0d\x0a \
+ </g>\x0d\x0a</svg>\
+\x00\x00\x04\xce\
+<\
+?xml version=\x221.\
+0\x22 encoding=\x22UTF\
+-8\x22?>\x0d\x0a<svg id=\x22\
+Layer_2\x22 data-na\
+me=\x22Layer 2\x22 xml\
+ns=\x22http://www.w\
+3.org/2000/svg\x22 \
+viewBox=\x220 0 32.\
+84 32.52\x22>\x0d\x0a  <d\
+efs>\x0d\x0a    <style\
+>\x0d\x0a      .cls-1 \
+{\x0d\x0a        fill:\
+ #e6e7e8;\x0d\x0a     \
+ }\x0d\x0a\x0d\x0a      .cls\
+-2, .cls-3 {\x0d\x0a  \
+      fill: #2b7\
+9c2;\x0d\x0a      }\x0d\x0a\x0d\
+\x0a      .cls-3 {\x0d\
+\x0a        stroke:\
+ #2b79c2;\x0d\x0a     \
+   stroke-miterl\
+imit: 10;\x0d\x0a     \
+ }\x0d\x0a    </style>\
+\x0d\x0a  </defs>\x0d\x0a  <\
+g id=\x22NEW_GREY\x22>\
+\x0d\x0a    <g>\x0d\x0a     \
+ <rect class=\x22cl\
+s-1\x22 x=\x226.47\x22 y=\
+\x2220.24\x22 width=\x221\
+9.9\x22 height=\x2211.\
+94\x22 rx=\x221.99\x22 ry\
+=\x221.99\x22/>\x0d\x0a     \
+ <path class=\x22cl\
+s-3\x22 d=\x22m28.36.7\
+1v11.57c0,1.1-.8\
+9,1.99-1.99,1.99\
+H6.47c-1.1,0-1.9\
+9-.89-1.99-1.99V\
+.71C2.17,1.53.5,\
+3.72.5,6.31v19.9\
+c0,2.6,1.67,4.78\
+,3.98,5.6v-11.57\
+c0-1.1.89-1.99,1\
+.99-1.99h19.9c1.\
+1,0,1.99.89,1.99\
+,1.99v11.57c2.31\
+-.82,3.98-3.01,3\
+.98-5.6V6.31c0-2\
+.59-1.67-4.78-3.\
+98-5.6Z\x22/>\x0d\x0a    \
+  <path class=\x22c\
+ls-1\x22 d=\x22m24.38.\
+34h-11.94c-1.1,0\
+-1.99.89-1.99,1.\
+99v7.96c0,1.1.89\
+,1.99,1.99,1.99h\
+11.94c1.1,0,1.99\
+-.89,1.99-1.99V2\
+.33c0-1.1-.89-1.\
+99-1.99-1.99Zm0,\
+7.96c0,1.1-.89,1\
+.99-1.99,1.99s-1\
+.99-.89-1.99-1.9\
+9v-3.98c0-1.1.89\
+-1.99,1.99-1.99s\
+1.99.89,1.99,1.9\
+9v3.98Z\x22/>\x0d\x0a    \
+  <polygon class\
+=\x22cls-2\x22 points=\
+\x2219.27 25.55 19.\
+27 21.14 13.57 2\
+1.14 13.57 25.55\
+ 10.45 25.55 16.\
+42 31.28 22.39 2\
+5.55 19.27 25.55\
+\x22/>\x0d\x0a    </g>\x0d\x0a \
+ </g>\x0d\x0a</svg>\
 "
 
 qt_resource_name = b"\
@@ -742,28 +758,28 @@ qt_resource_struct = b"\
 \x00\x00\x00\x00\x00\x00\x00\x00\
 \x00\x00\x00\x1e\x00\x02\x00\x00\x00\x0b\x00\x00\x00\x04\
 \x00\x00\x00\x00\x00\x00\x00\x00\
-\x00\x00\x00L\x00\x00\x00\x00\x00\x01\x00\x00\x02\xbc\
-\x00\x00\x01\x88M\xdf\xebt\
-\x00\x00\x00\xcc\x00\x00\x00\x00\x00\x01\x00\x00\x15\x14\
-\x00\x00\x01\x88M\x94\x9a\xec\
-\x00\x00\x00\xb6\x00\x00\x00\x00\x00\x01\x00\x00\x12C\
-\x00\x00\x01\x88CH\x1c\xe8\
-\x00\x00\x01\x18\x00\x00\x00\x00\x00\x01\x00\x00\x1e\xa8\
-\x00\x00\x01\x88]\x06$\xf7\
-\x00\x00\x01\x06\x00\x00\x00\x00\x00\x01\x00\x00\x1b\xa0\
-\x00\x00\x01\x883b\xbd\x04\
-\x00\x00\x00|\x00\x00\x00\x00\x00\x01\x00\x00\x09\x81\
-\x00\x00\x01\x884\x10\x98\x0d\
-\x00\x00\x01.\x00\x00\x00\x00\x00\x01\x00\x00#`\
-\x00\x00\x01\x88]\x06%&\
-\x00\x00\x00\x9c\x00\x00\x00\x00\x00\x01\x00\x00\x0el\
-\x00\x00\x01\x883`:\x11\
-\x00\x00\x00b\x00\x00\x00\x00\x00\x01\x00\x00\x05\xb0\
-\x00\x00\x01\x8838\xad\xf7\
+\x00\x00\x00L\x00\x00\x00\x00\x00\x01\x00\x00\x02\xd4\
+\x00\x00\x01\x88]\x9a\x86\x92\
+\x00\x00\x00\xcc\x00\x00\x00\x00\x00\x01\x00\x00\x15\xb5\
+\x00\x00\x01\x88]\x9a\x86\x92\
+\x00\x00\x00\xb6\x00\x00\x00\x00\x00\x01\x00\x00\x12\xce\
+\x00\x00\x01\x88]\x9a\x86\x92\
+\x00\x00\x01\x18\x00\x00\x00\x00\x00\x01\x00\x00\x1f\x97\
+\x00\x00\x01\x88]\x9a\x86\x92\
+\x00\x00\x01\x06\x00\x00\x00\x00\x00\x01\x00\x00\x1cs\
+\x00\x00\x01\x88]\x9a\x86\x92\
+\x00\x00\x00|\x00\x00\x00\x00\x00\x01\x00\x00\x09\xcd\
+\x00\x00\x01\x88]\x9a\x86\x92\
+\x00\x00\x01.\x00\x00\x00\x00\x00\x01\x00\x00$i\
+\x00\x00\x01\x88]\x9a\x86\x92\
+\x00\x00\x00\x9c\x00\x00\x00\x00\x00\x01\x00\x00\x0e\xde\
+\x00\x00\x01\x88]\x9a\x86\x92\
+\x00\x00\x00b\x00\x00\x00\x00\x00\x01\x00\x00\x05\xe2\
+\x00\x00\x01\x88]\x9a\x86\x92\
 \x00\x00\x00,\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\
-\x00\x00\x01\x88]\x18\x1bd\
-\x00\x00\x00\xf0\x00\x00\x00\x00\x00\x01\x00\x00\x180\
-\x00\x00\x01\x88](\xa9\xd5\
+\x00\x00\x01\x88]\x9a\x86\x92\
+\x00\x00\x00\xf0\x00\x00\x00\x00\x00\x01\x00\x00\x18\xf0\
+\x00\x00\x01\x88]\x9a\x86\x92\
 "
 
 def qInitResources():

@@ -1,15 +1,24 @@
-from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
-                            QMetaObject, QObject, QPoint, QRect,
-                            QSize, QTime, QUrl, Qt)
-from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
-                           QFont, QFontDatabase, QGradient, QIcon,
-                           QImage, QKeySequence, QLinearGradient, QPainter,
-                           QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QDialog, QHBoxLayout, QLabel,
-                               QLineEdit, QPushButton, QSizePolicy, QSpacerItem,
-                               QVBoxLayout, QWidget)
-import dop_win_rc
+# -*- coding: utf-8 -*-
 
+################################################################################
+## Form generated from reading UI file 'ui_01_1__view_buckup_file.ui'
+##
+## Created by: Qt User Interface Compiler version 6.5.1
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
+
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+    QFont, QFontDatabase, QGradient, QIcon,
+    QImage, QKeySequence, QLinearGradient, QPainter,
+    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtWidgets import (QApplication, QDialog, QHBoxLayout, QLabel,
+    QLineEdit, QPushButton, QSizePolicy, QSpacerItem,
+    QVBoxLayout, QWidget)
+import dop_win_rc_rc
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
@@ -18,45 +27,45 @@ class Ui_Dialog(object):
         Dialog.resize(600, 250)
         Dialog.setMaximumSize(QSize(600, 800))
         Dialog.setStyleSheet(u"*{\n"
-                             "background-color: rgb(30, 30, 30);\n"
-                             "font: 16pt \"Lexend Light\";\n"
-                             "border: 1px solid;\n"
-                             "color: rgb(230, 230, 230);\n"
-                             "border-color: #2B79C2;\n"
-                             "}\n"
-                             "QLabel{\n"
-                             "font: 12pt \"Lexend Light\";\n"
-                             "color: #2B79C2;\n"
-                             "border: no\n"
-                             "}\n"
-                             "QLineEdit{\n"
-                             "background-color: rgb(30, 30, 30);\n"
-                             "}\n"
-                             "\n"
-                             "QPushButton {\n"
-                             "border: 2px solid;\n"
-                             "color: rgb(230, 230, 230);\n"
-                             "border-color: rgb(110, 110, 110);\n"
-                             "border-radius: 15px;\n"
-                             "background-color: rgba(60,60, 60, 80);\n"
-                             "}\n"
-                             "\n"
-                             "QPushButton:hover {\n"
-                             "color: #2B79C2;\n"
-                             "border: 3px solid;\n"
-                             "background-color: rgba(30, 30, 30, 180);\n"
-                             "border-color: rgb(150,150, 150);\n"
-                             "}\n"
-                             "\n"
-                             "QPushButton:pressed {\n"
-                             "color: rgb(30, 30, 30);\n"
-                             "border: 2px solid;\n"
-                             "background-color: #2B79C2;\n"
-                             "border-color: rgb(230, 230, 230);\n"
-                             "}\n"
-                             "QRadioButton {\n"
-                             "border: no\n"
-                             "}")
+"background-color: rgb(30, 30, 30);\n"
+"font: 16pt \"Lexend Light\";\n"
+"border: 1px solid;\n"
+"color: rgb(230, 230, 230);\n"
+"border-color: #2B79C2;\n"
+"}\n"
+"QLabel{\n"
+"font: 12pt \"Lexend Light\";\n"
+"color: #2B79C2;\n"
+"border: no\n"
+"}\n"
+"QLineEdit{\n"
+"background-color: rgb(30, 30, 30);\n"
+"}\n"
+"\n"
+"QPushButton {\n"
+"border: 2px solid;\n"
+"color: rgb(230, 230, 230);\n"
+"border-color: rgb(110, 110, 110);\n"
+"border-radius: 15px;\n"
+"background-color: rgba(60,60, 60, 80);\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"color: #2B79C2;\n"
+"border: 3px solid;\n"
+"background-color: rgba(30, 30, 30, 180);\n"
+"border-color: rgb(150,150, 150);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"color: rgb(30, 30, 30);\n"
+"border: 2px solid;\n"
+"background-color: #2B79C2;\n"
+"border-color: rgb(230, 230, 230);\n"
+"}\n"
+"QRadioButton {\n"
+"border: no\n"
+"}")
         self.verticalLayout = QVBoxLayout(Dialog)
         self.verticalLayout.setSpacing(10)
         self.verticalLayout.setObjectName(u"verticalLayout")
@@ -83,8 +92,8 @@ class Ui_Dialog(object):
         font1.setItalic(False)
         self.input_name.setFont(font1)
         self.input_name.setStyleSheet(u"color: rgb(202, 202, 202);\n"
-                                      "border-color: #2B79C2;\n"
-                                      "")
+"border-color: #2B79C2;\n"
+"")
 
         self.verticalLayout.addWidget(self.input_name)
 
@@ -116,24 +125,21 @@ class Ui_Dialog(object):
 
         self.horizontalLayout.addWidget(self.save_backup_list)
 
+
         self.verticalLayout.addLayout(self.horizontalLayout)
+
 
         self.retranslateUi(Dialog)
 
         QMetaObject.connectSlotsByName(Dialog)
-
     # setupUi
 
     def retranslateUi(self, Dialog):
-        Dialog.setWindowTitle(
-            QCoreApplication.translate("Dialog", u"Add Item to Backup List", None))
-        self.info_2.setText(
-            QCoreApplication.translate("Dialog", u"Enter New Buckup File Name:", None))
+        Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Add Item to Backup List", None))
+        self.info_2.setText(QCoreApplication.translate("Dialog", u"Enter New Buckup File Name:", None))
         self.input_name.setText("")
-        self.input_name.setPlaceholderText(
-            QCoreApplication.translate("Dialog", u"Input name of backup file here", None))
-        self.info.setText(
-            QCoreApplication.translate("Dialog", u"To remove line from list below just select them",
-                                       None))
+        self.input_name.setPlaceholderText(QCoreApplication.translate("Dialog", u"Input name of backup file here", None))
+        self.info.setText(QCoreApplication.translate("Dialog", u"To remove line from list below just select them", None))
         self.save_backup_list.setText(QCoreApplication.translate("Dialog", u"   Save List", None))
     # retranslateUi
+

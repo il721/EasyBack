@@ -55,7 +55,8 @@ class settings_Dialog(object):
                              "background-color: #2B79C2;\n"
                              "border-color: rgb(230, 230, 230);\n"
                              "}\n"
-                             "QRadioButton {\n"
+                             "QRadioButton{\n"
+                             "font: 14pt \"Lexend Light\";\n"
                              "border: no\n"
                              "}")
         self.verticalLayout = QVBoxLayout(Dialog)
@@ -75,6 +76,30 @@ class settings_Dialog(object):
         self.sel_main_folder.setIconSize(QSize(35, 35))
 
         self.verticalLayout.addWidget(self.sel_main_folder)
+
+        self.checkbox = QFrame(Dialog)
+        self.checkbox.setObjectName(u"checkbox")
+        self.checkbox.setStyleSheet(u"border-color: #2B79C2;")
+        self.verticalLayout_2 = QVBoxLayout(self.checkbox)
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.label_info_subfolders = QLabel(self.checkbox)
+        self.label_info_subfolders.setObjectName(u"label_info_subfolders")
+        self.label_info_subfolders.setStyleSheet(u"")
+
+        self.verticalLayout_2.addWidget(self.label_info_subfolders)
+
+        self.default_folder_rad = QRadioButton(self.checkbox)
+        self.default_folder_rad.setObjectName(u"default_folder_rad")
+        self.default_folder_rad.setChecked(True)
+
+        self.verticalLayout_2.addWidget(self.default_folder_rad)
+
+        self.my_subfolders_rad = QRadioButton(self.checkbox)
+        self.my_subfolders_rad.setObjectName(u"my_subfolders_rad")
+
+        self.verticalLayout_2.addWidget(self.my_subfolders_rad)
+
+        self.verticalLayout.addWidget(self.checkbox)
 
         self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
@@ -165,6 +190,24 @@ class settings_Dialog(object):
         Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Dialog", None))
         self.sel_main_folder.setText(
             QCoreApplication.translate("Dialog", u"    Select Main Backup Folder", None))
+        self.label_info_subfolders.setText(QCoreApplication.translate("Dialog",
+                                                                      u"Select what backup subfolders you want to create:",
+                                                                      None))
+        # if QT_CONFIG(tooltip)
+        self.default_folder_rad.setToolTip(QCoreApplication.translate("Dialog",
+                                                                      u"Select this if you want to backup programm settings like MS Word, Adobe Photoshop etc.",
+                                                                      None))
+        # endif // QT_CONFIG(tooltip)
+        self.default_folder_rad.setText(QCoreApplication.translate("Dialog",
+                                                                   u"Defaul \"SETTINGS\" and \"DATA\" in Main Backup Folder",
+                                                                   None))
+        # if QT_CONFIG(tooltip)
+        self.my_subfolders_rad.setToolTip(QCoreApplication.translate("Dialog",
+                                                                     u"Select this if you want to backup some personal data like MyWork, Foto, Doc`s etc.",
+                                                                     None))
+        # endif // QT_CONFIG(tooltip)
+        self.my_subfolders_rad.setText(
+            QCoreApplication.translate("Dialog", u"I want to select existing Folders", None))
         self.info_main_folder.setText(
             QCoreApplication.translate("Dialog", u"You files and settings are stored in:", None))
         self.input_name.setText("")
