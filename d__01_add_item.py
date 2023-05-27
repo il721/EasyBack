@@ -14,10 +14,10 @@ base = MainBase()
 
 class AddItemDial01(object):
     def __init__(self):
-        self.temp_dict: dict = {}
-        self.list_of_file: list = []
+        self.temp_dict: dict[str, tuple] = {}
+        self.list_of_file: list[str] = []
         self.name_item: str = ""
-        self.suffix: str = ""
+        self.suffix: str = "s_"
 
     def setupUi_(self, Dialog):
         if not Dialog.objectName():
@@ -288,6 +288,7 @@ class AddItemDial01(object):
         dialog.setViewMode(QFileDialog.ViewMode.List)
         if dialog.exec():
             filenames = dialog.selectedFiles()
+
             for _ in filenames:
                 self.list_of_file.append(_)
                 self.list_files_and_folders.addItem(_)
@@ -338,7 +339,7 @@ class AddItemDial01(object):
 
         # check name is already exist in backup base
         self.name_item = f"{self.suffix}{self.input_name.text()}"
-        self.temp_dict[self.name_item] = self.list_of_file
+        self.temp_dict[self.name_item] = tuple(self.list_of_file)
         if base.check_name(self.name_item):
             reply = QMessageBox.question(self.list_files_and_folders, "WARNING!",
                                          "This name is already exist in base and wil be "
