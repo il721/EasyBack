@@ -326,7 +326,6 @@ class AddItemDial01(object):
         If "name_item" is already exist in all_backup_item, open warning dialog and? if "ok"
         pressed, owerwrite key in dict
         """
-        # TODO !! add radioButton functionality
         # TODO change style of warning window
 
         self.name_item = self.input_name.text()
@@ -352,11 +351,10 @@ class AddItemDial01(object):
                 return
         else:
             base.add_item(self.temp_dict)
-            # QMessageBox.information(self.list_files_and_folders, "Congradulations!",
-            #                         f"Entry with name: '{self.name_item}'\n successfully added to "
-            #                         f"backup base",
-            #                         QMessageBox.StandardButton.Ok)
+            QMessageBox.information(self.list_files_and_folders, "Congradulations!",
+                                    f"Entry with name: '{self.name_item}'\n successfully added to "
+                                    f"backup base",
+                                    QMessageBox.StandardButton.Ok)
 
-        print(self.temp_dict)
-        self.temp_dict.clear()
-        print(base.all_items)
+        # print(self.temp_dict)
+        # print(base.all_items)
