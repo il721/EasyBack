@@ -1,5 +1,4 @@
 import sys
-# from pathlib import Path
 
 from PySide6.QtWidgets import QFileDialog, QMainWindow, QDialog
 from d_MainWindow import Ui_MainWindow

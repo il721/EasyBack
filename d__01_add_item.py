@@ -1,6 +1,6 @@
 from PySide6.QtCore import (QCoreApplication, QMetaObject, QSize, )
 from PySide6.QtGui import (QFont, QIcon, QPixmap)
-from PySide6.QtWidgets import (QFileDialog, QFrame, QHBoxLayout,
+from PySide6.QtWidgets import (QDialog, QFileDialog, QFrame, QHBoxLayout,
                                QLabel,
                                QLineEdit,
                                QListWidget, QPushButton, QRadioButton, QSizePolicy, QSpacerItem,
@@ -8,6 +8,7 @@ from PySide6.QtWidgets import (QFileDialog, QFrame, QHBoxLayout,
                                QMessageBox, )
 import dop_win_rc
 from main_base import MainBase
+from d__07_settings import settings_Dialog
 
 base = MainBase()
 
@@ -328,13 +329,16 @@ class AddItemDial01(object):
         """
         # TODO change style of warning window
 
-        # check for empty fields
+        # check for main backup folder is existing
         if not base.check_main_folder():
-            QMessageBox.warning(self.list_files_and_folders, "WARNING!",
-                                "It looks like you don`t yet select main backup folder."
-                                " Please do it now",
-                                QMessageBox.StandardButton.Ok)
-            return
+            reply = QMessageBox.warning(self.list_files_and_folders, "WARNING!",
+                                        "It looks like you don`t yet select main backup folder."
+                                        " Please do it now",
+                                        QMessageBox.StandardButton.Ok)
+            dialog = QDialog()
+            ui = settings_Dialog()
+            ui.setupUi(dialog)
+            dialog.exec()
 
         self.name_item = self.input_name.text()
 
@@ -355,14 +359,24 @@ class AddItemDial01(object):
                                          QMessageBox.StandardButton.No)
             if reply == QMessageBox.StandardButton.Yes:
                 base.add_item(self.temp_dict)
+                QMessageBox.information(self.list_files_and_folders, "Congradulations!",
+                                        f"Entry with name: '{self.name_item}'\n was changed",
+                                        QMessageBox.StandardButton.Ok)
             else:
                 return
         else:
             base.add_item(self.temp_dict)
-            QMessageBox.information(self.list_files_and_folders, "Congradulations!",
-                                    f"Entry with name: '{self.name_item}'\n successfully added to "
-                                    f"backup base",
-                                    QMessageBox.StandardButton.Ok)
+            title = "Congradulations!"
+            main_text = f"Entry with name: {self.name_item} successfully added to backup base'\n"
+            self.simple_message_box(title, main_text)
+            # QMessageBox.information(self.list_files_and_folders, "Congradulations!",
+            #                         f"Entry with name: '{self.name_item}'\n successfully added to "
+            #                         f"backup base",
+            #                         QMessageBox.StandardButton.Ok)
+
+    def simple_message_box(self, title: str, main_text: str):
+        QMessageBox.information(self.list_files_and_folders, title, main_text,
+                                QMessageBox.StandardButton.Ok)
 
         # print(self.temp_dict)
-        # print(base.all_items)
+        print(base.all_items)

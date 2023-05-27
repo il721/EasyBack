@@ -66,6 +66,66 @@ border: no
     <number>10</number>
    </property>
    <item>
+    <widget class="QPushButton" name="sel_main_folder">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>220</width>
+       <height>60</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>    Select Main Backup Folder</string>
+     </property>
+     <property name="icon">
+      <iconset resource="dop_win_rc.qrc">
+       <normaloff>:/icon/icons/GREY/folder.svg</normaloff>:/icon/icons/GREY/folder.svg</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>35</width>
+       <height>35</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer_3">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <widget class="QLabel" name="info_main_folder">
+     <property name="font">
+      <font>
+       <family>Lexend Light</family>
+       <pointsize>12</pointsize>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>You files and settings are stored in:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="QLineEdit" name="input_name">
      <property name="minimumSize">
       <size>
@@ -101,150 +161,7 @@ border-color: #2B79C2;
     </widget>
    </item>
    <item>
-    <spacer name="verticalSpacer">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item>
-    <widget class="QFrame" name="checkbox">
-     <property name="styleSheet">
-      <string notr="true">border-color: #2B79C2;</string>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout_2">
-      <item>
-       <widget class="QLabel" name="label">
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="text">
-         <string>Please, select backup item type (by default you item has SETTINS type):</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QRadioButton" name="settings_radio">
-        <property name="toolTip">
-         <string>Select this if you want to backup programm settings like MS Word, Adobe Photoshop etc.</string>
-        </property>
-        <property name="text">
-         <string>SETTINGS Backup</string>
-        </property>
-        <property name="checked">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QRadioButton" name="data_radio">
-        <property name="toolTip">
-         <string>Select this if you want to backup some personal data like MyWork, Foto, Doc`s etc.</string>
-        </property>
-        <property name="text">
-         <string>DATA Backup</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item>
     <spacer name="verticalSpacer_2">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <item>
-      <widget class="QPushButton" name="add_folder">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>220</width>
-         <height>60</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>    Add Folder</string>
-       </property>
-       <property name="icon">
-        <iconset resource="dop_win_rc.qrc">
-         <normaloff>:/icon/icons/GREY/folder.svg</normaloff>:/icon/icons/GREY/folder.svg</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>35</width>
-         <height>35</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer name="horizontalSpacer_2">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="add_file">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>220</width>
-         <height>60</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>     Add Files</string>
-       </property>
-       <property name="icon">
-        <iconset resource="dop_win_rc.qrc">
-         <normaloff>:/icon/icons/GREY/file.svg</normaloff>:/icon/icons/GREY/file.svg</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>35</width>
-         <height>35</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <spacer name="verticalSpacer_3">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>

@@ -1,13 +1,3 @@
-# -*- coding: utf-8 -*-
-
-################################################################################
-## Form generated from reading UI file 'ui_07_settings.ui'
-##
-## Created by: Qt User Interface Compiler version 6.5.0
-##
-## WARNING! All changes made in this file will be lost when recompiling UI file!
-################################################################################
-
 from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
                             QMetaObject, QObject, QPoint, QRect,
                             QSize, QTime, QUrl, Qt)
@@ -15,13 +5,14 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
                            QFont, QFontDatabase, QGradient, QIcon,
                            QImage, QKeySequence, QLinearGradient, QPainter,
                            QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QDialog, QHBoxLayout, QLabel,
-                               QLineEdit, QPushButton, QSizePolicy, QSpacerItem,
-                               QVBoxLayout, QWidget)
-import dop_win_rc_rc
+from PySide6.QtWidgets import (QApplication, QDialog, QFileDialog, QFrame, QHBoxLayout,
+                               QLabel, QLineEdit, QPushButton, QRadioButton,
+                               QSizePolicy, QSpacerItem, QVBoxLayout, QWidget)
+import dop_win_rc
+from main_base import MainBase as mb
 
 
-class Ui_Dialog(object):
+class settings_Dialog(object):
     def setupUi(self, Dialog):
         if not Dialog.objectName():
             Dialog.setObjectName(u"Dialog")
@@ -164,6 +155,10 @@ class Ui_Dialog(object):
 
         QMetaObject.connectSlotsByName(Dialog)
 
+        # ************************  MY CODE (buttons)  *********************************************
+        self.sel_main_folder.clicked.connect(self.sel_main_folder_bt)
+        # ------------------------------------------------------------------------------------------
+
     # setupUi
 
     def retranslateUi(self, Dialog):
@@ -180,4 +175,17 @@ class Ui_Dialog(object):
                                        None))
         self.add_item.setText(QCoreApplication.translate("Dialog", u"    Add Item", None))
         self.ok.setText(QCoreApplication.translate("Dialog", u"   Main Menu", None))
+
     # retranslateUi
+
+    # ************************    MY CODE    ***************************************************
+    def sel_main_folder_bt(self):
+        dialog = QFileDialog()
+        dialog.setDirectory(r'F:')
+        dialog.setFileMode(QFileDialog.FileMode.Directory)
+        dialog.setViewMode(QFileDialog.ViewMode.List)
+        if dialog.exec():
+            filenames = dialog.selectedFiles()
+            if filenames:
+                mb.path_of_backup_folder = "".join(filenames)
+                print(mb.path_of_backup_folder)
