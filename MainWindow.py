@@ -3,6 +3,7 @@ import sys
 from PySide6.QtWidgets import QFileDialog, QMainWindow, QDialog
 from d_MainWindow import Ui_MainWindow
 from d__01_add_item import AddItemDial01
+from d__07_settings import settings_Dialog
 
 
 class MainWindow(QMainWindow):
@@ -16,6 +17,7 @@ class MainWindow(QMainWindow):
         self.ui.add_item.clicked.connect(self.add_item_01)
         self.ui.remove_item.clicked.connect(self.remove_item)
 
+        self.ui.settings.clicked.connect(self.settings_bt)
         self.ui.exit.clicked.connect(self.exit)
 
         # self.ui.add_item.clicked.connect(self.open_directory_dialog)
@@ -39,6 +41,12 @@ class MainWindow(QMainWindow):
         Open 'Edit Item In Base' dialog window
         """
         pass
+
+    def settings_bt(self):
+        dialog = QDialog()
+        ui = settings_Dialog()
+        ui.setupUi(dialog)
+        dialog.exec()
 
     def exit(self):
         sys.exit()

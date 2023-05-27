@@ -10,7 +10,6 @@ from PySide6.QtWidgets import (QApplication, QDialog, QFileDialog, QFrame, QHBox
                                QSizePolicy, QSpacerItem, QVBoxLayout, QWidget)
 import dop_win_rc
 from main_base import MainBase
-from
 
 
 class settings_Dialog(object):
@@ -191,3 +190,4 @@ class settings_Dialog(object):
             if filenames:
                 MainBase.path_of_backup_folder = "".join(filenames)
                 print(MainBase.path_of_backup_folder)
+                # TODO Add "create default folders" check button

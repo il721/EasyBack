@@ -11,7 +11,7 @@ from PySide6.QtWidgets import (QApplication, QDialog, QHBoxLayout, QLabel,
 import dop_win_rc
 
 
-class Ui_Dialog(object):
+class D_01_1_ViewDialog(object):
     def setupUi(self, Dialog):
         if not Dialog.objectName():
             Dialog.setObjectName(u"Dialog")

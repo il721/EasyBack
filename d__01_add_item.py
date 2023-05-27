@@ -9,6 +9,8 @@ from PySide6.QtWidgets import (QDialog, QFileDialog, QFrame, QHBoxLayout,
 import dop_win_rc
 from main_base import MainBase
 from d__07_settings import settings_Dialog
+from d__01_1__view_buckup_file import D_01_1_ViewDialog
+from d__01_2__sel_buckup_file_name import D_01_2_Sel_File_Name_Dialog
 
 base = MainBase()
 
@@ -265,7 +267,8 @@ class AddItemDial01(object):
         self.list_files_and_folders.clicked.connect(self.remove_line_bt)
         self.add_item.clicked.connect(self.add_item_01_bt)
         self.ok.clicked.connect(Dialog.reject)
-        self.save_backup_list.clicked.connect(self.save_buckup_list_bt)
+        self.view_list.clicked.connect(self.view_list_bt)
+        self.save_backup_list.clicked.connect(self.save_backup_list_bt)
         # ------------------------------------------------------------------------------------------
 
     def retranslateUi(self, Dialog):
@@ -410,19 +413,25 @@ class AddItemDial01(object):
         QMessageBox.information(self.list_files_and_folders, title, main_text,
                                 QMessageBox.StandardButton.Ok)
 
-    def save_buckup_list_bt(self):
-        if base.list_saved:
-            base.save_base_to_disk()
-            title = "Congradulations!"
-            main_text = f"Backup list {self.name_item} successfully saved"
-            self.simple_message_box(title, main_text)
-        else:
-            pass
 
     def view_list_bt(self):
-        pass
+        dialog = QDialog()
+        ui = D_01_1_ViewDialog()
+        ui.setupUi(dialog)
+        dialog.exec()
+    #         pass
 
     def save_backup_list_bt(self):
-        pass
+        dialog = QDialog()
+        ui = D_01_2_Sel_File_Name_Dialog()
+        ui.setupUi(dialog)
+        dialog.exec()
+    #     if base.list_saved:
+    #         base.save_base_to_disk()
+    #         title = "Congradulations!"
+    #         main_text = f"Backup list {self.name_item} successfully saved"
+    #         self.simple_message_box(title, main_text)
+    #     else:
+    # TODO end save list dialog
 
     print(base.all_items)

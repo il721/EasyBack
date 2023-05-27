@@ -3,9 +3,7 @@ from pathlib import Path
 
 
 class MainBase:
-    path_of_backup_folder: str = "F:/!_____back_test"
-
-    # TODO remove default test path
+    path_of_backup_folder: str = ""
 
     def __init__(self):
         self.all_items: dict = {}
