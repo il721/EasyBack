@@ -128,7 +128,7 @@ class Ui_Dialog(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.add_folder.sizePolicy().hasHeightForWidth())
         self.add_folder.setSizePolicy(sizePolicy)
-        self.add_folder.setMinimumSize(QSize(220, 60))
+        self.add_folder.setMinimumSize(QSize(180, 60))
         icon = QIcon()
         icon.addFile(u":/icon/icons/GREY/folder.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.add_folder.setIcon(icon)
@@ -144,13 +144,29 @@ class Ui_Dialog(object):
         self.add_file.setObjectName(u"add_file")
         sizePolicy.setHeightForWidth(self.add_file.sizePolicy().hasHeightForWidth())
         self.add_file.setSizePolicy(sizePolicy)
-        self.add_file.setMinimumSize(QSize(220, 60))
+        self.add_file.setMinimumSize(QSize(180, 60))
         icon1 = QIcon()
         icon1.addFile(u":/icon/icons/GREY/file.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.add_file.setIcon(icon1)
         self.add_file.setIconSize(QSize(35, 35))
 
         self.horizontalLayout_2.addWidget(self.add_file)
+
+        self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_2.addItem(self.horizontalSpacer_4)
+
+        self.view_list = QPushButton(Dialog)
+        self.view_list.setObjectName(u"view_list")
+        sizePolicy.setHeightForWidth(self.view_list.sizePolicy().hasHeightForWidth())
+        self.view_list.setSizePolicy(sizePolicy)
+        self.view_list.setMinimumSize(QSize(180, 60))
+        icon2 = QIcon()
+        icon2.addFile(u":/icon/icons/GREY/view.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.view_list.setIcon(icon2)
+        self.view_list.setIconSize(QSize(50, 50))
+
+        self.horizontalLayout_2.addWidget(self.view_list)
 
 
         self.verticalLayout.addLayout(self.horizontalLayout_2)
@@ -186,10 +202,10 @@ class Ui_Dialog(object):
         self.add_item.setObjectName(u"add_item")
         sizePolicy.setHeightForWidth(self.add_item.sizePolicy().hasHeightForWidth())
         self.add_item.setSizePolicy(sizePolicy)
-        self.add_item.setMinimumSize(QSize(220, 60))
-        icon2 = QIcon()
-        icon2.addFile(u":/icon/icons/GREY/gr_add_item.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.add_item.setIcon(icon2)
+        self.add_item.setMinimumSize(QSize(180, 60))
+        icon3 = QIcon()
+        icon3.addFile(u":/icon/icons/GREY/gr_add_item.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.add_item.setIcon(icon3)
         self.add_item.setIconSize(QSize(35, 35))
 
         self.horizontalLayout.addWidget(self.add_item)
@@ -198,15 +214,31 @@ class Ui_Dialog(object):
 
         self.horizontalLayout.addItem(self.horizontalSpacer)
 
+        self.save_backup_list = QPushButton(Dialog)
+        self.save_backup_list.setObjectName(u"save_backup_list")
+        sizePolicy.setHeightForWidth(self.save_backup_list.sizePolicy().hasHeightForWidth())
+        self.save_backup_list.setSizePolicy(sizePolicy)
+        self.save_backup_list.setMinimumSize(QSize(180, 60))
+        icon4 = QIcon()
+        icon4.addFile(u":/icon/icons/GREY/save.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.save_backup_list.setIcon(icon4)
+        self.save_backup_list.setIconSize(QSize(40, 40))
+
+        self.horizontalLayout.addWidget(self.save_backup_list)
+
+        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer_3)
+
         self.ok = QPushButton(Dialog)
         self.ok.setObjectName(u"ok")
         sizePolicy.setHeightForWidth(self.ok.sizePolicy().hasHeightForWidth())
         self.ok.setSizePolicy(sizePolicy)
-        self.ok.setMinimumSize(QSize(220, 60))
-        icon3 = QIcon()
-        icon3.addFile(u":/icon/icons/GREY/gr_to_main_menu.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.ok.setIcon(icon3)
-        self.ok.setIconSize(QSize(60, 60))
+        self.ok.setMinimumSize(QSize(180, 60))
+        icon5 = QIcon()
+        icon5.addFile(u":/icon/icons/GREY/main_menu.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.ok.setIcon(icon5)
+        self.ok.setIconSize(QSize(50, 50))
 
         self.horizontalLayout.addWidget(self.ok)
 
@@ -232,10 +264,12 @@ class Ui_Dialog(object):
         self.data_radio.setToolTip(QCoreApplication.translate("Dialog", u"Select this if you want to backup some personal data like MyWork, Foto, Doc`s etc.", None))
 #endif // QT_CONFIG(tooltip)
         self.data_radio.setText(QCoreApplication.translate("Dialog", u"DATA Backup", None))
-        self.add_folder.setText(QCoreApplication.translate("Dialog", u"    Add Folder", None))
-        self.add_file.setText(QCoreApplication.translate("Dialog", u"     Add Files", None))
+        self.add_folder.setText(QCoreApplication.translate("Dialog", u" Add Folder", None))
+        self.add_file.setText(QCoreApplication.translate("Dialog", u"   Add Files", None))
+        self.view_list.setText(QCoreApplication.translate("Dialog", u"   View All", None))
         self.info.setText(QCoreApplication.translate("Dialog", u"To remove line from list below just select them", None))
-        self.add_item.setText(QCoreApplication.translate("Dialog", u"    Add Item", None))
-        self.ok.setText(QCoreApplication.translate("Dialog", u"   Main Menu", None))
+        self.add_item.setText(QCoreApplication.translate("Dialog", u"   Add Item", None))
+        self.save_backup_list.setText(QCoreApplication.translate("Dialog", u"   Save List", None))
+        self.ok.setText(QCoreApplication.translate("Dialog", u"Main Menu", None))
     # retranslateUi
 

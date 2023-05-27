@@ -9,7 +9,7 @@ from PySide6.QtWidgets import (QApplication, QDialog, QFileDialog, QFrame, QHBox
                                QLabel, QLineEdit, QPushButton, QRadioButton,
                                QSizePolicy, QSpacerItem, QVBoxLayout, QWidget)
 import dop_win_rc
-from main_base import MainBase as mb
+from main_base import MainBase
 
 
 class settings_Dialog(object):
@@ -179,7 +179,8 @@ class settings_Dialog(object):
     # retranslateUi
 
     # ************************    MY CODE    ***************************************************
-    def sel_main_folder_bt(self):
+    @staticmethod
+    def sel_main_folder_bt():
         dialog = QFileDialog()
         dialog.setDirectory(r'F:')
         dialog.setFileMode(QFileDialog.FileMode.Directory)
@@ -187,5 +188,5 @@ class settings_Dialog(object):
         if dialog.exec():
             filenames = dialog.selectedFiles()
             if filenames:
-                mb.path_of_backup_folder = "".join(filenames)
-                print(mb.path_of_backup_folder)
+                MainBase.path_of_backup_folder = "".join(filenames)
+                print(MainBase.path_of_backup_folder)

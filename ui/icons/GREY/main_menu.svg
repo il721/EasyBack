@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 41.47 25.43">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #e6e7e8;
+        stroke: #e6e7e8;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2 {
+        fill: #2b79c2;
+      }
+    </style>
+  </defs>
+  <g id="NEW_GREY">
+    <g id="NEW_GREY-2" data-name="NEW GREY">
+      <g>
+        <polygon class="cls-2" points="41.47 7.47 31.92 7.47 31.92 0 10.33 12.47 31.92 24.93 31.92 17.47 41.47 17.47 41.47 7.47"/>
+        <circle class="cls-1" cx="10.41" cy="22.74" r="2.19"/>
+        <circle class="cls-1" cx="2.69" cy="22.74" r="2.19"/>
+      </g>
+    </g>
+  </g>
+</svg>

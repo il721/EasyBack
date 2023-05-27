@@ -1,7 +1,10 @@
 <RCC>
   <qresource prefix="icon">
-    <file>icons/GREY/gr_to_main_menu.svg</file>
+    <file>icons/GREY/view.svg</file>
+    <file>icons/GREY/load.svg</file>
+    <file>icons/GREY/save.svg</file>
     <file>icons/GREY/info.svg</file>
+    <file>icons/GREY/main_menu.svg</file>
     <file>icons/GREY/gr_add_item.svg</file>
     <file>icons/GREY/edit_list.svg</file>
     <file>icons/GREY/cancel.svg</file>
