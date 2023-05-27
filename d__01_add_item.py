@@ -328,6 +328,14 @@ class AddItemDial01(object):
         """
         # TODO change style of warning window
 
+        # check for empty fields
+        if not base.check_main_folder():
+            QMessageBox.warning(self.list_files_and_folders, "WARNING!",
+                                "It looks like you don`t yet select main backup folder."
+                                " Please do it now",
+                                QMessageBox.StandardButton.Ok)
+            return
+
         self.name_item = self.input_name.text()
 
         # check for empty fields

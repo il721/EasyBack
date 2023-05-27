@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>600</width>
-    <height>800</height>
+    <height>479</height>
    </rect>
   </property>
   <property name="maximumSize">
@@ -271,21 +271,6 @@ border-color: #2B79C2;
      </property>
      <property name="text">
       <string>To remove line from list below just select them</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QListWidget" name="list_files_and_folders">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>480</height>
-      </size>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(50, 50,50);
-color: rgb(230, 230, 230);
-font: 300 16pt &quot;Lexend Light&quot;;</string>
      </property>
     </widget>
    </item>

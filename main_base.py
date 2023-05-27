@@ -1,6 +1,14 @@
+import json
+
+
 class MainBase:
     def __init__(self):
         self.all_items: dict = {}
+        self.path_of_base_file: str = ""
+        self.path_of_backup_folder: str = ""
+
+    def check_main_folder(self) -> bool:
+        return self.path_of_backup_folder
 
     def check_name(self, name_: str) -> bool:
         return name_ in self.all_items
