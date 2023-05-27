@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ui_01_add_item.ui'
+## Form generated from reading UI file 'ui_01_1__sel_buckup_file_name.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.5.0
 ##

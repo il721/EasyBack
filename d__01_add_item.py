@@ -419,4 +419,10 @@ class AddItemDial01(object):
         else:
             pass
 
+    def view_list_bt(self):
+        pass
+
+    def save_backup_list_bt(self):
+        pass
+
     print(base.all_items)
