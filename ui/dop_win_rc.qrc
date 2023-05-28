@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="icon">
+    <file>icons/GREY/info_invert.svg</file>
     <file>icons/GREY/view.svg</file>
     <file>icons/GREY/load.svg</file>
     <file>icons/GREY/save.svg</file>

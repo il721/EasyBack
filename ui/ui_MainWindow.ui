@@ -49,7 +49,10 @@ border: 2px solid;
 background-color: #2B79C2;
 border-color: rgb(230, 230, 230);
 }
-</string>
+
+QMessageBox{
+background-color: rgb(255, 255, 0);
+}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="minimumSize">
@@ -67,7 +70,7 @@ border-color: rgb(230, 230, 230);
    <property name="styleSheet">
     <string notr="true"/>
    </property>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>22</x>

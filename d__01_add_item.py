@@ -369,15 +369,15 @@ class AddItemDial01(object):
         # TODO change style of warning window
 
         # check for main backup folder is existing
-        if not base.check_main_folder():
-            reply = QMessageBox.warning(self.list_files_and_folders, "WARNING!",
-                                        "It looks like you don`t yet select main backup folder."
-                                        " Please do it now",
-                                        QMessageBox.StandardButton.Ok)
-            dialog = QDialog()
-            ui = settings_Dialog()
-            ui.setupUi(dialog)
-            dialog.exec()
+        # if not base.check_main_folder():
+        #     reply = QMessageBox.warning(self.list_files_and_folders, "WARNING!",
+        #                                 "It looks like you don`t yet select main backup folder."
+        #                                 " Please do it now",
+        #                                 QMessageBox.StandardButton.Ok)
+        #     dialog = QDialog()
+        #     ui = settings_Dialog()
+        #     ui.setupUi(dialog)
+        #     dialog.exec()
 
         self.name_item = self.input_name.text()
 
@@ -399,26 +399,34 @@ class AddItemDial01(object):
             if reply == QMessageBox.StandardButton.Yes:
                 base.add_item(self.temp_dict)
                 title = "Congradulations!"
-                main_text = f"Entry with name: '{self.name_item}'\n was changed"
-                self.simple_message_box(title, main_text)
+                main = f"Entry with name: '{self.name_item}'\n was changed"
+                self.simple_info_box(title, main)
             else:
                 return
         else:
             base.add_item(self.temp_dict)
             title = "Congradulations!"
-            main_text = f"Entry with name: {self.name_item} successfully added to backup base'\n"
-            self.simple_message_box(title, main_text)
+            main = f"Entry with name: {self.name_item} successfully added to backup base'\n"
+            self.simple_info_box(title, main)
 
-    def simple_message_box(self, title: str, main_text: str):
-        QMessageBox.information(self.list_files_and_folders, title, main_text,
-                                QMessageBox.StandardButton.Ok)
-
+    def simple_info_box(self, title: str, main: str):
+        msg_box = QMessageBox()
+        msg_box.setStyleSheet("background-color: rgb(30, 30, 30);\n"
+                              "color: rgb(230, 230, 230);\n"
+                              "font: 300 16pt \"Lexend Light\";"
+                              "StandardButton {color:red; font-family: Arial; font-size:8px;}")
+        msg_box.setText(main)
+        msg_box.setWindowTitle(title)
+        msg_box.exec()
+        # TODO change style of info dialog window
+        # msg_box.information(self.list_files_and_folders, title, main)
 
     def view_list_bt(self):
         dialog = QDialog()
         ui = D_01_1_ViewDialog()
         ui.setupUi(dialog)
         dialog.exec()
+
     #         pass
 
     def save_backup_list_bt(self):
@@ -426,11 +434,12 @@ class AddItemDial01(object):
         ui = D_01_2_Sel_File_Name_Dialog()
         ui.setupUi(dialog)
         dialog.exec()
+
     #     if base.list_saved:
     #         base.save_base_to_disk()
     #         title = "Congradulations!"
-    #         main_text = f"Backup list {self.name_item} successfully saved"
-    #         self.simple_message_box(title, main_text)
+    #         main = f"Backup list {self.name_item} successfully saved"
+    #         self.simple_message_box(title, main)
     #     else:
     # TODO end save list dialog
 

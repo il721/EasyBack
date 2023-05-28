@@ -45,7 +45,10 @@ class Ui_MainWindow(object):
                                  "background-color: #2B79C2;\n"
                                  "border-color: rgb(230, 230, 230);\n"
                                  "}\n"
-                                 "")
+                                 "\n"
+                                 "QMessageBox{\n"
+                                 "background-color: rgb(255, 255, 0);\n"
+                                 "}")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.centralwidget.setMinimumSize(QSize(600, 800))
