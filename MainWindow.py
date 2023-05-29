@@ -9,6 +9,7 @@ from d_MainWindow import Ui_MainWindow
 from d__01_add_item import AddItemDial01
 from d__07_settings import settings_Dialog
 import all_styles as st
+from main_base import MainBase
 
 
 class MainWindow(QMainWindow):
@@ -57,14 +58,21 @@ class MainWindow(QMainWindow):
         sys.exit()
 
 
-def msg_info(title: str, main: str):
+def msg_one_button(title: str, main: str, type_of_msg: str):
+    """
+    Standart MessageBox dialog. type_of_msg is "info" or "warm" for corresponding dialog type.
+    Button is "Ok"
+
+    :param title:
+    :param main:
+    :param type_of_msg:
+    :return:
+    """
     msg_box = QMessageBox()
-    # msg_box.setStyleSheet("background-color: rgb(30, 30, 30);\n"
-    #                       "color: rgb(230, 230, 230);\n"
-    #                       "font: 300 19pt \"Lexend Light\";")
     msg_box.setStyleSheet(st.MSG_MAIN)
 
-    icon = QtGui.QPixmap(":/icon/icons/GREY/msg_info.svg")
+    msg_type = f":/icon/icons/GREY/msg_{type_of_msg}.svg"
+    icon = QtGui.QPixmap(msg_type)
     msg_box.setIconPixmap(icon)
     msg_box.setText(main)
     msg_box.setWindowTitle(title)
@@ -80,6 +88,55 @@ def msg_info(title: str, main: str):
     # msg_box.setStandardButtons(msg_box.StandardButton.Yes | msg_box.StandardButton.No)
     # ok = msg_box.button(msg_box.StandardButton.Yes)
     msg_box.exec()
+
+    #
+    # if box.clickedButton() == buttonY:
+    # # YES pressed
+    # elif box.clickedButton() == buttonN:
+    # # NO pressed
+
+    # msg_box.information(self.list_files_and_folders, title, main)
+
+
+def msg_two_button(title: str, main: str) -> bool:
+    """
+    Standart MessageBox dialog with two buttons "Yes" and "No".
+    Return True if button "Yes" pressed, else, if "No" pressed return False
+    :param title:
+    :param main:
+    :return:
+    """
+    msg_box = QMessageBox()
+    msg_box.setStyleSheet(st.MSG_MAIN)
+
+    icon = QtGui.QPixmap(":/icon/icons/GREY/msg_question.svg")
+    msg_box.setIconPixmap(icon)
+    msg_box.setText(main)
+    msg_box.setWindowTitle(title)
+
+    ok = QPushButton()
+    ok.setStyleSheet(st.MSG_PUSH_BUTTON)
+    ok.setText("  Yes")
+    ok.setMinimumSize(QSize(110, 50))
+    icon1 = QIcon()
+    icon1.addFile(u":/icon/icons/GREY/ok.svg", QSize(), QIcon.Normal, QIcon.Off)
+    ok.setIcon(icon1)
+    ok.setIconSize(QSize(35, 35))
+    cancel = QPushButton()
+    cancel.setStyleSheet(st.MSG_PUSH_BUTTON)
+    cancel.setText("  No")
+    cancel.setMinimumSize(QSize(110, 50))
+    icon2 = QIcon()
+    icon2.addFile(u":/icon/icons/GREY/cancel.svg", QSize(), QIcon.Normal, QIcon.Off)
+    cancel.setIcon(icon2)
+    cancel.setIconSize(QSize(35, 35))
+    msg_box.addButton(ok, msg_box.ButtonRole.YesRole)
+    msg_box.addButton(cancel, msg_box.ButtonRole.NoRole)
+    msg_box.exec()
+    if msg_box.clickedButton() == ok:
+        return True
+    elif msg_box.clickedButton() == cancel:
+        return False
 
     #
     # if box.clickedButton() == buttonY:

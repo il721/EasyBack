@@ -342,18 +342,17 @@ class AddItemDial01(object):
         Remove line from ListWidget and backup_list_item when it selected in ListWidget
         """
         row = self.list_files_and_folders.currentRow()
-
-        # icon1 = QPixmap()
-        # icon1.load(u":/icon/icons/GREY/info.svg")
-        # QMessageBox.setIconPixmap(icon1)
-        # self.add_file.setIconSize(QSize(35, 35))
-
-        reply = QMessageBox.question(self.list_files_and_folders, "Remove Item",
-                                     "Do You Want to Remove Item?",
-                                     QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
-        if reply == QMessageBox.StandardButton.Yes:
+        reply = mw.msg_two_button("Remove Item", "Do You Want to Remove Item?")
+        if reply:
             removed_row = self.list_files_and_folders.takeItem(row)
             self.list_of_file.remove(removed_row.text())
+
+        # reply = QMessageBox.question(self.list_files_and_folders, "Remove Item",
+        #                              "Do You Want to Remove Item?",
+        #                              QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
+        # if reply == QMessageBox.StandardButton.Yes:
+        #     removed_row = self.list_files_and_folders.takeItem(row)
+        #     self.list_of_file.remove(removed_row.text())
         # TODO change style of question message
 
     def add_item_01_bt(self):
@@ -381,31 +380,33 @@ class AddItemDial01(object):
 
         # check for empty fields
         if not self.name_item or not self.list_of_file:
-            QMessageBox.warning(self.list_files_and_folders, "WARNING!", "Some fields are empty",
-                                QMessageBox.StandardButton.Ok)
+            mw.msg_one_button("WARNING!", "Some fields are empty", 'warn')
             return
 
         # check name is already exist in backup base
         self.name_item = f"{self.suffix}{self.input_name.text()}"
         self.temp_dict[self.name_item] = tuple(self.list_of_file)
         if base.check_name(self.name_item):
-            reply = QMessageBox.question(self.list_files_and_folders, "WARNING!",
-                                         "This name is already exist in base and wil be "
-                                         "owerwrited if you press 'Yes'\n Press 'No' to cancel",
-                                         QMessageBox.StandardButton.Yes |
-                                         QMessageBox.StandardButton.No)
-            if reply == QMessageBox.StandardButton.Yes:
+            reply = mw.msg_two_button("WARNING!",
+                                      "This name is already exist and wil be owerwrited if you "
+                                      " press 'Yes'\n Press 'No' to cancel")
+            # reply = QMessageBox.question(self.list_files_and_folders, "WARNING!",
+            #                              "This name is already exist in base and wil be "
+            #                              "owerwrited if you press 'Yes'\n Press 'No' to cancel",
+            #                              QMessageBox.StandardButton.Yes |
+            #                              QMessageBox.StandardButton.No)
+            if reply:
                 base.add_item(self.temp_dict)
                 title = "Congradulations!"
                 main = f"Entry with name: '{self.name_item}'\n was changed"
-                mw.msg_info(title, main)
+                mw.msg_one_button(title, main)
             else:
                 return
         else:
             base.add_item(self.temp_dict)
             title = "Congradulations!"
             main = f"Entry with name {self.name_item} successfully added to backup base'\n"
-            mw.msg_info(title, main)
+            mw.msg_one_button(title, main, 'info')
 
     def view_list_bt(self):
         dialog = QDialog()
