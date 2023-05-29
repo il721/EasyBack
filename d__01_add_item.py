@@ -1,13 +1,11 @@
 from PySide6.QtCore import (QCoreApplication, QMetaObject, QSize, )
 from PySide6.QtGui import (QFont, QIcon, QPixmap)
-from PySide6.QtWidgets import (QDialog, QFileDialog, QFrame, QHBoxLayout,
-                               QLabel,
-                               QLineEdit,
+from PySide6.QtWidgets import (QDialog, QFileDialog, QFrame, QHBoxLayout, QLabel, QLineEdit,
                                QListWidget, QPushButton, QRadioButton, QSizePolicy, QSpacerItem,
-                               QVBoxLayout,
-                               QMessageBox, )
+                               QVBoxLayout, QMessageBox, )
 import dop_win_rc
 from main_base import MainBase
+import MainWindow as mw
 from d__07_settings import settings_Dialog
 from d__01_1__view_buckup_file import D_01_1_ViewDialog
 from d__01_2__sel_buckup_file_name import D_01_2_Sel_File_Name_Dialog
@@ -400,24 +398,24 @@ class AddItemDial01(object):
                 base.add_item(self.temp_dict)
                 title = "Congradulations!"
                 main = f"Entry with name: '{self.name_item}'\n was changed"
-                self.simple_info_box(title, main)
+                mw.message_info(title, main)
             else:
                 return
         else:
             base.add_item(self.temp_dict)
             title = "Congradulations!"
             main = f"Entry with name: {self.name_item} successfully added to backup base'\n"
-            self.simple_info_box(title, main)
+            mw.message_info(title, main)
 
-    def simple_info_box(self, title: str, main: str):
-        msg_box = QMessageBox()
-        msg_box.setStyleSheet("background-color: rgb(30, 30, 30);\n"
-                              "color: rgb(230, 230, 230);\n"
-                              "font: 300 16pt \"Lexend Light\";"
-                              "StandardButton {color:red; font-family: Arial; font-size:8px;}")
-        msg_box.setText(main)
-        msg_box.setWindowTitle(title)
-        msg_box.exec()
+    # def simple_info_box(self, title: str, main: str):
+    #     msg_box = QMessageBox()
+    #     msg_box.setStyleSheet("background-color: rgb(30, 30, 30);\n"
+    #                           "color: rgb(230, 230, 230);\n"
+    #                           "font: 300 16pt \"Lexend Light\";"
+    #                           "StandardButton {color:red; font-family: Arial; font-size:8px;}")
+    #     msg_box.setText(main)
+    #     msg_box.setWindowTitle(title)
+    #     msg_box.exec()
         # TODO change style of info dialog window
         # msg_box.information(self.list_files_and_folders, title, main)
 

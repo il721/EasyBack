@@ -504,7 +504,7 @@ border: no
         </size>
        </property>
        <property name="text">
-        <string>   Main Menu</string>
+        <string>    Cancel</string>
        </property>
        <property name="icon">
         <iconset resource="dop_win_rc.qrc">

@@ -1,6 +1,9 @@
 import sys
 
-from PySide6.QtWidgets import QFileDialog, QMainWindow, QDialog
+from PySide6 import QtGui
+from PySide6.QtCore import QSize
+from PySide6.QtGui import QIcon
+from PySide6.QtWidgets import QFileDialog, QMainWindow, QDialog, QMessageBox
 from d_MainWindow import Ui_MainWindow
 from d__01_add_item import AddItemDial01
 from d__07_settings import settings_Dialog
@@ -52,46 +55,17 @@ class MainWindow(QMainWindow):
         sys.exit()
 
 
-class AddItem(MainWindow):
-
-    def __init__(self):
-        super().__init__()
-        self.ui = AddItemDial01()
-        self.ui.setupUi(self)
-        self.directory_list: list = []
-        self.file_list: list = []
-
-        # self.ui.translit_button.setShortcut('Ctrl+t')
-        self.ui.add_folder.clicked.connect(self.remove_item)
-        # self.ui.add_file.clicked.connect(self.open_file_dialog)
-
-    def cancel_01_05(self):
-        dialog = QDialog()
-        ui = Ui_Dialog_ok()
-        # ui = AddItemDial01()
-        ui.setupUi(dialog)
-        dialog.close()
-
-    # def open_directory_dialog(self):
-    #     dialog = QFileDialog(self)
-    #     dialog.setDirectory(r'F:')
-    #     dialog.setFileMode(QFileDialog.FileMode.Directory)
-    #     dialog.setViewMode(QFileDialog.ViewMode.List)
-    #     if dialog.exec():
-    #         filenames = dialog.selectedFiles()
-    #         if filenames:
-    #             self.directory_list.extend(filenames)
-
-    # def open_file_dialog(self):
-    #     dialog = QFileDialog(self)
-    #     dialog.setDirectory(r'F:')
-    #     dialog.setFileMode(QFileDialog.FileMode.ExistingFiles)
-    #     dialog.setViewMode(QFileDialog.ViewMode.List)
-    #     dialog.setViewMode(QFileDialog.ViewMode.List)
-    #     if dialog.exec():
-    #         filenames = dialog.selectedFiles()
-    #         if filenames:
-    #             self.file_list.extend(filenames)
-
-    def show_files_and_dir(self):
-        pass
+def message_info(title: str, main: str):
+    msg_box = QMessageBox()
+    msg_box.setStyleSheet("background-color: rgb(30, 30, 30);\n"
+                          "color: rgb(230, 230, 230);\n"
+                          "font: 300 16pt \"Lexend Light\";"
+                          "StandardButton {color:red; font-family: Arial; font-size:8px;}")
+    # icon.addFile(u":/icon/icons/GREY/folder.svg", QSize(), QIcon.Normal, QIcon.Off)
+    icon = QtGui.QPixmap(":/icon/icons/GREY/folder.svg")
+    msg_box.setIconPixmap(icon)
+    msg_box.setText(main)
+    msg_box.setWindowTitle(title)
+    msg_box.exec()
+    # TODO change style of info dialog window
+    # msg_box.information(self.list_files_and_folders, title, main)

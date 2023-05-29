@@ -1,13 +1,7 @@
-from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
-                            QMetaObject, QObject, QPoint, QRect,
-                            QSize, QTime, QUrl, Qt)
-from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
-                           QFont, QFontDatabase, QGradient, QIcon,
-                           QImage, QKeySequence, QLinearGradient, QPainter,
-                           QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QDialog, QFileDialog, QFrame, QHBoxLayout,
-                               QLabel, QLineEdit, QPushButton, QRadioButton,
-                               QSizePolicy, QSpacerItem, QToolButton, QVBoxLayout, QWidget)
+from PySide6.QtCore import (QCoreApplication, QMetaObject, QRect, QSize, )
+from PySide6.QtGui import (QIcon, )
+from PySide6.QtWidgets import (QFileDialog, QFrame, QHBoxLayout, QLabel, QLineEdit, QPushButton,
+                               QRadioButton, QSizePolicy, QSpacerItem, QToolButton, QVBoxLayout, )
 import dop_win_rc
 from main_base import MainBase
 
@@ -248,6 +242,8 @@ class settings_Dialog(object):
 
         # ************************  MY CODE (buttons)  *********************************************
         self.sel_main_folder.clicked.connect(self.sel_main_folder_bt)
+        self.save_settings.clicked.connect(self.save_settings_bt)
+        self.main_settings.clicked.connect(Dialog.reject)
         # ------------------------------------------------------------------------------------------
 
     # setupUi
@@ -295,6 +291,10 @@ class settings_Dialog(object):
         if dialog.exec():
             filenames = dialog.selectedFiles()
             if filenames:
-                MainBase.path_of_backup_folder = "".join(filenames)
-                print(MainBase.path_of_backup_folder)
+                MainBase.path_of_main_folder = "".join(filenames)
+                print(MainBase.path_of_main_folder)
                 # TODO Add "create default folders" check button
+
+    @staticmethod
+    def save_settings_bt():
+        MainBase.save_settings()
