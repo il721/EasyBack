@@ -404,20 +404,8 @@ class AddItemDial01(object):
         else:
             base.add_item(self.temp_dict)
             title = "Congradulations!"
-            main = f"Entry with name: {self.name_item} successfully added to backup base'\n"
+            main = f"Entry with name {self.name_item} successfully added to backup base'\n"
             mw.msg_info(title, main)
-
-    # def simple_info_box(self, title: str, main: str):
-    #     msg_box = QMessageBox()
-    #     msg_box.setStyleSheet("background-color: rgb(30, 30, 30);\n"
-    #                           "color: rgb(230, 230, 230);\n"
-    #                           "font: 300 16pt \"Lexend Light\";"
-    #                           "StandardButton {color:red; font-family: Arial; font-size:8px;}")
-    #     msg_box.setText(main)
-    #     msg_box.setWindowTitle(title)
-    #     msg_box.exec()
-        # TODO change style of info dialog window
-        # msg_box.information(self.list_files_and_folders, title, main)
 
     def view_list_bt(self):
         dialog = QDialog()

@@ -3,10 +3,12 @@ import sys
 from PySide6 import QtGui
 from PySide6.QtCore import QSize
 from PySide6.QtGui import QIcon
-from PySide6.QtWidgets import QFileDialog, QMainWindow, QDialog, QMessageBox
+from PySide6.QtWidgets import QAbstractButton, QFileDialog, QMainWindow, QDialog, QMessageBox, \
+    QPushButton
 from d_MainWindow import Ui_MainWindow
 from d__01_add_item import AddItemDial01
 from d__07_settings import settings_Dialog
+import all_styles as st
 
 
 class MainWindow(QMainWindow):
@@ -57,14 +59,32 @@ class MainWindow(QMainWindow):
 
 def msg_info(title: str, main: str):
     msg_box = QMessageBox()
-    msg_box.setStyleSheet("background-color: rgb(30, 30, 30);\n"
-                          "color: rgb(230, 230, 230);\n"
-                          "font: 300 16pt \"Lexend Light\";"
-                          "StandardButton {color:red; font-family: Arial; font-size:8px;}")
+    # msg_box.setStyleSheet("background-color: rgb(30, 30, 30);\n"
+    #                       "color: rgb(230, 230, 230);\n"
+    #                       "font: 300 19pt \"Lexend Light\";")
+    msg_box.setStyleSheet(st.MSG_MAIN)
+
     icon = QtGui.QPixmap(":/icon/icons/GREY/msg_info.svg")
     msg_box.setIconPixmap(icon)
     msg_box.setText(main)
     msg_box.setWindowTitle(title)
+
+    ok = QPushButton()
+    ok.setStyleSheet(st.MSG_PUSH_BUTTON)
+    ok.setText("Ok")
+    ok.setMinimumSize(QSize(60, 50))
+    # icon1 = QIcon()
+    # icon1.addFile(u":/icon/icons/GREY/ok.svg", QSize(), QIcon.Normal, QIcon.Off)
+    # ok.setIcon(icon1)
+    msg_box.addButton(ok, msg_box.ButtonRole.YesRole)
+    # msg_box.setStandardButtons(msg_box.StandardButton.Yes | msg_box.StandardButton.No)
+    # ok = msg_box.button(msg_box.StandardButton.Yes)
     msg_box.exec()
-    # TODO change style of info dialog window
+
+    #
+    # if box.clickedButton() == buttonY:
+    # # YES pressed
+    # elif box.clickedButton() == buttonN:
+    # # NO pressed
+
     # msg_box.information(self.list_files_and_folders, title, main)
