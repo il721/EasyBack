@@ -55,14 +55,13 @@ class MainWindow(QMainWindow):
         sys.exit()
 
 
-def message_info(title: str, main: str):
+def msg_info(title: str, main: str):
     msg_box = QMessageBox()
     msg_box.setStyleSheet("background-color: rgb(30, 30, 30);\n"
                           "color: rgb(230, 230, 230);\n"
                           "font: 300 16pt \"Lexend Light\";"
                           "StandardButton {color:red; font-family: Arial; font-size:8px;}")
-    # icon.addFile(u":/icon/icons/GREY/folder.svg", QSize(), QIcon.Normal, QIcon.Off)
-    icon = QtGui.QPixmap(":/icon/icons/GREY/folder.svg")
+    icon = QtGui.QPixmap(":/icon/icons/GREY/msg_info.svg")
     msg_box.setIconPixmap(icon)
     msg_box.setText(main)
     msg_box.setWindowTitle(title)

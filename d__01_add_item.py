@@ -398,14 +398,14 @@ class AddItemDial01(object):
                 base.add_item(self.temp_dict)
                 title = "Congradulations!"
                 main = f"Entry with name: '{self.name_item}'\n was changed"
-                mw.message_info(title, main)
+                mw.msg_info(title, main)
             else:
                 return
         else:
             base.add_item(self.temp_dict)
             title = "Congradulations!"
             main = f"Entry with name: {self.name_item} successfully added to backup base'\n"
-            mw.message_info(title, main)
+            mw.msg_info(title, main)
 
     # def simple_info_box(self, title: str, main: str):
     #     msg_box = QMessageBox()

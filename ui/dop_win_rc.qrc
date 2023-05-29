@@ -1,5 +1,8 @@
 <RCC>
   <qresource prefix="icon">
+    <file>icons/GREY/msg_info.svg</file>
+    <file>icons/GREY/msg_question.svg</file>
+    <file>icons/GREY/msg_warn.svg</file>
     <file>icons/GREY/info_invert.svg</file>
     <file>icons/GREY/view.svg</file>
     <file>icons/GREY/load.svg</file>

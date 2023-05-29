@@ -287,6 +287,6 @@ class Ui_Dialog(object):
         self.settings_folder.setText(QCoreApplication.translate("Dialog", u"Select \"SETTINGS\" Folder", None))
         self.data_folder.setText(QCoreApplication.translate("Dialog", u"Select \"DATA\" Folder", None))
         self.save_settings.setText(QCoreApplication.translate("Dialog", u"   Save Settings", None))
-        self.main_settings.setText(QCoreApplication.translate("Dialog", u"   Main Menu", None))
+        self.main_settings.setText(QCoreApplication.translate("Dialog", u"    Cancel", None))
     # retranslateUi
 
