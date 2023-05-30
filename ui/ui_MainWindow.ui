@@ -136,7 +136,7 @@ background-color: rgb(255, 255, 0);
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="remove_item">
+      <widget class="QPushButton" name="edit_list">
        <property name="enabled">
         <bool>true</bool>
        </property>
@@ -173,16 +173,16 @@ background-color: rgb(255, 255, 0);
         <string notr="true"/>
        </property>
        <property name="text">
-        <string>        Remove Item From Base</string>
+        <string>                     Edit Backup List</string>
        </property>
        <property name="icon">
         <iconset resource="main_rc.qrc">
-         <normaloff>:/icons_grey/icons/GREY/gr_remove.svg</normaloff>:/icons_grey/icons/GREY/gr_remove.svg</iconset>
+         <normaloff>:/icons_grey/icons/GREY/edit_list_main.svg</normaloff>:/icons_grey/icons/GREY/edit_list_main.svg</iconset>
        </property>
        <property name="iconSize">
         <size>
-         <width>70</width>
-         <height>70</height>
+         <width>77</width>
+         <height>77</height>
         </size>
        </property>
       </widget>

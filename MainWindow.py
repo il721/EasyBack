@@ -21,7 +21,7 @@ class MainWindow(QMainWindow):
         # self.file_list = QListWidget(self)
         # self.ui.translit_button.setShortcut('Ctrl+t')
         self.ui.add_item.clicked.connect(self.add_item_01)
-        self.ui.remove_item.clicked.connect(self.remove_item)
+        self.ui.edit_list.clicked.connect(self.edit_list)
 
         self.ui.settings.clicked.connect(self.settings_bt)
         self.ui.exit.clicked.connect(self.exit)
@@ -42,7 +42,7 @@ class MainWindow(QMainWindow):
         ui.setupUi_(dialog)
         dialog.exec()
 
-    def remove_item(self):
+    def edit_list(self):
         """
         Open 'Edit Item In Base' dialog window
         """

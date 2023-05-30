@@ -9,15 +9,16 @@
 ################################################################################
 
 from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
-    QMetaObject, QObject, QPoint, QRect,
-    QSize, QTime, QUrl, Qt)
+                            QMetaObject, QObject, QPoint, QRect,
+                            QSize, QTime, QUrl, Qt)
 from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
-    QFont, QFontDatabase, QGradient, QIcon,
-    QImage, QKeySequence, QLinearGradient, QPainter,
-    QPalette, QPixmap, QRadialGradient, QTransform)
+                           QFont, QFontDatabase, QGradient, QIcon,
+                           QImage, QKeySequence, QLinearGradient, QPainter,
+                           QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QHBoxLayout, QLayout, QMainWindow,
-    QPushButton, QSizePolicy, QVBoxLayout, QWidget)
+                               QPushButton, QSizePolicy, QVBoxLayout, QWidget)
 import main_rc_rc
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -27,35 +28,35 @@ class Ui_MainWindow(object):
         MainWindow.setMaximumSize(QSize(600, 800))
         MainWindow.setWindowOpacity(1.000000000000000)
         MainWindow.setStyleSheet(u"*{\n"
-"	background-color: rgb(30, 30, 30);\n"
-"}\n"
-"\n"
-"\n"
-"QPushButton {\n"
-"border: 2px solid;\n"
-"color: rgb(230, 230, 230);\n"
-"border-color: rgb(110, 110, 110);\n"
-"border-radius: 20px;\n"
-"background-color: rgba(60,60, 60, 80);\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"color: #2B79C2;\n"
-"border: 3px solid;\n"
-"background-color: rgba(30, 30, 30, 180);\n"
-"border-color: rgb(150,150, 150);\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"color: rgb(30, 30, 30);\n"
-"border: 2px solid;\n"
-"background-color: #2B79C2;\n"
-"border-color: rgb(230, 230, 230);\n"
-"}\n"
-"\n"
-"QMessageBox{\n"
-"background-color: rgb(255, 255, 0);\n"
-"}")
+                                 "	background-color: rgb(30, 30, 30);\n"
+                                 "}\n"
+                                 "\n"
+                                 "\n"
+                                 "QPushButton {\n"
+                                 "border: 2px solid;\n"
+                                 "color: rgb(230, 230, 230);\n"
+                                 "border-color: rgb(110, 110, 110);\n"
+                                 "border-radius: 20px;\n"
+                                 "background-color: rgba(60,60, 60, 80);\n"
+                                 "}\n"
+                                 "\n"
+                                 "QPushButton:hover {\n"
+                                 "color: #2B79C2;\n"
+                                 "border: 3px solid;\n"
+                                 "background-color: rgba(30, 30, 30, 180);\n"
+                                 "border-color: rgb(150,150, 150);\n"
+                                 "}\n"
+                                 "\n"
+                                 "QPushButton:pressed {\n"
+                                 "color: rgb(30, 30, 30);\n"
+                                 "border: 2px solid;\n"
+                                 "background-color: #2B79C2;\n"
+                                 "border-color: rgb(230, 230, 230);\n"
+                                 "}\n"
+                                 "\n"
+                                 "QMessageBox{\n"
+                                 "background-color: rgb(255, 255, 0);\n"
+                                 "}")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.centralwidget.setMinimumSize(QSize(600, 800))
@@ -93,22 +94,23 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addWidget(self.add_item)
 
-        self.remove_item = QPushButton(self.layoutWidget)
-        self.remove_item.setObjectName(u"remove_item")
-        self.remove_item.setEnabled(True)
-        sizePolicy.setHeightForWidth(self.remove_item.sizePolicy().hasHeightForWidth())
-        self.remove_item.setSizePolicy(sizePolicy)
-        self.remove_item.setMinimumSize(QSize(559, 90))
-        self.remove_item.setMaximumSize(QSize(559, 45))
-        self.remove_item.setFont(font)
-        self.remove_item.setLayoutDirection(Qt.LeftToRight)
-        self.remove_item.setStyleSheet(u"")
+        self.edit_list = QPushButton(self.layoutWidget)
+        self.edit_list.setObjectName(u"edit_list")
+        self.edit_list.setEnabled(True)
+        sizePolicy.setHeightForWidth(self.edit_list.sizePolicy().hasHeightForWidth())
+        self.edit_list.setSizePolicy(sizePolicy)
+        self.edit_list.setMinimumSize(QSize(559, 90))
+        self.edit_list.setMaximumSize(QSize(559, 45))
+        self.edit_list.setFont(font)
+        self.edit_list.setLayoutDirection(Qt.LeftToRight)
+        self.edit_list.setStyleSheet(u"")
         icon1 = QIcon()
-        icon1.addFile(u":/icons_grey/icons/GREY/gr_remove.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.remove_item.setIcon(icon1)
-        self.remove_item.setIconSize(QSize(70, 70))
+        icon1.addFile(u":/icons_grey/icons/GREY/edit_list_main.svg", QSize(), QIcon.Normal,
+                      QIcon.Off)
+        self.edit_list.setIcon(icon1)
+        self.edit_list.setIconSize(QSize(77, 77))
 
-        self.verticalLayout.addWidget(self.remove_item)
+        self.verticalLayout.addWidget(self.edit_list)
 
         self.backup_all = QPushButton(self.layoutWidget)
         self.backup_all.setObjectName(u"backup_all")
@@ -222,7 +224,6 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout.addWidget(self.exit)
 
-
         self.verticalLayout.addLayout(self.horizontalLayout)
 
         MainWindow.setCentralWidget(self.centralwidget)
@@ -230,17 +231,25 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         QMetaObject.connectSlotsByName(MainWindow)
+
     # setupUi
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.add_item.setText(QCoreApplication.translate("MainWindow", u"                    Add Item To Base", None))
-        self.remove_item.setText(QCoreApplication.translate("MainWindow", u"        Remove Item From Base", None))
-        self.backup_all.setText(QCoreApplication.translate("MainWindow", u"                        Back Up All", None))
-        self.backup_selected.setText(QCoreApplication.translate("MainWindow", u"              Back Up Selected", None))
-        self.restore_all.setText(QCoreApplication.translate("MainWindow", u"                          Restore All", None))
-        self.restore_selected.setText(QCoreApplication.translate("MainWindow", u"               Restore Selected", None))
+        self.add_item.setText(
+            QCoreApplication.translate("MainWindow", u"                    Add Item To Base", None))
+        self.edit_list.setText(
+            QCoreApplication.translate("MainWindow", u"                     Edit Backup List",
+                                       None))
+        self.backup_all.setText(
+            QCoreApplication.translate("MainWindow", u"                        Back Up All", None))
+        self.backup_selected.setText(
+            QCoreApplication.translate("MainWindow", u"              Back Up Selected", None))
+        self.restore_all.setText(
+            QCoreApplication.translate("MainWindow", u"                          Restore All",
+                                       None))
+        self.restore_selected.setText(
+            QCoreApplication.translate("MainWindow", u"               Restore Selected", None))
         self.settings.setText(QCoreApplication.translate("MainWindow", u"     Settings", None))
         self.exit.setText(QCoreApplication.translate("MainWindow", u"       Exit", None))
     # retranslateUi
-

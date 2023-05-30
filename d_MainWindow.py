@@ -54,14 +54,14 @@ class Ui_MainWindow(object):
         self.centralwidget.setMinimumSize(QSize(600, 800))
         self.centralwidget.setMaximumSize(QSize(600, 800))
         self.centralwidget.setStyleSheet(u"")
-        self.widget = QWidget(self.centralwidget)
-        self.widget.setObjectName(u"widget")
-        self.widget.setGeometry(QRect(22, 10, 561, 763))
-        self.verticalLayout = QVBoxLayout(self.widget)
+        self.layoutWidget = QWidget(self.centralwidget)
+        self.layoutWidget.setObjectName(u"layoutWidget")
+        self.layoutWidget.setGeometry(QRect(22, 10, 561, 763))
+        self.verticalLayout = QVBoxLayout(self.layoutWidget)
         self.verticalLayout.setSpacing(15)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
-        self.add_item = QPushButton(self.widget)
+        self.add_item = QPushButton(self.layoutWidget)
         self.add_item.setObjectName(u"add_item")
         self.add_item.setEnabled(True)
         sizePolicy = QSizePolicy(QSizePolicy.Maximum, QSizePolicy.Maximum)
@@ -86,24 +86,25 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addWidget(self.add_item)
 
-        self.remove_item = QPushButton(self.widget)
-        self.remove_item.setObjectName(u"remove_item")
-        self.remove_item.setEnabled(True)
-        sizePolicy.setHeightForWidth(self.remove_item.sizePolicy().hasHeightForWidth())
-        self.remove_item.setSizePolicy(sizePolicy)
-        self.remove_item.setMinimumSize(QSize(559, 90))
-        self.remove_item.setMaximumSize(QSize(559, 45))
-        self.remove_item.setFont(font)
-        self.remove_item.setLayoutDirection(Qt.LeftToRight)
-        self.remove_item.setStyleSheet(u"")
+        self.edit_list = QPushButton(self.layoutWidget)
+        self.edit_list.setObjectName(u"edit_list")
+        self.edit_list.setEnabled(True)
+        sizePolicy.setHeightForWidth(self.edit_list.sizePolicy().hasHeightForWidth())
+        self.edit_list.setSizePolicy(sizePolicy)
+        self.edit_list.setMinimumSize(QSize(559, 90))
+        self.edit_list.setMaximumSize(QSize(559, 45))
+        self.edit_list.setFont(font)
+        self.edit_list.setLayoutDirection(Qt.LeftToRight)
+        self.edit_list.setStyleSheet(u"")
         icon1 = QIcon()
-        icon1.addFile(u":/icons_grey/icons/GREY/gr_remove.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.remove_item.setIcon(icon1)
-        self.remove_item.setIconSize(QSize(70, 70))
+        icon1.addFile(u":/icons_grey/icons/GREY/edit_list_main.svg", QSize(), QIcon.Normal,
+                      QIcon.Off)
+        self.edit_list.setIcon(icon1)
+        self.edit_list.setIconSize(QSize(77, 77))
 
-        self.verticalLayout.addWidget(self.remove_item)
+        self.verticalLayout.addWidget(self.edit_list)
 
-        self.backup_all = QPushButton(self.widget)
+        self.backup_all = QPushButton(self.layoutWidget)
         self.backup_all.setObjectName(u"backup_all")
         self.backup_all.setEnabled(True)
         sizePolicy.setHeightForWidth(self.backup_all.sizePolicy().hasHeightForWidth())
@@ -120,7 +121,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addWidget(self.backup_all)
 
-        self.backup_selected = QPushButton(self.widget)
+        self.backup_selected = QPushButton(self.layoutWidget)
         self.backup_selected.setObjectName(u"backup_selected")
         self.backup_selected.setEnabled(True)
         sizePolicy.setHeightForWidth(self.backup_selected.sizePolicy().hasHeightForWidth())
@@ -137,7 +138,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addWidget(self.backup_selected)
 
-        self.restore_all = QPushButton(self.widget)
+        self.restore_all = QPushButton(self.layoutWidget)
         self.restore_all.setObjectName(u"restore_all")
         self.restore_all.setEnabled(True)
         sizePolicy.setHeightForWidth(self.restore_all.sizePolicy().hasHeightForWidth())
@@ -154,7 +155,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addWidget(self.restore_all)
 
-        self.restore_selected = QPushButton(self.widget)
+        self.restore_selected = QPushButton(self.layoutWidget)
         self.restore_selected.setObjectName(u"restore_selected")
         self.restore_selected.setEnabled(True)
         sizePolicy.setHeightForWidth(self.restore_selected.sizePolicy().hasHeightForWidth())
@@ -176,7 +177,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.horizontalLayout.setSizeConstraint(QLayout.SetDefaultConstraint)
         self.horizontalLayout.setContentsMargins(-1, 50, -1, -1)
-        self.settings = QPushButton(self.widget)
+        self.settings = QPushButton(self.layoutWidget)
         self.settings.setObjectName(u"settings")
         self.settings.setEnabled(True)
         sizePolicy.setHeightForWidth(self.settings.sizePolicy().hasHeightForWidth())
@@ -198,7 +199,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout.addWidget(self.settings)
 
-        self.exit = QPushButton(self.widget)
+        self.exit = QPushButton(self.layoutWidget)
         self.exit.setObjectName(u"exit")
         self.exit.setEnabled(True)
         sizePolicy.setHeightForWidth(self.exit.sizePolicy().hasHeightForWidth())
@@ -229,8 +230,9 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.add_item.setText(
             QCoreApplication.translate("MainWindow", u"                    Add Item To Base", None))
-        self.remove_item.setText(
-            QCoreApplication.translate("MainWindow", u"        Remove Item From Base", None))
+        self.edit_list.setText(
+            QCoreApplication.translate("MainWindow", u"                     Edit Backup List",
+                                       None))
         self.backup_all.setText(
             QCoreApplication.translate("MainWindow", u"                        Back Up All", None))
         self.backup_selected.setText(
