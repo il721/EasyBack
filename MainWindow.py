@@ -80,7 +80,7 @@ def msg_one_button(title: str, main: str, type_of_msg: str):
     ok = QPushButton()
     ok.setStyleSheet(st.MSG_PUSH_BUTTON)
     ok.setText("Ok")
-    ok.setMinimumSize(QSize(60, 50))
+    ok.setMinimumSize(QSize(80, 50))
     # icon1 = QIcon()
     # icon1.addFile(u":/icon/icons/GREY/ok.svg", QSize(), QIcon.Normal, QIcon.Off)
     # ok.setIcon(icon1)

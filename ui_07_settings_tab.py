@@ -1,89 +1,97 @@
-from PySide6.QtCore import (QCoreApplication, QMetaObject, QRect, QSize, )
-from PySide6.QtGui import (QIcon, )
-from PySide6.QtWidgets import (QFileDialog, QFrame, QHBoxLayout, QLabel, QLineEdit, QPushButton,
-                               QRadioButton, QSizePolicy, QSpacerItem, QTabWidget, QToolButton,
-                               QVBoxLayout, QWidget, )
-import dop_win_rc
-from main_base import MainBase
-import MainWindow as mw
+# -*- coding: utf-8 -*-
 
+################################################################################
+## Form generated from reading UI file 'ui_07_settings_tab.ui'
+##
+## Created by: Qt User Interface Compiler version 6.5.1
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
 
-class settings_Dialog(object):
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+    QFont, QFontDatabase, QGradient, QIcon,
+    QImage, QKeySequence, QLinearGradient, QPainter,
+    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtWidgets import (QApplication, QDialog, QFrame, QHBoxLayout,
+    QLabel, QLineEdit, QPushButton, QRadioButton,
+    QSizePolicy, QSpacerItem, QToolButton, QVBoxLayout,
+    QWidget)
+import dop_win_rc_rc
+
+class Ui_Dialog(object):
     def setupUi(self, Dialog):
         if not Dialog.objectName():
             Dialog.setObjectName(u"Dialog")
-        Dialog.resize(620, 602)
+        Dialog.resize(600, 540)
         sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(Dialog.sizePolicy().hasHeightForWidth())
         Dialog.setSizePolicy(sizePolicy)
-        Dialog.setMinimumSize(QSize(620, 600))
-        Dialog.setMaximumSize(QSize(620, 602))
+        Dialog.setMinimumSize(QSize(600, 540))
+        Dialog.setMaximumSize(QSize(600, 540))
         Dialog.setStyleSheet(u"*{\n"
-                             "background-color: rgb(30, 30, 30);\n"
-                             "font: 16pt \"Lexend Light\";\n"
-                             "border: 1px solid;\n"
-                             "color: rgb(230, 230, 230);\n"
-                             "border-color: #2B79C2;}\n"
-                             "QLabel{\n"
-                             "font: 12pt \"Lexend Light\";\n"
-                             "color: #2B79C2;\n"
-                             "border: no}\n"
-                             "QLineEdit{\n"
-                             "background-color: rgb(30, 30, 30);}\n"
-                             "QFrame{\n"
-                             "border-color: #2B79C2;}\n"
-                             "QPushButton {\n"
-                             "border: 2px solid;\n"
-                             "color: rgb(230, 230, 230);\n"
-                             "border-color: rgb(110, 110, 110);\n"
-                             "border-radius: 15px;\n"
-                             "background-color: rgba(60,60, 60, 80);}\n"
-                             "QPushButton:hover {\n"
-                             "color: #2B79C2;\n"
-                             "border: 3px solid;\n"
-                             "background-color: rgba(30, 30, 30, 180);\n"
-                             "border-color: rgb(150,150, 150);}\n"
-                             "QPushButton:pressed {\n"
-                             "color: rgb(30, 30, 30);\n"
-                             "border: 2px solid;\n"
-                             "background-color: #2B79C2;\n"
-                             "border-color: rgb(230, 230, 230);}\n"
-                             "QRadioButton{\n"
-                             "font: 14pt \"Lexend Light\";\n"
-                             "border: no}\n"
-                             "QToolButton{\n"
-                             "image: url(:/icon/icons/GREY/info_invert.svg);\n"
-                             "border: no}\n"
-                             "QToolButton:hover {\n"
-                             "image: url(:/icon/icons/GREY/info.svg"
-                             ");\n"
-                             "border: no}\n"
-                             "QToolButton:pressed{\n"
-                             "image: url(:/icon/icons/GREY/info_invert.svg);\n"
-                             "border: no}\n"
-                             "QTabBar::tab {\n"
-                             "background:  rgb(60,60, 60);\n"
-                             "font: 12pt \"Lexend Light\";\n"
-                             "color: rgb(150,150, 150);}\n"
-                             "QTabBar::tab:selected {\n"
-                             "background: #2B79C2;\n"
-                             "color: rgb(230, 230, 230)}")
-        self.verticalLayout_3 = QVBoxLayout(Dialog)
-        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
-        self.tabWidget = QTabWidget(Dialog)
-        self.tabWidget.setObjectName(u"tabWidget")
-        self.tabWidget.setMinimumSize(QSize(600, 480))
-        self.tabWidget.setMaximumSize(QSize(16777215, 480))
-        self.tabWidget.setStyleSheet(u"")
-        self.tabWidget.setTabPosition(QTabWidget.North)
-        self.tabWidget.setTabShape(QTabWidget.Rounded)
-        self.tab_main = QWidget()
-        self.tab_main.setObjectName(u"tab_main")
-        self.verticalLayout = QVBoxLayout(self.tab_main)
+"background-color: rgb(30, 30, 30);\n"
+"font: 16pt \"Lexend Light\";\n"
+"border: 1px solid;\n"
+"color: rgb(230, 230, 230);\n"
+"border-color: #2B79C2;\n"
+"}\n"
+"QLabel{\n"
+"font: 12pt \"Lexend Light\";\n"
+"color: #2B79C2;\n"
+"border: no\n"
+"}\n"
+"QLineEdit{\n"
+"background-color: rgb(30, 30, 30);\n"
+"}\n"
+"QFrame{\n"
+"border-color: #2B79C2;\n"
+"}\n"
+"QPushButton {\n"
+"border: 2px solid;\n"
+"color: rgb(230, 230, 230);\n"
+"border-color: rgb(110, 110, 110);\n"
+"border-radius: 15px;\n"
+"background-color: rgba(60,60, 60, 80);\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"color: #2B79C2;\n"
+"border: 3px solid;\n"
+"background-color: rgba(30, 30, 30, 180);\n"
+"border-color: rgb(150,150, 150);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"color: rgb(30, 30, 30);\n"
+"border: 2px solid;\n"
+"background-color: #2B79C2;\n"
+"border-color: rgb(230, 230, 230);\n"
+"}\n"
+"QRadioButton{\n"
+"font: 14pt \"Lexend Light\";\n"
+"border: no\n"
+"}\n"
+"QToolButton{\n"
+"image: url(:/icon/icons/GREY/info_invert.svg);\n"
+"border: no\n"
+"}\n"
+"QToolB"
+                        "utton:hover {\n"
+"image: url(:/icon/icons/GREY/info.svg);\n"
+"border: no\n"
+"}\n"
+"QToolButton:pressed{\n"
+"image: url(:/icon/icons/GREY/info_invert.svg);\n"
+"border: no\n"
+"}")
+        self.verticalLayout = QVBoxLayout(Dialog)
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.checkbox = QFrame(self.tab_main)
+        self.checkbox = QFrame(Dialog)
         self.checkbox.setObjectName(u"checkbox")
         self.checkbox.setMinimumSize(QSize(0, 125))
         self.checkbox.setStyleSheet(u"")
@@ -114,7 +122,7 @@ class settings_Dialog(object):
 
         self.verticalLayout.addWidget(self.checkbox)
 
-        self.sel_main_folder = QPushButton(self.tab_main)
+        self.sel_main_folder = QPushButton(Dialog)
         self.sel_main_folder.setObjectName(u"sel_main_folder")
         sizePolicy1 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         sizePolicy1.setHorizontalStretch(0)
@@ -129,11 +137,11 @@ class settings_Dialog(object):
 
         self.verticalLayout.addWidget(self.sel_main_folder)
 
-        self.verticalSpacer_2 = QSpacerItem(20, 55, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout.addItem(self.verticalSpacer_2)
 
-        self.frame = QFrame(self.tab_main)
+        self.frame = QFrame(Dialog)
         self.frame.setObjectName(u"frame")
         self.frame.setEnabled(True)
         sizePolicy2 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
@@ -165,6 +173,7 @@ class settings_Dialog(object):
 
         self.horizontalLayout_2.addWidget(self.sett_folder)
 
+
         self.verticalLayout_2.addLayout(self.horizontalLayout_2)
 
         self.horizontalLayout_3 = QHBoxLayout()
@@ -183,6 +192,7 @@ class settings_Dialog(object):
         self.sett_folder_2.setMaximumSize(QSize(460, 16777215))
 
         self.horizontalLayout_3.addWidget(self.sett_folder_2)
+
 
         self.verticalLayout_2.addLayout(self.horizontalLayout_3)
 
@@ -211,21 +221,15 @@ class settings_Dialog(object):
 
         self.horizontalLayout_4.addWidget(self.data_folder)
 
+
         self.verticalLayout_2.addLayout(self.horizontalLayout_4)
+
 
         self.verticalLayout.addWidget(self.frame)
 
-        self.tabWidget.addTab(self.tab_main, "")
-        self.tab_appearance = QWidget()
-        self.tab_appearance.setObjectName(u"tab_appearance")
-        self.tab_appearance.setStyleSheet(u"")
-        self.tabWidget.addTab(self.tab_appearance, "")
-
-        self.verticalLayout_3.addWidget(self.tabWidget)
-
         self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.verticalLayout_3.addItem(self.verticalSpacer_3)
+        self.verticalLayout.addItem(self.verticalSpacer_3)
 
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
@@ -257,85 +261,32 @@ class settings_Dialog(object):
 
         self.horizontalLayout.addWidget(self.main_settings)
 
-        self.verticalLayout_3.addLayout(self.horizontalLayout)
+
+        self.verticalLayout.addLayout(self.horizontalLayout)
+
 
         self.retranslateUi(Dialog)
 
-        self.tabWidget.setCurrentIndex(0)
-
         QMetaObject.connectSlotsByName(Dialog)
-
-        # ************************  MY CODE (buttons)  *********************************************
-        self.sel_main_folder.clicked.connect(self.sel_main_folder_bt)
-        self.default_info.clicked.connect(self.default_info_bt)
-        self.select_info.clicked.connect(self.select_info_bt)
-        self.save_settings.clicked.connect(self.save_settings_bt)
-        self.main_settings.clicked.connect(Dialog.reject)
-        # ------------------------------------------------------------------------------------------
-
     # setupUi
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Settings", None))
-        self.label_info_subfolders.setText(QCoreApplication.translate("Dialog",
-                                                                      u"Select what backup subfolders you want to create:",
-                                                                      None))
-        # if QT_CONFIG(tooltip)
-        self.default_folder_rad.setToolTip(QCoreApplication.translate("Dialog",
-                                                                      u"\"SETTINGS\" and \"DATA\" was create automaticly in Main Folder",
-                                                                      None))
-        # endif // QT_CONFIG(tooltip)
-        self.default_folder_rad.setText(
-            QCoreApplication.translate("Dialog", u"Default (Select only Main Backup Folder)", None))
-        # if QT_CONFIG(tooltip)
-        self.select_folders.setToolTip("")
-        # endif // QT_CONFIG(tooltip)
-        self.select_folders.setText(
-            QCoreApplication.translate("Dialog", u"I want to select existing Folders manualy",
-                                       None))
-        self.sel_main_folder.setText(
-            QCoreApplication.translate("Dialog", u"    Select Main Backup Folder", None))
+        self.label_info_subfolders.setText(QCoreApplication.translate("Dialog", u"Select what backup subfolders you want to create:", None))
+#if QT_CONFIG(tooltip)
+        self.default_folder_rad.setToolTip(QCoreApplication.translate("Dialog", u"\"SETTINGS\" and \"DATA\" was create automaticly in Main Folder", None))
+#endif // QT_CONFIG(tooltip)
+        self.default_folder_rad.setText(QCoreApplication.translate("Dialog", u"Default (Select only Main Backup Folder)", None))
+#if QT_CONFIG(tooltip)
+        self.select_folders.setToolTip(QCoreApplication.translate("Dialog", u"\"SETTINGS\" and \"DATA\" was create automaticly in Main Folder", None))
+#endif // QT_CONFIG(tooltip)
+        self.select_folders.setText(QCoreApplication.translate("Dialog", u"I want to select existing Folders manualy", None))
+        self.sel_main_folder.setText(QCoreApplication.translate("Dialog", u"    Select Main Backup Folder", None))
         self.sett_text.setText(QCoreApplication.translate("Dialog", u"SETTINGS:", None))
         self.sett_text_2.setText(QCoreApplication.translate("Dialog", u"DATA:", None))
-        self.settings_folder.setText(
-            QCoreApplication.translate("Dialog", u"Select \"SETTINGS\" Folder", None))
-        self.data_folder.setText(
-            QCoreApplication.translate("Dialog", u"Select \"DATA\" Folder", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_main),
-                                  QCoreApplication.translate("Dialog", u"Main", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_appearance),
-                                  QCoreApplication.translate("Dialog", u"Appearance", None))
+        self.settings_folder.setText(QCoreApplication.translate("Dialog", u"Select \"SETTINGS\" Folder", None))
+        self.data_folder.setText(QCoreApplication.translate("Dialog", u"Select \"DATA\" Folder", None))
         self.save_settings.setText(QCoreApplication.translate("Dialog", u"   Save Settings", None))
         self.main_settings.setText(QCoreApplication.translate("Dialog", u"    Cancel", None))
-
     # retranslateUi
 
-    # ************************    MY CODE    ***************************************************
-    @staticmethod
-    def sel_main_folder_bt():
-        dialog = QFileDialog()
-        dialog.setDirectory(r'F:')
-        dialog.setFileMode(QFileDialog.FileMode.Directory)
-        dialog.setViewMode(QFileDialog.ViewMode.List)
-        if dialog.exec():
-            filenames = dialog.selectedFiles()
-            if filenames:
-                MainBase.path_of_main_folder = "".join(filenames)
-                print(MainBase.path_of_main_folder)
-                # TODO Add "create default folders" check button
-
-    @staticmethod
-    def default_info_bt():
-        title = 'Info'
-        main = 'Folders "SETTINGS" and "DATA" will be created automatically in the Main Folder'
-        mw.msg_one_button(title, main, 'info')
-
-    @staticmethod
-    def select_info_bt():
-        title = 'Info'
-        main = 'You have to choose the folders "SETTINGS" and "DATA" yourself'
-        mw.msg_one_button(title, main, 'info')
-
-    @staticmethod
-    def save_settings_bt():
-        MainBase.save_settings()

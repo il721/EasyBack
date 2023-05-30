@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>600</width>
-    <height>540</height>
+    <width>620</width>
+    <height>602</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -18,14 +18,14 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>600</width>
-    <height>540</height>
+    <width>620</width>
+    <height>600</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>600</width>
-    <height>540</height>
+    <width>620</width>
+    <height>602</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -37,399 +37,437 @@ background-color: rgb(30, 30, 30);
 font: 16pt &quot;Lexend Light&quot;;
 border: 1px solid;
 color: rgb(230, 230, 230);
-border-color: #2B79C2;
-}
+border-color: #2B79C2;}
 QLabel{
 font: 12pt &quot;Lexend Light&quot;;
 color: #2B79C2;
-border: no
-}
+border: no}
 QLineEdit{
-background-color: rgb(30, 30, 30);
-}
+background-color: rgb(30, 30, 30);}
 QFrame{
-border-color: #2B79C2;
-}
+border-color: #2B79C2;}
 QPushButton {
 border: 2px solid;
 color: rgb(230, 230, 230);
 border-color: rgb(110, 110, 110);
 border-radius: 15px;
-background-color: rgba(60,60, 60, 80);
-}
-
+background-color: rgba(60,60, 60, 80);}
 QPushButton:hover {
 color: #2B79C2;
 border: 3px solid;
 background-color: rgba(30, 30, 30, 180);
-border-color: rgb(150,150, 150);
-}
-
+border-color: rgb(150,150, 150);}
 QPushButton:pressed {
 color: rgb(30, 30, 30);
 border: 2px solid;
 background-color: #2B79C2;
-border-color: rgb(230, 230, 230);
-}
+border-color: rgb(230, 230, 230);}
 QRadioButton{
 font: 14pt &quot;Lexend Light&quot;;
-border: no
-}
+border: no}
 QToolButton{
 image: url(:/icon/icons/GREY/info_invert.svg);
-border: no
-}
+border: no}
 QToolButton:hover {
 image: url(:/icon/icons/GREY/info.svg);
-border: no
-}
+border: no}
 QToolButton:pressed{
 image: url(:/icon/icons/GREY/info_invert.svg);
-border: no
-}</string>
+border: no}
+QTabBar::tab {
+background:  rgb(60,60, 60);
+font: 12pt &quot;Lexend Light&quot;;
+color: rgb(150,150, 150);}
+QTabBar::tab:selected {
+background: #2B79C2;
+color: rgb(230, 230, 230)}</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
+  <layout class="QVBoxLayout" name="verticalLayout_3">
    <item>
-    <widget class="QFrame" name="checkbox">
+    <widget class="QTabWidget" name="tabWidget">
      <property name="minimumSize">
       <size>
-       <width>0</width>
-       <height>125</height>
-      </size>
-     </property>
-     <property name="styleSheet">
-      <string notr="true"/>
-     </property>
-     <widget class="QLabel" name="label_info_subfolders">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>541</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
-      <property name="text">
-       <string>Select what backup subfolders you want to create:</string>
-      </property>
-     </widget>
-     <widget class="QRadioButton" name="default_folder_rad">
-      <property name="geometry">
-       <rect>
-        <x>11</x>
-        <y>36</y>
-        <width>385</width>
-        <height>24</height>
-       </rect>
-      </property>
-      <property name="toolTip">
-       <string>&quot;SETTINGS&quot; and &quot;DATA&quot; was create automaticly in Main Folder</string>
-      </property>
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
-      <property name="text">
-       <string>Default (Select only Main Backup Folder)</string>
-      </property>
-      <property name="checked">
-       <bool>true</bool>
-      </property>
-     </widget>
-     <widget class="QToolButton" name="default_info">
-      <property name="geometry">
-       <rect>
-        <x>450</x>
-        <y>40</y>
-        <width>25</width>
-        <height>25</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>10</width>
-        <height>10</height>
-       </size>
-      </property>
-     </widget>
-     <widget class="QRadioButton" name="select_folders">
-      <property name="geometry">
-       <rect>
-        <x>11</x>
-        <y>80</y>
-        <width>386</width>
-        <height>24</height>
-       </rect>
-      </property>
-      <property name="toolTip">
-       <string>&quot;SETTINGS&quot; and &quot;DATA&quot; was create automaticly in Main Folder</string>
-      </property>
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
-      <property name="text">
-       <string>I want to select existing Folders manualy</string>
-      </property>
-      <property name="checked">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QToolButton" name="select_info">
-      <property name="geometry">
-       <rect>
-        <x>450</x>
-        <y>80</y>
-        <width>25</width>
-        <height>25</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>20</width>
-        <height>20</height>
-       </size>
-      </property>
-     </widget>
-    </widget>
-   </item>
-   <item>
-    <widget class="QPushButton" name="sel_main_folder">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="minimumSize">
-      <size>
-       <width>220</width>
-       <height>60</height>
-      </size>
-     </property>
-     <property name="text">
-      <string>    Select Main Backup Folder</string>
-     </property>
-     <property name="icon">
-      <iconset resource="dop_win_rc.qrc">
-       <normaloff>:/icon/icons/GREY/folder.svg</normaloff>:/icon/icons/GREY/folder.svg</iconset>
-     </property>
-     <property name="iconSize">
-      <size>
-       <width>35</width>
-       <height>35</height>
-      </size>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <spacer name="verticalSpacer_2">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item>
-    <widget class="QFrame" name="frame">
-     <property name="enabled">
-      <bool>true</bool>
-     </property>
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>160</height>
+       <width>600</width>
+       <height>480</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
        <width>16777215</width>
-       <height>160</height>
+       <height>480</height>
       </size>
      </property>
      <property name="styleSheet">
-      <string notr="true"/>
+      <string notr="true">
+</string>
      </property>
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
+     <property name="tabPosition">
+      <enum>QTabWidget::North</enum>
      </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
+     <property name="tabShape">
+      <enum>QTabWidget::Rounded</enum>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout_2">
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_2">
-        <item>
-         <widget class="QLabel" name="sett_text">
-          <property name="minimumSize">
-           <size>
-            <width>85</width>
-            <height>30</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>30</height>
-           </size>
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tab_main">
+      <attribute name="title">
+       <string>Main</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QFrame" name="checkbox">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>125</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <widget class="QLabel" name="label_info_subfolders">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>10</y>
+            <width>541</width>
+            <height>16</height>
+           </rect>
           </property>
           <property name="styleSheet">
            <string notr="true"/>
           </property>
           <property name="text">
-           <string>SETTINGS:</string>
+           <string>Select what backup subfolders you want to create:</string>
           </property>
          </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="sett_folder">
-          <property name="minimumSize">
-           <size>
-            <width>465</width>
-            <height>0</height>
-           </size>
+         <widget class="QRadioButton" name="default_folder_rad">
+          <property name="geometry">
+           <rect>
+            <x>11</x>
+            <y>36</y>
+            <width>385</width>
+            <height>24</height>
+           </rect>
           </property>
-          <property name="maximumSize">
-           <size>
-            <width>460</width>
-            <height>16777215</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_3">
-        <item>
-         <widget class="QLabel" name="sett_text_2">
-          <property name="minimumSize">
-           <size>
-            <width>85</width>
-            <height>30</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>30</height>
-           </size>
+          <property name="toolTip">
+           <string>&quot;SETTINGS&quot; and &quot;DATA&quot; was create automaticly in Main Folder</string>
           </property>
           <property name="styleSheet">
            <string notr="true"/>
           </property>
           <property name="text">
-           <string>DATA:</string>
+           <string>Default (Select only Main Backup Folder)</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
           </property>
          </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="sett_folder_2">
-          <property name="minimumSize">
-           <size>
-            <width>465</width>
-            <height>0</height>
-           </size>
+         <widget class="QToolButton" name="default_info">
+          <property name="geometry">
+           <rect>
+            <x>450</x>
+            <y>40</y>
+            <width>25</width>
+            <height>25</height>
+           </rect>
           </property>
-          <property name="maximumSize">
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="iconSize">
            <size>
-            <width>460</width>
-            <height>16777215</height>
+            <width>10</width>
+            <height>10</height>
            </size>
           </property>
          </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <spacer name="verticalSpacer">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>30</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_4">
-        <property name="spacing">
-         <number>10</number>
-        </property>
-        <item>
-         <widget class="QPushButton" name="settings_folder">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
+         <widget class="QRadioButton" name="select_folders">
+          <property name="geometry">
+           <rect>
+            <x>11</x>
+            <y>80</y>
+            <width>386</width>
+            <height>24</height>
+           </rect>
           </property>
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>50</height>
-           </size>
+          <property name="toolTip">
+           <string/>
           </property>
-          <property name="maximumSize">
-           <size>
-            <width>280</width>
-            <height>50</height>
-           </size>
+          <property name="styleSheet">
+           <string notr="true"/>
           </property>
           <property name="text">
-           <string>Select &quot;SETTINGS&quot; Folder</string>
+           <string>I want to select existing Folders manualy</string>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
           </property>
          </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="data_folder">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
+         <widget class="QToolButton" name="select_info">
+          <property name="geometry">
+           <rect>
+            <x>450</x>
+            <y>80</y>
+            <width>25</width>
+            <height>25</height>
+           </rect>
           </property>
-          <property name="minimumSize">
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="iconSize">
            <size>
-            <width>280</width>
-            <height>50</height>
+            <width>20</width>
+            <height>20</height>
            </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>280</width>
-            <height>50</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>Select &quot;DATA&quot; Folder</string>
           </property>
          </widget>
-        </item>
-       </layout>
-      </item>
-     </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="sel_main_folder">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>220</width>
+           <height>60</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>    Select Main Backup Folder</string>
+         </property>
+         <property name="icon">
+          <iconset resource="dop_win_rc.qrc">
+           <normaloff>:/icon/icons/GREY/folder.svg</normaloff>:/icon/icons/GREY/folder.svg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>35</width>
+           <height>35</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>55</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QFrame" name="frame">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>160</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>160</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <item>
+             <widget class="QLabel" name="sett_text">
+              <property name="minimumSize">
+               <size>
+                <width>85</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
+              <property name="text">
+               <string>SETTINGS:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="sett_folder">
+              <property name="minimumSize">
+               <size>
+                <width>465</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>460</width>
+                <height>16777215</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <item>
+             <widget class="QLabel" name="sett_text_2">
+              <property name="minimumSize">
+               <size>
+                <width>85</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
+              <property name="text">
+               <string>DATA:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="sett_folder_2">
+              <property name="minimumSize">
+               <size>
+                <width>465</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>460</width>
+                <height>16777215</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <spacer name="verticalSpacer">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>30</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_4">
+            <property name="spacing">
+             <number>10</number>
+            </property>
+            <item>
+             <widget class="QPushButton" name="settings_folder">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>50</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>280</width>
+                <height>50</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Select &quot;SETTINGS&quot; Folder</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="data_folder">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>280</width>
+                <height>50</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>280</width>
+                <height>50</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Select &quot;DATA&quot; Folder</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_appearance">
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <attribute name="title">
+       <string>Appearance</string>
+      </attribute>
+     </widget>
     </widget>
    </item>
    <item>
