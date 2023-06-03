@@ -146,24 +146,24 @@ class Ui_Dialog(object):
 
         self.verticalLayout.addItem(self.verticalSpacer_2)
 
-        self.frame = QFrame(self.tab_main)
-        self.frame.setObjectName(u"frame")
-        self.frame.setEnabled(True)
+        self.select_frame = QFrame(self.tab_main)
+        self.select_frame.setObjectName(u"select_frame")
+        self.select_frame.setEnabled(True)
         sizePolicy2 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
         sizePolicy2.setHorizontalStretch(0)
         sizePolicy2.setVerticalStretch(0)
-        sizePolicy2.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
-        self.frame.setSizePolicy(sizePolicy2)
-        self.frame.setMinimumSize(QSize(0, 160))
-        self.frame.setMaximumSize(QSize(16777215, 160))
-        self.frame.setStyleSheet(u"")
-        self.frame.setFrameShape(QFrame.StyledPanel)
-        self.frame.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_2 = QVBoxLayout(self.frame)
+        sizePolicy2.setHeightForWidth(self.select_frame.sizePolicy().hasHeightForWidth())
+        self.select_frame.setSizePolicy(sizePolicy2)
+        self.select_frame.setMinimumSize(QSize(0, 160))
+        self.select_frame.setMaximumSize(QSize(16777215, 160))
+        self.select_frame.setStyleSheet(u"")
+        self.select_frame.setFrameShape(QFrame.StyledPanel)
+        self.select_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_2 = QVBoxLayout(self.select_frame)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.sett_text = QLabel(self.frame)
+        self.sett_text = QLabel(self.select_frame)
         self.sett_text.setObjectName(u"sett_text")
         self.sett_text.setMinimumSize(QSize(85, 30))
         self.sett_text.setMaximumSize(QSize(16777215, 30))
@@ -171,7 +171,7 @@ class Ui_Dialog(object):
 
         self.horizontalLayout_2.addWidget(self.sett_text)
 
-        self.sett_folder = QLineEdit(self.frame)
+        self.sett_folder = QLineEdit(self.select_frame)
         self.sett_folder.setObjectName(u"sett_folder")
         self.sett_folder.setMinimumSize(QSize(465, 0))
         self.sett_folder.setMaximumSize(QSize(460, 16777215))
@@ -183,7 +183,7 @@ class Ui_Dialog(object):
 
         self.horizontalLayout_3 = QHBoxLayout()
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
-        self.sett_text_2 = QLabel(self.frame)
+        self.sett_text_2 = QLabel(self.select_frame)
         self.sett_text_2.setObjectName(u"sett_text_2")
         self.sett_text_2.setMinimumSize(QSize(85, 30))
         self.sett_text_2.setMaximumSize(QSize(16777215, 30))
@@ -191,7 +191,7 @@ class Ui_Dialog(object):
 
         self.horizontalLayout_3.addWidget(self.sett_text_2)
 
-        self.sett_folder_2 = QLineEdit(self.frame)
+        self.sett_folder_2 = QLineEdit(self.select_frame)
         self.sett_folder_2.setObjectName(u"sett_folder_2")
         self.sett_folder_2.setMinimumSize(QSize(465, 0))
         self.sett_folder_2.setMaximumSize(QSize(460, 16777215))
@@ -208,7 +208,7 @@ class Ui_Dialog(object):
         self.horizontalLayout_4 = QHBoxLayout()
         self.horizontalLayout_4.setSpacing(10)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
-        self.settings_folder = QPushButton(self.frame)
+        self.settings_folder = QPushButton(self.select_frame)
         self.settings_folder.setObjectName(u"settings_folder")
         sizePolicy.setHeightForWidth(self.settings_folder.sizePolicy().hasHeightForWidth())
         self.settings_folder.setSizePolicy(sizePolicy)
@@ -217,7 +217,7 @@ class Ui_Dialog(object):
 
         self.horizontalLayout_4.addWidget(self.settings_folder)
 
-        self.data_folder = QPushButton(self.frame)
+        self.data_folder = QPushButton(self.select_frame)
         self.data_folder.setObjectName(u"data_folder")
         sizePolicy.setHeightForWidth(self.data_folder.sizePolicy().hasHeightForWidth())
         self.data_folder.setSizePolicy(sizePolicy)
@@ -230,7 +230,7 @@ class Ui_Dialog(object):
         self.verticalLayout_2.addLayout(self.horizontalLayout_4)
 
 
-        self.verticalLayout.addWidget(self.frame)
+        self.verticalLayout.addWidget(self.select_frame)
 
         self.tabWidget.addTab(self.tab_main, "")
         self.tab_appearance = QWidget()

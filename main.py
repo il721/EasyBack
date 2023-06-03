@@ -11,13 +11,14 @@ def first_time_check():
     try:
         reg_key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE,
                                  r'SOFTWARE\EasyBack',
-                                 0, winreg.KEY_WRITE)
-        print(reg_key)
+                                 0, winreg.KEY_READ)
+        print(winreg.QueryValueEx(reg_key, 'settings_path')[0])
     except FileNotFoundError:
         pass
 
 
 if __name__ == '__main__':
+    first_time_check()
     app = QApplication(sys.argv)
     window = MainWindow()
     window.show()

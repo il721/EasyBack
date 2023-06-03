@@ -8,7 +8,7 @@ from main_base import MainBase
 import MainWindow as mw
 from d__07_settings import settings_Dialog
 from d__01_1__view_buckup_file import D_01_1_ViewDialog
-from d__01_2__sel_buckup_file_name import D_01_2_Sel_File_Name_Dialog
+from d__01_2__sel_buckup_file_name import D012SelFileNameDialog
 
 base = MainBase()
 
@@ -418,7 +418,7 @@ class AddItemDial01(object):
 
     def save_backup_list_bt(self):
         dialog = QDialog()
-        ui = D_01_2_Sel_File_Name_Dialog()
+        ui = D012SelFileNameDialog()
         ui.setupUi(dialog)
         dialog.exec()
 

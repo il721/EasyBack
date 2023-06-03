@@ -98,8 +98,7 @@ color: rgb(230, 230, 230)}</string>
       </size>
      </property>
      <property name="styleSheet">
-      <string notr="true">
-</string>
+      <string notr="true"/>
      </property>
      <property name="tabPosition">
       <enum>QTabWidget::North</enum>
@@ -269,7 +268,7 @@ color: rgb(230, 230, 230)}</string>
         </spacer>
        </item>
        <item>
-        <widget class="QFrame" name="frame">
+        <widget class="QFrame" name="select_frame">
          <property name="enabled">
           <bool>true</bool>
          </property>

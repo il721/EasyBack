@@ -4,16 +4,15 @@ from pathlib import Path
 
 class MainBase:
     settings: dict = {}
-
+    path_of_main_folder: str = ""
+    path_of_settings_folder: str = ""
+    path_of_data_folder: str = ""
     @classmethod
     def save_settings(cls):
         print("settings saved")
 
     def __init__(self):
         self.all_items: dict = {}
-        self.path_of_main_folder: str = ""
-        self.path_of_settings_folder: str = ""
-        self.path_of_data_folder: str = ""
         self.name_of_base_file: str = ""
         self.list_saved: bool = False
 
@@ -27,7 +26,8 @@ class MainBase:
         self.all_items.update(temp_dict)
 
     def save_base_to_disk(self):
-        name_of_backup_file = Path(f"{MainBase.path_of_main_folder}/backup_lists/test.blf")
+        name_of_backup_file = Path(f"{MainBase.path_of_main_folder}"
+                                   f"//SETTINGS/backup_lists/test.blf")
 
         with open(name_of_backup_file, 'w') as f:
             json.dump(self.all_items, f)
