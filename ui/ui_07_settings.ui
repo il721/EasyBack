@@ -36,14 +36,16 @@
 background-color: rgb(30, 30, 30);
 font: 16pt &quot;Lexend Light&quot;;
 border: 1px solid;
-color: rgb(230, 230, 230);
-border-color: #2B79C2;}
+border-color: #2B79C2;
+color: rgb(230, 230, 230)}
 QLabel{
 font: 12pt &quot;Lexend Light&quot;;
 color: #2B79C2;
 border: no}
 QLineEdit{
 background-color: rgb(30, 30, 30);}
+QLineEdit:disabled{
+background-color: rgb(50,50,50);}
 QFrame{
 border-color: #2B79C2;}
 QPushButton {
@@ -52,6 +54,8 @@ color: rgb(230, 230, 230);
 border-color: rgb(110, 110, 110);
 border-radius: 15px;
 background-color: rgba(60,60, 60, 80);}
+QPushButton:disabled{
+background-color: rgb(100,100,100);}
 QPushButton:hover {
 color: #2B79C2;
 border: 3px solid;
@@ -80,7 +84,9 @@ font: 12pt &quot;Lexend Light&quot;;
 color: rgb(150,150, 150);}
 QTabBar::tab:selected {
 background: #2B79C2;
-color: rgb(230, 230, 230)}</string>
+color: rgb(230, 230, 230)}
+QFrame:disabled{
+background-color: rgb(50,50,50);}</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
    <item>
@@ -182,7 +188,7 @@ color: rgb(230, 230, 230)}</string>
            </size>
           </property>
          </widget>
-         <widget class="QRadioButton" name="select_folders">
+         <widget class="QRadioButton" name="select_folders_rad">
           <property name="geometry">
            <rect>
             <x>11</x>
@@ -223,6 +229,30 @@ color: rgb(230, 230, 230)}</string>
            </size>
           </property>
          </widget>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="main_folder">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(100, 100, 100);
+border: 1px solid;
+border-color: #2B79C2;</string>
+         </property>
+         <property name="text">
+          <string>Please select main backup folder...</string>
+         </property>
         </widget>
        </item>
        <item>
@@ -270,7 +300,7 @@ color: rgb(230, 230, 230)}</string>
        <item>
         <widget class="QFrame" name="select_frame">
          <property name="enabled">
-          <bool>true</bool>
+          <bool>false</bool>
          </property>
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -345,7 +375,7 @@ color: rgb(230, 230, 230)}</string>
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_3">
             <item>
-             <widget class="QLabel" name="sett_text_2">
+             <widget class="QLabel" name="data_text">
               <property name="minimumSize">
                <size>
                 <width>85</width>
@@ -367,7 +397,7 @@ color: rgb(230, 230, 230)}</string>
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="sett_folder_2">
+             <widget class="QLineEdit" name="data_folder_2">
               <property name="minimumSize">
                <size>
                 <width>465</width>

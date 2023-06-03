@@ -9,17 +9,18 @@
 ################################################################################
 
 from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
-    QMetaObject, QObject, QPoint, QRect,
-    QSize, QTime, QUrl, Qt)
+                            QMetaObject, QObject, QPoint, QRect,
+                            QSize, QTime, QUrl, Qt)
 from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
-    QFont, QFontDatabase, QGradient, QIcon,
-    QImage, QKeySequence, QLinearGradient, QPainter,
-    QPalette, QPixmap, QRadialGradient, QTransform)
+                           QFont, QFontDatabase, QGradient, QIcon,
+                           QImage, QKeySequence, QLinearGradient, QPainter,
+                           QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QComboBox, QDialog, QFrame,
-    QHBoxLayout, QLabel, QLineEdit, QPushButton,
-    QRadioButton, QSizePolicy, QSpacerItem, QTabWidget,
-    QToolButton, QVBoxLayout, QWidget)
+                               QHBoxLayout, QLabel, QLineEdit, QPushButton,
+                               QRadioButton, QSizePolicy, QSpacerItem, QTabWidget,
+                               QToolButton, QVBoxLayout, QWidget)
 import dop_win_rc_rc
+
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
@@ -34,55 +35,61 @@ class Ui_Dialog(object):
         Dialog.setMinimumSize(QSize(620, 600))
         Dialog.setMaximumSize(QSize(620, 602))
         Dialog.setStyleSheet(u"*{\n"
-"background-color: rgb(30, 30, 30);\n"
-"font: 16pt \"Lexend Light\";\n"
-"border: 1px solid;\n"
-"color: rgb(230, 230, 230);\n"
-"border-color: #2B79C2;}\n"
-"QLabel{\n"
-"font: 12pt \"Lexend Light\";\n"
-"color: #2B79C2;\n"
-"border: no}\n"
-"QLineEdit{\n"
-"background-color: rgb(30, 30, 30);}\n"
-"QFrame{\n"
-"border-color: #2B79C2;}\n"
-"QPushButton {\n"
-"border: 2px solid;\n"
-"color: rgb(230, 230, 230);\n"
-"border-color: rgb(110, 110, 110);\n"
-"border-radius: 15px;\n"
-"background-color: rgba(60,60, 60, 80);}\n"
-"QPushButton:hover {\n"
-"color: #2B79C2;\n"
-"border: 3px solid;\n"
-"background-color: rgba(30, 30, 30, 180);\n"
-"border-color: rgb(150,150, 150);}\n"
-"QPushButton:pressed {\n"
-"color: rgb(30, 30, 30);\n"
-"border: 2px solid;\n"
-"background-color: #2B79C2;\n"
-"border-color: rgb(230, 230, 230);}\n"
-"QRadioButton{\n"
-"font: 14pt \"Lexend Light\";\n"
-"border: no}\n"
-"QToolButton{\n"
-"image: url(:/icon/icons/GREY/info_invert.svg);\n"
-"border: no}\n"
-"QToolButton:hover {\n"
-"image: url(:/icon/icons/GREY/info.svg"
-                        ");\n"
-"border: no}\n"
-"QToolButton:pressed{\n"
-"image: url(:/icon/icons/GREY/info_invert.svg);\n"
-"border: no}\n"
-"QTabBar::tab {\n"
-"background:  rgb(60,60, 60);\n"
-"font: 12pt \"Lexend Light\";\n"
-"color: rgb(150,150, 150);}\n"
-"QTabBar::tab:selected {\n"
-"background: #2B79C2;\n"
-"color: rgb(230, 230, 230)}")
+                             "background-color: rgb(30, 30, 30);\n"
+                             "font: 16pt \"Lexend Light\";\n"
+                             "border: 1px solid;\n"
+                             "border-color: #2B79C2;\n"
+                             "color: rgb(230, 230, 230)}\n"
+                             "QLabel{\n"
+                             "font: 12pt \"Lexend Light\";\n"
+                             "color: #2B79C2;\n"
+                             "border: no}\n"
+                             "QLineEdit{\n"
+                             "background-color: rgb(30, 30, 30);}\n"
+                             "QLineEdit:disabled{\n"
+                             "background-color: rgb(50,50,50);}\n"
+                             "QFrame{\n"
+                             "border-color: #2B79C2;}\n"
+                             "QPushButton {\n"
+                             "border: 2px solid;\n"
+                             "color: rgb(230, 230, 230);\n"
+                             "border-color: rgb(110, 110, 110);\n"
+                             "border-radius: 15px;\n"
+                             "background-color: rgba(60,60, 60, 80);}\n"
+                             "QPushButton:disabled{\n"
+                             "background-color: rgb(100,100,100);}\n"
+                             "QPushButton:hover {\n"
+                             "color: #2B79C2;\n"
+                             "border: 3px solid;\n"
+                             "background-color: rgba(30, 30, 30, 180);\n"
+                             "border-color: rgb(150,150, 150);}\n"
+                             "QPushButton:pressed {\n"
+                             "color: rgb(30, 30, 30);\n"
+                             "border: 2px solid;\n"
+                             "background-color: #2B79C2;\n"
+                             "border-color: rgb(230, 230, 230);}\n"
+                             "QRadioButton{\n"
+                             "font: 14pt \"Lexend Light\";\n"
+                             "border: no}\n"
+                             "QToolButton{\n"
+                             ""
+                             "image: url(:/icon/icons/GREY/info_invert.svg);\n"
+                             "border: no}\n"
+                             "QToolButton:hover {\n"
+                             "image: url(:/icon/icons/GREY/info.svg);\n"
+                             "border: no}\n"
+                             "QToolButton:pressed{\n"
+                             "image: url(:/icon/icons/GREY/info_invert.svg);\n"
+                             "border: no}\n"
+                             "QTabBar::tab {\n"
+                             "background:  rgb(60,60, 60);\n"
+                             "font: 12pt \"Lexend Light\";\n"
+                             "color: rgb(150,150, 150);}\n"
+                             "QTabBar::tab:selected {\n"
+                             "background: #2B79C2;\n"
+                             "color: rgb(230, 230, 230)}\n"
+                             "QFrame:disabled{\n"
+                             "background-color: rgb(50,50,50);}")
         self.verticalLayout_3 = QVBoxLayout(Dialog)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.tabWidget = QTabWidget(Dialog)
@@ -114,11 +121,11 @@ class Ui_Dialog(object):
         self.default_info.setGeometry(QRect(450, 40, 25, 25))
         self.default_info.setStyleSheet(u"")
         self.default_info.setIconSize(QSize(10, 10))
-        self.select_folders = QRadioButton(self.checkbox)
-        self.select_folders.setObjectName(u"select_folders")
-        self.select_folders.setGeometry(QRect(11, 80, 386, 24))
-        self.select_folders.setStyleSheet(u"")
-        self.select_folders.setChecked(False)
+        self.select_folders_rad = QRadioButton(self.checkbox)
+        self.select_folders_rad.setObjectName(u"select_folders_rad")
+        self.select_folders_rad.setGeometry(QRect(11, 80, 386, 24))
+        self.select_folders_rad.setStyleSheet(u"")
+        self.select_folders_rad.setChecked(False)
         self.select_info = QToolButton(self.checkbox)
         self.select_info.setObjectName(u"select_info")
         self.select_info.setGeometry(QRect(450, 80, 25, 25))
@@ -126,6 +133,16 @@ class Ui_Dialog(object):
         self.select_info.setIconSize(QSize(20, 20))
 
         self.verticalLayout.addWidget(self.checkbox)
+
+        self.main_folder = QLabel(self.tab_main)
+        self.main_folder.setObjectName(u"main_folder")
+        self.main_folder.setMinimumSize(QSize(0, 30))
+        self.main_folder.setMaximumSize(QSize(16777215, 30))
+        self.main_folder.setStyleSheet(u"color: rgb(100, 100, 100);\n"
+                                       "border: 1px solid;\n"
+                                       "border-color: #2B79C2;")
+
+        self.verticalLayout.addWidget(self.main_folder)
 
         self.sel_main_folder = QPushButton(self.tab_main)
         self.sel_main_folder.setObjectName(u"sel_main_folder")
@@ -148,7 +165,7 @@ class Ui_Dialog(object):
 
         self.select_frame = QFrame(self.tab_main)
         self.select_frame.setObjectName(u"select_frame")
-        self.select_frame.setEnabled(True)
+        self.select_frame.setEnabled(False)
         sizePolicy2 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
         sizePolicy2.setHorizontalStretch(0)
         sizePolicy2.setVerticalStretch(0)
@@ -178,26 +195,24 @@ class Ui_Dialog(object):
 
         self.horizontalLayout_2.addWidget(self.sett_folder)
 
-
         self.verticalLayout_2.addLayout(self.horizontalLayout_2)
 
         self.horizontalLayout_3 = QHBoxLayout()
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
-        self.sett_text_2 = QLabel(self.select_frame)
-        self.sett_text_2.setObjectName(u"sett_text_2")
-        self.sett_text_2.setMinimumSize(QSize(85, 30))
-        self.sett_text_2.setMaximumSize(QSize(16777215, 30))
-        self.sett_text_2.setStyleSheet(u"")
+        self.data_text = QLabel(self.select_frame)
+        self.data_text.setObjectName(u"data_text")
+        self.data_text.setMinimumSize(QSize(85, 30))
+        self.data_text.setMaximumSize(QSize(16777215, 30))
+        self.data_text.setStyleSheet(u"")
 
-        self.horizontalLayout_3.addWidget(self.sett_text_2)
+        self.horizontalLayout_3.addWidget(self.data_text)
 
-        self.sett_folder_2 = QLineEdit(self.select_frame)
-        self.sett_folder_2.setObjectName(u"sett_folder_2")
-        self.sett_folder_2.setMinimumSize(QSize(465, 0))
-        self.sett_folder_2.setMaximumSize(QSize(460, 16777215))
+        self.data_folder_2 = QLineEdit(self.select_frame)
+        self.data_folder_2.setObjectName(u"data_folder_2")
+        self.data_folder_2.setMinimumSize(QSize(465, 0))
+        self.data_folder_2.setMaximumSize(QSize(460, 16777215))
 
-        self.horizontalLayout_3.addWidget(self.sett_folder_2)
-
+        self.horizontalLayout_3.addWidget(self.data_folder_2)
 
         self.verticalLayout_2.addLayout(self.horizontalLayout_3)
 
@@ -226,9 +241,7 @@ class Ui_Dialog(object):
 
         self.horizontalLayout_4.addWidget(self.data_folder)
 
-
         self.verticalLayout_2.addLayout(self.horizontalLayout_4)
-
 
         self.verticalLayout.addWidget(self.select_frame)
 
@@ -280,41 +293,52 @@ class Ui_Dialog(object):
 
         self.horizontalLayout.addWidget(self.main_settings)
 
-
         self.verticalLayout_3.addLayout(self.horizontalLayout)
-
 
         self.retranslateUi(Dialog)
 
         self.tabWidget.setCurrentIndex(0)
 
-
         QMetaObject.connectSlotsByName(Dialog)
+
     # setupUi
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Settings", None))
-        self.label_info_subfolders.setText(QCoreApplication.translate("Dialog", u"Select what backup subfolders you want to create:", None))
-#if QT_CONFIG(tooltip)
-        self.default_folder_rad.setToolTip(QCoreApplication.translate("Dialog", u"\"SETTINGS\" and \"DATA\" was create automaticly in Main Folder", None))
-#endif // QT_CONFIG(tooltip)
-        self.default_folder_rad.setText(QCoreApplication.translate("Dialog", u"Default (Select only Main Backup Folder)", None))
-#if QT_CONFIG(tooltip)
-        self.select_folders.setToolTip("")
-#endif // QT_CONFIG(tooltip)
-        self.select_folders.setText(QCoreApplication.translate("Dialog", u"I want to select existing Folders manualy", None))
-        self.sel_main_folder.setText(QCoreApplication.translate("Dialog", u"    Select Main Backup Folder", None))
+        self.label_info_subfolders.setText(QCoreApplication.translate("Dialog",
+                                                                      u"Select what backup subfolders you want to create:",
+                                                                      None))
+        # if QT_CONFIG(tooltip)
+        self.default_folder_rad.setToolTip(QCoreApplication.translate("Dialog",
+                                                                      u"\"SETTINGS\" and \"DATA\" was create automaticly in Main Folder",
+                                                                      None))
+        # endif // QT_CONFIG(tooltip)
+        self.default_folder_rad.setText(
+            QCoreApplication.translate("Dialog", u"Default (Select only Main Backup Folder)", None))
+        # if QT_CONFIG(tooltip)
+        self.select_folders_rad.setToolTip("")
+        # endif // QT_CONFIG(tooltip)
+        self.select_folders_rad.setText(
+            QCoreApplication.translate("Dialog", u"I want to select existing Folders manualy",
+                                       None))
+        self.main_folder.setText(
+            QCoreApplication.translate("Dialog", u"Please select main backup folder...", None))
+        self.sel_main_folder.setText(
+            QCoreApplication.translate("Dialog", u"    Select Main Backup Folder", None))
         self.sett_text.setText(QCoreApplication.translate("Dialog", u"SETTINGS:", None))
-        self.sett_text_2.setText(QCoreApplication.translate("Dialog", u"DATA:", None))
-        self.settings_folder.setText(QCoreApplication.translate("Dialog", u"Select \"SETTINGS\" Folder", None))
-        self.data_folder.setText(QCoreApplication.translate("Dialog", u"Select \"DATA\" Folder", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_main), QCoreApplication.translate("Dialog", u"Main", None))
+        self.data_text.setText(QCoreApplication.translate("Dialog", u"DATA:", None))
+        self.settings_folder.setText(
+            QCoreApplication.translate("Dialog", u"Select \"SETTINGS\" Folder", None))
+        self.data_folder.setText(
+            QCoreApplication.translate("Dialog", u"Select \"DATA\" Folder", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_main),
+                                  QCoreApplication.translate("Dialog", u"Main", None))
         self.comboBox.setItemText(0, QCoreApplication.translate("Dialog", u"Large", None))
         self.comboBox.setItemText(1, QCoreApplication.translate("Dialog", u"Medium", None))
         self.comboBox.setItemText(2, QCoreApplication.translate("Dialog", u"Small", None))
 
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_appearance), QCoreApplication.translate("Dialog", u"Appearance", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_appearance),
+                                  QCoreApplication.translate("Dialog", u"Appearance", None))
         self.save_settings.setText(QCoreApplication.translate("Dialog", u"   Save Settings", None))
         self.main_settings.setText(QCoreApplication.translate("Dialog", u"    Cancel", None))
     # retranslateUi
-

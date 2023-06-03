@@ -1,11 +1,14 @@
 from PySide6.QtCore import (QCoreApplication, QMetaObject, QRect, QSize, )
 from PySide6.QtGui import (QIcon, )
-from PySide6.QtWidgets import (QFileDialog, QFrame, QHBoxLayout, QLabel, QLineEdit, QPushButton,
+from PySide6.QtWidgets import (QComboBox, QDialog, QFileDialog, QFrame, QHBoxLayout, QLabel,
+                               QLineEdit,
+                               QPushButton,
                                QRadioButton, QSizePolicy, QSpacerItem, QTabWidget, QToolButton,
                                QVBoxLayout, QWidget, )
 import dop_win_rc
 from main_base import MainBase
 import MainWindow as mw
+import all_styles
 
 
 class settings_Dialog(object):
@@ -24,14 +27,16 @@ class settings_Dialog(object):
                              "background-color: rgb(30, 30, 30);\n"
                              "font: 16pt \"Lexend Light\";\n"
                              "border: 1px solid;\n"
-                             "color: rgb(230, 230, 230);\n"
-                             "border-color: #2B79C2;}\n"
+                             "border-color: #2B79C2;\n"
+                             "color: rgb(230, 230, 230)}\n"
                              "QLabel{\n"
                              "font: 12pt \"Lexend Light\";\n"
                              "color: #2B79C2;\n"
                              "border: no}\n"
                              "QLineEdit{\n"
                              "background-color: rgb(30, 30, 30);}\n"
+                             "QLineEdit:disabled{\n"
+                             "background-color: rgb(50,50,50);}\n"
                              "QFrame{\n"
                              "border-color: #2B79C2;}\n"
                              "QPushButton {\n"
@@ -40,6 +45,8 @@ class settings_Dialog(object):
                              "border-color: rgb(110, 110, 110);\n"
                              "border-radius: 15px;\n"
                              "background-color: rgba(60,60, 60, 80);}\n"
+                             "QPushButton:disabled{\n"
+                             "background-color: rgb(100,100,100);}\n"
                              "QPushButton:hover {\n"
                              "color: #2B79C2;\n"
                              "border: 3px solid;\n"
@@ -54,11 +61,11 @@ class settings_Dialog(object):
                              "font: 14pt \"Lexend Light\";\n"
                              "border: no}\n"
                              "QToolButton{\n"
+                             ""
                              "image: url(:/icon/icons/GREY/info_invert.svg);\n"
                              "border: no}\n"
                              "QToolButton:hover {\n"
-                             "image: url(:/icon/icons/GREY/info.svg"
-                             ");\n"
+                             "image: url(:/icon/icons/GREY/info.svg);\n"
                              "border: no}\n"
                              "QToolButton:pressed{\n"
                              "image: url(:/icon/icons/GREY/info_invert.svg);\n"
@@ -69,7 +76,9 @@ class settings_Dialog(object):
                              "color: rgb(150,150, 150);}\n"
                              "QTabBar::tab:selected {\n"
                              "background: #2B79C2;\n"
-                             "color: rgb(230, 230, 230)}")
+                             "color: rgb(230, 230, 230)}\n"
+                             "QFrame:disabled{\n"
+                             "background-color: rgb(50,50,50);}")
         self.verticalLayout_3 = QVBoxLayout(Dialog)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.tabWidget = QTabWidget(Dialog)
@@ -101,11 +110,11 @@ class settings_Dialog(object):
         self.default_info.setGeometry(QRect(450, 40, 25, 25))
         self.default_info.setStyleSheet(u"")
         self.default_info.setIconSize(QSize(10, 10))
-        self.select_folders = QRadioButton(self.checkbox)
-        self.select_folders.setObjectName(u"select_folders")
-        self.select_folders.setGeometry(QRect(11, 80, 386, 24))
-        self.select_folders.setStyleSheet(u"")
-        self.select_folders.setChecked(False)
+        self.select_folders_rad = QRadioButton(self.checkbox)
+        self.select_folders_rad.setObjectName(u"select_folders_rad")
+        self.select_folders_rad.setGeometry(QRect(11, 80, 386, 24))
+        self.select_folders_rad.setStyleSheet(u"")
+        self.select_folders_rad.setChecked(False)
         self.select_info = QToolButton(self.checkbox)
         self.select_info.setObjectName(u"select_info")
         self.select_info.setGeometry(QRect(450, 80, 25, 25))
@@ -113,6 +122,16 @@ class settings_Dialog(object):
         self.select_info.setIconSize(QSize(20, 20))
 
         self.verticalLayout.addWidget(self.checkbox)
+
+        self.main_folder = QLabel(self.tab_main)
+        self.main_folder.setObjectName(u"main_folder")
+        self.main_folder.setMinimumSize(QSize(0, 30))
+        self.main_folder.setMaximumSize(QSize(16777215, 30))
+        self.main_folder.setStyleSheet(u"color: rgb(100, 100, 100);\n"
+                                       "border: 1px solid;\n"
+                                       "border-color: #2B79C2;")
+
+        self.verticalLayout.addWidget(self.main_folder)
 
         self.sel_main_folder = QPushButton(self.tab_main)
         self.sel_main_folder.setObjectName(u"sel_main_folder")
@@ -133,24 +152,24 @@ class settings_Dialog(object):
 
         self.verticalLayout.addItem(self.verticalSpacer_2)
 
-        self.frame = QFrame(self.tab_main)
-        self.frame.setObjectName(u"frame")
-        self.frame.setEnabled(True)
+        self.select_frame = QFrame(self.tab_main)
+        self.select_frame.setObjectName(u"select_frame")
+        self.select_frame.setEnabled(False)
         sizePolicy2 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
         sizePolicy2.setHorizontalStretch(0)
         sizePolicy2.setVerticalStretch(0)
-        sizePolicy2.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
-        self.frame.setSizePolicy(sizePolicy2)
-        self.frame.setMinimumSize(QSize(0, 160))
-        self.frame.setMaximumSize(QSize(16777215, 160))
-        self.frame.setStyleSheet(u"")
-        self.frame.setFrameShape(QFrame.StyledPanel)
-        self.frame.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_2 = QVBoxLayout(self.frame)
+        sizePolicy2.setHeightForWidth(self.select_frame.sizePolicy().hasHeightForWidth())
+        self.select_frame.setSizePolicy(sizePolicy2)
+        self.select_frame.setMinimumSize(QSize(0, 160))
+        self.select_frame.setMaximumSize(QSize(16777215, 160))
+        self.select_frame.setStyleSheet(u"")
+        self.select_frame.setFrameShape(QFrame.StyledPanel)
+        self.select_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_2 = QVBoxLayout(self.select_frame)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.sett_text = QLabel(self.frame)
+        self.sett_text = QLabel(self.select_frame)
         self.sett_text.setObjectName(u"sett_text")
         self.sett_text.setMinimumSize(QSize(85, 30))
         self.sett_text.setMaximumSize(QSize(16777215, 30))
@@ -158,7 +177,7 @@ class settings_Dialog(object):
 
         self.horizontalLayout_2.addWidget(self.sett_text)
 
-        self.sett_folder = QLineEdit(self.frame)
+        self.sett_folder = QLineEdit(self.select_frame)
         self.sett_folder.setObjectName(u"sett_folder")
         self.sett_folder.setMinimumSize(QSize(465, 0))
         self.sett_folder.setMaximumSize(QSize(460, 16777215))
@@ -169,20 +188,20 @@ class settings_Dialog(object):
 
         self.horizontalLayout_3 = QHBoxLayout()
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
-        self.sett_text_2 = QLabel(self.frame)
-        self.sett_text_2.setObjectName(u"sett_text_2")
-        self.sett_text_2.setMinimumSize(QSize(85, 30))
-        self.sett_text_2.setMaximumSize(QSize(16777215, 30))
-        self.sett_text_2.setStyleSheet(u"")
+        self.data_text = QLabel(self.select_frame)
+        self.data_text.setObjectName(u"data_text")
+        self.data_text.setMinimumSize(QSize(85, 30))
+        self.data_text.setMaximumSize(QSize(16777215, 30))
+        self.data_text.setStyleSheet(u"")
 
-        self.horizontalLayout_3.addWidget(self.sett_text_2)
+        self.horizontalLayout_3.addWidget(self.data_text)
 
-        self.sett_folder_2 = QLineEdit(self.frame)
-        self.sett_folder_2.setObjectName(u"sett_folder_2")
-        self.sett_folder_2.setMinimumSize(QSize(465, 0))
-        self.sett_folder_2.setMaximumSize(QSize(460, 16777215))
+        self.data_folder_2 = QLineEdit(self.select_frame)
+        self.data_folder_2.setObjectName(u"data_folder_2")
+        self.data_folder_2.setMinimumSize(QSize(465, 0))
+        self.data_folder_2.setMaximumSize(QSize(460, 16777215))
 
-        self.horizontalLayout_3.addWidget(self.sett_folder_2)
+        self.horizontalLayout_3.addWidget(self.data_folder_2)
 
         self.verticalLayout_2.addLayout(self.horizontalLayout_3)
 
@@ -193,7 +212,7 @@ class settings_Dialog(object):
         self.horizontalLayout_4 = QHBoxLayout()
         self.horizontalLayout_4.setSpacing(10)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
-        self.settings_folder = QPushButton(self.frame)
+        self.settings_folder = QPushButton(self.select_frame)
         self.settings_folder.setObjectName(u"settings_folder")
         sizePolicy.setHeightForWidth(self.settings_folder.sizePolicy().hasHeightForWidth())
         self.settings_folder.setSizePolicy(sizePolicy)
@@ -202,7 +221,7 @@ class settings_Dialog(object):
 
         self.horizontalLayout_4.addWidget(self.settings_folder)
 
-        self.data_folder = QPushButton(self.frame)
+        self.data_folder = QPushButton(self.select_frame)
         self.data_folder.setObjectName(u"data_folder")
         sizePolicy.setHeightForWidth(self.data_folder.sizePolicy().hasHeightForWidth())
         self.data_folder.setSizePolicy(sizePolicy)
@@ -213,12 +232,18 @@ class settings_Dialog(object):
 
         self.verticalLayout_2.addLayout(self.horizontalLayout_4)
 
-        self.verticalLayout.addWidget(self.frame)
+        self.verticalLayout.addWidget(self.select_frame)
 
         self.tabWidget.addTab(self.tab_main, "")
         self.tab_appearance = QWidget()
         self.tab_appearance.setObjectName(u"tab_appearance")
         self.tab_appearance.setStyleSheet(u"")
+        self.comboBox = QComboBox(self.tab_appearance)
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.setObjectName(u"comboBox")
+        self.comboBox.setGeometry(QRect(100, 80, 121, 41))
         self.tabWidget.addTab(self.tab_appearance, "")
 
         self.verticalLayout_3.addWidget(self.tabWidget)
@@ -271,6 +296,9 @@ class settings_Dialog(object):
         self.select_info.clicked.connect(self.select_info_bt)
         self.save_settings.clicked.connect(self.save_settings_bt)
         self.main_settings.clicked.connect(Dialog.reject)
+
+        self.default_folder_rad.clicked.connect(self.data_radio_bt)
+        self.select_folders_rad.clicked.connect(self.select_radio_bt)
         # ------------------------------------------------------------------------------------------
 
     # setupUi
@@ -288,21 +316,27 @@ class settings_Dialog(object):
         self.default_folder_rad.setText(
             QCoreApplication.translate("Dialog", u"Default (Select only Main Backup Folder)", None))
         # if QT_CONFIG(tooltip)
-        self.select_folders.setToolTip("")
+        self.select_folders_rad.setToolTip("")
         # endif // QT_CONFIG(tooltip)
-        self.select_folders.setText(
+        self.select_folders_rad.setText(
             QCoreApplication.translate("Dialog", u"I want to select existing Folders manualy",
                                        None))
+        self.main_folder.setText(
+            QCoreApplication.translate("Dialog", u"Please select main backup folder...", None))
         self.sel_main_folder.setText(
             QCoreApplication.translate("Dialog", u"    Select Main Backup Folder", None))
         self.sett_text.setText(QCoreApplication.translate("Dialog", u"SETTINGS:", None))
-        self.sett_text_2.setText(QCoreApplication.translate("Dialog", u"DATA:", None))
+        self.data_text.setText(QCoreApplication.translate("Dialog", u"DATA:", None))
         self.settings_folder.setText(
             QCoreApplication.translate("Dialog", u"Select \"SETTINGS\" Folder", None))
         self.data_folder.setText(
             QCoreApplication.translate("Dialog", u"Select \"DATA\" Folder", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_main),
                                   QCoreApplication.translate("Dialog", u"Main", None))
+        self.comboBox.setItemText(0, QCoreApplication.translate("Dialog", u"Large", None))
+        self.comboBox.setItemText(1, QCoreApplication.translate("Dialog", u"Medium", None))
+        self.comboBox.setItemText(2, QCoreApplication.translate("Dialog", u"Small", None))
+
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_appearance),
                                   QCoreApplication.translate("Dialog", u"Appearance", None))
         self.save_settings.setText(QCoreApplication.translate("Dialog", u"   Save Settings", None))
@@ -335,6 +369,16 @@ class settings_Dialog(object):
         title = 'Info'
         main = 'You have to choose the folders "SETTINGS" and "DATA" yourself'
         mw.msg_one_button(title, main, 'info')
+
+    def data_radio_bt(self):
+        self.select_frame.setEnabled(False)
+        self.main_folder.setEnabled(True)
+        self.sel_main_folder.setEnabled(True)
+
+    def select_radio_bt(self):
+        self.select_frame.setEnabled(True)
+        self.main_folder.setEnabled(False)
+        self.sel_main_folder.setEnabled(False)
 
     @staticmethod
     def save_settings_bt():
