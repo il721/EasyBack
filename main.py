@@ -1,27 +1,24 @@
 import sys
 import winreg
 from PySide6.QtWidgets import QApplication
-from MainWindow import MainWindow
-
-
-# from MainWindow import MainWindow
+import MainWindow as mw
+from main_base import MainBase
 
 
 def first_time_check():
-    try:
-        reg_key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE,
-                                 r'SOFTWARE\EasyBack',
-                                 0, winreg.KEY_READ)
-        print(winreg.QueryValueEx(reg_key, 'settings_path')[0])
-    except FileNotFoundError:
-        pass
+    if MainBase.check_reg_key() == "key not exist":
+        print("key not exist")
+        mw.msg_one_button('Registry key not found', 'It looks like you are entering the program'
+                                                    ' for the first time. Please, '
+                                                    'go to SETTINGS and set some necessary '
+                                                    'parameters', 'warn')
 
 
 # TODO create main first cheking
 
 if __name__ == '__main__':
-    first_time_check()
     app = QApplication(sys.argv)
-    window = MainWindow()
+    window = mw.MainWindowDialog()
     window.show()
+    first_time_check()
     sys.exit(app.exec())

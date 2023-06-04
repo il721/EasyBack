@@ -12,7 +12,7 @@ import all_styles as st
 from main_base import MainBase
 
 
-class MainWindow(QMainWindow):
+class MainWindowDialog(QMainWindow):
 
     def __init__(self):
         super().__init__()

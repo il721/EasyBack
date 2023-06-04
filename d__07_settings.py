@@ -377,6 +377,7 @@ class settings_Dialog(object):
                 self.main_folder.setText(filenames)
                 self.sett_folder.setText(MainBase.path_of_settings_folder)
                 self.data_folder_2.setText(MainBase.path_of_data_folder)
+                MainBase.create_reg_key()
 
     def data_radio_bt(self):
         self.select_frame.setEnabled(False)

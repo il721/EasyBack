@@ -1,4 +1,5 @@
 import json
+import winreg
 from pathlib import Path
 import MainWindow as mw
 
@@ -25,6 +26,30 @@ class MainBase:
         mw.msg_one_button('Congradulation!', 'Settings is successfully saved in '
                                              'settings.ini', 'info')
         print(cls.settings)
+
+    @classmethod
+    def check_reg_key(cls):
+        try:
+            reg_key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE,
+                                     r'SOFTWARE\EasyBack',
+                                     0, winreg.KEY_READ)
+            key_value = winreg.QueryValueEx(reg_key, 'settings_path')[0]
+            winreg.CloseKey(reg_key)
+            return "key exist", key_value
+        except FileNotFoundError:
+            return "key not exist"
+
+    @classmethod
+    def create_reg_key(cls):
+        key = winreg.HKEY_LOCAL_MACHINE
+        subkey = r'SOFTWARE\EasyBack'
+        name = 'settings_path'
+        value = cls.path_of_main_folder
+        winreg.CreateKeyEx(key, subkey, 0, winreg.KEY_WRITE)
+        reg_key = winreg.OpenKey(key, subkey, 0, winreg.KEY_WRITE)
+        winreg.SetValueEx(reg_key, name, 0, winreg.REG_SZ, value)
+        print(cls.check_reg_key()[1])
+        winreg.CloseKey(reg_key)
 
     @classmethod
     def check_folder_exist(cls, folder: str) -> bool:
