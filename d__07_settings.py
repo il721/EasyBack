@@ -342,33 +342,41 @@ class settings_Dialog(object):
         self.save_settings.setText(QCoreApplication.translate("Dialog", u"   Save Settings", None))
         self.main_settings.setText(QCoreApplication.translate("Dialog", u"    Cancel", None))
 
-    # retranslateUi
-
     # ************************    MY CODE    ***************************************************
-    @staticmethod
-    def sel_main_folder_bt():
-        dialog = QFileDialog()
-        dialog.setDirectory(r'F:')
-        dialog.setFileMode(QFileDialog.FileMode.Directory)
-        dialog.setViewMode(QFileDialog.ViewMode.List)
-        if dialog.exec():
-            filenames = dialog.selectedFiles()
-            if filenames:
-                MainBase.path_of_main_folder = "".join(filenames)
-                print(MainBase.path_of_main_folder)
-                # TODO Add "create default folders" check button
-
     @staticmethod
     def default_info_bt():
         title = 'Info'
-        main = 'Folders "SETTINGS" and "DATA" will be created automatically in the Main Folder'
+        main = 'Folders "SETTINGS" and "DATA" will be created automatically in the Main Folder. ' \
+               'Program settings (settings.ini) and all backup lists are stored in the "SETTING"' \
+               ' folder.'
         mw.msg_one_button(title, main, 'info')
 
     @staticmethod
     def select_info_bt():
         title = 'Info'
-        main = 'You have to choose the folders "SETTINGS" and "DATA" yourself'
+        main = 'You have to choose the folders "SETTINGS" and "DATA" yourself.' \
+               ' The "SETTINGS" folder must be specified, ' \
+               'it will store the program settings and buckup lists. "DATA" - as needed.'
         mw.msg_one_button(title, main, 'info')
+
+    @staticmethod
+    def save_settings_bt():
+        MainBase.save_settings()
+
+    def sel_main_folder_bt(self):
+        dialog = QFileDialog()
+        dialog.setDirectory(r'F:')
+        dialog.setFileMode(QFileDialog.FileMode.Directory)
+        dialog.setViewMode(QFileDialog.ViewMode.List)
+        if dialog.exec():
+            filenames = "".join(dialog.selectedFiles())
+            if filenames:
+                MainBase.path_of_main_folder = filenames
+                MainBase.path_of_settings_folder = f"{filenames}/SETTINGS"
+                MainBase.path_of_data_folder = f"{filenames}/DATA"
+                self.main_folder.setText(filenames)
+                self.sett_folder.setText(MainBase.path_of_settings_folder)
+                self.data_folder_2.setText(MainBase.path_of_data_folder)
 
     def data_radio_bt(self):
         self.select_frame.setEnabled(False)
@@ -379,7 +387,3 @@ class settings_Dialog(object):
         self.select_frame.setEnabled(True)
         self.main_folder.setEnabled(False)
         self.sel_main_folder.setEnabled(False)
-
-    @staticmethod
-    def save_settings_bt():
-        MainBase.save_settings()

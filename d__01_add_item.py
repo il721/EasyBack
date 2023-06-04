@@ -363,7 +363,6 @@ class AddItemDial01(object):
         If "name_item" is already exist in all_backup_item, open warning dialog and if "ok"
         pressed, owerwrite key in dict
         """
-        # TODO change style of warning window
 
         # check for main backup folder is existing
         # if not base.check_main_folder():

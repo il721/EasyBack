@@ -17,6 +17,8 @@ def first_time_check():
         pass
 
 
+# TODO create main first cheking
+
 if __name__ == '__main__':
     first_time_check()
     app = QApplication(sys.argv)
