@@ -5,6 +5,7 @@ import MainWindow as mw
 
 
 class MainBase:
+    settings_exist: bool = None
     settings: dict = {}
     path_of_main_folder: str = ""
     path_of_settings_folder: str = ""
@@ -15,6 +16,20 @@ class MainBase:
         cls.settings['main'] = cls.path_of_main_folder
         cls.settings['settings'] = cls.path_of_settings_folder
         cls.settings['data'] = cls.path_of_data_folder
+
+        # check for settings file exist
+        path = Path(f'{cls.path_of_settings_folder}\\settings.ini')
+        if path.is_file():
+            main = f'settings file is already exist in\n {cls.path_of_settings_folder}\n\n' \
+                   f'If you want to change backup folders, do this in "Edit Backup List" section'
+            mw.msg_one_button("WARNING!", main, 'warn')
+            return
+
+        # check for emty settings field
+        if not cls.path_of_settings_folder:
+            mw.msg_one_button("WARNING!", "You forget set 'SETTINGS' folder", 'warn')
+            return
+
         if not cls.check_folder_exist(cls.path_of_settings_folder):
             Path.mkdir(Path(cls.path_of_settings_folder))
         if cls.path_of_data_folder:  # if DATA not set and needed, don`t create DATA folder
@@ -23,9 +38,10 @@ class MainBase:
         path = Path(f"{MainBase.path_of_main_folder}/SETTINGS/settings.ini")
         with open(path, 'w') as f:
             json.dump(cls.settings, f)
+        cls.settings_exist = True
         mw.msg_one_button('Congradulation!', 'Settings is successfully saved in '
                                              'settings.ini', 'info')
-        print(cls.settings)
+        # print(cls.settings)
 
     @classmethod
     def check_reg_key(cls):

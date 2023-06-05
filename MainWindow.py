@@ -98,7 +98,7 @@ def msg_one_button(title: str, main: str, type_of_msg: str):
     # msg_box.information(self.list_files_and_folders, title, main)
 
 
-def msg_two_button(title: str, main: str) -> bool:
+def msg_two_button(title: str, main: str) -> str:
     """
     Standart MessageBox dialog with two buttons "Yes" and "No".
     Return True if button "Yes" pressed, else, if "No" pressed return False
@@ -134,9 +134,9 @@ def msg_two_button(title: str, main: str) -> bool:
     msg_box.addButton(cancel, msg_box.ButtonRole.NoRole)
     msg_box.exec()
     if msg_box.clickedButton() == ok:
-        return True
+        return 'yes'
     elif msg_box.clickedButton() == cancel:
-        return False
+        return 'no'
 
     #
     # if box.clickedButton() == buttonY:

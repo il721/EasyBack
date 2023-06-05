@@ -343,17 +343,9 @@ class AddItemDial01(object):
         """
         row = self.list_files_and_folders.currentRow()
         reply = mw.msg_two_button("Remove Item", "Do You Want to Remove Item?")
-        if reply:
+        if reply == 'yes':
             removed_row = self.list_files_and_folders.takeItem(row)
             self.list_of_file.remove(removed_row.text())
-
-        # reply = QMessageBox.question(self.list_files_and_folders, "Remove Item",
-        #                              "Do You Want to Remove Item?",
-        #                              QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
-        # if reply == QMessageBox.StandardButton.Yes:
-        #     removed_row = self.list_files_and_folders.takeItem(row)
-        #     self.list_of_file.remove(removed_row.text())
-        # TODO change style of question message
 
     def add_item_01_bt(self):
         """
@@ -363,17 +355,6 @@ class AddItemDial01(object):
         If "name_item" is already exist in all_backup_item, open warning dialog and if "ok"
         pressed, owerwrite key in dict
         """
-
-        # check for main backup folder is existing
-        # if not base.check_main_folder():
-        #     reply = QMessageBox.warning(self.list_files_and_folders, "WARNING!",
-        #                                 "It looks like you don`t yet select main backup folder."
-        #                                 " Please do it now",
-        #                                 QMessageBox.StandardButton.Ok)
-        #     dialog = QDialog()
-        #     ui = settings_Dialog()
-        #     ui.setupUi(dialog)
-        #     dialog.exec()
 
         self.name_item = self.input_name.text()
 
@@ -389,16 +370,11 @@ class AddItemDial01(object):
             reply = mw.msg_two_button("WARNING!",
                                       "This name is already exist and wil be owerwrited if you "
                                       " press 'Yes'\n Press 'No' to cancel")
-            # reply = QMessageBox.question(self.list_files_and_folders, "WARNING!",
-            #                              "This name is already exist in base and wil be "
-            #                              "owerwrited if you press 'Yes'\n Press 'No' to cancel",
-            #                              QMessageBox.StandardButton.Yes |
-            #                              QMessageBox.StandardButton.No)
-            if reply:
+            if reply == 'yes':
                 base.add_item(self.temp_dict)
                 title = "Congradulations!"
                 main = f"Entry with name: '{self.name_item}'\n was changed"
-                mw.msg_one_button(title, main)
+                mw.msg_one_button(title, main, 'info')
             else:
                 return
         else:

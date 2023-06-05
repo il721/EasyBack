@@ -271,6 +271,7 @@ class settings_Dialog(object):
         self.horizontalLayout.addItem(self.horizontalSpacer)
 
         self.main_settings = QPushButton(Dialog)
+        self.main_settings.setEnabled(MainBase.settings_exist)
         self.main_settings.setObjectName(u"main_settings")
         sizePolicy1.setHeightForWidth(self.main_settings.sizePolicy().hasHeightForWidth())
         self.main_settings.setSizePolicy(sizePolicy1)
@@ -340,7 +341,7 @@ class settings_Dialog(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_appearance),
                                   QCoreApplication.translate("Dialog", u"Appearance", None))
         self.save_settings.setText(QCoreApplication.translate("Dialog", u"   Save Settings", None))
-        self.main_settings.setText(QCoreApplication.translate("Dialog", u"    Cancel", None))
+        self.main_settings.setText(QCoreApplication.translate("Dialog", u"  Main Menu", None))
 
     # ************************    MY CODE    ***************************************************
     @staticmethod

@@ -8,10 +8,14 @@ from main_base import MainBase
 def first_time_check():
     if MainBase.check_reg_key() == "key not exist":
         print("key not exist")
-        mw.msg_one_button('Registry key not found', 'It looks like you are entering the program'
-                                                    ' for the first time. Please, '
-                                                    'go to SETTINGS and set some necessary '
-                                                    'parameters', 'warn')
+        mw.msg_one_button('Settings not found', 'It looks like you are entering the program'
+                                                ' for the first time. Please, '
+                                                'go to SETTINGS and set some necessary '
+                                                'parameters', 'warn')
+        MainBase.settings_exist = False
+        mw.MainWindowDialog.settings_bt(mw.MainWindowDialog)
+    else:
+        MainBase.settings_exist = True
 
 
 # TODO create main first cheking
