@@ -101,7 +101,7 @@ def msg_one_button(title: str, main: str, type_of_msg: str):
 def msg_two_button(title: str, main: str) -> str:
     """
     Standart MessageBox dialog with two buttons "Yes" and "No".
-    Return True if button "Yes" pressed, else, if "No" pressed return False
+    Return 'yes' if button "Yes" pressed, else, if "No" pressed return 'no'
     :param title:
     :param main:
     :return:

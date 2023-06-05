@@ -78,7 +78,9 @@ class settings_Dialog(object):
                              "background: #2B79C2;\n"
                              "color: rgb(230, 230, 230)}\n"
                              "QFrame:disabled{\n"
-                             "background-color: rgb(50,50,50);}")
+                             "background-color: rgb(50,50,50);}"
+                             "QRadioButton:disabled{\n background-color: rgb(50,50,50);}"
+                             "QToolButton:disabled{\n background-color: rgb(50,50,50);}")
         self.verticalLayout_3 = QVBoxLayout(Dialog)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.tabWidget = QTabWidget(Dialog)
@@ -291,6 +293,13 @@ class settings_Dialog(object):
 
         QMetaObject.connectSlotsByName(Dialog)
 
+        # ************************    MY CODE    ***************************************************
+        if MainBase.settings_exist:
+            main_folder_path = MainBase.path_of_main_folder
+            settings_folder_path = MainBase.path_of_settings_folder
+            self.main_folder.setText(main_folder_path)
+            self.sett_folder.setText(settings_folder_path)
+            print(main_folder_path, settings_folder_path, sep="\n")
         # ************************  MY CODE (buttons)  *********************************************
         self.sel_main_folder.clicked.connect(self.sel_main_folder_bt)
         self.default_info.clicked.connect(self.default_info_bt)
@@ -343,7 +352,7 @@ class settings_Dialog(object):
         self.save_settings.setText(QCoreApplication.translate("Dialog", u"   Save Settings", None))
         self.main_settings.setText(QCoreApplication.translate("Dialog", u"  Main Menu", None))
 
-    # ************************    MY CODE    ***************************************************
+    # ************************    MY CODE    *******************************************************
     @staticmethod
     def default_info_bt():
         title = 'Info'

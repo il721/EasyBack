@@ -51,8 +51,9 @@ SETTINGS_MAIN = "*{\n" \
                 "QTabBar::tab:selected {\n" \
                 "background: #2B79C2;\n" \
                 "color: rgb(230, 230, 230)}\n" \
-                "QFrame:disabled{\n" \
-                "background-color: rgb(50,50,50);}"
+                "QFrame:disabled{\n background-color: rgb(50,50,50);}" \
+                "QRadioButton:disabled{\n background-color: rgb(50,50,50);}" \
+                "QToolButton:disabled{\n background-color: rgb(50,50,50);}"
 
 MSG_PUSH_BUTTON: str = "QPushButton {\n border: 2px solid;\n " \
                        "color: rgb(230, 230, 230);\n" \

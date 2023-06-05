@@ -86,6 +86,10 @@ QTabBar::tab:selected {
 background: #2B79C2;
 color: rgb(230, 230, 230)}
 QFrame:disabled{
+background-color: rgb(50,50,50);}
+QRadioButton:disabled{
+background-color: rgb(50,50,50);}
+QToolButton:disabled{
 background-color: rgb(50,50,50);}</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -596,7 +600,7 @@ border-color: #2B79C2;</string>
         </size>
        </property>
        <property name="text">
-        <string>    Cancel</string>
+        <string>  Main Menu</string>
        </property>
        <property name="icon">
         <iconset resource="dop_win_rc.qrc">

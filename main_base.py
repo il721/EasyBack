@@ -13,21 +13,33 @@ class MainBase:
 
     @classmethod
     def save_settings(cls):
+        # check for settings file exist
+        if cls.settings_exist:
+            path = f'{cls.path_of_settings_folder}\\settings.ini'
+            msg_text = f'settings file is already exist in\n {path}\n\n' \
+                       f'A you want to change backup folders?'
+            reply = mw.msg_two_button("WARNING!", msg_text)
+            if reply == 'no':
+                return
+            else:
+                msg_text = "ARE YOU SHURE?\n" \
+                           " If you press 'Yes' all you backup`s and settings fail will be move " \
+                           "to new location. \n Old one will be deleted"
+                reply = mw.msg_two_button("WARNING!!!", msg_text)
+                if reply == 'no':
+                    return
+                else:
+                    pass
+                    print("!!!!!!!!!!!!")
+        #             TODO ADD move to new location all backups
+
         cls.settings['main'] = cls.path_of_main_folder
         cls.settings['settings'] = cls.path_of_settings_folder
         cls.settings['data'] = cls.path_of_data_folder
 
-        # check for settings file exist
-        path = Path(f'{cls.path_of_settings_folder}\\settings.ini')
-        if path.is_file():
-            main = f'settings file is already exist in\n {cls.path_of_settings_folder}\n\n' \
-                   f'If you want to change backup folders, do this in "Edit Backup List" section'
-            mw.msg_one_button("WARNING!", main, 'warn')
-            return
-
         # check for emty settings field
         if not cls.path_of_settings_folder:
-            mw.msg_one_button("WARNING!", "You forget set 'SETTINGS' folder", 'warn')
+            mw.msg_one_button("WARNING!", "You forget set the 'SETTINGS' folder", 'warn')
             return
 
         if not cls.check_folder_exist(cls.path_of_settings_folder):
@@ -42,6 +54,11 @@ class MainBase:
         mw.msg_one_button('Congradulation!', 'Settings is successfully saved in '
                                              'settings.ini', 'info')
         # print(cls.settings)
+
+    @classmethod
+    def check_file_exist(cls, path_str: str) -> bool:
+        path = Path(path_str)
+        return path.is_file()
 
     @classmethod
     def check_reg_key(cls):
