@@ -297,11 +297,12 @@ class settings_Dialog(object):
         if MainBase.settings_exist:
             main_folder_path = MainBase.path_of_main_folder
             settings_folder_path = MainBase.path_of_settings_folder
+            data_folder_path = MainBase.path_of_data_folder
             self.main_folder.setText(main_folder_path)
             self.sett_folder.setText(settings_folder_path)
-            print(main_folder_path, settings_folder_path, sep="\n")
+            self.data_folder_2.setText(data_folder_path)
         # ************************  MY CODE (buttons)  *********************************************
-        self.sel_main_folder.clicked.connect(self.sel_main_folder_bt)
+        self.sel_main_folder.clicked.connect(self.select_main_folder_bt)
         self.default_info.clicked.connect(self.default_info_bt)
         self.select_info.clicked.connect(self.select_info_bt)
         self.save_settings.clicked.connect(self.save_settings_bt)
@@ -369,25 +370,37 @@ class settings_Dialog(object):
                'it will store the program settings and buckup lists. "DATA" - as needed.'
         mw.msg_one_button(title, main, 'info')
 
-    @staticmethod
-    def save_settings_bt():
+    def save_settings_bt(self):
         MainBase.save_settings()
 
-    def sel_main_folder_bt(self):
+        # if the main folder is not set, the dialog will not close
+        if MainBase.settings_exist:
+            self.main_settings.setEnabled(True)
+
+    def select_main_folder_bt(self):
         dialog = QFileDialog()
         dialog.setDirectory(r'F:')
         dialog.setFileMode(QFileDialog.FileMode.Directory)
         dialog.setViewMode(QFileDialog.ViewMode.List)
         if dialog.exec():
             filenames = "".join(dialog.selectedFiles())
-            if filenames:
+            if filenames == MainBase.path_of_main_folder:
+                return
+            else:
+                MainBase.flag_change_settings = True
                 MainBase.path_of_main_folder = filenames
                 MainBase.path_of_settings_folder = f"{filenames}/SETTINGS"
                 MainBase.path_of_data_folder = f"{filenames}/DATA"
                 self.main_folder.setText(filenames)
                 self.sett_folder.setText(MainBase.path_of_settings_folder)
                 self.data_folder_2.setText(MainBase.path_of_data_folder)
-                MainBase.create_reg_key()
+
+    def super_warnings(self) -> str:
+        """
+        dialog for double confirmation of backup folder transfer
+
+        :return: str 'yes' or 'no'
+        """
 
     def data_radio_bt(self):
         self.select_frame.setEnabled(False)

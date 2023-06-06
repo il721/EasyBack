@@ -19,9 +19,11 @@ def first_time_check():
         MainBase.settings_exist = True
         MainBase.path_of_main_folder = f'{rez[1]}'
         MainBase.path_of_settings_folder = f'{rez[1]}/SETTINGS'
+        MainBase.path_of_data_folder = f'{rez[2]}'
+        print(MainBase.path_of_data_folder)
 
+    # TODO create folder settings exist
 
-# TODO create main first cheking
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

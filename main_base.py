@@ -6,6 +6,7 @@ import MainWindow as mw
 
 class MainBase:
     settings_exist: bool = None
+    flag_change_settings: bool = False
     settings: dict = {}
     path_of_main_folder: str = ""
     path_of_settings_folder: str = ""
@@ -13,8 +14,9 @@ class MainBase:
 
     @classmethod
     def save_settings(cls):
-        # check for settings file exist
-        if cls.settings_exist:
+        # if backup folders have changed, transfers all (settings and buckups) to a new location
+        # after double confirmation
+        if cls.flag_change_settings:
             path = f'{cls.path_of_settings_folder}\\settings.ini'
             msg_text = f'settings file is already exist in\n {path}\n\n' \
                        f'A you want to change backup folders?'
@@ -29,31 +31,38 @@ class MainBase:
                 if reply == 'no':
                     return
                 else:
-                    pass
-                    print("!!!!!!!!!!!!")
-        #             TODO ADD move to new location all backups
-
-        cls.settings['main'] = cls.path_of_main_folder
-        cls.settings['settings'] = cls.path_of_settings_folder
-        cls.settings['data'] = cls.path_of_data_folder
+                    cls.move_all_to_new_location()
 
         # check for emty settings field
         if not cls.path_of_settings_folder:
             mw.msg_one_button("WARNING!", "You forget set the 'SETTINGS' folder", 'warn')
             return
 
+        # add keys to settings dictionary
+        cls.settings['main'] = cls.path_of_main_folder
+        cls.settings['settings'] = cls.path_of_settings_folder
+        cls.settings['data'] = cls.path_of_data_folder
+
         if not cls.check_folder_exist(cls.path_of_settings_folder):
             Path.mkdir(Path(cls.path_of_settings_folder))
         if cls.path_of_data_folder:  # if DATA not set and needed, don`t create DATA folder
             if not cls.check_folder_exist(cls.path_of_data_folder):
                 Path.mkdir(Path(cls.path_of_data_folder))
-        path = Path(f"{MainBase.path_of_main_folder}/SETTINGS/settings.ini")
+        path = Path(f"{MainBase.path_of_settings_folder}/settings.ini")
         with open(path, 'w') as f:
             json.dump(cls.settings, f)
         cls.settings_exist = True
+        cls.create_reg_key()
         mw.msg_one_button('Congradulation!', 'Settings is successfully saved in '
                                              'settings.ini', 'info')
         # print(cls.settings)
+
+    # TODO ADD move to new location all backups fuctional
+
+    @classmethod
+    def move_all_to_new_location(cls):
+        pass
+        print("!!!!!!!!!!!!")
 
     @classmethod
     def check_file_exist(cls, path_str: str) -> bool:
@@ -66,9 +75,10 @@ class MainBase:
             reg_key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE,
                                      r'SOFTWARE\EasyBack',
                                      0, winreg.KEY_READ)
-            key_value = winreg.QueryValueEx(reg_key, 'settings_path')[0]
+            settings = winreg.QueryValueEx(reg_key, 'settings_path')[0]
+            data = winreg.QueryValueEx(reg_key, 'data_path')[0]
             winreg.CloseKey(reg_key)
-            return "key exist", key_value
+            return "key exist", settings, data
         except FileNotFoundError:
             return "key not exist"
 
@@ -76,12 +86,14 @@ class MainBase:
     def create_reg_key(cls):
         key = winreg.HKEY_LOCAL_MACHINE
         subkey = r'SOFTWARE\EasyBack'
-        name = 'settings_path'
-        value = cls.path_of_main_folder
+        name1 = 'settings_path'
+        name2 = 'data_path'
+        value1 = cls.path_of_main_folder
+        value2 = cls.path_of_data_folder
         winreg.CreateKeyEx(key, subkey, 0, winreg.KEY_WRITE)
         reg_key = winreg.OpenKey(key, subkey, 0, winreg.KEY_WRITE)
-        winreg.SetValueEx(reg_key, name, 0, winreg.REG_SZ, value)
-        print(cls.check_reg_key()[1])
+        winreg.SetValueEx(reg_key, name1, 0, winreg.REG_SZ, value1)
+        winreg.SetValueEx(reg_key, name2, 0, winreg.REG_SZ, value2)
         winreg.CloseKey(reg_key)
 
     @classmethod
