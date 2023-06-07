@@ -6,7 +6,7 @@ Python
 First look for some elements of interface.
 
 <picture>
- <source media="(prefers-color-scheme: dark)" srcset="https://github.com/il721/EasyBack/tree/b14b1acfef44698524ac333d3f62c38d38ed695f/arhiv/screens">
- <source media="(prefers-color-scheme: light)" srcset="https://github.com/il721/EasyBack/tree/b14b1acfef44698524ac333d3f62c38d38ed695f/arhiv/screens">
+ <source media="(prefers-color-scheme: dark)" srcset="arhiv/screens">
+ <source media="(prefers-color-scheme: light)" srcset="arhiv/screens">
  <img alt="YOUR-ALT-TEXT" src="YOUR-DEFAULT-IMAGE">
 </picture>
