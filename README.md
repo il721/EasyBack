@@ -4,6 +4,7 @@ Some very simple BuckUp utilitly with GUI on PySide2. For my learning operation 
 Python
 
 First look for some elements of interface.
+
 <details>
 <summary>Home screen</summary>
 <picture>
@@ -13,6 +14,7 @@ First look for some elements of interface.
 </picture>
 <details>
 
+<details>
 <summary>One button warning</summary>
 <picture>
  <source media="(prefers-color-scheme: dark)" srcset="arhiv/screens/Screen_04.png">
@@ -21,7 +23,7 @@ First look for some elements of interface.
 </picture>
 </details>
 
-
+</details>
 <summary>Add new items to back up list</summary>
 <picture>
  <source media="(prefers-color-scheme: dark)" srcset="arhiv/screens/Screen_02.png">
@@ -30,14 +32,11 @@ First look for some elements of interface.
 </picture>
 </details>
 
-
 <details>
 <summary>Settings dialog (some preview, not finished)</summary>
-
 <picture>
  <source media="(prefers-color-scheme: dark)" srcset="arhiv/screens/Screen_03.png">
  <source media="(prefers-color-scheme: light)" srcset="arhiv/screens/Screen_03.png">
  <img alt="Settings" src="arhiv/screens/Screen_03.png">
 </picture>
-
 </details>
