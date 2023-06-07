@@ -6,7 +6,7 @@ Python
 First look for some elements of interface.
 
 <picture>
- <source media="(prefers-color-scheme: dark)" srcset="arhiv/screens">
- <source media="(prefers-color-scheme: light)" srcset="arhiv/screens">
+ <source media="(prefers-color-scheme: dark)" srcset="https://flic.kr/ps/42pKc1">
+ <source media="(prefers-color-scheme: light)" srcset="https://flic.kr/ps/42pKc1">
  <img alt="YOUR-ALT-TEXT" src="YOUR-DEFAULT-IMAGE">
 </picture>
