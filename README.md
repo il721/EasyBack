@@ -12,13 +12,20 @@ First look for some elements of interface.
 </picture>
 
 
+<picture>
+ <source media="(prefers-color-scheme: dark)" srcset="arhiv/screens/Screen_04.png">
+ <source media="(prefers-color-scheme: light)" srcset="arhiv/screens/Screen_04.png">
+ <img alt="Home screen" src="arhiv/screens/Screen_04.png">
+</picture>
+
+
 
 Add new items to back up list
 
 <picture>
  <source media="(prefers-color-scheme: dark)" srcset="arhiv/screens/Screen_02.png">
  <source media="(prefers-color-scheme: light)" srcset="arhiv/screens/Screen_02.png">
- <img alt="Home screen" src="arhiv/screens/Screen_02.png">
+ <img alt="Add items" src="arhiv/screens/Screen_02.png">
 </picture>
 
 
@@ -29,7 +36,7 @@ Add new items to back up list
 <picture>
  <source media="(prefers-color-scheme: dark)" srcset="arhiv/screens/Screen_03.png">
  <source media="(prefers-color-scheme: light)" srcset="arhiv/screens/Screen_03.png">
- <img alt="Home screen" src="arhiv/screens/Screen_03.png">
+ <img alt="Settings" src="arhiv/screens/Screen_03.png">
 </picture>
 
 </details>
