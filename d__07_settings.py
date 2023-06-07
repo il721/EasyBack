@@ -386,14 +386,15 @@ class settings_Dialog(object):
             filenames = "".join(dialog.selectedFiles())
             if filenames == MainBase.path_of_main_folder:
                 return
-            else:
-                MainBase.flag_change_settings = True
+            elif MainBase.flag_change_settings == 'first' or\
+                    MainBase.flag_change_settings == 'changed':
                 MainBase.path_of_main_folder = filenames
                 MainBase.path_of_settings_folder = f"{filenames}/SETTINGS"
                 MainBase.path_of_data_folder = f"{filenames}/DATA"
                 self.main_folder.setText(filenames)
                 self.sett_folder.setText(MainBase.path_of_settings_folder)
                 self.data_folder_2.setText(MainBase.path_of_data_folder)
+                MainBase.flag_change_settings = 'changed'
 
     def super_warnings(self) -> str:
         """

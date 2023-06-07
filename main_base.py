@@ -1,12 +1,13 @@
 import json
 import winreg
 from pathlib import Path
+import shutil
 import MainWindow as mw
 
 
 class MainBase:
     settings_exist: bool = None
-    flag_change_settings: bool = False
+    flag_change_settings: str = 'first'  # 'first', 'changed' and 'not changed'
     settings: dict = {}
     path_of_main_folder: str = ""
     path_of_settings_folder: str = ""
@@ -16,7 +17,7 @@ class MainBase:
     def save_settings(cls):
         # if backup folders have changed, transfers all (settings and buckups) to a new location
         # after double confirmation
-        if cls.flag_change_settings:
+        if cls.flag_change_settings == 'changed':
             path = f'{cls.path_of_settings_folder}\\settings.ini'
             msg_text = f'settings file is already exist in\n {path}\n\n' \
                        f'A you want to change backup folders?'
@@ -32,6 +33,7 @@ class MainBase:
                     return
                 else:
                     cls.move_all_to_new_location()
+                    cls.flag_change_settings = 'not changed'
 
         # check for emty settings field
         if not cls.path_of_settings_folder:
@@ -61,7 +63,11 @@ class MainBase:
 
     @classmethod
     def move_all_to_new_location(cls):
-        pass
+        old_path = Path(f"F:\\!_____back_test\\SETTINGS\\")
+        new_path = Path(f"F:\\!_____back")
+        print(old_path)
+        print(new_path)
+        shutil.move(old_path, new_path)
         print("!!!!!!!!!!!!")
 
     @classmethod
