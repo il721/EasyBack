@@ -1,7 +1,7 @@
 # EasyBack
 
-Some very simple BuckUp utilitly with GUI on PySide2. For my learning operation with file system in
-Python
+Some very simple Buck Up utilitly with GUI on PySide6. To help me understand how to work with the file system, Windows registry and PyQT6 in
+Python.
 
 First look for some elements of interface.
 
