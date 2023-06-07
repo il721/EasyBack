@@ -11,14 +11,14 @@ First look for some elements of interface.
  <img alt="Home screen" src="arhiv/screens/Screen_01.png">
 </picture>
 
-
+<details>
+<summary>One button warning</summary>
 <picture>
  <source media="(prefers-color-scheme: dark)" srcset="arhiv/screens/Screen_04.png">
  <source media="(prefers-color-scheme: light)" srcset="arhiv/screens/Screen_04.png">
- <img alt="Home screen" src="arhiv/screens/Screen_04.png">
+ <img alt="One button warning" src="arhiv/screens/Screen_04.png">
 </picture>
-
-
+</details>
 
 Add new items to back up list
 
