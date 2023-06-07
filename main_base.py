@@ -6,19 +6,22 @@ import MainWindow as mw
 
 
 class MainBase:
-    settings_exist: bool = None
-    flag_change_settings: str = 'first'  # 'first', 'changed' and 'not changed'
+    settings_exist: bool = False
+    flag_change_settings: bool = False
     settings: dict = {}
-    path_of_main_folder: str = ""
-    path_of_settings_folder: str = ""
-    path_of_data_folder: str = ""
+    path_main_folder: str = ""
+    path_settings_folder: str = ""
+    path_data_folder: str = ""
+    old_path_main_folder: str = ""
+    old_path_settings_folder: str = ""
+    old_path_data_folder: str = ""
 
     @classmethod
     def save_settings(cls):
         # if backup folders have changed, transfers all (settings and buckups) to a new location
         # after double confirmation
-        if cls.flag_change_settings == 'changed':
-            path = f'{cls.path_of_settings_folder}\\settings.ini'
+        if cls.flag_change_settings:
+            path = f'{cls.path_settings_folder}\\settings.ini'
             msg_text = f'settings file is already exist in\n {path}\n\n' \
                        f'A you want to change backup folders?'
             reply = mw.msg_two_button("WARNING!", msg_text)
@@ -32,25 +35,25 @@ class MainBase:
                 if reply == 'no':
                     return
                 else:
-                    cls.move_all_to_new_location()
-                    cls.flag_change_settings = 'not changed'
+                    cls.flag_change_settings = False
+                    cls.move_to_new_location(cls.old_path_main_folder, cls.path_main_folder)
 
         # check for emty settings field
-        if not cls.path_of_settings_folder:
+        if not cls.path_settings_folder:
             mw.msg_one_button("WARNING!", "You forget set the 'SETTINGS' folder", 'warn')
             return
 
         # add keys to settings dictionary
-        cls.settings['main'] = cls.path_of_main_folder
-        cls.settings['settings'] = cls.path_of_settings_folder
-        cls.settings['data'] = cls.path_of_data_folder
+        cls.settings['main'] = cls.path_main_folder
+        cls.settings['settings'] = cls.path_settings_folder
+        cls.settings['data'] = cls.path_data_folder
 
-        if not cls.check_folder_exist(cls.path_of_settings_folder):
-            Path.mkdir(Path(cls.path_of_settings_folder))
-        if cls.path_of_data_folder:  # if DATA not set and needed, don`t create DATA folder
-            if not cls.check_folder_exist(cls.path_of_data_folder):
-                Path.mkdir(Path(cls.path_of_data_folder))
-        path = Path(f"{MainBase.path_of_settings_folder}/settings.ini")
+        if not cls.check_folder_exist(cls.path_settings_folder):
+            Path.mkdir(Path(cls.path_settings_folder))
+        if cls.path_data_folder:  # if DATA not set and needed, don`t create DATA folder
+            if not cls.check_folder_exist(cls.path_data_folder):
+                Path.mkdir(Path(cls.path_data_folder))
+        path = Path(f"{MainBase.path_settings_folder}/settings.ini")
         with open(path, 'w') as f:
             json.dump(cls.settings, f)
         cls.settings_exist = True
@@ -62,12 +65,10 @@ class MainBase:
     # TODO ADD move to new location all backups fuctional
 
     @classmethod
-    def move_all_to_new_location(cls):
-        old_path = Path(f"F:\\!_____back_test\\SETTINGS\\")
-        new_path = Path(f"F:\\!_____back")
-        print(old_path)
-        print(new_path)
-        shutil.move(old_path, new_path)
+    def move_to_new_location(cls, old: str, new: str) -> None:
+        print(old)
+        print(new)
+        shutil.move(old, new)
         print("!!!!!!!!!!!!")
 
     @classmethod
@@ -94,8 +95,8 @@ class MainBase:
         subkey = r'SOFTWARE\EasyBack'
         name1 = 'settings_path'
         name2 = 'data_path'
-        value1 = cls.path_of_main_folder
-        value2 = cls.path_of_data_folder
+        value1 = cls.path_main_folder
+        value2 = cls.path_data_folder
         winreg.CreateKeyEx(key, subkey, 0, winreg.KEY_WRITE)
         reg_key = winreg.OpenKey(key, subkey, 0, winreg.KEY_WRITE)
         winreg.SetValueEx(reg_key, name1, 0, winreg.REG_SZ, value1)
@@ -123,7 +124,7 @@ class MainBase:
         self.all_items.update(temp_dict)
 
     def save_base_to_disk(self):
-        name_of_backup_file = Path(f"{MainBase.path_of_main_folder}"
+        name_of_backup_file = Path(f"{MainBase.path_main_folder}"
                                    f"//SETTINGS/backup_lists/test.blf")
 
         with open(name_of_backup_file, 'w') as f:

@@ -312,7 +312,7 @@ border-color: #2B79C2;
       <string notr="true"/>
      </property>
      <property name="text">
-      <string>To remove line from list below just select them</string>
+      <string>Click on a line to delete it from list below</string>
      </property>
     </widget>
    </item>

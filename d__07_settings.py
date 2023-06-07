@@ -295,9 +295,9 @@ class settings_Dialog(object):
 
         # ************************    MY CODE    ***************************************************
         if MainBase.settings_exist:
-            main_folder_path = MainBase.path_of_main_folder
-            settings_folder_path = MainBase.path_of_settings_folder
-            data_folder_path = MainBase.path_of_data_folder
+            main_folder_path = MainBase.path_main_folder
+            settings_folder_path = MainBase.path_settings_folder
+            data_folder_path = MainBase.path_data_folder
             self.main_folder.setText(main_folder_path)
             self.sett_folder.setText(settings_folder_path)
             self.data_folder_2.setText(data_folder_path)
@@ -384,17 +384,20 @@ class settings_Dialog(object):
         dialog.setViewMode(QFileDialog.ViewMode.List)
         if dialog.exec():
             filenames = "".join(dialog.selectedFiles())
-            if filenames == MainBase.path_of_main_folder:
+            if filenames == MainBase.path_main_folder:
                 return
-            elif MainBase.flag_change_settings == 'first' or\
-                    MainBase.flag_change_settings == 'changed':
-                MainBase.path_of_main_folder = filenames
-                MainBase.path_of_settings_folder = f"{filenames}/SETTINGS"
-                MainBase.path_of_data_folder = f"{filenames}/DATA"
+            else:
+                MainBase.old_path_main_folder = f"{MainBase.path_main_folder}\\"
+                MainBase.old_path_settings_folder = MainBase.path_settings_folder
+                MainBase.old_path_data_folder = MainBase.path_data_folder
+                MainBase.path_main_folder = filenames
+                MainBase.path_settings_folder = f"{filenames}/SETTINGS"
+                MainBase.path_data_folder = f"{filenames}/DATA"
                 self.main_folder.setText(filenames)
-                self.sett_folder.setText(MainBase.path_of_settings_folder)
-                self.data_folder_2.setText(MainBase.path_of_data_folder)
-                MainBase.flag_change_settings = 'changed'
+                self.sett_folder.setText(MainBase.path_settings_folder)
+                self.data_folder_2.setText(MainBase.path_data_folder)
+                if MainBase.settings_exist:
+                    MainBase.flag_change_settings = True
 
     def super_warnings(self) -> str:
         """
