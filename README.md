@@ -12,7 +12,7 @@ First look for some elements of interface.
  <source media="(prefers-color-scheme: light)" srcset="arhiv/screens/Screen_01.png">
  <img alt="Home screen" src="arhiv/screens/Screen_01.png">
 </picture>
-<details>
+</details>
 
 <details>
 <summary>One button warning</summary>
@@ -23,7 +23,7 @@ First look for some elements of interface.
 </picture>
 </details>
 
-</details>
+<details>
 <summary>Add new items to back up list</summary>
 <picture>
  <source media="(prefers-color-scheme: dark)" srcset="arhiv/screens/Screen_02.png">
