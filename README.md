@@ -22,9 +22,9 @@ Add new items to back up list
 </picture>
 
 
-Settings dialog (some preview, not finished)
+
 <details>
-<summary>My top THINGS-TO-RANK</summary>
+<summary>Settings dialog (some preview, not finished)</summary>
 
 <picture>
  <source media="(prefers-color-scheme: dark)" srcset="arhiv/screens/Screen_03.png">
