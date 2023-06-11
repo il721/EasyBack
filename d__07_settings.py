@@ -387,7 +387,7 @@ class settings_Dialog(object):
             if filenames == MainBase.path_main_folder:
                 return
             else:
-                MainBase.old_path_main_folder = f"{MainBase.path_main_folder}\\"
+                MainBase.old_path_main_folder = f"{MainBase.path_main_folder}"
                 MainBase.old_path_settings_folder = MainBase.path_settings_folder
                 MainBase.old_path_data_folder = MainBase.path_data_folder
                 MainBase.path_main_folder = filenames

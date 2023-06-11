@@ -78,14 +78,19 @@ class MainBase:
 
     @classmethod
     def check_reg_key(cls):
+        """
+        If registry key in 'HKEY_LOCAL_MACHINE\\SOFTWARE' named 'EasyBack' not exist,
+        return 'key not exist'. Else return tuple:
+        ('key exist',main_path value, data_path value)
+        """
         try:
             reg_key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE,
                                      r'SOFTWARE\EasyBack',
                                      0, winreg.KEY_READ)
-            settings = winreg.QueryValueEx(reg_key, 'settings_path')[0]
+            main = winreg.QueryValueEx(reg_key, 'main_path')[0]
             data = winreg.QueryValueEx(reg_key, 'data_path')[0]
             winreg.CloseKey(reg_key)
-            return "key exist", settings, data
+            return "key exist", main, data
         except FileNotFoundError:
             return "key not exist"
 
@@ -93,7 +98,7 @@ class MainBase:
     def create_reg_key(cls):
         key = winreg.HKEY_LOCAL_MACHINE
         subkey = r'SOFTWARE\EasyBack'
-        name1 = 'settings_path'
+        name1 = 'main_path'
         name2 = 'data_path'
         value1 = cls.path_main_folder
         value2 = cls.path_data_folder
