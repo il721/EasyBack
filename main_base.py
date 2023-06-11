@@ -68,8 +68,8 @@ class MainBase:
     def move_to_new_location(cls, old: str, new: str) -> None:
         print(old)
         print(new)
-        shutil.move(old, new)
-        print("!!!!!!!!!!!!")
+        for _ in Path.iterdir(Path(old)):
+            shutil.move(_, new)
 
     @classmethod
     def check_file_exist(cls, path_str: str) -> bool:
