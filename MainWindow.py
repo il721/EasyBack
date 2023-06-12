@@ -58,6 +58,26 @@ class MainWindowDialog(QMainWindow):
         sys.exit()
 
 
+def q_file_dialog_begin(start_folder: str, type_select: QFileDialog.FileMode) -> QFileDialog:
+    """
+    Repeted part of code in some file select dialog`s
+
+    :param start_folder: parametr *** in dialog.setDirectory(***) (for eaxmple - r"F:"
+    and dialog starts from root of disc F:)
+    :param type_select: one of the types allowed in FileMode(enum.Enum) in dialog.setFileMode:
+            QFileDialog.FileMode.AnyFile
+            QFileDialog.FileMode.ExistingFile
+            QFileDialog.FileMode.Directory
+            QFileDialog.FileMode.ExistingFiles
+    :return: QFileDialog
+    """
+    dialog = QFileDialog()
+    dialog.setDirectory(start_folder)
+    dialog.setFileMode(type_select)
+    dialog.setViewMode(QFileDialog.ViewMode.List)
+    return dialog
+
+
 def msg_one_button(title: str, main: str, type_of_msg: str):
     """
     Standart MessageBox dialog. type_of_msg is "info" or "warm" for corresponding dialog type.

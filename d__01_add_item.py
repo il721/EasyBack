@@ -306,10 +306,8 @@ class AddItemDial01(object):
         Add folder (only one in each time, when press "Add folder" button) to ListWidget and
         backup_list_item
         """
-        dialog = QFileDialog()
-        dialog.setDirectory(r'F:')
-        dialog.setFileMode(QFileDialog.FileMode.Directory)
-        dialog.setViewMode(QFileDialog.ViewMode.List)
+        type_sel = QFileDialog.FileMode.Directory
+        dialog = mw.q_file_dialog_begin(r"F:", type_sel)
         if dialog.exec():
             filenames = dialog.selectedFiles()
             if filenames:
@@ -320,10 +318,8 @@ class AddItemDial01(object):
         """
         Add file(`s) to ListWidget and backup_list_item when press "Add file" button
         """
-        dialog = QFileDialog()
-        dialog.setDirectory(r'F:')
-        dialog.setFileMode(QFileDialog.FileMode.ExistingFiles)
-        dialog.setViewMode(QFileDialog.ViewMode.List)
+        type_sel = QFileDialog.FileMode.ExistingFiles
+        dialog = mw.q_file_dialog_begin(r"F:", type_sel)
         if dialog.exec():
             filenames = dialog.selectedFiles()
 
