@@ -1,6 +1,6 @@
 from PySide6.QtCore import (QCoreApplication, QMetaObject, QRect, QSize, )
 from PySide6.QtGui import (QIcon, )
-from PySide6.QtWidgets import (QComboBox, QDialog, QFileDialog, QFrame, QHBoxLayout, QLabel,
+from PySide6.QtWidgets import (QComboBox, QFileDialog, QFrame, QHBoxLayout, QLabel,
                                QLineEdit,
                                QPushButton,
                                QRadioButton, QSizePolicy, QSpacerItem, QTabWidget, QToolButton,

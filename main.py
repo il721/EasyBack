@@ -22,8 +22,6 @@ def first_time_check():
         MainBase.path_settings_folder = f'{rez[1]}/SETTINGS'
         MainBase.path_data_folder = f'{rez[2]}'
 
-    # TODO create folder settings exist
-
 
 def path_or_regkey_not_exsit():
     mw.msg_one_button('Settings not found', 'It looks like you are entering the program'
