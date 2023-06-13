@@ -101,21 +101,8 @@ def msg_one_button(title: str, main: str, type_of_msg: str):
     ok.setStyleSheet(st.MSG_PUSH_BUTTON)
     ok.setText("Ok")
     ok.setMinimumSize(QSize(80, 50))
-    # icon1 = QIcon()
-    # icon1.addFile(u":/icon/icons/GREY/ok.svg", QSize(), QIcon.Normal, QIcon.Off)
-    # ok.setIcon(icon1)
     msg_box.addButton(ok, msg_box.ButtonRole.YesRole)
-    # msg_box.setStandardButtons(msg_box.StandardButton.Yes | msg_box.StandardButton.No)
-    # ok = msg_box.button(msg_box.StandardButton.Yes)
     msg_box.exec()
-
-    #
-    # if box.clickedButton() == buttonY:
-    # # YES pressed
-    # elif box.clickedButton() == buttonN:
-    # # NO pressed
-
-    # msg_box.information(self.list_files_and_folders, title, main)
 
 
 def msg_two_button(title: str, main: str) -> str:

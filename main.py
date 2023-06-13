@@ -14,13 +14,13 @@ def first_time_check():
     rez = MainBase.check_reg_key()
     if rez == "key not exist":
         path_or_regkey_not_exsit()
-    elif not Path.is_dir(Path(f'{rez[1]}/SETTINGS')):
+    elif not Path.is_dir(Path(f'{rez["settings_path"]}')):
         path_or_regkey_not_exsit()
     else:
         MainBase.settings_exist = True
-        MainBase.path_main_folder = f'{rez[1]}'
-        MainBase.path_settings_folder = f'{rez[1]}/SETTINGS'
-        MainBase.path_data_folder = f'{rez[2]}'
+        MainBase.path_main_folder = rez["main_path"]
+        MainBase.path_settings_folder = rez["settings_path"]
+        MainBase.path_data_folder = rez["data_path"]
 
 
 def path_or_regkey_not_exsit():

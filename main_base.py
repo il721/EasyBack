@@ -44,7 +44,7 @@ class MainBase:
             mw.msg_one_button("WARNING!", "You forget set the 'SETTINGS' folder", 'warn')
             return
 
-        # add keys to settings dictionary
+        # add keys to settings dictionary. ALL values must be str!!!
         cls.settings['main_path'] = cls.path_main_folder
         cls.settings['settings_path'] = cls.path_settings_folder
         cls.settings['data_path'] = cls.path_data_folder
@@ -62,16 +62,34 @@ class MainBase:
         cls.create_reg_key(cls.settings)
         mw.msg_one_button('Congradulation!', 'Settings is successfully saved in '
                                              'settings.ini', 'info')
-        # print(cls.settings)
 
     # TODO ADD move to new location all backups fuctional
 
     @classmethod
     def move_to_new_location(cls, old: str, new: str) -> None:
-        print(old)
-        print(new)
-        for _ in Path.iterdir(Path(old)):
-            shutil.move(_, new)
+        """
+        Move all backup data from "old" folder to "new". If folder SETTINGS is already exist in
+        new location, clear everything inside "new"
+        :param old:
+        :param new:
+        :return:
+        """
+        if Path(f"{new}/SETTINGS"):
+            main_text = f"Destination folder is not empty!!! If you choose 'Yes' everything " \
+                        f"inside the folder:\n {new}\n will be deleted"
+            replay = mw.msg_two_button("Destination folder not empty!!!", main_text)
+            if replay == 'yes':
+                for _ in Path.iterdir(Path(new)):
+                    shutil.rmtree(_)
+            else:
+                cls.flag_change_settings = False
+                cls.path_main_folder = cls.old_path_main_folder
+                cls.path_settings_folder = cls.old_path_settings_folder
+                cls.path_data_folder = cls.old_path_data_folder
+                return
+        else:
+            for _ in Path.iterdir(Path(old)):
+                shutil.move(_, new)
 
     @classmethod
     def check_file_exist(cls, path_str: str) -> bool:
@@ -89,26 +107,36 @@ class MainBase:
             reg_key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE,
                                      r'SOFTWARE\EasyBack',
                                      0, winreg.KEY_READ)
-            main = winreg.QueryValueEx(reg_key, 'main_path')[0]
-            data = winreg.QueryValueEx(reg_key, 'data_path')[0]
+
+            cls.get_all_settings_from_regkey(reg_key)
+            print(*[[key, val] for key, val in MainBase.settings.items()], sep="\n")
+
             winreg.CloseKey(reg_key)
 
-            return "key exist", main, data
+            return MainBase.settings
         except FileNotFoundError:
             return "key not exist"
+
+    @classmethod
+    def get_all_settings_from_regkey(cls, key: winreg.OpenKey) -> None:
+        """
+        Fills the settings dictionary with values from subkeys of EasyBack registry key
+        :param key:
+        :return:
+        """
+        # number of subkey (settings item) in main regkey EasyBack
+        num = winreg.QueryInfoKey(key)[1]
+
+        for _ in range(num):
+            MainBase.settings[winreg.EnumValue(key, _)[0]] = winreg.EnumValue(key, _)[1]
 
     @classmethod
     def create_reg_key(cls, keys):
         key = winreg.HKEY_LOCAL_MACHINE
         subkey = r'SOFTWARE\EasyBack'
-        # name1 = 'main_path'
-        # name2 = 'data_path'
-        # value1 = cls.path_main_folder
-        # value2 = cls.path_data_folder
         winreg.CreateKeyEx(key, subkey, 0, winreg.KEY_WRITE)
         reg_key = winreg.OpenKey(key, subkey, 0, winreg.KEY_WRITE)
         for name, value in keys.items():
-            print(name, value)
             winreg.SetValueEx(reg_key, name, 0, winreg.REG_SZ, value)
         winreg.CloseKey(reg_key)
 

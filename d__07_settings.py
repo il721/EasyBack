@@ -1,3 +1,6 @@
+import shutil
+from pathlib import Path
+
 from PySide6.QtCore import (QCoreApplication, QMetaObject, QRect, QSize, )
 from PySide6.QtGui import (QIcon, )
 from PySide6.QtWidgets import (QComboBox, QFileDialog, QFrame, QHBoxLayout, QLabel,
@@ -378,10 +381,8 @@ class settings_Dialog(object):
             self.main_settings.setEnabled(True)
 
     def select_main_folder_bt(self):
-        dialog = QFileDialog()
-        dialog.setDirectory(r'F:')
-        dialog.setFileMode(QFileDialog.FileMode.Directory)
-        dialog.setViewMode(QFileDialog.ViewMode.List)
+        dialog = mw.q_file_dialog_begin(MainBase.start_folder_in_dialogs,
+                                        QFileDialog.FileMode.Directory)
         if dialog.exec():
             filenames = "".join(dialog.selectedFiles())
             if filenames == MainBase.path_main_folder:

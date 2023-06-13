@@ -400,5 +400,3 @@ class AddItemDial01(object):
     #         self.simple_message_box(title, main)
     #     else:
     # TODO end save list dialog
-
-    print(base.all_items)

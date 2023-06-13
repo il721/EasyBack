@@ -8,12 +8,18 @@ KEY_VALUE: str = r'f:\!_____back_test\SETTINGS'
 
 def create_key(key, subkey: str, name: str, value: str) -> None:
     try:
-        rez = winreg.OpenKey(key, subkey, 0, winreg.KEY_WRITE)
+        rez = winreg.OpenKey(key, subkey, 0, winreg.KEY_READ)
+        settings = {}
+        for _ in range(winreg.QueryInfoKey(rez)[1]):
+            settings[winreg.EnumValue(rez, _)[0]] = winreg.EnumValue(rez, _)[1]
+        print(settings)
+
     except FileNotFoundError:
-        winreg.CreateKey(key, subkey)
-        rez = winreg.OpenKey(key, subkey, 0, winreg.KEY_WRITE)
-        winreg.SetValueEx(rez, name, 0, winreg.REG_SZ, value)
-        winreg.CloseKey(rez)
+        print('Error!!!')
+        # winreg.CreateKey(key, subkey)
+        # rez = winreg.OpenKey(key, subkey, 0, winreg.KEY_WRITE)
+        # winreg.SetValueEx(rez, name, 0, winreg.REG_SZ, value)
+        # winreg.CloseKey(rez)
 
 
 def delete_key(key, subkey: str) -> None:
