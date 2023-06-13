@@ -15,6 +15,7 @@ class MainBase:
     old_path_main_folder: str = ""
     old_path_settings_folder: str = ""
     old_path_data_folder: str = ""
+    start_folder_in_dialogs: str = r"F:"
 
     @classmethod
     def save_settings(cls):
@@ -44,9 +45,10 @@ class MainBase:
             return
 
         # add keys to settings dictionary
-        cls.settings['main'] = cls.path_main_folder
-        cls.settings['settings'] = cls.path_settings_folder
-        cls.settings['data'] = cls.path_data_folder
+        cls.settings['main_path'] = cls.path_main_folder
+        cls.settings['settings_path'] = cls.path_settings_folder
+        cls.settings['data_path'] = cls.path_data_folder
+        cls.settings['start_folder'] = cls.start_folder_in_dialogs
 
         if not cls.check_folder_exist(cls.path_settings_folder):
             Path.mkdir(Path(cls.path_settings_folder))
@@ -57,7 +59,7 @@ class MainBase:
         with open(path, 'w') as f:
             json.dump(cls.settings, f)
         cls.settings_exist = True
-        cls.create_reg_key()
+        cls.create_reg_key(cls.settings)
         mw.msg_one_button('Congradulation!', 'Settings is successfully saved in '
                                              'settings.ini', 'info')
         # print(cls.settings)
@@ -90,22 +92,24 @@ class MainBase:
             main = winreg.QueryValueEx(reg_key, 'main_path')[0]
             data = winreg.QueryValueEx(reg_key, 'data_path')[0]
             winreg.CloseKey(reg_key)
+
             return "key exist", main, data
         except FileNotFoundError:
             return "key not exist"
 
     @classmethod
-    def create_reg_key(cls):
+    def create_reg_key(cls, keys):
         key = winreg.HKEY_LOCAL_MACHINE
         subkey = r'SOFTWARE\EasyBack'
-        name1 = 'main_path'
-        name2 = 'data_path'
-        value1 = cls.path_main_folder
-        value2 = cls.path_data_folder
+        # name1 = 'main_path'
+        # name2 = 'data_path'
+        # value1 = cls.path_main_folder
+        # value2 = cls.path_data_folder
         winreg.CreateKeyEx(key, subkey, 0, winreg.KEY_WRITE)
         reg_key = winreg.OpenKey(key, subkey, 0, winreg.KEY_WRITE)
-        winreg.SetValueEx(reg_key, name1, 0, winreg.REG_SZ, value1)
-        winreg.SetValueEx(reg_key, name2, 0, winreg.REG_SZ, value2)
+        for name, value in keys.items():
+            print(name, value)
+            winreg.SetValueEx(reg_key, name, 0, winreg.REG_SZ, value)
         winreg.CloseKey(reg_key)
 
     @classmethod
