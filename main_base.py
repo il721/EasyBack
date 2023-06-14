@@ -7,8 +7,9 @@ import MainWindow as mw
 
 class MainBase:
     settings_exist: bool = False
+    flag_change_folder: bool = False
     flag_change_settings: bool = False
-    settings: dict = {}
+    settings: dict = {}  # set up new items in save_settings(cls)
     path_main_folder: str = ""
     path_settings_folder: str = ""
     path_data_folder: str = ""
@@ -21,7 +22,7 @@ class MainBase:
     def save_settings(cls):
         # if backup folders have changed, transfers all (settings and buckups) to a new location
         # after double confirmation
-        if cls.flag_change_settings:
+        if cls.flag_change_folder:
             path = f'{cls.path_settings_folder}\\settings.ini'
             msg_text = f'settings file is already exist in\n {path}\n\n' \
                        f'A you want to change backup folders?'
@@ -36,7 +37,8 @@ class MainBase:
                 if reply == 'no':
                     return
                 else:
-                    cls.flag_change_settings = False
+                    cls.flag_change_folder = False
+                    cls.flag_change_settings = True
                     cls.move_to_new_location(cls.old_path_main_folder, cls.path_main_folder)
 
         # check for emty settings field
@@ -44,11 +46,12 @@ class MainBase:
             mw.msg_one_button("WARNING!", "You forget set the 'SETTINGS' folder", 'warn')
             return
 
-        # add keys to settings dictionary. ALL values must be str!!!
+        # add keys to settings dictionary and regkey. ALL values must be str!!!---------------------
         cls.settings['main_path'] = cls.path_main_folder
         cls.settings['settings_path'] = cls.path_settings_folder
         cls.settings['data_path'] = cls.path_data_folder
         cls.settings['start_folder'] = cls.start_folder_in_dialogs
+        # ------------------------------------------------------------------------------------------
 
         if not cls.check_folder_exist(cls.path_settings_folder):
             Path.mkdir(Path(cls.path_settings_folder))
@@ -60,10 +63,9 @@ class MainBase:
             json.dump(cls.settings, f)
         cls.settings_exist = True
         cls.create_reg_key(cls.settings)
-        mw.msg_one_button('Congradulation!', 'Settings is successfully saved in '
-                                             'settings.ini', 'info')
-
-    # TODO ADD move to new location all backups fuctional
+        if cls.flag_change_settings:
+            mw.msg_one_button('Congradulation!', 'Settings is successfully saved in '
+                                                 'settings.ini', 'info')
 
     @classmethod
     def move_to_new_location(cls, old: str, new: str) -> None:
@@ -82,7 +84,7 @@ class MainBase:
                 for _ in Path.iterdir(Path(new)):
                     shutil.rmtree(_)
             else:
-                cls.flag_change_settings = False
+                cls.flag_change_folder = False
                 cls.path_main_folder = cls.old_path_main_folder
                 cls.path_settings_folder = cls.old_path_settings_folder
                 cls.path_data_folder = cls.old_path_data_folder

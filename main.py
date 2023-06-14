@@ -8,13 +8,14 @@ from main_base import MainBase
 def first_time_check():
     """
     If registry key 'EasyBack' or (and) folder SETTINGS not exist, show warning dialog and then
-    run Settings menu. Else set some path variables (taken from registry key) and flag 'settings
-    exist' in True
+    run Settings menu. Else set some variables (taken from registry key) and flags in True
     """
     rez = MainBase.check_reg_key()
     if rez == "key not exist":
+        MainBase.flag_change_settings = True
         path_or_regkey_not_exsit()
     elif not Path.is_dir(Path(f'{rez["settings_path"]}')):
+        MainBase.flag_change_settings = True
         path_or_regkey_not_exsit()
     else:
         MainBase.settings_exist = True

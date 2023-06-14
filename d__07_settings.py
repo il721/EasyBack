@@ -397,7 +397,10 @@ class settings_Dialog(object):
                 self.main_folder.setText(filenames)
                 self.sett_folder.setText(MainBase.path_settings_folder)
                 self.data_folder_2.setText(MainBase.path_data_folder)
+
+                # first time check settings rule
                 if MainBase.settings_exist:
+                    MainBase.flag_change_folder = True
                     MainBase.flag_change_settings = True
 
     def super_warnings(self) -> str:
