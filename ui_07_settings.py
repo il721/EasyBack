@@ -89,6 +89,10 @@ class Ui_Dialog(object):
                              "background: #2B79C2;\n"
                              "color: rgb(230, 230, 230)}\n"
                              "QFrame:disabled{\n"
+                             "background-color: rgb(50,50,50);}\n"
+                             "QRadioButton:disabled{\n"
+                             "background-color: rgb(50,50,50);}\n"
+                             "QToolButton:disabled{\n"
                              "background-color: rgb(50,50,50);}")
         self.verticalLayout_3 = QVBoxLayout(Dialog)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
@@ -249,12 +253,66 @@ class Ui_Dialog(object):
         self.tab_appearance = QWidget()
         self.tab_appearance.setObjectName(u"tab_appearance")
         self.tab_appearance.setStyleSheet(u"")
-        self.comboBox = QComboBox(self.tab_appearance)
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.setObjectName(u"comboBox")
-        self.comboBox.setGeometry(QRect(100, 80, 121, 41))
+        self.verticalLayout_4 = QVBoxLayout(self.tab_appearance)
+        self.verticalLayout_4.setSpacing(15)
+        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
+        self.horizontalLayout_5 = QHBoxLayout()
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.font_msg_sel = QLabel(self.tab_appearance)
+        self.font_msg_sel.setObjectName(u"font_msg_sel")
+
+        self.horizontalLayout_5.addWidget(self.font_msg_sel)
+
+        self.horizontalSpacer_5 = QSpacerItem(40, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
+
+        self.horizontalLayout_5.addItem(self.horizontalSpacer_5)
+
+        self.font_msg_change = QComboBox(self.tab_appearance)
+        self.font_msg_change.addItem("")
+        self.font_msg_change.addItem("")
+        self.font_msg_change.addItem("")
+        self.font_msg_change.setObjectName(u"font_msg_change")
+        self.font_msg_change.setMinimumSize(QSize(100, 0))
+        self.font_msg_change.setMaximumSize(QSize(100, 16777215))
+
+        self.horizontalLayout_5.addWidget(self.font_msg_change)
+
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_5.addItem(self.horizontalSpacer_2)
+
+        self.verticalLayout_4.addLayout(self.horizontalLayout_5)
+
+        self.horizontalLayout_6 = QHBoxLayout()
+        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
+        self.theme_sel = QLabel(self.tab_appearance)
+        self.theme_sel.setObjectName(u"theme_sel")
+
+        self.horizontalLayout_6.addWidget(self.theme_sel)
+
+        self.horizontalSpacer_4 = QSpacerItem(120, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
+
+        self.horizontalLayout_6.addItem(self.horizontalSpacer_4)
+
+        self.theme_change = QComboBox(self.tab_appearance)
+        self.theme_change.addItem("")
+        self.theme_change.addItem("")
+        self.theme_change.setObjectName(u"theme_change")
+        self.theme_change.setMinimumSize(QSize(100, 0))
+        self.theme_change.setMaximumSize(QSize(100, 16777215))
+
+        self.horizontalLayout_6.addWidget(self.theme_change)
+
+        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_6.addItem(self.horizontalSpacer_3)
+
+        self.verticalLayout_4.addLayout(self.horizontalLayout_6)
+
+        self.verticalSpacer_4 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_4.addItem(self.verticalSpacer_4)
+
         self.tabWidget.addTab(self.tab_appearance, "")
 
         self.verticalLayout_3.addWidget(self.tabWidget)
@@ -333,12 +391,18 @@ class Ui_Dialog(object):
             QCoreApplication.translate("Dialog", u"Select \"DATA\" Folder", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_main),
                                   QCoreApplication.translate("Dialog", u"Main", None))
-        self.comboBox.setItemText(0, QCoreApplication.translate("Dialog", u"Large", None))
-        self.comboBox.setItemText(1, QCoreApplication.translate("Dialog", u"Medium", None))
-        self.comboBox.setItemText(2, QCoreApplication.translate("Dialog", u"Small", None))
+        self.font_msg_sel.setText(
+            QCoreApplication.translate("Dialog", u"Select font in messages", None))
+        self.font_msg_change.setItemText(0, QCoreApplication.translate("Dialog", u"Large", None))
+        self.font_msg_change.setItemText(1, QCoreApplication.translate("Dialog", u"Medium", None))
+        self.font_msg_change.setItemText(2, QCoreApplication.translate("Dialog", u"Small", None))
+
+        self.theme_sel.setText(QCoreApplication.translate("Dialog", u"Select theme", None))
+        self.theme_change.setItemText(0, QCoreApplication.translate("Dialog", u"Gray", None))
+        self.theme_change.setItemText(1, QCoreApplication.translate("Dialog", u"Light", None))
 
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_appearance),
                                   QCoreApplication.translate("Dialog", u"Appearance", None))
         self.save_settings.setText(QCoreApplication.translate("Dialog", u"   Save Settings", None))
-        self.main_settings.setText(QCoreApplication.translate("Dialog", u"    Cancel", None))
+        self.main_settings.setText(QCoreApplication.translate("Dialog", u"  Main Menu", None))
     # retranslateUi

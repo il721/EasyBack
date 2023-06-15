@@ -81,9 +81,11 @@ class settings_Dialog(object):
                              "background: #2B79C2;\n"
                              "color: rgb(230, 230, 230)}\n"
                              "QFrame:disabled{\n"
-                             "background-color: rgb(50,50,50);}"
-                             "QRadioButton:disabled{\n background-color: rgb(50,50,50);}"
-                             "QToolButton:disabled{\n background-color: rgb(50,50,50);}")
+                             "background-color: rgb(50,50,50);}\n"
+                             "QRadioButton:disabled{\n"
+                             "background-color: rgb(50,50,50);}\n"
+                             "QToolButton:disabled{\n"
+                             "background-color: rgb(50,50,50);}")
         self.verticalLayout_3 = QVBoxLayout(Dialog)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.tabWidget = QTabWidget(Dialog)
@@ -91,8 +93,8 @@ class settings_Dialog(object):
         self.tabWidget.setMinimumSize(QSize(600, 480))
         self.tabWidget.setMaximumSize(QSize(16777215, 480))
         self.tabWidget.setStyleSheet(u"")
-        # self.tabWidget.setTabPosition(QTabWidget.North)
-        # self.tabWidget.setTabShape(QTabWidget.Rounded)
+        self.tabWidget.setTabPosition(QTabWidget.North)
+        self.tabWidget.setTabShape(QTabWidget.Rounded)
         self.tab_main = QWidget()
         self.tab_main.setObjectName(u"tab_main")
         self.verticalLayout = QVBoxLayout(self.tab_main)
@@ -168,8 +170,8 @@ class settings_Dialog(object):
         self.select_frame.setMinimumSize(QSize(0, 160))
         self.select_frame.setMaximumSize(QSize(16777215, 160))
         self.select_frame.setStyleSheet(u"")
-        # self.select_frame.setFrameShape(QFrame.StyledPanel)
-        # self.select_frame.setFrameShadow(QFrame.Raised)
+        self.select_frame.setFrameShape(QFrame.StyledPanel)
+        self.select_frame.setFrameShadow(QFrame.Raised)
         self.verticalLayout_2 = QVBoxLayout(self.select_frame)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.horizontalLayout_2 = QHBoxLayout()
@@ -243,12 +245,66 @@ class settings_Dialog(object):
         self.tab_appearance = QWidget()
         self.tab_appearance.setObjectName(u"tab_appearance")
         self.tab_appearance.setStyleSheet(u"")
-        self.comboBox = QComboBox(self.tab_appearance)
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.setObjectName(u"comboBox")
-        self.comboBox.setGeometry(QRect(100, 80, 121, 41))
+        self.verticalLayout_4 = QVBoxLayout(self.tab_appearance)
+        self.verticalLayout_4.setSpacing(15)
+        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
+        self.horizontalLayout_5 = QHBoxLayout()
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.font_msg_sel = QLabel(self.tab_appearance)
+        self.font_msg_sel.setObjectName(u"font_msg_sel")
+
+        self.horizontalLayout_5.addWidget(self.font_msg_sel)
+
+        self.horizontalSpacer_5 = QSpacerItem(40, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
+
+        self.horizontalLayout_5.addItem(self.horizontalSpacer_5)
+
+        self.font_msg_change = QComboBox(self.tab_appearance)
+        self.font_msg_change.addItem("")
+        self.font_msg_change.addItem("")
+        self.font_msg_change.addItem("")
+        self.font_msg_change.setObjectName(u"font_msg_change")
+        self.font_msg_change.setMinimumSize(QSize(100, 0))
+        self.font_msg_change.setMaximumSize(QSize(100, 16777215))
+
+        self.horizontalLayout_5.addWidget(self.font_msg_change)
+
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_5.addItem(self.horizontalSpacer_2)
+
+        self.verticalLayout_4.addLayout(self.horizontalLayout_5)
+
+        self.horizontalLayout_6 = QHBoxLayout()
+        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
+        self.theme_sel = QLabel(self.tab_appearance)
+        self.theme_sel.setObjectName(u"theme_sel")
+
+        self.horizontalLayout_6.addWidget(self.theme_sel)
+
+        self.horizontalSpacer_4 = QSpacerItem(120, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
+
+        self.horizontalLayout_6.addItem(self.horizontalSpacer_4)
+
+        self.theme_change = QComboBox(self.tab_appearance)
+        self.theme_change.addItem("")
+        self.theme_change.addItem("")
+        self.theme_change.setObjectName(u"theme_change")
+        self.theme_change.setMinimumSize(QSize(100, 0))
+        self.theme_change.setMaximumSize(QSize(100, 16777215))
+
+        self.horizontalLayout_6.addWidget(self.theme_change)
+
+        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_6.addItem(self.horizontalSpacer_3)
+
+        self.verticalLayout_4.addLayout(self.horizontalLayout_6)
+
+        self.verticalSpacer_4 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_4.addItem(self.verticalSpacer_4)
+
         self.tabWidget.addTab(self.tab_appearance, "")
 
         self.verticalLayout_3.addWidget(self.tabWidget)
@@ -276,7 +332,6 @@ class settings_Dialog(object):
         self.horizontalLayout.addItem(self.horizontalSpacer)
 
         self.main_settings = QPushButton(Dialog)
-        self.main_settings.setEnabled(MainBase.settings_exist)
         self.main_settings.setObjectName(u"main_settings")
         sizePolicy1.setHeightForWidth(self.main_settings.sizePolicy().hasHeightForWidth())
         self.main_settings.setSizePolicy(sizePolicy1)
@@ -313,6 +368,8 @@ class settings_Dialog(object):
 
         self.default_folder_rad.clicked.connect(self.data_radio_bt)
         self.select_folders_rad.clicked.connect(self.select_radio_bt)
+        self.settings_folder.clicked.connect(self.select_settings_folder_bt)
+        self.data_folder.clicked.connect(self.select_data_folder_bt)
         # ------------------------------------------------------------------------------------------
 
     # setupUi
@@ -347,9 +404,15 @@ class settings_Dialog(object):
             QCoreApplication.translate("Dialog", u"Select \"DATA\" Folder", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_main),
                                   QCoreApplication.translate("Dialog", u"Main", None))
-        self.comboBox.setItemText(0, QCoreApplication.translate("Dialog", u"Large", None))
-        self.comboBox.setItemText(1, QCoreApplication.translate("Dialog", u"Medium", None))
-        self.comboBox.setItemText(2, QCoreApplication.translate("Dialog", u"Small", None))
+        self.font_msg_sel.setText(
+            QCoreApplication.translate("Dialog", u"Select font in messages", None))
+        self.font_msg_change.setItemText(0, QCoreApplication.translate("Dialog", u"Large", None))
+        self.font_msg_change.setItemText(1, QCoreApplication.translate("Dialog", u"Medium", None))
+        self.font_msg_change.setItemText(2, QCoreApplication.translate("Dialog", u"Small", None))
+
+        self.theme_sel.setText(QCoreApplication.translate("Dialog", u"Select theme", None))
+        self.theme_change.setItemText(0, QCoreApplication.translate("Dialog", u"Gray", None))
+        self.theme_change.setItemText(1, QCoreApplication.translate("Dialog", u"Light", None))
 
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_appearance),
                                   QCoreApplication.translate("Dialog", u"Appearance", None))
@@ -386,9 +449,14 @@ class settings_Dialog(object):
         if dialog.exec():
             filenames = "".join(dialog.selectedFiles())
             if filenames == MainBase.path_main_folder:
+                MainBase.flag_change_folder = False
+                mw.msg_one_button("Nothing change", "You selected the same folder as it was",
+                                  "info")
                 return
             else:
-                MainBase.old_path_main_folder = f"{MainBase.path_main_folder}"
+                if MainBase.check_folder_for_empty(filenames):
+                    return
+                MainBase.old_path_main_folder = MainBase.path_main_folder
                 MainBase.old_path_settings_folder = MainBase.path_settings_folder
                 MainBase.old_path_data_folder = MainBase.path_data_folder
                 MainBase.path_main_folder = filenames
@@ -403,12 +471,44 @@ class settings_Dialog(object):
                     MainBase.flag_change_folder = True
                     MainBase.flag_change_settings = True
 
-    def super_warnings(self) -> str:
-        """
-        dialog for double confirmation of backup folder transfer
+    def select_settings_folder_bt(self):
+        dialog = mw.q_file_dialog_begin(MainBase.start_folder_in_dialogs,
+                                        QFileDialog.FileMode.Directory)
+        if dialog.exec():
+            filenames = "".join(dialog.selectedFiles())
+            if filenames == MainBase.path_settings_folder:
+                return
+            else:
+                MainBase.old_path_main_folder = MainBase.path_main_folder
+                MainBase.old_path_settings_folder = MainBase.path_settings_folder
+                MainBase.path_main_folder = filenames
+                MainBase.path_settings_folder = filenames
+                MainBase.path_data_folder = ""
+                self.main_folder.setText(MainBase.path_main_folder)
+                self.sett_folder.setText(MainBase.path_settings_folder)
+                self.data_folder_2.setText(MainBase.path_data_folder)
 
-        :return: str 'yes' or 'no'
-        """
+                # first time check settings rule
+                if MainBase.settings_exist:
+                    MainBase.flag_change_folder = True
+                    MainBase.flag_change_settings = True
+
+    def select_data_folder_bt(self):
+        dialog = mw.q_file_dialog_begin(MainBase.start_folder_in_dialogs,
+                                        QFileDialog.FileMode.Directory)
+        if dialog.exec():
+            filenames = "".join(dialog.selectedFiles())
+            if filenames == MainBase.path_data_folder:
+                return
+            else:
+                MainBase.old_path_data_folder = MainBase.path_data_folder
+                MainBase.path_data_folder = filenames
+                self.data_folder_2.setText(MainBase.path_data_folder)
+
+                # first time check settings rule
+                if MainBase.settings_exist:
+                    MainBase.flag_change_folder = True
+                    MainBase.flag_change_settings = True
 
     def data_radio_bt(self):
         self.select_frame.setEnabled(False)

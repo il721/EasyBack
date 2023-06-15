@@ -20,26 +20,27 @@ class MainBase:
 
     @classmethod
     def save_settings(cls):
-        # if backup folders have changed, transfers all (settings and buckups) to a new location
-        # after double confirmation
+        # if backup folders have changed, transfers all (settings and buckups) to a new location.
+        # New folder must be an emty folder
         if cls.flag_change_folder:
-            path = f'{cls.path_settings_folder}\\settings.ini'
-            msg_text = f'settings file is already exist in\n {path}\n\n' \
-                       f'A you want to change backup folders?'
-            reply = mw.msg_two_button("WARNING!", msg_text)
+
+            msg_text = "ARE YOU SHURE?\n" \
+                       " If you press 'Yes' all you backup`s and settings fail will be move " \
+                       "to new location. \n Old one will be deleted"
+            reply = mw.msg_two_button("WARNING!!!", msg_text)
             if reply == 'no':
                 return
             else:
-                msg_text = "ARE YOU SHURE?\n" \
-                           " If you press 'Yes' all you backup`s and settings fail will be move " \
-                           "to new location. \n Old one will be deleted"
-                reply = mw.msg_two_button("WARNING!!!", msg_text)
-                if reply == 'no':
-                    return
-                else:
-                    cls.flag_change_folder = False
-                    cls.flag_change_settings = True
+                cls.flag_change_folder = False
+                cls.flag_change_settings = True
+                if cls.path_main_folder != cls.path_settings_folder:
                     cls.move_to_new_location(cls.old_path_main_folder, cls.path_main_folder)
+                else:
+                    cls.move_to_new_location(cls.old_path_settings_folder,
+                                             cls.path_settings_folder)
+                    if cls.path_data_folder and \
+                            cls.old_path_data_folder != cls.path_data_folder:
+                        cls.move_to_new_location(cls.old_path_data_folder, cls.path_data_folder)
 
         # check for emty settings field
         if not cls.path_settings_folder:
@@ -76,23 +77,17 @@ class MainBase:
         :param new:
         :return:
         """
-        if Path(f"{new}/SETTINGS"):
-            main_text = f"Destination folder is not empty!!! If you choose 'Yes' everything " \
-                        f"inside the folder:\n {new}\n will be deleted"
-            replay = mw.msg_two_button("Destination folder not empty!!!", main_text)
-            if replay == 'yes':
-                for _ in Path.iterdir(Path(new)):
-                    shutil.rmtree(_)
-            else:
-                cls.flag_change_folder = False
-                cls.path_main_folder = cls.old_path_main_folder
-                cls.path_settings_folder = cls.old_path_settings_folder
-                cls.path_data_folder = cls.old_path_data_folder
-                return
-        else:
-            for _ in Path.iterdir(Path(old)):
-                shutil.move(_, new)
 
+        # else:
+        #     cls.flag_change_folder = False
+        #     cls.path_main_folder = cls.old_path_main_folder
+        #     cls.path_settings_folder = cls.old_path_settings_folder
+        #     cls.path_data_folder = cls.old_path_data_folder
+        #     return
+        for _ in Path.iterdir(Path(old)):
+            shutil.move(_, new)
+
+    # Check section--------------------------------------------------------------------------------
     @classmethod
     def check_file_exist(cls, path_str: str) -> bool:
         path = Path(path_str)
@@ -118,6 +113,17 @@ class MainBase:
             return MainBase.settings
         except FileNotFoundError:
             return "key not exist"
+
+    @classmethod
+    def check_folder_for_empty(cls, folder_path: str) -> bool:
+        if tuple(Path(folder_path).iterdir()):
+            main_text = f"Destination folder is not empty!!! Please select an emty folder"
+            mw.msg_one_button("Destination folder not empty!!!", main_text, 'warn')
+            return True
+        else:
+            return False
+
+    # ----------------------------------------------------------------------------------------------
 
     @classmethod
     def get_all_settings_from_regkey(cls, key: winreg.OpenKey) -> None:

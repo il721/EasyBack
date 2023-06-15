@@ -267,7 +267,7 @@ class Ui_Dialog(object):
         self.add_folder.setText(QCoreApplication.translate("Dialog", u" Add Folder", None))
         self.add_file.setText(QCoreApplication.translate("Dialog", u"   Add Files", None))
         self.view_list.setText(QCoreApplication.translate("Dialog", u"   View All", None))
-        self.info.setText(QCoreApplication.translate("Dialog", u"To remove line from list below just select them", None))
+        self.info.setText(QCoreApplication.translate("Dialog", u"Click on a line to delete it from list below", None))
         self.add_item.setText(QCoreApplication.translate("Dialog", u"   Add Item", None))
         self.save_backup_list.setText(QCoreApplication.translate("Dialog", u"   Save List", None))
         self.ok.setText(QCoreApplication.translate("Dialog", u"Main Menu", None))
