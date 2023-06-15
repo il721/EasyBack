@@ -74,8 +74,8 @@ class MainBase:
     @classmethod
     def move_to_new_location(cls, old: str, new: str) -> None:
         """
-        Move all backup data from "old" folder to "new". If folder SETTINGS is already exist in
-        new location, clear everything inside "new"
+        Move all backup data from "old" folder to "new". Folder SETTINGS in new location must be
+        empty.
         :param old:
         :param new:
         :return:
