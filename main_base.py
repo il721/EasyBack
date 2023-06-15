@@ -67,6 +67,9 @@ class MainBase:
         if cls.flag_change_settings:
             mw.msg_one_button('Congradulation!', 'Settings is successfully saved in '
                                                  'settings.ini', 'info')
+        else:
+            mw.msg_one_button("Nothing changed", "You haven't changed anything in the settings. "
+                                                 "Nothing to save", "info")
 
     @classmethod
     def move_to_new_location(cls, old: str, new: str) -> None:
@@ -116,9 +119,29 @@ class MainBase:
 
     @classmethod
     def check_folder_for_empty(cls, folder_path: str) -> bool:
+        """
+        Checks if a folder is empty. Is answer - yes return True
+        :param folder_path:
+        :return:
+        """
         if tuple(Path(folder_path).iterdir()):
             main_text = f"Destination folder is not empty!!! Please select an emty folder"
             mw.msg_one_button("Destination folder not empty!!!", main_text, 'warn')
+            return True
+        else:
+            return False
+
+    @classmethod
+    def check_select_same_folder(cls, old_folder_path: str, new_folder_path: str) -> bool:
+        """
+        Checks if the selected folder is the same as it was. If yes - return True
+        :param folder_path:
+        :return:
+        """
+        if old_folder_path == new_folder_path:
+            MainBase.flag_change_folder = False
+            mw.msg_one_button("Nothing change", "You selected the same folder as it was. Try again",
+                              "info")
             return True
         else:
             return False

@@ -448,10 +448,7 @@ class settings_Dialog(object):
                                         QFileDialog.FileMode.Directory)
         if dialog.exec():
             filenames = "".join(dialog.selectedFiles())
-            if filenames == MainBase.path_main_folder:
-                MainBase.flag_change_folder = False
-                mw.msg_one_button("Nothing change", "You selected the same folder as it was",
-                                  "info")
+            if MainBase.check_select_same_folder(filenames, MainBase.path_main_folder):
                 return
             else:
                 if MainBase.check_folder_for_empty(filenames):
@@ -476,7 +473,7 @@ class settings_Dialog(object):
                                         QFileDialog.FileMode.Directory)
         if dialog.exec():
             filenames = "".join(dialog.selectedFiles())
-            if filenames == MainBase.path_settings_folder:
+            if MainBase.check_select_same_folder(filenames, MainBase.path_settings_folder):
                 return
             else:
                 MainBase.old_path_main_folder = MainBase.path_main_folder
@@ -498,7 +495,7 @@ class settings_Dialog(object):
                                         QFileDialog.FileMode.Directory)
         if dialog.exec():
             filenames = "".join(dialog.selectedFiles())
-            if filenames == MainBase.path_data_folder:
+            if MainBase.check_select_same_folder(filenames, MainBase.path_data_folder):
                 return
             else:
                 MainBase.old_path_data_folder = MainBase.path_data_folder
