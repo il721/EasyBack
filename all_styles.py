@@ -1,3 +1,4 @@
+from main_base import MainBase
 SETTINGS_MAIN = "*{\n" \
                 "background-color: rgb(30, 30, 30);\n" \
                 "font: 16pt \"Lexend Light\";\n" \
@@ -71,6 +72,6 @@ MSG_PUSH_BUTTON: str = "QPushButton {\n border: 2px solid;\n " \
                        "background-color: #2B79C2;\n" \
                        "border-color: rgb(230, 230, 230);}"
 
-MSG_MAIN: str = "background-color: rgb(30, 30, 30);\n" \
-                "color: rgb(230, 230, 230);\n" \
-                "font: 300 19pt \"Lexend Light\";"
+MSG_MAIN: str = f"background-color: rgb(30, 30, 30);\ncolor: rgb(230, 230, 230);\nfont: 300 " \
+                f"{MainBase.font_size_dialog} " \
+                f"\"Lexend Light\";"

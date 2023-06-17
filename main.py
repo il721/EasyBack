@@ -23,6 +23,7 @@ def first_time_check():
         MainBase.path_settings_folder = rez["settings_path"]
         MainBase.path_data_folder = rez["data_path"]
         MainBase.start_folder_in_dialogs = rez["start_folder"]
+        MainBase.font_size_dialog = rez["font_size_dialog"]
 
 
 def path_or_regkey_not_exsit():

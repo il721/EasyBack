@@ -10,6 +10,7 @@ class MainBase:
     flag_change_folder: bool = False
     flag_change_settings: bool = False
     settings: dict = {}  # set up new items in save_settings(cls)
+    font_size_dialog: str = '18pt'
     path_main_folder: str = ""
     path_settings_folder: str = ""
     path_data_folder: str = ""
@@ -52,6 +53,7 @@ class MainBase:
         cls.settings['settings_path'] = cls.path_settings_folder
         cls.settings['data_path'] = cls.path_data_folder
         cls.settings['start_folder'] = cls.start_folder_in_dialogs
+        cls.settings['font_size_dialog'] = cls.font_size_dialog
         # ------------------------------------------------------------------------------------------
 
         if not cls.check_folder_exist(cls.path_settings_folder):
@@ -132,6 +134,15 @@ class MainBase:
             return False
 
     @classmethod
+    def check_folder_exist(cls, folder: str) -> bool:
+        """
+        Check exist or no on disk folder with given "folder" path
+        :param folder: str (path of checking folder)
+        :return:
+        """
+        return Path(folder).exists()
+
+    @classmethod
     def check_select_same_folder(cls, old_folder_path: str, new_folder_path: str) -> bool:
         """
         Checks if the selected folder is the same as it was. If yes - return True
@@ -146,7 +157,10 @@ class MainBase:
         else:
             return False
 
-    # ----------------------------------------------------------------------------------------------
+    def check_name(self, name_: str) -> bool:
+        return name_ in self.all_items
+
+    # end of chek section---------------------------------------------------------------------------
 
     @classmethod
     def get_all_settings_from_regkey(cls, key: winreg.OpenKey) -> None:
@@ -171,22 +185,10 @@ class MainBase:
             winreg.SetValueEx(reg_key, name, 0, winreg.REG_SZ, value)
         winreg.CloseKey(reg_key)
 
-    @classmethod
-    def check_folder_exist(cls, folder: str) -> bool:
-        """
-        Check exist or no on disk folder with given "folder" path
-        :param folder: str (path of checking folder)
-        :return:
-        """
-        return Path(folder).exists()
-
     def __init__(self):
         self.all_items: dict = {}
         self.name_of_base_file: str = ""
         self.list_saved: bool = False
-
-    def check_name(self, name_: str) -> bool:
-        return name_ in self.all_items
 
     def add_item(self, temp_dict: dict) -> None:
         self.all_items.update(temp_dict)
