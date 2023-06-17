@@ -86,8 +86,8 @@ class settings_Dialog(object):
                              "background-color: rgb(50,50,50);}\n"
                              "QToolButton:disabled{\n"
                              "background-color: rgb(50,50,50);}")
-        self.verticalLayout_3 = QVBoxLayout(Dialog)
-        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.verticalLayout_4 = QVBoxLayout(Dialog)
+        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.tabWidget = QTabWidget(Dialog)
         self.tabWidget.setObjectName(u"tabWidget")
         self.tabWidget.setMinimumSize(QSize(600, 480))
@@ -245,9 +245,8 @@ class settings_Dialog(object):
         self.tab_appearance = QWidget()
         self.tab_appearance.setObjectName(u"tab_appearance")
         self.tab_appearance.setStyleSheet(u"")
-        self.verticalLayout_4 = QVBoxLayout(self.tab_appearance)
-        self.verticalLayout_4.setSpacing(15)
-        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
+        self.verticalLayout_3 = QVBoxLayout(self.tab_appearance)
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.horizontalLayout_5 = QHBoxLayout()
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
         self.font_msg_sel = QLabel(self.tab_appearance)
@@ -273,7 +272,7 @@ class settings_Dialog(object):
 
         self.horizontalLayout_5.addItem(self.horizontalSpacer_2)
 
-        self.verticalLayout_4.addLayout(self.horizontalLayout_5)
+        self.verticalLayout_3.addLayout(self.horizontalLayout_5)
 
         self.horizontalLayout_6 = QHBoxLayout()
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
@@ -299,19 +298,48 @@ class settings_Dialog(object):
 
         self.horizontalLayout_6.addItem(self.horizontalSpacer_3)
 
-        self.verticalLayout_4.addLayout(self.horizontalLayout_6)
+        self.verticalLayout_3.addLayout(self.horizontalLayout_6)
+
+        self.verticalSpacer_6 = QSpacerItem(20, 20, QSizePolicy.Minimum, QSizePolicy.Fixed)
+
+        self.verticalLayout_3.addItem(self.verticalSpacer_6)
+
+        self.label = QLabel(self.tab_appearance)
+        self.label.setObjectName(u"label")
+
+        self.verticalLayout_3.addWidget(self.label)
+
+        self.horizontalLayout_7 = QHBoxLayout()
+        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
+        self.start_folder_button = QPushButton(self.tab_appearance)
+        self.start_folder_button.setObjectName(u"start_folder_button")
+        self.start_folder_button.setMinimumSize(QSize(60, 60))
+        self.start_folder_button.setMaximumSize(QSize(60, 60))
+        self.start_folder_button.setIcon(icon)
+        self.start_folder_button.setIconSize(QSize(40, 40))
+
+        self.horizontalLayout_7.addWidget(self.start_folder_button)
+
+        self.start_folder_line = QLineEdit(self.tab_appearance)
+        self.start_folder_line.setObjectName(u"start_folder_line")
+        self.start_folder_line.setMinimumSize(QSize(0, 60))
+        self.start_folder_line.setMaximumSize(QSize(16777215, 60))
+
+        self.horizontalLayout_7.addWidget(self.start_folder_line)
+
+        self.verticalLayout_3.addLayout(self.horizontalLayout_7)
 
         self.verticalSpacer_4 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.verticalLayout_4.addItem(self.verticalSpacer_4)
+        self.verticalLayout_3.addItem(self.verticalSpacer_4)
 
         self.tabWidget.addTab(self.tab_appearance, "")
 
-        self.verticalLayout_3.addWidget(self.tabWidget)
+        self.verticalLayout_4.addWidget(self.tabWidget)
 
         self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.verticalLayout_3.addItem(self.verticalSpacer_3)
+        self.verticalLayout_4.addItem(self.verticalSpacer_3)
 
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
@@ -343,7 +371,7 @@ class settings_Dialog(object):
 
         self.horizontalLayout.addWidget(self.main_settings)
 
-        self.verticalLayout_3.addLayout(self.horizontalLayout)
+        self.verticalLayout_4.addLayout(self.horizontalLayout)
 
         self.retranslateUi(Dialog)
 
@@ -370,6 +398,11 @@ class settings_Dialog(object):
         self.select_folders_rad.clicked.connect(self.select_radio_bt)
         self.settings_folder.clicked.connect(self.select_settings_folder_bt)
         self.data_folder.clicked.connect(self.select_data_folder_bt)
+
+        # Menu 'Appearanse' ************************************************************************
+        self.start_folder_line.setText(MainBase.start_folder_in_dialogs)
+        self.start_folder_button.clicked.connect(self.start_folder_select_bt)
+
         # ------------------------------------------------------------------------------------------
 
     # setupUi
@@ -414,6 +447,11 @@ class settings_Dialog(object):
         self.theme_change.setItemText(0, QCoreApplication.translate("Dialog", u"Gray", None))
         self.theme_change.setItemText(1, QCoreApplication.translate("Dialog", u"Light", None))
 
+        self.label.setText(QCoreApplication.translate("Dialog",
+                                                      u"Select starting folder for \"Folder and File Selection\" dialogs",
+                                                      None))
+        self.start_folder_button.setText("")
+        self.start_folder_line.setText("")
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_appearance),
                                   QCoreApplication.translate("Dialog", u"Appearance", None))
         self.save_settings.setText(QCoreApplication.translate("Dialog", u"   Save Settings", None))
@@ -516,3 +554,13 @@ class settings_Dialog(object):
         self.select_frame.setEnabled(True)
         self.main_folder.setEnabled(False)
         self.sel_main_folder.setEnabled(False)
+
+    def start_folder_select_bt(self):
+        dialog = mw.q_file_dialog_begin(MainBase.start_folder_in_dialogs,
+                                        QFileDialog.FileMode.Directory)
+        if dialog.exec():
+            filenames = "".join(dialog.selectedFiles())
+            if filenames:
+                MainBase.flag_change_settings = True
+                MainBase.start_folder_in_dialogs = filenames
+                self.start_folder_line.setText(filenames)

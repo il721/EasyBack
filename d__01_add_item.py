@@ -1,4 +1,3 @@
-
 from PySide6.QtCore import (QCoreApplication, QMetaObject, QSize, )
 from PySide6.QtGui import (QFont, QIcon, QPixmap)
 from PySide6.QtWidgets import (QDialog, QFileDialog, QFrame, QHBoxLayout, QLabel, QLineEdit,
@@ -245,18 +244,6 @@ class AddItemDial01(object):
 
         QMetaObject.connectSlotsByName(Dialog)
         # setupUi
-
-        # ************************    MY CODE    ***************************************************
-        # self.buttonBox = QDialogButtonBox(Dialog)
-        # self.buttonBox.setObjectName(u"buttonBox")
-        # self.buttonBox.addButton(self.ok, QDialogButtonBox.AcceptRole)
-        # self.buttonBox.addButton(self.cancel, QDialogButtonBox.RejectRole)
-        # ------------------------------------------------------------------------------------------
-        # self.retranslateUi(Dialog)
-        # ************************    MY CODE    ***************************************************
-        # self.buttonBox.accepted.connect(Dialog.accept)
-        # self.buttonBox.rejected.connect(Dialog.reject)
-        # ------------------------------------------------------------------------------------------
 
         # ************************  MY CODE (buttons)  *********************************************
         self.add_folder.clicked.connect(self.add_folder_bt)

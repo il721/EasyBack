@@ -64,7 +64,7 @@ class MainBase:
             json.dump(cls.settings, f)
         cls.settings_exist = True
         cls.create_reg_key(cls.settings)
-        if cls.flag_change_settings:
+        if cls.flag_change_settings or cls.flag_change_settings:
             mw.msg_one_button('Congradulation!', 'Settings is successfully saved in '
                                                  'settings.ini', 'info')
         else:
