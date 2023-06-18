@@ -10,7 +10,7 @@ class MainBase:
     flag_change_folder: bool = False
     flag_change_settings: bool = False
     settings: dict = {}  # set up new items in save_settings(cls)
-    font_size_dialog: str = ""
+    font_size_dialog: str = "18Pt"
     font_combo_index: int = 0
     path_main_folder: str = ""
     path_settings_folder: str = ""
