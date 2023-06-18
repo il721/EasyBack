@@ -117,7 +117,7 @@ background-color: rgb(50,50,50);}</string>
       <enum>QTabWidget::Rounded</enum>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="tab_main">
       <attribute name="title">
@@ -543,11 +543,6 @@ border-color: #2B79C2;</string>
            <item>
             <property name="text">
              <string>Large</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Medium</string>
             </property>
            </item>
            <item>

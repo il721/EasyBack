@@ -89,7 +89,10 @@ def msg_one_button(title: str, main: str, type_of_msg: str):
     :return:
     """
     msg_box = QMessageBox()
-    msg_box.setStyleSheet(st.MSG_MAIN)
+    msg_box.setStyleSheet(
+        f'background-color: rgb(30, 30, 30);\n'
+        f'color: rgb(230, 230, 230);\n'
+        f'font: {MainBase.font_size_dialog}\"Lexend Light\";')
 
     msg_type = f":/icon/icons/GREY/msg_{type_of_msg}.svg"
     icon = QtGui.QPixmap(msg_type)
@@ -114,7 +117,10 @@ def msg_two_button(title: str, main: str) -> str:
     :return:
     """
     msg_box = QMessageBox()
-    msg_box.setStyleSheet(st.MSG_MAIN)
+    msg_box.setStyleSheet(
+        f'background-color: rgb(30, 30, 30);\n'
+        f'color: rgb(230, 230, 230);\n'
+        f'font: {MainBase.font_size_dialog}\"Lexend Light\";')
 
     icon = QtGui.QPixmap(":/icon/icons/GREY/msg_question.svg")
     msg_box.setIconPixmap(icon)

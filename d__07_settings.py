@@ -258,13 +258,14 @@ class settings_Dialog(object):
 
         self.horizontalLayout_5.addItem(self.horizontalSpacer_5)
 
+        # comboBox------------------------------------------------------------------
         self.font_msg_change = QComboBox(self.tab_appearance)
-        self.font_msg_change.addItem("")
         self.font_msg_change.addItem("")
         self.font_msg_change.addItem("")
         self.font_msg_change.setObjectName(u"font_msg_change")
         self.font_msg_change.setMinimumSize(QSize(100, 0))
         self.font_msg_change.setMaximumSize(QSize(100, 16777215))
+
 
         self.horizontalLayout_5.addWidget(self.font_msg_change)
 
@@ -380,6 +381,7 @@ class settings_Dialog(object):
         QMetaObject.connectSlotsByName(Dialog)
 
         # ************************    MY CODE    ***************************************************
+        self.font_msg_change.setCurrentIndex(MainBase.font_combo_index)
         if MainBase.settings_exist:
             main_folder_path = MainBase.path_main_folder
             settings_folder_path = MainBase.path_settings_folder
@@ -387,6 +389,7 @@ class settings_Dialog(object):
             self.main_folder.setText(main_folder_path)
             self.sett_folder.setText(settings_folder_path)
             self.data_folder_2.setText(data_folder_path)
+
         # ************************  MY CODE (buttons)  *********************************************
         self.sel_main_folder.clicked.connect(self.select_main_folder_bt)
         self.default_info.clicked.connect(self.default_info_bt)
@@ -402,6 +405,7 @@ class settings_Dialog(object):
         # Menu 'Appearanse' ************************************************************************
         self.start_folder_line.setText(MainBase.start_folder_in_dialogs)
         self.start_folder_button.clicked.connect(self.start_folder_select_bt)
+        self.font_msg_change.currentTextChanged.connect(self.combo_font_sel_bt)
 
         # ------------------------------------------------------------------------------------------
 
@@ -440,8 +444,7 @@ class settings_Dialog(object):
         self.font_msg_sel.setText(
             QCoreApplication.translate("Dialog", u"Select font in messages", None))
         self.font_msg_change.setItemText(0, QCoreApplication.translate("Dialog", u"Large", None))
-        self.font_msg_change.setItemText(1, QCoreApplication.translate("Dialog", u"Medium", None))
-        self.font_msg_change.setItemText(2, QCoreApplication.translate("Dialog", u"Small", None))
+        self.font_msg_change.setItemText(1, QCoreApplication.translate("Dialog", u"Small", None))
 
         self.theme_sel.setText(QCoreApplication.translate("Dialog", u"Select theme", None))
         self.theme_change.setItemText(0, QCoreApplication.translate("Dialog", u"Gray", None))
@@ -564,3 +567,18 @@ class settings_Dialog(object):
                 MainBase.flag_change_settings = True
                 MainBase.start_folder_in_dialogs = filenames
                 self.start_folder_line.setText(filenames)
+
+    def combo_font_sel_bt(self):
+        item = self.font_msg_change.currentText()
+
+        if item == 'Large':
+            MainBase.font_size_dialog = '18Pt'
+            MainBase.font_combo_index = 0
+
+        else:
+            MainBase.font_size_dialog = '13Pt'
+            MainBase.font_combo_index = 1
+        self.font_msg_change.setCurrentIndex(MainBase.font_combo_index)
+        print(item)
+        print(MainBase.font_size_dialog)
+        MainBase.flag_change_settings = True

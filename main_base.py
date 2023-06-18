@@ -10,7 +10,8 @@ class MainBase:
     flag_change_folder: bool = False
     flag_change_settings: bool = False
     settings: dict = {}  # set up new items in save_settings(cls)
-    font_size_dialog: str = '18pt'
+    font_size_dialog: str = ""
+    font_combo_index: int = 0
     path_main_folder: str = ""
     path_settings_folder: str = ""
     path_data_folder: str = ""
@@ -54,6 +55,7 @@ class MainBase:
         cls.settings['data_path'] = cls.path_data_folder
         cls.settings['start_folder'] = cls.start_folder_in_dialogs
         cls.settings['font_size_dialog'] = cls.font_size_dialog
+        cls.settings['font_combo_index'] = str(cls.font_combo_index)
         # ------------------------------------------------------------------------------------------
 
         if not cls.check_folder_exist(cls.path_settings_folder):
@@ -69,6 +71,8 @@ class MainBase:
         if cls.flag_change_settings or cls.flag_change_settings:
             mw.msg_one_button('Congradulation!', 'Settings is successfully saved in '
                                                  'settings.ini', 'info')
+            cls.flag_change_folder = False
+            cls.flag_change_settings = False
         else:
             mw.msg_one_button("Nothing changed", "You haven't changed anything in the settings. "
                                                  "Nothing to save", "info")

@@ -3,6 +3,7 @@ from pathlib import Path
 from PySide6.QtWidgets import QApplication
 import MainWindow as mw
 from main_base import MainBase
+import all_styles as ass
 
 
 def first_time_check():
@@ -18,12 +19,16 @@ def first_time_check():
         MainBase.flag_change_settings = True
         path_or_regkey_not_exsit()
     else:
+        # Initial set of some programm settings. Taken from registry key
         MainBase.settings_exist = True
         MainBase.path_main_folder = rez["main_path"]
         MainBase.path_settings_folder = rez["settings_path"]
         MainBase.path_data_folder = rez["data_path"]
         MainBase.start_folder_in_dialogs = rez["start_folder"]
         MainBase.font_size_dialog = rez["font_size_dialog"]
+        MainBase.font_combo_index = int(rez["font_combo_index"])
+        print(MainBase.font_size_dialog)
+        print(MainBase.font_combo_index, type(MainBase.font_combo_index))
 
 
 def path_or_regkey_not_exsit():
