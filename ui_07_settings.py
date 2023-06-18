@@ -262,12 +262,11 @@ class Ui_Dialog(object):
 
         self.horizontalLayout_5.addWidget(self.font_msg_sel)
 
-        self.horizontalSpacer_5 = QSpacerItem(40, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
+        self.horizontalSpacer_5 = QSpacerItem(58, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
 
         self.horizontalLayout_5.addItem(self.horizontalSpacer_5)
 
         self.font_msg_change = QComboBox(self.tab_appearance)
-        self.font_msg_change.addItem("")
         self.font_msg_change.addItem("")
         self.font_msg_change.addItem("")
         self.font_msg_change.setObjectName(u"font_msg_change")
@@ -282,6 +281,48 @@ class Ui_Dialog(object):
 
         self.verticalLayout_3.addLayout(self.horizontalLayout_5)
 
+        self.horizontalLayout_8 = QHBoxLayout()
+        self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
+        self.font_msg_color_inf = QLabel(self.tab_appearance)
+        self.font_msg_color_inf.setObjectName(u"font_msg_color_inf")
+        sizePolicy1.setHeightForWidth(self.font_msg_color_inf.sizePolicy().hasHeightForWidth())
+        self.font_msg_color_inf.setSizePolicy(sizePolicy1)
+        self.font_msg_color_inf.setMinimumSize(QSize(280, 0))
+
+        self.horizontalLayout_8.addWidget(self.font_msg_color_inf)
+
+        self.color_info_test = QPushButton(self.tab_appearance)
+        self.color_info_test.setObjectName(u"color_info_test")
+        self.color_info_test.setStyleSheet(u"border: no")
+
+        self.horizontalLayout_8.addWidget(self.color_info_test)
+
+        self.horizontalSpacer_6 = QSpacerItem(100, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_8.addItem(self.horizontalSpacer_6)
+
+        self.verticalLayout_3.addLayout(self.horizontalLayout_8)
+
+        self.horizontalLayout_9 = QHBoxLayout()
+        self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
+        self.font_msg_color_warn = QLabel(self.tab_appearance)
+        self.font_msg_color_warn.setObjectName(u"font_msg_color_warn")
+        self.font_msg_color_warn.setMinimumSize(QSize(280, 0))
+
+        self.horizontalLayout_9.addWidget(self.font_msg_color_warn)
+
+        self.color_warn_test = QPushButton(self.tab_appearance)
+        self.color_warn_test.setObjectName(u"color_warn_test")
+        self.color_warn_test.setStyleSheet(u"border: no")
+
+        self.horizontalLayout_9.addWidget(self.color_warn_test)
+
+        self.horizontalSpacer_7 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_9.addItem(self.horizontalSpacer_7)
+
+        self.verticalLayout_3.addLayout(self.horizontalLayout_9)
+
         self.horizontalLayout_6 = QHBoxLayout()
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
         self.theme_sel = QLabel(self.tab_appearance)
@@ -289,7 +330,7 @@ class Ui_Dialog(object):
 
         self.horizontalLayout_6.addWidget(self.theme_sel)
 
-        self.horizontalSpacer_4 = QSpacerItem(120, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
+        self.horizontalSpacer_4 = QSpacerItem(137, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
 
         self.horizontalLayout_6.addItem(self.horizontalSpacer_4)
 
@@ -422,9 +463,14 @@ class Ui_Dialog(object):
         self.font_msg_sel.setText(
             QCoreApplication.translate("Dialog", u"Select font in messages", None))
         self.font_msg_change.setItemText(0, QCoreApplication.translate("Dialog", u"Large", None))
-        self.font_msg_change.setItemText(1, QCoreApplication.translate("Dialog", u"Medium", None))
-        self.font_msg_change.setItemText(2, QCoreApplication.translate("Dialog", u"Small", None))
+        self.font_msg_change.setItemText(1, QCoreApplication.translate("Dialog", u"Small", None))
 
+        self.font_msg_color_inf.setText(
+            QCoreApplication.translate("Dialog", u"Font color in \"Info\" messages", None))
+        self.color_info_test.setText("")
+        self.font_msg_color_warn.setText(
+            QCoreApplication.translate("Dialog", u"Font color in \"Warn\" messages", None))
+        self.color_warn_test.setText("")
         self.theme_sel.setText(QCoreApplication.translate("Dialog", u"Select theme", None))
         self.theme_change.setItemText(0, QCoreApplication.translate("Dialog", u"Gray", None))
         self.theme_change.setItemText(1, QCoreApplication.translate("Dialog", u"Light", None))

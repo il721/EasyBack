@@ -11,6 +11,8 @@ class MainBase:
     flag_change_settings: bool = False
     settings: dict = {}  # set up new items in save_settings(cls)
     font_size_dialog: str = "18Pt"
+    font_color_info: str = "#e6e6e6"
+    font_color_warn: str = "#aa0000"
     font_combo_index: int = 0
     path_main_folder: str = ""
     path_settings_folder: str = ""
@@ -27,8 +29,8 @@ class MainBase:
         if cls.flag_change_folder:
 
             msg_text = "ARE YOU SHURE?\n" \
-                       " If you press 'Yes' all you backup`s and settings fail will be move " \
-                       "to new location. \n Old one will be deleted"
+                       "If you press 'Yes' all you backup`s and settings fail will be move " \
+                       "to new location. \nOld one will be deleted"
             reply = mw.msg_two_button("WARNING!!!", msg_text)
             if reply == 'no':
                 return
