@@ -58,6 +58,8 @@ class MainBase:
         cls.settings['start_folder'] = cls.start_folder_in_dialogs
         cls.settings['font_size_dialog'] = cls.font_size_dialog
         cls.settings['font_combo_index'] = str(cls.font_combo_index)
+        cls.settings['font_color_info'] = str(cls.font_color_info)
+        cls.settings['font_color_warn'] = str(cls.font_color_warn)
         # ------------------------------------------------------------------------------------------
 
         if not cls.check_folder_exist(cls.path_settings_folder):

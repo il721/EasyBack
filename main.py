@@ -27,6 +27,8 @@ def first_time_check():
         MainBase.start_folder_in_dialogs = rez["start_folder"]
         MainBase.font_size_dialog = rez["font_size_dialog"]
         MainBase.font_combo_index = int(rez["font_combo_index"])
+        MainBase.font_color_info = rez["font_color_info"]
+        MainBase.font_color_warn = rez["font_color_warn"]
 
 
 def path_or_regkey_not_exsit():

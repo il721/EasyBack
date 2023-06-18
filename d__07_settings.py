@@ -450,7 +450,8 @@ class settings_Dialog(object):
         self.start_folder_line.setText(MainBase.start_folder_in_dialogs)
         self.start_folder_button.clicked.connect(self.start_folder_select_bt)
         self.font_msg_change.currentTextChanged.connect(self.combo_font_sel_bt)
-        self.color_info_test.clicked.connect(self.select_color)
+        self.color_info_test.clicked.connect(self.select_color_info_bt)
+        self.color_warn_test.clicked.connect(self.select_color_warn_bt)
 
         # ------------------------------------------------------------------------------------------
 
@@ -630,12 +631,20 @@ class settings_Dialog(object):
             MainBase.font_size_dialog = '13Pt'
             MainBase.font_combo_index = 1
         self.font_msg_change.setCurrentIndex(MainBase.font_combo_index)
-        print(item)
-        print(MainBase.font_size_dialog)
         MainBase.flag_change_settings = True
 
-    def select_color(self, color_var):
+    def select_color_info_bt(self):
         color = QColorDialog.getColor()
+        MainBase.font_color_info = color.name()
+        self.color_info_test.setStyleSheet(f"background-color: {MainBase.font_color_info};\n"
+                                           f"border: no;")
 
-        color_var = color.name()
-        print(color_var)
+        MainBase.flag_change_settings = True
+
+    def select_color_warn_bt(self):
+        color = QColorDialog.getColor()
+        MainBase.font_color_warn = color.name()
+        self.color_warn_test.setStyleSheet(f"background-color: {MainBase.font_color_warn};\n"
+                                           f"border: no;")
+
+        MainBase.flag_change_settings = True
