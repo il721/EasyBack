@@ -29,22 +29,22 @@ class MainBase:
         if cls.flag_change_folder:
 
             msg_text = "ARE YOU SHURE?\n" \
-                       "If you press 'Yes' all you backup`s and settings fail will be move " \
-                       "to new location. \nOld one will be deleted"
-            reply = mw.msg_two_button("WARNING!!!", msg_text)
+                       "If you press 'Yes' all you backup`s and settings data will be copied " \
+                       "to new location."
+            reply = mw.msg_two_button("WARNING!", msg_text)
             if reply == 'no':
                 return
             else:
                 cls.flag_change_folder = False
                 cls.flag_change_settings = True
                 if cls.path_main_folder != cls.path_settings_folder:
-                    cls.move_to_new_location(cls.old_path_main_folder, cls.path_main_folder)
+                    cls.copy_to_new_location(cls.old_path_main_folder, cls.path_main_folder)
                 else:
-                    cls.move_to_new_location(cls.old_path_settings_folder,
+                    cls.copy_to_new_location(cls.old_path_settings_folder,
                                              cls.path_settings_folder)
                     if cls.path_data_folder and \
                             cls.old_path_data_folder != cls.path_data_folder:
-                        cls.move_to_new_location(cls.old_path_data_folder, cls.path_data_folder)
+                        cls.copy_to_new_location(cls.old_path_data_folder, cls.path_data_folder)
 
         # check for emty settings field
         if not cls.path_settings_folder:
@@ -82,23 +82,24 @@ class MainBase:
                                                  "Nothing to save", "info")
 
     @classmethod
-    def move_to_new_location(cls, old: str, new: str) -> None:
+    def copy_to_new_location(cls, old: str, new: str) -> None:
         """
-        Move all backup data from "old" folder to "new". Folder SETTINGS in new location must be
-        empty.
+        Copy all backup data from "old" folder to "new". Folder SETTINGS in new location must be
+        empty. Then, if you choose to delete the source - cleans the "old" folder
         :param old:
         :param new:
         :return:
         """
-
-        # else:
-        #     cls.flag_change_folder = False
-        #     cls.path_main_folder = cls.old_path_main_folder
-        #     cls.path_settings_folder = cls.old_path_settings_folder
-        #     cls.path_data_folder = cls.old_path_data_folder
-        #     return
-        for _ in Path.iterdir(Path(old)):
-            shutil.move(_, new)
+        shutil.copytree(old, new, dirs_exist_ok=True)
+        msg_text = "Remove old data?\n" \
+                   "If you press 'Yes' all you backup`s and settings data in old folder will be " \
+                   "deleted."
+        reply = mw.msg_two_button("WARNING!", msg_text)
+        if reply == 'no':
+            return
+        else:
+            for _ in Path.iterdir(Path(old)):
+                shutil.rmtree(_)
 
     # Check section--------------------------------------------------------------------------------
     @classmethod
