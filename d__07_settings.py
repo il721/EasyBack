@@ -433,6 +433,8 @@ class settings_Dialog(object):
             self.main_folder.setText(main_folder_path)
             self.sett_folder.setText(settings_folder_path)
             self.data_folder_2.setText(data_folder_path)
+        else:
+            self.main_settings.setEnabled(False)
 
         # Buttons  *********************************************************************************
         self.sel_main_folder.clicked.connect(self.select_main_folder_bt)

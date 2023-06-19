@@ -38,13 +38,14 @@ class MainBase:
                 cls.flag_change_folder = False
                 cls.flag_change_settings = True
                 if cls.path_main_folder != cls.path_settings_folder:
-                    cls.copy_to_new_location(cls.old_path_main_folder, cls.path_main_folder)
+                    cls.copy_move_to_new_location(cls.old_path_main_folder, cls.path_main_folder)
                 else:
-                    cls.copy_to_new_location(cls.old_path_settings_folder,
-                                             cls.path_settings_folder)
+                    cls.copy_move_to_new_location(cls.old_path_settings_folder,
+                                                  cls.path_settings_folder)
                     if cls.path_data_folder and \
                             cls.old_path_data_folder != cls.path_data_folder:
-                        cls.copy_to_new_location(cls.old_path_data_folder, cls.path_data_folder)
+                        cls.copy_move_to_new_location(cls.old_path_data_folder,
+                                                      cls.path_data_folder)
 
         # check for emty settings field
         if not cls.path_settings_folder:
@@ -60,7 +61,7 @@ class MainBase:
         cls.settings['font_combo_index'] = str(cls.font_combo_index)
         cls.settings['font_color_info'] = str(cls.font_color_info)
         cls.settings['font_color_warn'] = str(cls.font_color_warn)
-        # ------------------------------------------------------------------------------------------
+        # !!!Don`t forget adding new key`s in main.py first_time_check initial set -----------------
 
         if not cls.check_folder_exist(cls.path_settings_folder):
             Path.mkdir(Path(cls.path_settings_folder))
@@ -82,7 +83,7 @@ class MainBase:
                                                  "Nothing to save", "info")
 
     @classmethod
-    def copy_to_new_location(cls, old: str, new: str) -> None:
+    def copy_move_to_new_location(cls, old: str, new: str) -> None:
         """
         Copy all backup data from "old" folder to "new". Folder SETTINGS in new location must be
         empty. Then, if you choose to delete the source - cleans the "old" folder
@@ -98,8 +99,16 @@ class MainBase:
         if reply == 'no':
             return
         else:
-            for _ in Path.iterdir(Path(old)):
+            cls.del_source(old)
+
+    @classmethod
+    def del_source(cls, old):
+        for _ in Path.iterdir(Path(old)):
+            print(list(Path.iterdir(Path(old))))
+            if _.is_dir():
                 shutil.rmtree(_)
+            else:
+                _.unlink()
 
     # Check section--------------------------------------------------------------------------------
     @classmethod
@@ -120,7 +129,7 @@ class MainBase:
                                      0, winreg.KEY_READ)
 
             cls.get_all_settings_from_regkey(reg_key)
-            print(*[[key, val] for key, val in MainBase.settings.items()], sep="\n")
+            # print(*[[key, val] for key, val in MainBase.settings.items()], sep="\n")
 
             winreg.CloseKey(reg_key)
 
