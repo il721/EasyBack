@@ -12,7 +12,7 @@ class MainBase:
     settings: dict = {}  # set up new items in save_settings(cls)
     font_size_dialog: str = "18Pt"
     font_color_info: str = "#e6e6e6"
-    font_color_warn: str = "#aa0000"
+    font_color_warn: str = "#ff4f1a"
     font_combo_index: int = 0
     path_main_folder: str = ""
     path_settings_folder: str = ""
@@ -38,14 +38,14 @@ class MainBase:
                 cls.flag_change_folder = False
                 cls.flag_change_settings = True
                 if cls.path_main_folder != cls.path_settings_folder:
-                    cls.copy_move_to_new_location(cls.old_path_main_folder, cls.path_main_folder)
+                    cls.copy_move_to_new_location(cls.old_path_main_folder, cls.path_main_folder, 0)
                 else:
                     cls.copy_move_to_new_location(cls.old_path_settings_folder,
-                                                  cls.path_settings_folder)
+                                                  cls.path_settings_folder, 1)
                     if cls.path_data_folder and \
                             cls.old_path_data_folder != cls.path_data_folder:
                         cls.copy_move_to_new_location(cls.old_path_data_folder,
-                                                      cls.path_data_folder)
+                                                      cls.path_data_folder, 1)
 
         # check for emty settings field
         if not cls.path_settings_folder:
@@ -61,7 +61,7 @@ class MainBase:
         cls.settings['font_combo_index'] = str(cls.font_combo_index)
         cls.settings['font_color_info'] = str(cls.font_color_info)
         cls.settings['font_color_warn'] = str(cls.font_color_warn)
-        # !!!Don`t forget adding new key`s in main.py first_time_check initial set -----------------
+        # !!!Don`t forget adding new key`s in main.py appearance_initial ---------------------------
 
         if not cls.check_folder_exist(cls.path_settings_folder):
             Path.mkdir(Path(cls.path_settings_folder))
@@ -83,10 +83,13 @@ class MainBase:
                                                  "Nothing to save", "info")
 
     @classmethod
-    def copy_move_to_new_location(cls, old: str, new: str) -> None:
+    def copy_move_to_new_location(cls, old: str, new: str, type_del: int) -> None:
         """
         Copy all backup data from "old" folder to "new". Folder SETTINGS in new location must be
         empty. Then, if you choose to delete the source - cleans the "old" folder
+        :param type_del: chose what folders are was deleted.
+            0 - both DATA and SETTINGS
+            1 - SETTINGS or DATA separately
         :param old:
         :param new:
         :return:
@@ -99,12 +102,28 @@ class MainBase:
         if reply == 'no':
             return
         else:
-            cls.del_source(old)
+            if type_del == 0:
+                msg_text = f"Delete folder\n{old}?"
+                reply = mw.msg_two_button("WARNING!", msg_text)
+                if reply == 'no':
+                    return
+                else:
+                    cls.del_source(old)
+            elif type_del == 1:
+                del_folder = f"../{old}"
+                msg_text = f"Delete folder\n{del_folder}?"
+                reply = mw.msg_two_button("WARNING!", msg_text)
+                if reply == 'no':
+                    return
+                else:
+                    cls.del_source(f"{del_folder}")
 
     @classmethod
     def del_source(cls, old):
         for _ in Path.iterdir(Path(old)):
-            print(list(Path.iterdir(Path(old))))
+            # print(list(Path.iterdir(Path(old))))
+
+            # TODO !!! PRINT DEL_SOURCE
             if _.is_dir():
                 shutil.rmtree(_)
             else:
@@ -129,7 +148,9 @@ class MainBase:
                                      0, winreg.KEY_READ)
 
             cls.get_all_settings_from_regkey(reg_key)
+
             # print(*[[key, val] for key, val in MainBase.settings.items()], sep="\n")
+            # TODO !!! PRINT REG KEYS
 
             winreg.CloseKey(reg_key)
 
@@ -164,7 +185,8 @@ class MainBase:
     def check_select_same_folder(cls, old_folder_path: str, new_folder_path: str) -> bool:
         """
         Checks if the selected folder is the same as it was. If yes - return True
-        :param folder_path:
+        :param new_folder_path:
+        :param old_folder_path:
         :return:
         """
         if old_folder_path == new_folder_path:
@@ -192,6 +214,7 @@ class MainBase:
 
         for _ in range(num):
             MainBase.settings[winreg.EnumValue(key, _)[0]] = winreg.EnumValue(key, _)[1]
+        MainBase.settings_exist = True
 
     @classmethod
     def create_reg_key(cls, keys):

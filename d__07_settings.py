@@ -426,10 +426,12 @@ class settings_Dialog(object):
         self.color_warn_test.setStyleSheet(f"background-color: {MainBase.font_color_warn};\n"
                                            f"border: no;")
         self.font_msg_change.setCurrentIndex(MainBase.font_combo_index)
+        print(MainBase.settings_exist)
         if MainBase.settings_exist:
             main_folder_path = MainBase.path_main_folder
             settings_folder_path = MainBase.path_settings_folder
             data_folder_path = MainBase.path_data_folder
+            print(main_folder_path, type(main_folder_path))
             self.main_folder.setText(main_folder_path)
             self.sett_folder.setText(settings_folder_path)
             self.data_folder_2.setText(data_folder_path)

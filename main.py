@@ -12,15 +12,29 @@ def first_time_check():
     run Settings menu. Else set some variables (taken from registry key) and flags in True
     """
     rez = MainBase.check_reg_key()
+
+    # if no exist reg key EasyBack in HKEY_LOCAL_MACHINE\SOFTWARE\
     if rez == "key not exist":
         MainBase.flag_change_settings = True
         path_or_regkey_not_exsit()
-    elif not Path.is_dir(Path(f'{rez["settings_path"]}')):
-        appearance_initial(rez)
-        MainBase.flag_change_settings = True
-        path_or_regkey_not_exsit()
+
+    # reg key is exist, but SETTINGS folder is not exist or empty
+    elif MainBase.settings_exist:
+        try:
+            sett_path = tuple(Path.iterdir(Path(f'{rez["settings_path"]}')))
+            # print(sett_path)
+            if not sett_path:
+                appearance_initial(rez)
+                MainBase.flag_change_settings = True
+                path_or_regkey_not_exsit()
+
+        except FileNotFoundError:
+            appearance_initial(rez)
+            MainBase.flag_change_settings = True
+            path_or_regkey_not_exsit()
+
+    # Initial set of some programm settings. Taken from registry key
     else:
-        # Initial set of some programm settings. Taken from registry key
         MainBase.settings_exist = True
         MainBase.path_main_folder = rez["main_path"]
         MainBase.path_settings_folder = rez["settings_path"]

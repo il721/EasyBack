@@ -1,7 +1,11 @@
+import shutil
 from pathlib import Path
 
-path = Path('f:\\!_____back_2\\')
-if tuple(path.iterdir()):
-    print("not empty")
-else:
-    print("empty")
+path = ['f:\\!_____back_1\\', 'f:\\!_____back_2\\', 'f:\\!_____back_3\\']
+for item in path:
+    for _ in Path.iterdir(Path(item)):
+        print(list(Path.iterdir(Path(item))))
+        if _.is_dir():
+            shutil.rmtree(_)
+        else:
+            _.unlink()
