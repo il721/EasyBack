@@ -149,7 +149,7 @@ class MainBase:
 
             cls.get_all_settings_from_regkey(reg_key)
 
-            # print(*[[key, val] for key, val in MainBase.settings.items()], sep="\n")
+            print(*[[key, val] for key, val in MainBase.settings.items()], sep="\n")
             # TODO !!! PRINT REG KEYS
 
             winreg.CloseKey(reg_key)

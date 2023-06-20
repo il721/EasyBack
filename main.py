@@ -22,24 +22,27 @@ def first_time_check():
     elif MainBase.settings_exist:
         try:
             sett_path = tuple(Path.iterdir(Path(f'{rez["settings_path"]}')))
-            # print(sett_path)
+
+            # If folder SETTINGS exist on disk, but emty
             if not sett_path:
                 appearance_initial(rez)
                 MainBase.flag_change_settings = True
                 path_or_regkey_not_exsit()
 
+            # If folder SETTINGS exist on disk and not emty
+            else:
+                # Initial set of some programm settings. Taken from registry key
+                MainBase.settings_exist = True
+                MainBase.path_main_folder = rez["main_path"]
+                MainBase.path_settings_folder = rez["settings_path"]
+                MainBase.path_data_folder = rez["data_path"]
+                appearance_initial(rez)
+
+        # If folder SETTINGS in reg key is not find in disk
         except FileNotFoundError:
             appearance_initial(rez)
             MainBase.flag_change_settings = True
             path_or_regkey_not_exsit()
-
-    # Initial set of some programm settings. Taken from registry key
-    else:
-        MainBase.settings_exist = True
-        MainBase.path_main_folder = rez["main_path"]
-        MainBase.path_settings_folder = rez["settings_path"]
-        MainBase.path_data_folder = rez["data_path"]
-        appearance_initial(rez)
 
 
 def appearance_initial(rez):
