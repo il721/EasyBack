@@ -1,10 +1,9 @@
 import sys
 
-from PySide6 import QtCore, QtGui
+from PySide6 import QtGui
 from PySide6.QtCore import QSize
 from PySide6.QtGui import QIcon
-from PySide6.QtWidgets import QAbstractButton, QFileDialog, QMainWindow, QDialog, QMessageBox, \
-    QPushButton
+from PySide6.QtWidgets import QFileDialog, QMainWindow, QDialog, QMessageBox, QPushButton
 from d_MainWindow import Ui_MainWindow
 from d__01_add_item import AddItemDial01
 from d__07_settings import settings_Dialog
