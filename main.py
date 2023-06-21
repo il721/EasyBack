@@ -59,7 +59,7 @@ def path_or_regkey_not_exsit():
                                             'go to SETTINGS and set some necessary '
                                             'parameters', 'warn')
     MainBase.settings_exist = False
-    mw.MainWindowDialog.settings_bt(mw.MainWindowDialog)
+    mw.MainWindowDialog.settings_bt()
 
 
 if __name__ == '__main__':

@@ -1,6 +1,6 @@
 import sys
 
-from PySide6 import QtGui
+from PySide6 import QtCore, QtGui
 from PySide6.QtCore import QSize
 from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import QAbstractButton, QFileDialog, QMainWindow, QDialog, QMessageBox, \
@@ -26,6 +26,8 @@ class MainWindowDialog(QMainWindow):
         self.ui.settings.clicked.connect(self.settings_bt)
         self.ui.exit.clicked.connect(self.exit)
 
+        # self.setWindowFlags(QtCore.Qt.WindowType.FramelessWindowHint)
+
         # self.ui.add_item.clicked.connect(self.open_directory_dialog)
         # self.ui.files.clicked.connect(self.open_file_dialog())
 
@@ -33,7 +35,8 @@ class MainWindowDialog(QMainWindow):
         # self.ui.clear_button.setShortcut('Ctrl+d')
         # self.ui.clear_button.clicked.connect(self.clear_all_windows)
 
-    def add_item_01(self):
+    @staticmethod
+    def add_item_01():
         """
         Open 'Add Item To Base' dialog window
         """
@@ -48,13 +51,16 @@ class MainWindowDialog(QMainWindow):
         """
         pass
 
-    def settings_bt(self):
+    @staticmethod
+    def settings_bt():
         dialog = QDialog()
         ui = settings_Dialog()
         ui.setupUi(dialog)
+        # dialog.setWindowFlags(QtCore.Qt.WindowType.FramelessWindowHint)
         dialog.exec()
 
-    def exit(self):
+    @staticmethod
+    def exit():
         sys.exit()
 
 
@@ -89,10 +95,15 @@ def msg_one_button(title: str, main: str, type_of_msg: str):
     :return:
     """
     msg_box = QMessageBox()
+    # msg_box.setWindowFlags(QtCore.Qt.WindowType.FramelessWindowHint)
     msg_box.setStyleSheet(
-        f'background-color: rgb(30, 30, 30);\n'
-        f'color: {MainBase.font_color_info};\n'
-        f'font: {MainBase.font_size_dialog}\"Lexend Light\";')
+        'background-color: rgb(30, 30, 30);'
+        f'color: {MainBase.font_color_info};'
+        f'font: {MainBase.font_size_dialog}\"Lexend Light\";'
+        'QDialogButtonBox {'
+        'border: 10px solid;'
+        'border-color: #FFFFFF;}'
+        '')
 
     msg_type = f":/icon/icons/GREY/msg_{type_of_msg}.svg"
     icon = QtGui.QPixmap(msg_type)

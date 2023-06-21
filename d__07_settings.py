@@ -1,6 +1,7 @@
 import shutil
 from pathlib import Path
 
+from PySide6 import QtCore
 from PySide6.QtCore import (QCoreApplication, QMetaObject, QRect, QSize, )
 from PySide6.QtGui import (QIcon, )
 from PySide6.QtWidgets import (QColorDialog, QComboBox, QFileDialog, QFrame, QHBoxLayout, QLabel,
@@ -421,6 +422,7 @@ class settings_Dialog(object):
         QMetaObject.connectSlotsByName(Dialog)
 
         # ************************    MY CODE    ***************************************************
+        # self.setWindowFlags(QtCore.Qt.WindowType.FramelessWindowHint)
         self.color_info_test.setStyleSheet(f"background-color: {MainBase.font_color_info};\n"
                                            f"border: no;")
         self.color_warn_test.setStyleSheet(f"background-color: {MainBase.font_color_warn};\n"
@@ -543,9 +545,12 @@ class settings_Dialog(object):
                                         QFileDialog.FileMode.Directory)
         if dialog.exec():
             filenames = "".join(dialog.selectedFiles())
+
+            # if selected folder is the same - warning and return
             if MainBase.check_select_same_folder(filenames, MainBase.path_main_folder):
                 return
             else:
+                # selected folder must be emty
                 if MainBase.check_folder_for_empty(filenames):
                     return
                 MainBase.old_path_main_folder = MainBase.path_main_folder
@@ -564,13 +569,22 @@ class settings_Dialog(object):
                     MainBase.flag_change_settings = True
 
     def select_settings_folder_bt(self):
+        """
+        Run when in separate choose folder mode clicked "Select SETTINGS folder" button
+        :return:
+        """
         dialog = mw.q_file_dialog_begin(MainBase.start_folder_in_dialogs,
                                         QFileDialog.FileMode.Directory)
         if dialog.exec():
             filenames = "".join(dialog.selectedFiles())
+
+            # if selected folder is the same - warning and return
             if MainBase.check_select_same_folder(filenames, MainBase.path_settings_folder):
                 return
             else:
+                # selected folder must be emty
+                if MainBase.check_folder_for_empty(filenames):
+                    return
                 MainBase.old_path_main_folder = MainBase.path_main_folder
                 MainBase.old_path_settings_folder = MainBase.path_settings_folder
                 MainBase.path_main_folder = filenames
@@ -586,13 +600,22 @@ class settings_Dialog(object):
                     MainBase.flag_change_settings = True
 
     def select_data_folder_bt(self):
+        """
+        Run when in separate choose folder mode clicked "Select DATA folder" button
+        :return:
+        """
         dialog = mw.q_file_dialog_begin(MainBase.start_folder_in_dialogs,
                                         QFileDialog.FileMode.Directory)
         if dialog.exec():
             filenames = "".join(dialog.selectedFiles())
+
+            # if selected folder is the same - warning and return
             if MainBase.check_select_same_folder(filenames, MainBase.path_data_folder):
                 return
             else:
+                # selected folder must be emty
+                if MainBase.check_folder_for_empty(filenames):
+                    return
                 MainBase.old_path_data_folder = MainBase.path_data_folder
                 MainBase.path_data_folder = filenames
                 self.data_folder_2.setText(MainBase.path_data_folder)

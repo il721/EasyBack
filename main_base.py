@@ -103,7 +103,7 @@ class MainBase:
             return
         else:
             if type_del == 0:
-                msg_text = f"Delete folder\n{old}?"
+                msg_text = f"Delete all in folder\n{old}?"
                 reply = mw.msg_two_button("WARNING!", msg_text)
                 if reply == 'no':
                     return
@@ -111,7 +111,7 @@ class MainBase:
                     cls.del_source(old)
             elif type_del == 1:
                 del_folder = f"../{old}"
-                msg_text = f"Delete folder\n{del_folder}?"
+                msg_text = f"Delete all in folder\n{del_folder}?"
                 reply = mw.msg_two_button("WARNING!", msg_text)
                 if reply == 'no':
                     return
