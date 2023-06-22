@@ -26,7 +26,6 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
 
         ## ==> SET VALUES TO DEF progressBarValue
-
     ## DEF PROGRESS BAR VALUE
     # @staticmethod
     # def progress_bar_value(value, widget, color):
@@ -88,7 +87,7 @@ class SplashScreen(QMainWindow):
         self.timer = QtCore.QTimer()
         self.timer.timeout.connect(self.progress)
         # TIMER IN MILLISECONDS
-        self.timer.start(15)
+        self.timer.start(5)
 
         ## SHOW ==> MAIN WINDOW
         self.show()
@@ -101,15 +100,12 @@ class SplashScreen(QMainWindow):
         value = counter
 
         # HTML TEXT PERCENTAGE
-        html_text = """<p><span style=" font-size:68pt;">{VALUE}</span><span style=" font-size:58pt;
-         vertical-align:super;">%</span></p>"""
-
-        # REPLACE VALUE
-        new_html = html_text.replace("{VALUE}", str(jumper))
+        html_text = f'<p><span style=" font-size:68pt;">{str(jumper)}</span>' \
+                    f'<span style=" font-size:58pt;; vertical-align:super;">%</span></p>'
 
         if value > jumper:
             # APPLY NEW PERCENTAGE TEXT
-            self.ui.labelPercentage.setText(new_html)
+            self.ui.labelPercentage.setText(html_text)
             jumper += 10
 
         # SET VALUE TO PROGRESS BAR
@@ -123,9 +119,7 @@ class SplashScreen(QMainWindow):
             # STOP TIMER
             self.timer.stop()
 
-            # SHOW MAIN WINDOW
-            self.main = MainWindow()
-            self.main.show()
+            print('STOP')
 
             # CLOSE SPLASH SCREEN
             self.close()
@@ -133,18 +127,7 @@ class SplashScreen(QMainWindow):
         # INCREASE COUNTER
         counter += 0.5
 
-    ## DEF PROGRESS BAR VALUE
     def progress_bar_value(self, value):
-
-        # PROGRESSBAR STYLESHEET BASE
-        style_sheet = """
-        QFrame{
-        border-radius: 150px;
-        background-color: qconicalgradient(cx:0.5, cy:0.5, angle:90,
-        stop:{STOP_1} rgba(255, 0, 127, 0),
-        stop:{STOP_2} rgba(85, 170, 255, 255));
-        }
-        """
 
         # GET PROGRESS BAR VALUE, CONVERT TO FLOAT AND INVERT VALUES
         # stop works of 1.000 to 0.000
@@ -154,14 +137,17 @@ class SplashScreen(QMainWindow):
         stop_1 = str(progress - 0.001)
         stop_2 = str(progress)
 
-        # SET VALUES TO NEW STYLESHEET
-        new_stylesheet = style_sheet.replace("{STOP_1}", stop_1).replace("{STOP_2}", stop_2)
+        style_sheet = "QFrame{border-radius: 150px;" \
+                      "background-color: qconicalgradient(cx:0.5, cy:0.5, angle:90," \
+                      f"stop:{stop_1} rgba(255, 0, 127, 0)," \
+                      f"stop:{stop_2} rgba(85, 170, 255, 255));" \
+                      "}"
 
         # APPLY STYLESHEET WITH NEW VALUES
-        self.ui.circularProgress.setStyleSheet(new_stylesheet)
+        self.ui.circularProgress.setStyleSheet(style_sheet)
 
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = SplashScreen()
-    sys.exit(app.exec_())
+    sys.exit(app.exec())

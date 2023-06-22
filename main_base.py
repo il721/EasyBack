@@ -1,4 +1,5 @@
 import json
+import os
 import winreg
 from pathlib import Path
 import shutil
@@ -125,9 +126,18 @@ class MainBase:
 
             # TODO !!! PRINT DEL_SOURCE
             if _.is_dir():
-                shutil.rmtree(_)
+                # os.chmod(_, stat.S_IWRITE)
+                # shutil.rmtree(_)
+                try:
+                    shutil.rmtree(_)
+                except PermissionError:
+                    rez = os.stat(_)
+                    print(rez)
             else:
-                _.unlink()
+                try:
+                    _.unlink()
+                except PermissionError:
+                    print('PERMISSION ERROR!')
 
     # Check section--------------------------------------------------------------------------------
     @classmethod
