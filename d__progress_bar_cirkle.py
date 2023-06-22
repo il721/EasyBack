@@ -1,6 +1,6 @@
 import sys
 from PySide6 import QtCore
-from PySide6.QtWidgets import QApplication, QGraphicsDropShadowEffect, QMainWindow
+from PySide6.QtWidgets import QGraphicsDropShadowEffect, QMainWindow
 from PySide6.QtGui import (QColor, )
 
 from ui_progress_bar_cirkle import UiProgressBarCirkle
@@ -10,48 +10,7 @@ counter = 0
 jumper = 10
 
 
-# class MainWindow(QMainWindow):
-#     def __init__(self):
-#         QMainWindow.__init__(self)
-#         self.ui = UiProgressBarCircle()
-#         self.ui.setupUi(self)
-#
-#     ## DEF PROGRESS BAR VALUE
-#     # @staticmethod
-#     # def progress_bar_value(value, widget, color):
-#     #     # PROGRESSBAR STYLESHEET BASE
-#     #     style_sheet = """
-#     #     QFrame{border-radius: 110px;
-#     #      background-color: qconicalgradient(cx:0.5, cy:0.5, angle:90,
-#     #      stop:{STOP_1} rgba(255, 0, 127, 0),
-#     #      stop:{STOP_2} {COLOR});
-#     #     }
-#     #     """
-#     #
-#     #     # GET PROGRESS BAR VALUE, CONVERT TO FLOAT AND INVERT VALUES
-#     #     # stop works of 1.000 to 0.000
-#     #     progress = (100 - value) / 100.0
-#     #
-#     #     # GET NEW VALUES
-#     #     stop_1 = str(progress - 0.001)
-#     #     stop_2 = str(progress)
-#     #
-#     #     # FIX MAX VALUE
-#     #     if value == 100:
-#     #         stop_1 = "1.000"
-#     #         stop_2 = "1.000"
-#     #
-#     #     # SET VALUES TO NEW STYLESHEET
-#     #     new_stylesheet = style_sheet.replace("{STOP_1}", stop_1).replace("{STOP_2}",
-#     #                                                                      stop_2).replace(
-#     #         "{COLOR}", color)
-#     #
-#     #     # APPLY STYLESHEET WITH NEW VALUES
-#     #     widget.setStyleSheet(new_stylesheet)
-
-
-## ==> SPLASHSCREEN WINDOW
-class MainWindow(QMainWindow):
+class CirkleProgressBar(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
         self.ui = UiProgressBarCirkle()
@@ -137,7 +96,7 @@ class MainWindow(QMainWindow):
         self.ui.circularProgress.setStyleSheet(style_sheet)
 
 
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    window = MainWindow()
-    sys.exit(app.exec())
+# if __name__ == "__main__":
+#     app = QApplication(sys.argv)
+#     window = CirkleProgressBar()
+#     sys.exit(app.exec())

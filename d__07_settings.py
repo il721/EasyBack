@@ -1,7 +1,3 @@
-import shutil
-from pathlib import Path
-
-from PySide6 import QtCore
 from PySide6.QtCore import (QCoreApplication, QMetaObject, QRect, QSize, )
 from PySide6.QtGui import (QIcon, )
 from PySide6.QtWidgets import (QColorDialog, QComboBox, QFileDialog, QFrame, QHBoxLayout, QLabel,
@@ -15,7 +11,7 @@ import MainWindow as mw
 import all_styles
 
 
-class settings_Dialog(object):
+class SettingsDialog(object):
     def setupUi(self, Dialog):
         if not Dialog.objectName():
             Dialog.setObjectName(u"Dialog")

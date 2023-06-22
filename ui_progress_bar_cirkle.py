@@ -1,18 +1,5 @@
-# -*- coding: utf-8 -*-
-
-################################################################################
-## Form generated from reading UI file 'splash_screenXOZdTu.ui'
-##
-## Created by: Qt User Interface Compiler version 5.14.1
-##
-## WARNING! All changes made in this file will be lost when recompiling UI file!
-################################################################################
-
-from PySide6.QtCore import (QCoreApplication, QMetaObject, QObject, QPoint,
-                            QRect, QSize, QUrl, Qt)
-from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
-                           QFontDatabase, QIcon, QLinearGradient, QPalette, QPainter, QPixmap,
-                           QRadialGradient)
+from PySide6.QtCore import (QCoreApplication, QMetaObject, QRect, QSize, Qt)
+from PySide6.QtGui import (QFont)
 from PySide6.QtWidgets import *
 
 
@@ -105,15 +92,6 @@ class UiProgressBarCirkle(object):
 
         self.gridLayout.addWidget(self.labelLoadingInfo, 2, 0, 1, 1)
 
-        self.labelCredits = QLabel(self.widget)
-        self.labelCredits.setObjectName(u"labelCredits")
-        self.labelCredits.setFont(font2)
-        self.labelCredits.setStyleSheet(u"background-color: none;\n"
-                                        "color: rgb(155, 155, 255);")
-        self.labelCredits.setAlignment(Qt.AlignCenter)
-
-        self.gridLayout.addWidget(self.labelCredits, 3, 0, 1, 1)
-
         self.circularBg.raise_()
         self.circularProgress.raise_()
         self.container.raise_()
@@ -135,6 +113,4 @@ class UiProgressBarCirkle(object):
                                                                 None))
         self.labelLoadingInfo.setText(
             QCoreApplication.translate("SplashScreen", u"loading...", None))
-        self.labelCredits.setText(
-            QCoreApplication.translate("SplashScreen", u"by: Wanderson M. Pimenta", None))
     # retranslateUi

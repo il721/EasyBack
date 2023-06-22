@@ -12,7 +12,7 @@ from PySide6.QtWidgets import (QApplication, QHBoxLayout, QLayout, QMainWindow,
 import main_rc
 
 
-class Ui_MainWindow(object):
+class UiMainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")

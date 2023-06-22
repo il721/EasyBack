@@ -3,10 +3,12 @@ import sys
 from PySide6 import QtGui
 from PySide6.QtCore import QSize
 from PySide6.QtGui import QIcon
-from PySide6.QtWidgets import QFileDialog, QMainWindow, QDialog, QMessageBox, QPushButton
-from d_MainWindow import Ui_MainWindow
+from PySide6.QtWidgets import QApplication, QFileDialog, QMainWindow, QDialog, QMessageBox, \
+    QPushButton
+from d_MainWindow import UiMainWindow
 from d__01_add_item import AddItemDial01
-from d__07_settings import settings_Dialog
+from d__07_settings import SettingsDialog
+from d__progress_bar_cirkle import CirkleProgressBar
 import all_styles as st
 from main_base import MainBase
 
@@ -15,7 +17,7 @@ class MainWindowDialog(QMainWindow):
 
     def __init__(self):
         super().__init__()
-        self.ui = Ui_MainWindow()
+        self.ui = UiMainWindow()
         self.ui.setupUi(self)
         # self.file_list = QListWidget(self)
         # self.ui.translit_button.setShortcut('Ctrl+t')
@@ -53,7 +55,7 @@ class MainWindowDialog(QMainWindow):
     @staticmethod
     def settings_bt():
         dialog = QDialog()
-        ui = settings_Dialog()
+        ui = SettingsDialog()
         ui.setupUi(dialog)
         # dialog.setWindowFlags(QtCore.Qt.WindowType.FramelessWindowHint)
         dialog.exec()
@@ -161,10 +163,7 @@ def msg_two_button(title: str, main: str) -> str:
     elif msg_box.clickedButton() == cancel:
         return 'no'
 
-    #
-    # if box.clickedButton() == buttonY:
-    # # YES pressed
-    # elif box.clickedButton() == buttonN:
-    # # NO pressed
 
-    # msg_box.information(self.list_files_and_folders, title, main)
+def cirkle_progress_bar(text: str, time: int) -> None:
+    pass
+# TODO !!MAKE progress bar

@@ -6,7 +6,7 @@ from PySide6.QtWidgets import (QDialog, QFileDialog, QFrame, QHBoxLayout, QLabel
 import dop_win_rc
 from main_base import MainBase
 import MainWindow as mw
-from d__07_settings import settings_Dialog
+from d__07_settings import SettingsDialog
 from d__01_1__view_buckup_file import D_01_1_ViewDialog
 from d__01_2__sel_buckup_file_name import D012SelFileNameDialog
 

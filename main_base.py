@@ -96,8 +96,10 @@ class MainBase:
         :param new:
         :return:
         """
-        shutil.copytree(old, new, dirs_exist_ok=True)
+        # mw.cirkle_progress_bar('tt', 5)
         # TODO Insert progress bar
+        shutil.copytree(old, new, dirs_exist_ok=True)
+
         msg_text = "Remove old data?\n" \
                    "If you press 'Yes' all you backup`s and settings data in old folder will be " \
                    "deleted."
