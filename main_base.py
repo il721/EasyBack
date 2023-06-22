@@ -1,5 +1,6 @@
 import json
 import os
+import stat
 import winreg
 from pathlib import Path
 import shutil
@@ -122,22 +123,25 @@ class MainBase:
     @classmethod
     def del_source(cls, old):
         for _ in Path.iterdir(Path(old)):
-            # print(list(Path.iterdir(Path(old))))
 
-            # TODO !!! PRINT DEL_SOURCE
+            # TODO Problem remove rmtree readonly folder
             if _.is_dir():
-                # os.chmod(_, stat.S_IWRITE)
-                # shutil.rmtree(_)
                 try:
-                    shutil.rmtree(_)
+                    shutil.rmtree(_, ignore_errors=False, onerror=cls.rmtree_error)
                 except PermissionError:
-                    rez = os.stat(_)
-                    print(rez)
+                    mw.msg_one_button("Delete error", "Some files and folders were not deleted. "
+                                                      "Please do it manually", "info")
             else:
                 try:
                     _.unlink()
                 except PermissionError:
-                    print('PERMISSION ERROR!')
+                    os.chmod(_, stat.S_IWRITE)
+                    os.unlink(_)
+
+    @staticmethod
+    def rmtree_error(func, path_err, exc_info):
+        os.chmod(path_err, stat.S_IWRITE)
+        os.unlink(path_err)
 
     # Check section--------------------------------------------------------------------------------
     @classmethod
