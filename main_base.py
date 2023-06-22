@@ -97,6 +97,7 @@ class MainBase:
         :return:
         """
         shutil.copytree(old, new, dirs_exist_ok=True)
+        # TODO Insert progress bar
         msg_text = "Remove old data?\n" \
                    "If you press 'Yes' all you backup`s and settings data in old folder will be " \
                    "deleted."
@@ -128,12 +129,14 @@ class MainBase:
             if _.is_dir():
                 try:
                     shutil.rmtree(_, ignore_errors=False, onerror=cls.rmtree_error)
+                    # TODO Insert progress bar
                 except PermissionError:
                     mw.msg_one_button("Delete error", "Some files and folders were not deleted. "
                                                       "Please do it manually", "info")
             else:
                 try:
                     _.unlink()
+                    # TODO Insert progress bar
                 except PermissionError:
                     os.chmod(_, stat.S_IWRITE)
                     os.unlink(_)

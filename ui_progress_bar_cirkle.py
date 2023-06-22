@@ -16,7 +16,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
 from PySide6.QtWidgets import *
 
 
-class Ui_MainWindow(object):
+class UiProgressBarCircle(object):
     def setupUi(self, MainWindow):
         if MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")

@@ -12,7 +12,7 @@ from PySide6.QtGui import (QColor, )
 
 # GUI FILE
 from ui_splash_screen import Ui_SplashScreen
-from ui_main import Ui_MainWindow
+from ui_progress_bar_cirkle import UiProgressBarCircle
 
 # GLOBALS
 counter = 0
@@ -22,10 +22,9 @@ jumper = 10
 class MainWindow(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
-        self.ui = Ui_MainWindow()
+        self.ui = UiProgressBarCircle()
         self.ui.setupUi(self)
 
-        ## ==> SET VALUES TO DEF progressBarValue
     ## DEF PROGRESS BAR VALUE
     # @staticmethod
     # def progress_bar_value(value, widget, color):
