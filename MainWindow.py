@@ -1,6 +1,6 @@
 import sys
 
-from PySide6 import QtGui
+from PySide6 import QtCore, QtGui
 from PySide6.QtCore import QSize
 from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import QApplication, QFileDialog, QMainWindow, QDialog, QMessageBox, \
@@ -8,7 +8,7 @@ from PySide6.QtWidgets import QApplication, QFileDialog, QMainWindow, QDialog, Q
 from d_MainWindow import UiMainWindow
 from d__01_add_item import AddItemDial01
 from d__07_settings import SettingsDialog
-from d__progress_bar_cirkle import CirkleProgressBar
+from ui_progress_bar_cirkle import UiProgressBarCirkle
 import all_styles as st
 from main_base import MainBase
 
@@ -165,5 +165,10 @@ def msg_two_button(title: str, main: str) -> str:
 
 
 def cirkle_progress_bar(text: str, time: int) -> None:
-    pass
+    dialog = QDialog()
+    ui = UiProgressBarCirkle()
+    ui.setupUi(dialog)
+    dialog.setWindowFlags(QtCore.Qt.WindowType.FramelessWindowHint)
+    dialog.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+    dialog.exec()
 # TODO !!MAKE progress bar

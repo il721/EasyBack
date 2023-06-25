@@ -96,8 +96,7 @@ class MainBase:
         :param new:
         :return:
         """
-        # mw.cirkle_progress_bar('tt', 5)
-        # TODO Insert progress bar
+        mw.cirkle_progress_bar('tt', 5)
         shutil.copytree(old, new, dirs_exist_ok=True)
 
         msg_text = "Remove old data?\n" \
@@ -114,6 +113,7 @@ class MainBase:
                     return
                 else:
                     cls.del_source(old)
+                    mw.cirkle_progress_bar('tt', 5)
             elif type_del == 1:
                 del_folder = f"../{old}"
                 msg_text = f"Delete all in folder\n{del_folder}?"
@@ -122,6 +122,7 @@ class MainBase:
                     return
                 else:
                     cls.del_source(f"{del_folder}")
+                    mw.cirkle_progress_bar('tt', 5)
 
     @classmethod
     def del_source(cls, old):

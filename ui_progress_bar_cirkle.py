@@ -95,12 +95,15 @@ class UiProgressBarCirkle(object):
         self.circularBg.raise_()
         self.circularProgress.raise_()
         self.container.raise_()
-        SplashScreen.setCentralWidget(self.centralwidget)
+        # SplashScreen.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(SplashScreen)
 
         QMetaObject.connectSlotsByName(SplashScreen)
-
+    # MY CODE --------------------------------------------------------------------------------------
+        # self.setWindowFlags(QtCore.Qt.WindowType.FramelessWindowHint)
+        # self.setWindowFlags(QtCore.Qt.FramelessWindowHint)  # Remove title bar
+        # self.setAttribute(QtCore.Qt.WA_TranslucentBackground)  # Set background to transparent
     # setupUi
 
     def retranslateUi(self, SplashScreen):
