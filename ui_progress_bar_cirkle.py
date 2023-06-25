@@ -95,7 +95,7 @@ class UiProgressBarCirkle(object):
         self.circularBg.raise_()
         self.circularProgress.raise_()
         self.container.raise_()
-        # SplashScreen.setCentralWidget(self.centralwidget)
+        SplashScreen.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(SplashScreen)
 

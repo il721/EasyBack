@@ -2,8 +2,9 @@ import sys
 
 from PySide6 import QtCore, QtGui
 from PySide6.QtCore import QSize
-from PySide6.QtGui import QIcon
-from PySide6.QtWidgets import QApplication, QFileDialog, QMainWindow, QDialog, QMessageBox, \
+from PySide6.QtGui import QColor, QIcon
+from PySide6.QtWidgets import QApplication, QFileDialog, QGraphicsDropShadowEffect, QMainWindow, \
+    QDialog, QMessageBox, \
     QPushButton
 from d_MainWindow import UiMainWindow
 from d__01_add_item import AddItemDial01
@@ -170,5 +171,19 @@ def cirkle_progress_bar(text: str, time: int) -> None:
     ui.setupUi(dialog)
     dialog.setWindowFlags(QtCore.Qt.WindowType.FramelessWindowHint)
     dialog.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+
+    ## ==> APPLY DROP SHADOW EFFECT
+    dialog.shadow = QGraphicsDropShadowEffect()
+    dialog.shadow.setBlurRadius(20)
+    dialog.shadow.setXOffset(0)
+    dialog.shadow.setYOffset(0)
+    dialog.shadow.setColor(QColor(0, 0, 0, 120))
+    ui.circularBg.setGraphicsEffect(dialog.shadow)
+
+    ## QTIMER ==> START
+    dialog.timer = QtCore.QTimer()
+    dialog.timer.timeout.connect(self.progress)
+    # TIMER IN MILLISECONDS
+    dialog.timer.start(5)
     dialog.exec()
 # TODO !!MAKE progress bar

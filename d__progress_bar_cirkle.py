@@ -1,6 +1,6 @@
 import sys
 from PySide6 import QtCore
-from PySide6.QtWidgets import QGraphicsDropShadowEffect, QMainWindow
+from PySide6.QtWidgets import QApplication, QGraphicsDropShadowEffect, QMainWindow
 from PySide6.QtGui import (QColor, )
 
 from ui_progress_bar_cirkle import UiProgressBarCirkle
@@ -20,8 +20,8 @@ class CirkleProgressBar(QMainWindow):
         self.progress_bar_value(0)
 
         ## ==> REMOVE STANDARD TITLE BAR
-        self.setWindowFlags(QtCore.Qt.WindowType.FramelessWindowHint)
-        # self.setWindowFlags(QtCore.Qt.FramelessWindowHint)  # Remove title bar
+        self.setWindowFlags(QtCore.Qt.WindowType.FramelessWindowHint)  # Remove title bar
+        # self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)  # Set background to transparent
 
         ## ==> APPLY DROP SHADOW EFFECT
@@ -96,7 +96,7 @@ class CirkleProgressBar(QMainWindow):
         self.ui.circularProgress.setStyleSheet(style_sheet)
 
 
-# if __name__ == "__main__":
-#     app = QApplication(sys.argv)
-#     window = CirkleProgressBar()
-#     sys.exit(app.exec())
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    window = CirkleProgressBar()
+    sys.exit(app.exec())
