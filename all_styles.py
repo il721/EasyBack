@@ -1,4 +1,4 @@
-from main_base import MainBase
+# from main_base import MainBase
 
 SETTINGS_MAIN = "*{" \
                 "background-color: rgb(30, 30, 30);" \
@@ -75,6 +75,62 @@ MSG_PUSH_BUTTON: str = "QPushButton { border: 2px solid; " \
 
 # TODO !!!DON`T REMEMBER CLEAR THIS!!!!
 # TODO ??? And why don`t work????
-MSG_MAIN: str = f'background-color: rgb(30, 30, 30);' \
-                f'color: rgb(230, 230, 230);' \
-                f'font: {MainBase.font_size_dialog}\"Lexend Light\";'
+# MSG_MAIN: str = f'background-color: rgb(30, 30, 30);' \
+#                 f'color: rgb(230, 230, 230);' \
+#                 f'font: {MainBase.font_size_dialog}\"Lexend Light\";'
+
+PROGRESS_BAR_LINE: str = """
+            QWidget {
+                background-color: #323232;
+                font-size: 20px;
+                color: #b1b1b1;
+            }
+
+            QPushButton {
+                height: 45px;
+                background-color: QLinearGradient(
+                    x1: 0,
+                    x2: 0,
+                    y1: 0,
+                    y2: 1,
+                    stop: 0 #565656,
+                    stop: 0.1 #525252,
+                    stop: 0.5 #4e4e4e,
+                    stop: 0.9 #4a4a4a,
+                    stop: 1.0 #464646
+                );
+                border-width: 4.5px;
+                border-color: #1e1e1e;
+                border-style: solid;
+                border-radius: 3px;
+                padding: 5px;
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+            QPushButton:pressed {
+                background-color: orange;
+                color: white;
+
+            }
+
+            QPushButton:hover {
+                border-color: orange;
+                border-color: white;
+            }
+
+            QProgressBar {
+                border-style: solid;
+                border-color: grey;
+                border-radius: 7px;
+                border-width: 2px;
+                text-align: center;
+            }
+
+            QProgressBar::chunk {
+                width: 2px;
+                background-color: #de7c09;
+                margin: 3px;
+            }
+
+        """
