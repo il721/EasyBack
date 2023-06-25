@@ -13,7 +13,7 @@ class ProgressBar(QProgressBar):
 
     def updateBar(self, i):
         while True:
-            time.sleep(0.01)
+            time.sleep(0.001)
             value = self.value() + i
             self.setValue(value)
 
@@ -49,13 +49,18 @@ class MyApp(QWidget):
 
         self.progressBar = ProgressBar()
         self.layout.addWidget(self.progressBar)
+        for _ in range(20):
+            time.sleep(0.01)
+            self.progressBar.setValue(_)
+            # self.progressBar.updateBar(_)
 
         # self.button = QPushButton('Update ProressBar', clicked=self.updateProgressBar)
         # self.layout.addWidget(self.button)
-
-    def updateProgressBar(self):
-        i = 10
-        self.progressBar.updateBar(i)
+        # for i in range(40):
+        #     self.progressBar.updateBar(i)
+    # def updateProgressBar(self):
+    #     i = 10
+    #     self.progressBar.updateBar(i)
 
 
 if __name__ == '__main__':
