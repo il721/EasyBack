@@ -10,6 +10,7 @@ from d_MainWindow import UiMainWindow
 from d__01_add_item import AddItemDial01
 from d__07_settings import SettingsDialog
 from ui_progress_bar_cirkle import UiProgressBarCirkle
+from d__progress_bar import UiProgressBar
 import all_styles as st
 from main_base import MainBase
 
@@ -47,11 +48,12 @@ class MainWindowDialog(QMainWindow):
         ui.setupUi_(dialog)
         dialog.exec()
 
-    def edit_list(self):
+    @staticmethod
+    def edit_list():
         """
         Open 'Edit Item In Base' dialog window
         """
-        pass
+        progress_bar('rrr', 5)
 
     @staticmethod
     def settings_bt():
@@ -165,12 +167,13 @@ def msg_two_button(title: str, main: str) -> str:
         return 'no'
 
 
-def cirkle_progress_bar(text: str, time: int) -> None:
+def progress_bar(text: str, time: int) -> None:
     dialog = QDialog()
-    ui = UiProgressBarCirkle()
+    ui = UiProgressBar()
     ui.setupUi(dialog)
     dialog.setWindowFlags(QtCore.Qt.WindowType.FramelessWindowHint)
-    dialog.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+    # dialog.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+    dialog.exec()
 
     ## ==> APPLY DROP SHADOW EFFECT
     dialog.shadow = QGraphicsDropShadowEffect()
@@ -178,12 +181,34 @@ def cirkle_progress_bar(text: str, time: int) -> None:
     dialog.shadow.setXOffset(0)
     dialog.shadow.setYOffset(0)
     dialog.shadow.setColor(QColor(0, 0, 0, 120))
-    ui.circularBg.setGraphicsEffect(dialog.shadow)
+    ui.QW.setGraphicsEffect(dialog.shadow)
 
     ## QTIMER ==> START
-    dialog.timer = QtCore.QTimer()
-    dialog.timer.timeout.connect(self.progress)
+    # dialog.timer = QtCore.QTimer()
+    # dialog.timer.timeout.connect(progress)
     # TIMER IN MILLISECONDS
-    dialog.timer.start(5)
-    dialog.exec()
+    # dialog.timer.start(5)
+    # dialog.exec()
+# def cirkle_progress_bar(text: str, time: int) -> None:
+#     dialog = QDialog()
+#     ui = UiProgressBarCirkle()
+#     ui.setupUi(dialog)
+#     dialog.setWindowFlags(QtCore.Qt.WindowType.FramelessWindowHint)
+#     dialog.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+#
+#     ## ==> APPLY DROP SHADOW EFFECT
+#     dialog.shadow = QGraphicsDropShadowEffect()
+#     dialog.shadow.setBlurRadius(20)
+#     dialog.shadow.setXOffset(0)
+#     dialog.shadow.setYOffset(0)
+#     dialog.shadow.setColor(QColor(0, 0, 0, 120))
+#     ui.circularBg.setGraphicsEffect(dialog.shadow)
+#
+#     ## QTIMER ==> START
+#     dialog.timer = QtCore.QTimer()
+#     dialog.timer.timeout.connect(progress)
+#     # TIMER IN MILLISECONDS
+#     dialog.timer.start(5)
+#     dialog.exec()
+
 # TODO !!MAKE progress bar

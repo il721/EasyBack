@@ -6,7 +6,7 @@ from all_styles import PROGRESS_BAR_LINE
 
 
 class ProgressBar(QProgressBar):
-    def __init__(self,):
+    def __init__(self, ):
         super().__init__()
         self.setMaximum(100)
         self._active = False
@@ -49,18 +49,13 @@ class MyApp(QWidget):
 
         self.progressBar = ProgressBar()
         self.layout.addWidget(self.progressBar)
-        for _ in range(20):
-            time.sleep(0.01)
-            self.progressBar.setValue(_)
-            # self.progressBar.updateBar(_)
 
-        # self.button = QPushButton('Update ProressBar', clicked=self.updateProgressBar)
-        # self.layout.addWidget(self.button)
-        # for i in range(40):
-        #     self.progressBar.updateBar(i)
-    # def updateProgressBar(self):
-    #     i = 10
-    #     self.progressBar.updateBar(i)
+        self.button = QPushButton('Update ProressBar', clicked=self.updateProgressBar)
+        self.layout.addWidget(self.button)
+
+    def updateProgressBar(self):
+        i = 10
+        self.progressBar.updateBar(i)
 
 
 if __name__ == '__main__':

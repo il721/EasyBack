@@ -1,28 +1,16 @@
+import sys
+
 from PySide6.QtCore import (QCoreApplication, QMetaObject, QRect, QSize, )
-from PySide6.QtWidgets import (QProgressBar, QWidget)
+from PySide6.QtWidgets import (QProgressBar)
+from all_styles import PROGRESS_BAR
 
 
-class UiForm(object):
+class UiProgressBar(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
         Form.resize(492, 113)
-        Form.setStyleSheet(u"*{\n"
-                           "background-color: rgb(30, 30, 30);\n"
-                           "font: 16pt \"Lexend Light\";\n"
-                           "border: 1px solid;\n"
-                           "border-color: #2B79C2;\n"
-                           "color: rgb(230, 230, 230)}\n"
-                           "QLabel{\n"
-                           "font: 12pt \"Lexend Light\";\n"
-                           "color: #2B79C2;\n"
-                           "border: no}\n"
-                           "QLineEdit{\n"
-                           "background-color: rgb(30, 30, 30);}\n"
-                           "QLineEdit:disabled{\n"
-                           "background-color: rgb(50,50,50);}\n"
-                           "QFrame{\n"
-                           "border-color: #2B79C2;}")
+        Form.setStyleSheet(PROGRESS_BAR)
         self.progress_bar_line = QProgressBar(Form)
         self.progress_bar_line.setObjectName(u"progress_bar_line")
         self.progress_bar_line.setGeometry(QRect(20, 50, 451, 50))
@@ -34,7 +22,7 @@ class UiForm(object):
 
         QMetaObject.connectSlotsByName(Form)
 
-    # setupUi
+        # ************************    MY CODE    ***************************************************
 
     def retranslateUi(self, Form):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))

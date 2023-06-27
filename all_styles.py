@@ -134,3 +134,39 @@ PROGRESS_BAR_LINE: str = """
             }
 
         """
+PROGRESS_BAR: str = """
+            
+            QWidget {
+                background-color: rgb(30, 30, 30);
+            }
+            QProgressBar {
+                border-style: solid;
+                border-color: rgb(150,150,150);
+                border-radius: 7px;
+                border-width: 2px;
+                font: 20pt \"Lexend Light\";
+                color: rgb(230, 230, 230);
+                text-align: center;
+            }
+
+            QProgressBar::chunk {
+                width: 2px;
+                background-color: #2B79C2;
+                margin: 3px;
+            }
+            QLabel {
+                   font: 12pt \"Lexend Light\";
+                   color: #2B79C2;
+                   border: no
+            }
+            QLineEdit {
+                   background-color: rgb(30, 30, 30);}
+                   QLineEdit:disabled{
+                   background-color: rgb(50,50,50);
+            }
+            QFrame {
+                   border-color: #2B79C2;
+            }
+
+
+        """
