@@ -31,7 +31,7 @@ background-color: rgb(50,50,50);}
 QFrame{
 border-color: #2B79C2;}</string>
   </property>
-  <widget class="QProgressBar" name="progressBar">
+  <widget class="QProgressBar" name="progress_bar_line">
    <property name="geometry">
     <rect>
      <x>20</x>
