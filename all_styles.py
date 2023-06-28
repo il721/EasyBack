@@ -155,8 +155,8 @@ PROGRESS_BAR: str = """
                 margin: 3px;
             }
             QLabel {
-                   font: 12pt \"Lexend Light\";
-                   color: #2B79C2;
+                   font: 16pt \"Lexend Light\";
+                   color: rgb(230, 230, 230);
                    border: no
             }
             QLineEdit {

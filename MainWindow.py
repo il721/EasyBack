@@ -62,7 +62,7 @@ class MainWindowDialog(QMainWindow):
         """
         Open 'Edit Item In Base' dialog window
         """
-        progress_dialog(20)
+        progress_dialog(10)
 
     @staticmethod
     def settings_bt():
@@ -178,7 +178,7 @@ def msg_two_button(title: str, main: str) -> str:
 
 def progress_bar(text: str, time: int) -> None:
     dialog = QDialog()
-    ui = UiProgressBar()
+    ui = UiProgressBar(5, "Copy files...")
     ui.setupUi(dialog)
     dialog.setWindowFlags(QtCore.Qt.WindowType.FramelessWindowHint)
     # dialog.setAttribute(QtCore.Qt.WA_TranslucentBackground)
@@ -192,25 +192,20 @@ def progress_bar(text: str, time: int) -> None:
     dialog.setGraphicsEffect(dialog.shadow)
     dialog.exec()
 
-    ## QTIMER ==> START
-    # dialog.timer = QtCore.QTimer()
-    # dialog.timer.timeout.connect(progress)
-    # TIMER IN MILLISECONDS
-    # dialog.timer.start(5)
-    # dialog.exec()
-
 
 # TODO !!MAKE progress bar
 
 def progress_dialog(num_files):
     progress = QProgressDialog("Copying files...", "Abort Copy", 0, num_files)
+    progress.setMinimum(0.1)
+    # progress.setMaximum(10)
     progress.setWindowModality(Qt.WindowModal)
     progress.setStyleSheet(st.PROGRESS_BAR_LINE)
     progress.setWindowFlags(QtCore.Qt.WindowType.FramelessWindowHint)
 
     for i in range(num_files):
         progress.setValue(i)
-        time.sleep(0.3)
+        time.sleep(0.5)
 
         if progress.wasCanceled():
             break
