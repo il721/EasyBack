@@ -1,5 +1,3 @@
-import sys
-
 from PySide6.QtCore import (QCoreApplication, QMetaObject, QRect, QSize, )
 from PySide6.QtWidgets import (QProgressBar)
 from all_styles import PROGRESS_BAR

@@ -1,11 +1,12 @@
 import sys
+import time
 
 from PySide6 import QtCore, QtGui
-from PySide6.QtCore import QSize
+from PySide6.QtCore import QSize, Qt
 from PySide6.QtGui import QColor, QIcon
 from PySide6.QtWidgets import QApplication, QFileDialog, QGraphicsDropShadowEffect, QMainWindow, \
     QDialog, QMessageBox, \
-    QPushButton
+    QProgressDialog, QPushButton
 from d_MainWindow import UiMainWindow
 from d__01_add_item import AddItemDial01
 from d__07_settings import SettingsDialog
@@ -23,11 +24,12 @@ class MainWindowDialog(QMainWindow):
         self.ui.setupUi(self)
         # self.file_list = QListWidget(self)
         # self.ui.translit_button.setShortcut('Ctrl+t')
-        self.ui.add_item.clicked.connect(self.add_item_01)
-        self.ui.edit_list.clicked.connect(self.edit_list)
+        self.ui.add_item.clicked.connect(self.add_item_01_bt)
+        self.ui.edit_list.clicked.connect(self.edit_list_bt)
+        self.ui.backup_all.clicked.connect(self.backup_all_bt)
 
         self.ui.settings.clicked.connect(self.settings_bt)
-        self.ui.exit.clicked.connect(self.exit)
+        self.ui.exit.clicked.connect(self.exit_bt)
 
         # self.setWindowFlags(QtCore.Qt.WindowType.FramelessWindowHint)
 
@@ -39,7 +41,7 @@ class MainWindowDialog(QMainWindow):
         # self.ui.clear_button.clicked.connect(self.clear_all_windows)
 
     @staticmethod
-    def add_item_01():
+    def add_item_01_bt():
         """
         Open 'Add Item To Base' dialog window
         """
@@ -49,11 +51,18 @@ class MainWindowDialog(QMainWindow):
         dialog.exec()
 
     @staticmethod
-    def edit_list():
+    def edit_list_bt():
         """
         Open 'Edit Item In Base' dialog window
         """
         progress_bar('rrr', 5)
+
+    @staticmethod
+    def backup_all_bt():
+        """
+        Open 'Edit Item In Base' dialog window
+        """
+        progress_dialog(20)
 
     @staticmethod
     def settings_bt():
@@ -64,7 +73,7 @@ class MainWindowDialog(QMainWindow):
         dialog.exec()
 
     @staticmethod
-    def exit():
+    def exit_bt():
         sys.exit()
 
 
@@ -173,15 +182,15 @@ def progress_bar(text: str, time: int) -> None:
     ui.setupUi(dialog)
     dialog.setWindowFlags(QtCore.Qt.WindowType.FramelessWindowHint)
     # dialog.setAttribute(QtCore.Qt.WA_TranslucentBackground)
-    dialog.exec()
 
     ## ==> APPLY DROP SHADOW EFFECT
     dialog.shadow = QGraphicsDropShadowEffect()
     dialog.shadow.setBlurRadius(20)
-    dialog.shadow.setXOffset(0)
-    dialog.shadow.setYOffset(0)
+    dialog.shadow.setXOffset(5)
+    dialog.shadow.setYOffset(5)
     dialog.shadow.setColor(QColor(0, 0, 0, 120))
-    ui.QW.setGraphicsEffect(dialog.shadow)
+    dialog.setGraphicsEffect(dialog.shadow)
+    dialog.exec()
 
     ## QTIMER ==> START
     # dialog.timer = QtCore.QTimer()
@@ -189,26 +198,21 @@ def progress_bar(text: str, time: int) -> None:
     # TIMER IN MILLISECONDS
     # dialog.timer.start(5)
     # dialog.exec()
-# def cirkle_progress_bar(text: str, time: int) -> None:
-#     dialog = QDialog()
-#     ui = UiProgressBarCirkle()
-#     ui.setupUi(dialog)
-#     dialog.setWindowFlags(QtCore.Qt.WindowType.FramelessWindowHint)
-#     dialog.setAttribute(QtCore.Qt.WA_TranslucentBackground)
-#
-#     ## ==> APPLY DROP SHADOW EFFECT
-#     dialog.shadow = QGraphicsDropShadowEffect()
-#     dialog.shadow.setBlurRadius(20)
-#     dialog.shadow.setXOffset(0)
-#     dialog.shadow.setYOffset(0)
-#     dialog.shadow.setColor(QColor(0, 0, 0, 120))
-#     ui.circularBg.setGraphicsEffect(dialog.shadow)
-#
-#     ## QTIMER ==> START
-#     dialog.timer = QtCore.QTimer()
-#     dialog.timer.timeout.connect(progress)
-#     # TIMER IN MILLISECONDS
-#     dialog.timer.start(5)
-#     dialog.exec()
+
 
 # TODO !!MAKE progress bar
+
+def progress_dialog(num_files):
+    progress = QProgressDialog("Copying files...", "Abort Copy", 0, num_files)
+    progress.setWindowModality(Qt.WindowModal)
+    progress.setStyleSheet(st.PROGRESS_BAR_LINE)
+    progress.setWindowFlags(QtCore.Qt.WindowType.FramelessWindowHint)
+
+    for i in range(num_files):
+        progress.setValue(i)
+        time.sleep(0.3)
+
+        if progress.wasCanceled():
+            break
+
+    progress.setValue(num_files)
