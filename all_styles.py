@@ -155,17 +155,20 @@ PROGRESS_BAR: str = """
                 margin: 3px;
             }
             QLabel {
-                   font: 16pt \"Lexend Light\";
-                   color: rgb(230, 230, 230);
-                   border: no
+                font: 16pt \"Lexend Light\";
+                color: rgb(230, 230, 230);
+                border: no
             }
             QLineEdit {
-                   background-color: rgb(30, 30, 30);}
-                   QLineEdit:disabled{
-                   background-color: rgb(50,50,50);
+                background-color: rgb(30, 30, 30);}
+                QLineEdit:disabled{
+                background-color: rgb(50,50,50);
             }
             QFrame {
-                   border-color: #2B79C2;
+                border-style: solid;
+                border-radius: 7px;
+                border-width: 2px;
+                border-color: rgb(150, 150, 150);
             }
 
 

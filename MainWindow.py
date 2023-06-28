@@ -55,7 +55,7 @@ class MainWindowDialog(QMainWindow):
         """
         Open 'Edit Item In Base' dialog window
         """
-        progress_bar('rrr', 5)
+        progress_bar(5, 'Copy files...')
 
     @staticmethod
     def backup_all_bt():
@@ -176,20 +176,20 @@ def msg_two_button(title: str, main: str) -> str:
         return 'no'
 
 
-def progress_bar(text: str, time: int) -> None:
+def progress_bar(all_time: int, text: str) -> None:
     dialog = QDialog()
-    ui = UiProgressBar(5, "Copy files...")
+    ui = UiProgressBar(all_time, text)
     ui.setupUi(dialog)
     dialog.setWindowFlags(QtCore.Qt.WindowType.FramelessWindowHint)
-    # dialog.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+    dialog.setAttribute(QtCore.Qt.WA_TranslucentBackground)
 
     ## ==> APPLY DROP SHADOW EFFECT
-    dialog.shadow = QGraphicsDropShadowEffect()
-    dialog.shadow.setBlurRadius(20)
-    dialog.shadow.setXOffset(5)
-    dialog.shadow.setYOffset(5)
-    dialog.shadow.setColor(QColor(0, 0, 0, 120))
-    dialog.setGraphicsEffect(dialog.shadow)
+    # dialog.shadow = QGraphicsDropShadowEffect()
+    # dialog.shadow.setBlurRadius(20)
+    # dialog.shadow.setXOffset(5)
+    # dialog.shadow.setYOffset(5)
+    # dialog.shadow.setColor(QColor(0, 0, 0, 120))
+    # dialog.setGraphicsEffect(dialog.shadow)
     dialog.exec()
 
 
