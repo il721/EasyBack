@@ -48,8 +48,8 @@ class UiProgressBar(object):
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.progress_bar_line = QProgressBar(self.progress_frame)
         self.progress_bar_line.setObjectName(u"progress_bar_line")
-        self.progress_bar_line.setMinimumSize(QSize(400, 50))
-        self.progress_bar_line.setMaximumSize(QSize(400, 50))
+        self.progress_bar_line.setMinimumSize(QSize(395, 50))
+        self.progress_bar_line.setMaximumSize(QSize(395, 50))
         self.progress_bar_line.setValue(24)
 
         self.horizontalLayout.addWidget(self.progress_bar_line)
@@ -72,8 +72,8 @@ class UiProgressBar(object):
         # ************************    MY CODE    ***************************************************
         self.pushButton.setDisabled(True)
         self.shadow = QGraphicsDropShadowEffect()
-        # self.shadow.setBlurRadius(10)
-        self.shadow.setXOffset(20)
+        self.shadow.setBlurRadius(0)
+        self.shadow.setXOffset(10)
         self.shadow.setYOffset(10)
         self.shadow.setColor(QColor(0, 0, 0, 180))
         self.progress_frame.setGraphicsEffect(self.shadow)
