@@ -57,21 +57,28 @@ SETTINGS_MAIN = "*{" \
                 "QRadioButton:disabled{ background-color: rgb(50,50,50);}" \
                 "QToolButton:disabled{ background-color: rgb(50,50,50);}"
 
-MSG_PUSH_BUTTON: str = "QPushButton { border: 2px solid; " \
-                       "color: rgb(230, 230, 230);" \
-                       "border-color: rgb(110, 110, 110); " \
-                       "border-radius: 15px; " \
-                       "background-color: rgba(60,60, 60, 80);" \
-                       "font: 300 16pt \"Lexend Light\";}" \
-                       "QPushButton:hover {" \
-                       "color: rgb(30, 30, 30);" \
-                       "border: 3px solid; " \
-                       "background-color: #2B79C2;" \
-                       "border-color: rgb(150,150,150);}" \
-                       "QPushButton:pressed { color: rgb(30, 30, 30);" \
-                       "border: 2px solid;" \
-                       "background-color: #2B79C2;" \
-                       "border-color: rgb(230, 230, 230);}"
+MSG_PUSH_BUTTON: str = """
+            QPushButton { 
+                border: 2px solid;
+                color: rgb(230, 230, 230);
+                border-color: rgb(110, 110, 110);
+                border-radius: 15px;
+                background-color: rgba(60,60, 60, 80);
+                font: 300 16pt \"Lexend Light\";
+                }
+            QPushButton:hover {
+                color: rgb(30, 30, 30);
+                border: 3px solid;
+                background-color: #2B79C2;
+                border-color: rgb(150,150,150);
+                }
+            QPushButton:pressed {
+                color: rgb(30, 30, 30);
+                border: 2px solid;
+                background-color: #2B79C2;
+                border-color: rgb(230, 230, 230);
+                }
+                """
 
 # TODO !!!DON`T REMEMBER CLEAR THIS!!!!
 # TODO ??? And why don`t work????
@@ -157,7 +164,7 @@ PROGRESS_BAR: str = """
             QLabel {
                 font: 16pt \"Lexend Light\";
                 color: rgb(230, 230, 230);
-                border: no
+                border: no;
             }
             QLineEdit {
                 background-color: rgb(30, 30, 30);}
@@ -170,6 +177,32 @@ PROGRESS_BAR: str = """
                 border-width: 2px;
                 border-color: rgb(150, 150, 150);
             }
-
-
+            QPushButton { 
+                border: 2px solid;
+                color: rgb(230, 230, 230);
+                border-color: rgb(110, 110, 110);
+                border-radius: 15px;
+                background-color: rgba(60,60, 60, 80);
+                font: 300 16pt \"Lexend Light\";
+                }
+            QPushButton:hover {
+                color: rgb(30, 30, 30);
+                border: 3px solid;
+                background-color: #2B79C2;
+                border-color: rgb(150,150,150);
+                }
+            QPushButton:pressed {
+                color: rgb(30, 30, 30);
+                border: 2px solid;
+                background-color: #2B79C2;
+                border-color: rgb(230, 230, 230);
+                }
+            QPushButton:disabled { 
+                border: 2px solid;
+                color: rgb(0, 0, 0);
+                border-color: rgb(40, 40, 40);
+                border-radius: 15px;
+                background-color: rgba(60, 60, 60, 10);
+                font: 300 16pt \"Lexend Light\";
+                }
         """
