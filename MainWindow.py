@@ -3,14 +3,13 @@ import time
 
 from PySide6 import QtCore, QtGui
 from PySide6.QtCore import QSize, Qt
-from PySide6.QtGui import QColor, QIcon
-from PySide6.QtWidgets import QApplication, QFileDialog, QGraphicsDropShadowEffect, QMainWindow, \
-    QDialog, QMessageBox, \
-    QProgressDialog, QPushButton
+from PySide6.QtGui import QIcon
+from PySide6.QtWidgets import QFileDialog, QMainWindow, QDialog, QMessageBox, QProgressDialog, \
+    QPushButton
 from d_MainWindow import UiMainWindow
 from d__01_add_item import AddItemDial01
 from d__07_settings import SettingsDialog
-from d__progress_bar_cirkle import UiProgressBarCirkle
+# from d__progress_bar_cirkle import UiProgressBarCirkle
 from d__progress_bar import UiProgressBar
 import all_styles as st
 from main_base import MainBase
