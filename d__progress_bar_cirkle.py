@@ -3,14 +3,14 @@ from PySide6 import QtCore
 from PySide6.QtWidgets import QApplication, QGraphicsDropShadowEffect, QMainWindow
 from PySide6.QtGui import (QColor, )
 
-from ui_progress_bar_cirkle import UiProgressBarCirkle
+from d_pro import UiProgressBarCirkle
 
 # GLOBALS
 counter = 0
 jumper = 10
 
 
-class CirkleProgressBar(QMainWindow):
+class UiProgressBarCirkle(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
         self.ui = UiProgressBarCirkle()

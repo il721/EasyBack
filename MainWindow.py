@@ -10,7 +10,7 @@ from PySide6.QtWidgets import QApplication, QFileDialog, QGraphicsDropShadowEffe
 from d_MainWindow import UiMainWindow
 from d__01_add_item import AddItemDial01
 from d__07_settings import SettingsDialog
-from ui_progress_bar_cirkle import UiProgressBarCirkle
+from d__progress_bar_cirkle import UiProgressBarCirkle
 from d__progress_bar import UiProgressBar
 import all_styles as st
 from main_base import MainBase
