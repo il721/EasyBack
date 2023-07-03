@@ -3,7 +3,7 @@ from PySide6 import QtCore
 from PySide6.QtWidgets import QApplication, QGraphicsDropShadowEffect, QMainWindow
 from PySide6.QtGui import (QColor, )
 
-from d_pro import UiProgressBarCirkle
+from d__progress_bar_c import UiProgressBarCirkle
 
 # GLOBALS
 counter = 0
