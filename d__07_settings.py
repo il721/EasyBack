@@ -526,7 +526,7 @@ class SettingsDialog(object):
                 MainBase.old_path_settings_folder = MainBase.path_settings_folder
                 MainBase.path_main_folder = filenames
                 MainBase.path_settings_folder = filenames
-                MainBase.path_data_folder = ""
+                print(MainBase.path_data_folder)
                 self.main_folder.setText(MainBase.path_main_folder)
                 self.sett_folder.setText(MainBase.path_settings_folder)
                 self.data_folder_2.setText(MainBase.path_data_folder)

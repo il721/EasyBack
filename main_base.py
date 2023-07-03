@@ -39,8 +39,12 @@ class MainBase:
             else:
                 cls.flag_change_folder = False
                 cls.flag_change_settings = True
+
+                # If SETTINGS folder is in Main folder (SETT. and DATA both)
                 if cls.path_main_folder != cls.path_settings_folder:
                     cls.copy_move_to_new_location(cls.old_path_main_folder, cls.path_main_folder, 0)
+
+                # If SETTINGS folder is Main folder
                 else:
                     cls.copy_move_to_new_location(cls.old_path_settings_folder,
                                                   cls.path_settings_folder, 1)
@@ -96,9 +100,11 @@ class MainBase:
         :param new:
         :return:
         """
+        print('old: ', old, 'new: ', new)
         mw.progress_bar(8, 'Copy files...')
         shutil.copytree(old, new, dirs_exist_ok=True)
 
+        # Delete block
         msg_text = "Remove old data?\n" \
                    "If you press 'Yes' all you backup`s and settings data in old folder will be " \
                    "deleted."
@@ -115,17 +121,18 @@ class MainBase:
                     cls.del_source(old)
                     mw.progress_bar(8, 'Delete files...')
             elif type_del == 1:
-                del_folder = f"../{old}"
+                del_folder = f"{old}"
+                print(del_folder)
                 msg_text = f"Delete all in folder\n{del_folder}?"
                 reply = mw.msg_two_button("WARNING!", msg_text)
                 if reply == 'no':
                     return
                 else:
-                    cls.del_source(f"{del_folder}")
+                    shutil.rmtree(old)
                     mw.progress_bar(8, 'Delete files...')
 
     @classmethod
-    def del_source(cls, old):
+    def del_source(cls, old: str) -> None:
         for _ in Path.iterdir(Path(old)):
 
             # TODO Problem remove rmtree readonly folder

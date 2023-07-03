@@ -66,3 +66,5 @@ for item in path_list:
             shutil.rmtree(_)
         else:
             _.unlink()
+
+# shutil.rmtree('f:\\!_____back_1\\SETTINGS\\')
