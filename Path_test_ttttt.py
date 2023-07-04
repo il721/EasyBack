@@ -18,13 +18,11 @@ def copy_dir():
 
 
 def rmtree_error(func, path_err, exc_info):
-    print(func, path_err, exc_info, sep='\n')
     os.chmod(path_err, stat.S_IWRITE)
     os.unlink(path_err)
 
 
 def del_all():
-    # print(list(Path.iterdir(Path(path))))
     for _ in Path.iterdir(Path(path)):
 
         if _.is_dir():

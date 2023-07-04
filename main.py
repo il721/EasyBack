@@ -18,31 +18,36 @@ def first_time_check():
         MainBase.flag_change_settings = True
         path_or_regkey_not_exsit()
 
-    # reg key is exist, but SETTINGS folder is not exist or empty
+    # reg key is exist, but settings.ini is not exist
     elif MainBase.settings_exist:
-        try:
-            sett_path = tuple(Path.iterdir(Path(f'{rez["settings_path"]}')))
+        settings_file = Path(f'{rez["main_path"]}\\settings.ini')
+        settings_folder = Path(f'{rez["settings_path"]}')
+        print(Path.is_file(settings_file))
+        print(Path.is_dir(settings_folder))
+        print(settings_file)
+        print(settings_folder)
+        print(MainBase.settings_exist)
 
-            # If folder SETTINGS exist on disk, but emty
-            if not sett_path:
-                appearance_initial(rez)
-                MainBase.flag_change_settings = True
-                path_or_regkey_not_exsit()
-
-            # If folder SETTINGS exist on disk and not emty
-            else:
-                # Initial set of some programm settings. Taken from registry key
-                MainBase.settings_exist = True
-                MainBase.path_main_folder = rez["main_path"]
-                MainBase.path_settings_folder = rez["settings_path"]
-                MainBase.path_data_folder = rez["data_path"]
-                appearance_initial(rez)
-
-        # If folder SETTINGS in reg key is not find in disk
-        except FileNotFoundError:
+        # If folder SETTINGS exist on disk, but emty
+        if not Path.is_file(settings_file):
             appearance_initial(rez)
             MainBase.flag_change_settings = True
             path_or_regkey_not_exsit()
+
+        # If folder SETTINGS exist on disk and not emty
+        else:
+            # Initial set of some programm settings. Taken from registry key
+            MainBase.settings_exist = True
+            MainBase.path_main_folder = rez["main_path"]
+            MainBase.path_settings_folder = rez["settings_path"]
+            MainBase.path_data_folder = rez["data_path"]
+            appearance_initial(rez)
+
+        # If folder SETTINGS in reg key is not find in disk
+        # except FileNotFoundError:
+        #     appearance_initial(rez)
+        #     MainBase.flag_change_settings = True
+        #     path_or_regkey_not_exsit()
 
 
 def appearance_initial(rez):

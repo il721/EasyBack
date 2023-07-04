@@ -74,7 +74,7 @@ class MainBase:
         if cls.path_data_folder:  # if DATA not set and needed, don`t create DATA folder
             if not cls.check_folder_exist(cls.path_data_folder):
                 Path.mkdir(Path(cls.path_data_folder))
-        path = Path(f"{MainBase.path_settings_folder}/settings.ini")
+        path = Path(f"{MainBase.path_main_folder}/settings.ini")
         with open(path, 'w') as f:
             json.dump(cls.settings, f)
         cls.settings_exist = True
@@ -176,8 +176,9 @@ class MainBase:
 
             cls.get_all_settings_from_regkey(reg_key)
 
-            print(*[[key, val] for key, val in MainBase.settings.items()], sep="\n")
-            # TODO !!! PRINT REG KEYS
+            print(*[[key, val] for key, val in MainBase.settings.items() if
+                    key in ('main_path', 'settings_path', 'data_path')], sep="\n")
+            # print(*[[key, val] for key, val in MainBase.settings.items()], sep="\n")
 
             winreg.CloseKey(reg_key)
 
