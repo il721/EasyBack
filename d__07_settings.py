@@ -502,7 +502,7 @@ class SettingsDialog(object):
 
                 # first time check settings rule
                 if MainBase.settings_exist:
-                    MainBase.flag_change_folder = True
+                    MainBase.flag_change_folder = 'main'
                     MainBase.flag_change_settings = True
 
     def select_settings_folder_bt(self):
@@ -532,7 +532,7 @@ class SettingsDialog(object):
 
                 # first time check settings rule
                 if MainBase.settings_exist:
-                    MainBase.flag_change_folder = True
+                    MainBase.flag_change_folder = 'settings'
                     MainBase.flag_change_settings = True
 
     def select_data_folder_bt(self):
@@ -558,7 +558,7 @@ class SettingsDialog(object):
 
                 # first time check settings rule
                 if MainBase.settings_exist:
-                    MainBase.flag_change_folder = True
+                    MainBase.flag_change_folder = 'data'
                     MainBase.flag_change_settings = True
 
     def data_radio_bt(self):

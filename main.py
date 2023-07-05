@@ -20,16 +20,16 @@ def first_time_check():
 
     # reg key is exist, but settings.ini is not exist
     elif MainBase.settings_exist:
-        settings_file = Path(f'{rez["main_path"]}\\settings.ini')
+        MainBase.settings_file_path = Path(f'{rez["main_path"]}\\settings.ini')
         settings_folder = Path(f'{rez["settings_path"]}')
-        # print(Path.is_file(settings_file))
+        # print(Path.is_file(MainBase.settings_file_path))
         # print(Path.is_dir(settings_folder))
-        # print(settings_file)
+        # print(MainBase.settings_file_path)
         # print(settings_folder)
         # print(MainBase.settings_exist)
 
         # If folder SETTINGS exist on disk, but emty
-        if not Path.is_file(settings_file):
+        if not Path.is_file(MainBase.settings_file_path):
             appearance_initial(rez)
             MainBase.flag_change_settings = True
             path_or_regkey_not_exsit()
