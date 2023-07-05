@@ -22,11 +22,11 @@ def first_time_check():
     elif MainBase.settings_exist:
         settings_file = Path(f'{rez["main_path"]}\\settings.ini')
         settings_folder = Path(f'{rez["settings_path"]}')
-        print(Path.is_file(settings_file))
-        print(Path.is_dir(settings_folder))
-        print(settings_file)
-        print(settings_folder)
-        print(MainBase.settings_exist)
+        # print(Path.is_file(settings_file))
+        # print(Path.is_dir(settings_folder))
+        # print(settings_file)
+        # print(settings_folder)
+        # print(MainBase.settings_exist)
 
         # If folder SETTINGS exist on disk, but emty
         if not Path.is_file(settings_file):

@@ -65,4 +65,7 @@ for item in path_list:
         else:
             _.unlink()
 
+Path.mkdir(Path("f:\\!_____back_1\\ttt_sett"))
+Path.mkdir(Path("f:\\!_____back_1\\ttt_data"))
+
 # shutil.rmtree('f:\\!_____back_1\\SETTINGS\\')

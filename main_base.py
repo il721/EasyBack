@@ -25,68 +25,75 @@ class MainBase:
     start_folder_in_dialogs: str = r"F:"
 
     @classmethod
-    def save_settings(cls):
+    def save_settings_test(cls):
         # if backup folders have changed, transfers all (settings and buckups) to a new location.
         # New folder must be an emty folder
-        if cls.flag_change_folder:
-
-            msg_text = "ARE YOU SHURE?\n" \
-                       "If you press 'Yes' all you backup`s and settings data will be copied " \
-                       "to new location."
-            reply = mw.msg_two_button("WARNING!", msg_text)
-            if reply == 'no':
-                return
-            else:
-                cls.flag_change_folder = False
-                cls.flag_change_settings = True
-
-                # If SETTINGS folder is in Main folder (SETT. and DATA both)
-                if cls.path_main_folder != cls.path_settings_folder:
-                    cls.copy_move_to_new_location(cls.old_path_main_folder, cls.path_main_folder, 0)
-
-                # If SETTINGS folder is Main folder
-                else:
-                    cls.copy_move_to_new_location(cls.old_path_settings_folder,
-                                                  cls.path_settings_folder, 1)
-                    if cls.path_data_folder and \
-                            cls.old_path_data_folder != cls.path_data_folder:
-                        cls.copy_move_to_new_location(cls.old_path_data_folder,
-                                                      cls.path_data_folder, 1)
-
-        # check for emty settings field
-        if not cls.path_settings_folder:
-            mw.msg_one_button("WARNING!", "You forget set the 'SETTINGS' folder", 'warn')
-            return
-
-        # add keys to settings dictionary and regkey. ALL values must be str!!!---------------------
-        cls.settings['main_path'] = cls.path_main_folder
-        cls.settings['settings_path'] = cls.path_settings_folder
-        cls.settings['data_path'] = cls.path_data_folder
-        cls.settings['start_folder'] = cls.start_folder_in_dialogs
-        cls.settings['font_size_dialog'] = cls.font_size_dialog
-        cls.settings['font_combo_index'] = str(cls.font_combo_index)
-        cls.settings['font_color_info'] = str(cls.font_color_info)
-        cls.settings['font_color_warn'] = str(cls.font_color_warn)
-        # !!!Don`t forget adding new key`s in main.py appearance_initial ---------------------------
-
-        if not cls.check_folder_exist(cls.path_settings_folder):
-            Path.mkdir(Path(cls.path_settings_folder))
-        if cls.path_data_folder:  # if DATA not set and needed, don`t create DATA folder
-            if not cls.check_folder_exist(cls.path_data_folder):
-                Path.mkdir(Path(cls.path_data_folder))
-        path = Path(f"{MainBase.path_main_folder}/settings.ini")
-        with open(path, 'w') as f:
-            json.dump(cls.settings, f)
-        cls.settings_exist = True
-        cls.create_reg_key(cls.settings)
-        if cls.flag_change_settings or cls.flag_change_settings:
-            mw.msg_one_button('Congradulation!', 'Settings is successfully saved in '
-                                                 'settings.ini', 'info')
-            cls.flag_change_folder = False
-            cls.flag_change_settings = False
-        else:
-            mw.msg_one_button("Nothing changed", "You haven't changed anything in the settings. "
-                                                 "Nothing to save", "info")
+        print(f"{MainBase.old_path_main_folder} ----> {MainBase.path_main_folder}")
+        print(f"{MainBase.old_path_settings_folder} ----> {MainBase.path_settings_folder}")
+        print(f"{MainBase.old_path_data_folder} ----> {MainBase.path_data_folder}")
+        # TODO !!!!!REMOVE AFTER ALL TESTING
+    # def save_settings(cls):
+    #     # if backup folders have changed, transfers all (settings and buckups) to a new location.
+    #     # New folder must be an emty folder
+    #     if cls.flag_change_folder:
+    #
+    #         msg_text = "ARE YOU SHURE?\n" \
+    #                    "If you press 'Yes' all you backup`s and settings data will be copied " \
+    #                    "to new location."
+    #         reply = mw.msg_two_button("WARNING!", msg_text)
+    #         if reply == 'no':
+    #             return
+    #         else:
+    #             cls.flag_change_folder = False
+    #             cls.flag_change_settings = True
+    #
+    #             # If SETTINGS folder is in Main folder (SETT. and DATA both)
+    #             if cls.path_main_folder != cls.path_settings_folder:
+    #                 cls.copy_move_to_new_location(cls.old_path_main_folder, cls.path_main_folder, 0)
+    #
+    #             # If SETTINGS folder is Main folder
+    #             else:
+    #                 cls.copy_move_to_new_location(cls.old_path_settings_folder,
+    #                                               cls.path_settings_folder, 1)
+    #                 if cls.path_data_folder and \
+    #                         cls.old_path_data_folder != cls.path_data_folder:
+    #                     cls.copy_move_to_new_location(cls.old_path_data_folder,
+    #                                                   cls.path_data_folder, 1)
+    #
+    #     # check for emty settings field
+    #     if not cls.path_settings_folder:
+    #         mw.msg_one_button("WARNING!", "You forget set the 'SETTINGS' folder", 'warn')
+    #         return
+    #
+    #     # add keys to settings dictionary and regkey. ALL values must be str!!!---------------------
+    #     cls.settings['main_path'] = cls.path_main_folder
+    #     cls.settings['settings_path'] = cls.path_settings_folder
+    #     cls.settings['data_path'] = cls.path_data_folder
+    #     cls.settings['start_folder'] = cls.start_folder_in_dialogs
+    #     cls.settings['font_size_dialog'] = cls.font_size_dialog
+    #     cls.settings['font_combo_index'] = str(cls.font_combo_index)
+    #     cls.settings['font_color_info'] = str(cls.font_color_info)
+    #     cls.settings['font_color_warn'] = str(cls.font_color_warn)
+    #     # !!!Don`t forget adding new key`s in main.py appearance_initial ---------------------------
+    #
+    #     if not cls.check_folder_exist(cls.path_settings_folder):
+    #         Path.mkdir(Path(cls.path_settings_folder))
+    #     if cls.path_data_folder:  # if DATA not set and needed, don`t create DATA folder
+    #         if not cls.check_folder_exist(cls.path_data_folder):
+    #             Path.mkdir(Path(cls.path_data_folder))
+    #     path = Path(f"{MainBase.path_main_folder}/settings.ini")
+    #     with open(path, 'w') as f:
+    #         json.dump(cls.settings, f)
+    #     cls.settings_exist = True
+    #     cls.create_reg_key(cls.settings)
+    #     if cls.flag_change_settings or cls.flag_change_settings:
+    #         mw.msg_one_button('Congradulation!', 'Settings is successfully saved in '
+    #                                              'settings.ini', 'info')
+    #         cls.flag_change_folder = False
+    #         cls.flag_change_settings = False
+    #     else:
+    #         mw.msg_one_button("Nothing changed", "You haven't changed anything in the settings. "
+    #                                              "Nothing to save", "info")
 
     @classmethod
     def copy_move_to_new_location(cls, old: str, new: str, type_del: int) -> None:
@@ -122,7 +129,7 @@ class MainBase:
                     mw.progress_bar(8, 'Delete files...')
             elif type_del == 1:
                 del_folder = f"{old}"
-                print(del_folder)
+                # print(del_folder)
                 msg_text = f"Delete all in folder\n{del_folder}?"
                 reply = mw.msg_two_button("WARNING!", msg_text)
                 if reply == 'no':
@@ -176,8 +183,8 @@ class MainBase:
 
             cls.get_all_settings_from_regkey(reg_key)
 
-            print(*[[key, val] for key, val in MainBase.settings.items() if
-                    key in ('main_path', 'settings_path', 'data_path')], sep="\n")
+            # print(*[[key, val] for key, val in MainBase.settings.items() if
+            #         key in ('main_path', 'settings_path', 'data_path')], sep="\n")
             # print(*[[key, val] for key, val in MainBase.settings.items()], sep="\n")
 
             winreg.CloseKey(reg_key)
