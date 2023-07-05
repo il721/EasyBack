@@ -9,7 +9,7 @@ import MainWindow as mw
 
 class MainBase:
     settings_exist: bool = False
-    flag_change_folder: str = ""
+    flag_change_folder: list = []
     flag_change_settings: bool = False
     settings: dict = {}  # set up new items in save_settings(cls)
     font_size_dialog: str = "18Pt"
@@ -36,29 +36,30 @@ class MainBase:
     def save_settings(cls):
         # if backup folders have changed, transfers all (settings and buckups) to a new location.
         # New folder must be an emty folder
-        if cls.flag_change_folder == 'main':
-            msg_text = "ARE YOU SHURE?\n" \
-                       "If you press 'Yes' all you backup`s and settings data will be copied " \
-                       "to new location."
-            reply = mw.msg_two_button("WARNING!", msg_text)
-            if reply == 'no':
-                return
-            else:
-                cls.flag_change_folder = ""
-                cls.flag_change_settings = True
-
-                # If SETTINGS folder is in Main folder (SETT. and DATA both)
-                if cls.path_main_folder != cls.path_settings_folder:
-                    cls.copy_move_to_new_location(cls.old_path_main_folder, cls.path_main_folder, 0)
-
-                # If SETTINGS folder is Main folder
-                else:
-                    cls.copy_move_to_new_location(cls.old_path_settings_folder,
-                                                  cls.path_settings_folder, 1)
-                    if cls.path_data_folder and \
-                            cls.old_path_data_folder != cls.path_data_folder:
-                        cls.copy_move_to_new_location(cls.old_path_data_folder,
-                                                      cls.path_data_folder, 1)
+        print(*cls.flag_change_folder)
+        # if cls.flag_change_folder:
+        #     msg_text = "ARE YOU SHURE?\n" \
+        #                "If you press 'Yes' all you backup`s and settings data will be copied " \
+        #                "to new location."
+        #     reply = mw.msg_two_button("WARNING!", msg_text)
+        #     if reply == 'no':
+        #         return
+        #     else:
+        #         cls.flag_change_folder = []
+        #         cls.flag_change_settings = True
+        #
+        #         # If SETTINGS folder is in Main folder (SETT. and DATA both)
+        #         if cls.path_main_folder != cls.path_settings_folder:
+        #             cls.copy_move_to_new_location(cls.old_path_main_folder, cls.path_main_folder, 0)
+        #
+        #         # If SETTINGS folder is Main folder
+        #         else:
+        #             cls.copy_move_to_new_location(cls.old_path_settings_folder,
+        #                                           cls.path_settings_folder, 1)
+        #             if cls.path_data_folder and \
+        #                     cls.old_path_data_folder != cls.path_data_folder:
+        #                 cls.copy_move_to_new_location(cls.old_path_data_folder,
+        #                                               cls.path_data_folder, 1)
 
         # check for emty settings field
         if not cls.path_settings_folder:
@@ -86,10 +87,10 @@ class MainBase:
             json.dump(cls.settings, f)
         cls.settings_exist = True
         cls.create_reg_key(cls.settings)
-        if cls.flag_change_settings or cls.flag_change_settings:
+        if cls.flag_change_settings or cls.flag_change_folder:
             mw.msg_one_button('Congradulation!', 'Settings is successfully saved in '
                                                  'settings.ini', 'info')
-            cls.flag_change_folder = False
+            cls.flag_change_folder = []
             cls.flag_change_settings = False
         else:
             mw.msg_one_button("Nothing changed", "You haven't changed anything in the settings. "
@@ -173,8 +174,8 @@ class MainBase:
         :param new:
         :return:
         """
-        print('old: ', old, 'new: ', new)
-        mw.progress_bar(8, 'Copy files...')
+        # print('old: ', old, 'new: ', new)
+        mw.progress_bar(5, 'Copy files...')
         shutil.copytree(old, new, dirs_exist_ok=True)
 
         # Delete block
@@ -192,7 +193,7 @@ class MainBase:
                     return
                 else:
                     cls.del_source(old)
-                    mw.progress_bar(8, 'Delete files...')
+                    mw.progress_bar(5, 'Delete files...')
             elif type_del == 1:
                 del_folder = f"{old}"
                 # print(del_folder)
@@ -202,7 +203,7 @@ class MainBase:
                     return
                 else:
                     shutil.rmtree(old)
-                    mw.progress_bar(8, 'Delete files...')
+                    mw.progress_bar(5, 'Delete files...')
 
     @classmethod
     def del_source(cls, old: str) -> None:
@@ -291,7 +292,7 @@ class MainBase:
         :return:
         """
         if old_folder_path == new_folder_path:
-            MainBase.flag_change_folder = False
+            MainBase.flag_change_folder = ''
             mw.msg_one_button("Nothing change", "You selected the same folder as it was. Try again",
                               "info")
             return True

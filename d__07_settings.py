@@ -493,7 +493,9 @@ class SettingsDialog(object):
                 MainBase.old_path_main_folder = MainBase.path_main_folder
                 MainBase.old_path_settings_folder = MainBase.path_settings_folder
                 MainBase.old_path_data_folder = MainBase.path_data_folder
+                MainBase.flag_change_folder.append(MainBase.path_main_folder)
                 MainBase.path_main_folder = filenames
+                MainBase.flag_change_folder.append(MainBase.path_main_folder)
                 MainBase.path_settings_folder = f"{filenames}/SETTINGS"
                 MainBase.path_data_folder = f"{filenames}/DATA"
                 self.main_folder.setText(filenames)
@@ -502,7 +504,6 @@ class SettingsDialog(object):
 
                 # first time check settings rule
                 if MainBase.settings_exist:
-                    MainBase.flag_change_folder = 'main'
                     MainBase.flag_change_settings = True
 
     def select_settings_folder_bt(self):
@@ -524,6 +525,7 @@ class SettingsDialog(object):
                     return
                 MainBase.old_path_main_folder = MainBase.path_main_folder
                 MainBase.old_path_settings_folder = MainBase.path_settings_folder
+                MainBase.flag_change_folder.append('settings')
                 MainBase.path_main_folder = filenames
                 MainBase.path_settings_folder = filenames
                 self.main_folder.setText(MainBase.path_main_folder)
@@ -532,7 +534,6 @@ class SettingsDialog(object):
 
                 # first time check settings rule
                 if MainBase.settings_exist:
-                    MainBase.flag_change_folder = 'settings'
                     MainBase.flag_change_settings = True
 
     def select_data_folder_bt(self):
@@ -552,13 +553,13 @@ class SettingsDialog(object):
                 # selected folder must be emty
                 if MainBase.check_folder_for_empty(filenames):
                     return
+                MainBase.flag_change_folder.append('data')
                 MainBase.old_path_data_folder = MainBase.path_data_folder
                 MainBase.path_data_folder = filenames
                 self.data_folder_2.setText(MainBase.path_data_folder)
 
                 # first time check settings rule
                 if MainBase.settings_exist:
-                    MainBase.flag_change_folder = 'data'
                     MainBase.flag_change_settings = True
 
     def data_radio_bt(self):
