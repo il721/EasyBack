@@ -496,8 +496,12 @@ class SettingsDialog(object):
                 MainBase.flag_change_folder.append(MainBase.path_main_folder)
                 MainBase.path_main_folder = filenames
                 MainBase.flag_change_folder.append(MainBase.path_main_folder)
+                MainBase.flag_change_folder.append(MainBase.path_settings_folder)
                 MainBase.path_settings_folder = f"{filenames}/SETTINGS"
+                MainBase.flag_change_folder.append(MainBase.path_settings_folder)
+                MainBase.flag_change_folder.append(MainBase.path_data_folder)
                 MainBase.path_data_folder = f"{filenames}/DATA"
+                MainBase.flag_change_folder.append(MainBase.path_data_folder)
                 self.main_folder.setText(filenames)
                 self.sett_folder.setText(MainBase.path_settings_folder)
                 self.data_folder_2.setText(MainBase.path_data_folder)
@@ -526,9 +530,11 @@ class SettingsDialog(object):
                 # MainBase.old_path_main_folder = MainBase.path_main_folder
                 # MainBase.old_path_settings_folder = MainBase.path_settings_folder
                 MainBase.flag_change_folder.append(MainBase.path_settings_folder)
-                MainBase.path_main_folder = filenames
                 MainBase.path_settings_folder = filenames
                 MainBase.flag_change_folder.append(MainBase.path_settings_folder)
+                MainBase.flag_change_folder.append(MainBase.path_main_folder)
+                MainBase.path_main_folder = filenames
+                MainBase.flag_change_folder.append(MainBase.path_main_folder)
                 self.main_folder.setText(MainBase.path_main_folder)
                 self.sett_folder.setText(MainBase.path_settings_folder)
                 self.data_folder_2.setText(MainBase.path_data_folder)
