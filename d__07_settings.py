@@ -1,10 +1,8 @@
-from PySide6.QtCore import (QCoreApplication, QMetaObject, QRect, QSize, )
-from PySide6.QtGui import (QIcon, )
+from PySide6.QtCore import (QCoreApplication, QMetaObject, QRect, QSize)
+from PySide6.QtGui import (QIcon)
 from PySide6.QtWidgets import (QColorDialog, QComboBox, QFileDialog, QFrame, QHBoxLayout, QLabel,
-                               QLineEdit,
-                               QPushButton,
-                               QRadioButton, QSizePolicy, QSpacerItem, QTabWidget, QToolButton,
-                               QVBoxLayout, QWidget, )
+                               QLineEdit, QPushButton, QRadioButton, QSizePolicy, QSpacerItem,
+                               QTabWidget, QToolButton, QVBoxLayout, QWidget)
 import dop_win_rc
 from main_base import MainBase
 import MainWindow as mw
@@ -490,9 +488,6 @@ class SettingsDialog(object):
                 # selected folder must be emty
                 if MainBase.check_folder_for_empty(filenames):
                     return
-                # MainBase.old_path_main_folder = MainBase.path_main_folder
-                # MainBase.old_path_settings_folder = MainBase.path_settings_folder
-                # MainBase.old_path_data_folder = MainBase.path_data_folder
                 MainBase.change_folder.append(MainBase.path_main_folder)
                 MainBase.path_main_folder = filenames
                 MainBase.change_folder.append(MainBase.path_main_folder)

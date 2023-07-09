@@ -31,35 +31,24 @@ class MainBase:
         # New folder must be an emty folder
         copy_list = list(zip(cls.change_folder[0::2], cls.change_folder[1::2]))
         del_list = reversed(copy_list)
-        for _ in copy_list:
-            print(f"{_[0]}\t-->\t{_[1]}")
-        print()
-        for _ in del_list:
-            if _[0]:
-                print(f"{_[0]}")
-        # if cls.change_folder:
-        #     msg_text = "ARE YOU SHURE?\n" \
-        #                "If you press 'Yes' all you backup`s and settings data will be copied " \
-        #                "to new location."
-        #     reply = mw.msg_two_button("WARNING!", msg_text)
-        #     if reply == 'no':
-        #         return
-        #     else:
-        #         cls.change_folder = []
-        #         cls.flag_change_settings = True
-        #
-        #         # If SETTINGS folder is in Main folder (SETT. and DATA both)
-        #         if cls.path_main_folder != cls.path_settings_folder:
-        #             cls.copy_move_to_new_location(cls.old_path_main_folder, cls.path_main_folder, 0)
-        #
-        #         # If SETTINGS folder is Main folder
-        #         else:
-        #             cls.copy_move_to_new_location(cls.old_path_settings_folder,
-        #                                           cls.path_settings_folder, 1)
-        #             if cls.path_data_folder and \
-        #                     cls.old_path_data_folder != cls.path_data_folder:
-        #                 cls.copy_move_to_new_location(cls.old_path_data_folder,
-        #                                               cls.path_data_folder, 1)
+
+        if copy_list[0][0]:
+            msg_text = "ARE YOU SHURE?\n" \
+                       "If you press 'Yes' all you backup`s and settings data will be copied " \
+                       "to new location."
+            reply = mw.msg_two_button("WARNING!", msg_text)
+            if reply == 'no':
+                return
+            else:
+                for _ in copy_list:
+                    print(f"{_[0]} ---> {_[1]}")
+                    cls.copy_to_new_location(_[0], _[1])
+
+                print()
+                for _ in del_list:
+                    print(_[0])
+            cls.change_folder = []
+            cls.flag_change_settings = True
 
         # check for emty settings field
         if not cls.path_settings_folder:
@@ -96,80 +85,11 @@ class MainBase:
             mw.msg_one_button("Nothing changed", "You haven't changed anything in the settings. "
                                                  "Nothing to save", "info")
 
-    # @classmethod
-    # def save_settings_old(cls):
-    #     # if backup folders have changed, transfers all (settings and buckups) to a new location.
-    #     # New folder must be an emty folder
-    #     if cls.change_folder:
-    #
-    #         msg_text = "ARE YOU SHURE?\n" \
-    #                    "If you press 'Yes' all you backup`s and settings data will be copied " \
-    #                    "to new location."
-    #         reply = mw.msg_two_button("WARNING!", msg_text)
-    #         if reply == 'no':
-    #             return
-    #         else:
-    #             cls.change_folder = False
-    #             cls.flag_change_settings = True
-    #
-    #             # If SETTINGS folder is in Main folder (SETT. and DATA both)
-    #             if cls.path_main_folder != cls.path_settings_folder:
-    #                 cls.copy_move_to_new_location(cls.old_path_main_folder, cls.path_main_folder, 0)
-    #
-    #             # If SETTINGS folder is Main folder
-    #             else:
-    #                 cls.copy_move_to_new_location(cls.old_path_settings_folder,
-    #                                               cls.path_settings_folder, 1)
-    #                 if cls.path_data_folder and \
-    #                         cls.old_path_data_folder != cls.path_data_folder:
-    #                     cls.copy_move_to_new_location(cls.old_path_data_folder,
-    #                                                   cls.path_data_folder, 1)
-    #
-    #     # check for emty settings field
-    #     if not cls.path_settings_folder:
-    #         mw.msg_one_button("WARNING!", "You forget set the 'SETTINGS' folder", 'warn')
-    #         return
-    #
-    #     # add keys to settings dictionary and regkey. ALL values must be str!!!---------------------
-    #     cls.settings['main_path'] = cls.path_main_folder
-    #     cls.settings['settings_path'] = cls.path_settings_folder
-    #     cls.settings['data_path'] = cls.path_data_folder
-    #     cls.settings['start_folder'] = cls.start_folder_in_dialogs
-    #     cls.settings['font_size_dialog'] = cls.font_size_dialog
-    #     cls.settings['font_combo_index'] = str(cls.font_combo_index)
-    #     cls.settings['font_color_info'] = str(cls.font_color_info)
-    #     cls.settings['font_color_warn'] = str(cls.font_color_warn)
-    #     # !!!Don`t forget adding new key`s in main.py appearance_initial ---------------------------
-    #
-    #     if not cls.check_folder_exist(cls.path_settings_folder):
-    #         Path.mkdir(Path(cls.path_settings_folder))
-    #     if cls.path_data_folder:  # if DATA not set and needed, don`t create DATA folder
-    #         if not cls.check_folder_exist(cls.path_data_folder):
-    #             Path.mkdir(Path(cls.path_data_folder))
-    #     path = Path(f"{MainBase.path_main_folder}/settings.ini")
-    #     with open(path, 'w') as f:
-    #         json.dump(cls.settings, f)
-    #     cls.settings_exist = True
-    #     cls.create_reg_key(cls.settings)
-    #     if cls.flag_change_settings or cls.flag_change_settings:
-    #         mw.msg_one_button('Congradulation!', 'Settings is successfully saved in '
-    #                                              'settings.ini', 'info')
-    #         cls.change_folder = False
-    #         cls.flag_change_settings = False
-    #     else:
-    #         mw.msg_one_button("Nothing changed", "You haven't changed anything in the settings. "
-    #                                              "Nothing to save", "info")
-
-    # TODO ^^^^^^^^^^^!!!!!REMOVE AFTER ALL TESTING^^^^^^^^^^^^
-
     @classmethod
-    def copy_move_to_new_location(cls, old: str, new: str, type_del: int) -> None:
+    def copy_to_new_location(cls, old: str, new: str) -> None:
         """
         Copy all backup data from "old" folder to "new". Folder SETTINGS in new location must be
         empty. Then, if you choose to delete the source - cleans the "old" folder
-        :param type_del: chose what folders are was deleted.
-            0 - both DATA and SETTINGS
-            1 - SETTINGS or DATA separately
         :param old:
         :param new:
         :return:
@@ -178,7 +98,14 @@ class MainBase:
         mw.progress_bar(5, 'Copy files...')
         shutil.copytree(old, new, dirs_exist_ok=True)
 
-        # Delete block
+    @classmethod
+    def delete_source(cls, old: str) -> None:
+        """
+        Delete sourse files and folders after copy and accept warnings dialogs
+        :param cls:
+        :param old: deleted items
+        :return:
+        """
         msg_text = "Remove old data?\n" \
                    "If you press 'Yes' all you backup`s and settings data in old folder will be " \
                    "deleted."
@@ -186,30 +113,14 @@ class MainBase:
         if reply == 'no':
             return
         else:
-            if type_del == 0:
-                msg_text = f"Delete all in folder\n{old}?"
-                reply = mw.msg_two_button("WARNING!", msg_text)
-                if reply == 'no':
-                    return
-                else:
-                    cls.del_source(old)
-                    mw.progress_bar(5, 'Delete files...')
-            elif type_del == 1:
-                del_folder = f"{old}"
-                # print(del_folder)
-                msg_text = f"Delete all in folder\n{del_folder}?"
-                reply = mw.msg_two_button("WARNING!", msg_text)
-                if reply == 'no':
-                    return
-                else:
-                    shutil.rmtree(old)
-                    mw.progress_bar(5, 'Delete files...')
+            cls.del_source(old)
+            mw.progress_bar(5, 'Delete files...')
 
     @classmethod
-    def del_source(cls, old: str) -> None:
-        for _ in Path.iterdir(Path(old)):
+    def del_source(cls, item: str) -> None:
+        for _ in Path.iterdir(Path(item)):
 
-            # TODO Problem remove rmtree readonly folder
+            # TODO Problem remove rmtree readonly folder (from old backups. M.b. acces denied)
             if _.is_dir():
                 try:
                     shutil.rmtree(_, ignore_errors=False, onerror=cls.rmtree_error)
