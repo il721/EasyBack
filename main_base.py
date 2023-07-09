@@ -9,7 +9,7 @@ import MainWindow as mw
 
 class MainBase:
     settings_exist: bool = False
-    flag_change_folder: list = []
+    change_folder: list = []
     flag_change_settings: bool = False
     settings: dict = {}  # set up new items in save_settings(cls)
     font_size_dialog: str = "18Pt"
@@ -26,19 +26,18 @@ class MainBase:
     start_folder_in_dialogs: str = r"F:"
 
     @classmethod
-    def save_settings_test(cls):
-        print(f"{MainBase.old_path_main_folder} ----> {MainBase.path_main_folder}")
-        print(f"{MainBase.old_path_settings_folder} ----> {MainBase.path_settings_folder}")
-        print(f"{MainBase.old_path_data_folder} ----> {MainBase.path_data_folder}")
-        # TODO ^^^^^^^^^!!!!!REMOVE AFTER ALL TESTING^^^^^^^^^^^^^^^^^^^^^
-
-    @classmethod
     def save_settings(cls):
         # if backup folders have changed, transfers all (settings and buckups) to a new location.
         # New folder must be an emty folder
-        for _ in list(zip(cls.flag_change_folder[0::2], cls.flag_change_folder[1::2])):
+        copy_list = list(zip(cls.change_folder[0::2], cls.change_folder[1::2]))
+        del_list = reversed(copy_list)
+        for _ in copy_list:
             print(f"{_[0]}\t-->\t{_[1]}")
-        # if cls.flag_change_folder:
+        print()
+        for _ in del_list:
+            if _[0]:
+                print(f"{_[0]}")
+        # if cls.change_folder:
         #     msg_text = "ARE YOU SHURE?\n" \
         #                "If you press 'Yes' all you backup`s and settings data will be copied " \
         #                "to new location."
@@ -46,7 +45,7 @@ class MainBase:
         #     if reply == 'no':
         #         return
         #     else:
-        #         cls.flag_change_folder = []
+        #         cls.change_folder = []
         #         cls.flag_change_settings = True
         #
         #         # If SETTINGS folder is in Main folder (SETT. and DATA both)
@@ -88,10 +87,10 @@ class MainBase:
             json.dump(cls.settings, f)
         cls.settings_exist = True
         cls.create_reg_key(cls.settings)
-        if cls.flag_change_settings or cls.flag_change_folder:
+        if cls.flag_change_settings or cls.change_folder:
             mw.msg_one_button('Congradulation!', 'Settings is successfully saved in '
                                                  'settings.ini', 'info')
-            cls.flag_change_folder = []
+            cls.change_folder = []
             cls.flag_change_settings = False
         else:
             mw.msg_one_button("Nothing changed", "You haven't changed anything in the settings. "
@@ -101,7 +100,7 @@ class MainBase:
     # def save_settings_old(cls):
     #     # if backup folders have changed, transfers all (settings and buckups) to a new location.
     #     # New folder must be an emty folder
-    #     if cls.flag_change_folder:
+    #     if cls.change_folder:
     #
     #         msg_text = "ARE YOU SHURE?\n" \
     #                    "If you press 'Yes' all you backup`s and settings data will be copied " \
@@ -110,7 +109,7 @@ class MainBase:
     #         if reply == 'no':
     #             return
     #         else:
-    #             cls.flag_change_folder = False
+    #             cls.change_folder = False
     #             cls.flag_change_settings = True
     #
     #             # If SETTINGS folder is in Main folder (SETT. and DATA both)
@@ -155,7 +154,7 @@ class MainBase:
     #     if cls.flag_change_settings or cls.flag_change_settings:
     #         mw.msg_one_button('Congradulation!', 'Settings is successfully saved in '
     #                                              'settings.ini', 'info')
-    #         cls.flag_change_folder = False
+    #         cls.change_folder = False
     #         cls.flag_change_settings = False
     #     else:
     #         mw.msg_one_button("Nothing changed", "You haven't changed anything in the settings. "
@@ -293,7 +292,7 @@ class MainBase:
         :return:
         """
         if old_folder_path == new_folder_path:
-            MainBase.flag_change_folder = ''
+            MainBase.change_folder = ''
             mw.msg_one_button("Nothing change", "You selected the same folder as it was. Try again",
                               "info")
             return True
