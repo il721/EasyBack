@@ -1,10 +1,10 @@
 from PySide6 import QtCore
-from PySide6.QtCore import (QCoreApplication, QMetaObject, QRect, QSize)
+from PySide6.QtCore import (QCoreApplication, QMetaObject, QSize)
 from PySide6.QtGui import QColor
 from PySide6.QtWidgets import (QFrame, QGraphicsDropShadowEffect, QHBoxLayout, QLabel, QProgressBar,
-                               QPushButton, QSizePolicy,
-                               QVBoxLayout, QWidget)
+                               QPushButton, QSizePolicy, QVBoxLayout)
 from all_styles import PROGRESS_BAR
+from main_base import MainBase
 
 
 class UiProgressBar(object):
@@ -25,7 +25,11 @@ class UiProgressBar(object):
         Form.setSizePolicy(sizePolicy)
         Form.setMinimumSize(QSize(520, 150))
         Form.setMaximumSize(QSize(520, 150))
-        Form.setStyleSheet(PROGRESS_BAR)
+        Form.setStyleSheet(PROGRESS_BAR + 'QLabel { '
+                                          f"font: {MainBase.font_size_dialog}"
+                                          ' \"Lexend Light\";'
+                                          f'color: {MainBase.font_color_info};'
+                                          'border: no; }')
         self.verticalLayout = QVBoxLayout(Form)
         self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName(u"verticalLayout")
@@ -100,4 +104,3 @@ class UiProgressBar(object):
         else:
             self.timer.stop()
             self.pushButton.setDisabled(False)
-

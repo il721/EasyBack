@@ -32,23 +32,27 @@ class MainBase:
         copy_list = list(zip(cls.change_folder[0::2], cls.change_folder[1::2]))
         del_list = reversed(copy_list)
 
-        if copy_list[0][0]:
-            msg_text = "ARE YOU SHURE?\n" \
-                       "If you press 'Yes' all you backup`s and settings data will be copied " \
-                       "to new location."
-            reply = mw.msg_two_button("WARNING!", msg_text)
-            if reply == 'no':
-                return
-            else:
-                for _ in copy_list:
-                    print(f"{_[0]} ---> {_[1]}")
-                    cls.copy_to_new_location(_[0], _[1])
+        try:
+            if copy_list[0][0]:
+                msg_text = "ARE YOU SHURE?\n" \
+                           "If you press 'Yes' all you backup`s and settings data will be copied " \
+                           f"to\n{cls.path_main_folder}"
+                reply = mw.msg_two_button("WARNING!", msg_text)
+                if reply == 'no':
+                    return
+                else:
+                    for _ in copy_list:
+                        cls.copy_to_new_location(_[0], _[1])
+                        mw.progress_bar(5, f'Copy {_[0]}')
 
-                print()
-                for _ in del_list:
-                    print(_[0])
-            cls.change_folder = []
-            cls.flag_change_settings = True
+                    for _ in del_list:
+                        if _[0]:
+                            cls.delete_source(_[0])
+                            mw.progress_bar(5, f'Delete {_[0]}')
+                cls.change_folder = []
+                cls.flag_change_settings = True
+        except IndexError:
+            pass
 
         # check for emty settings field
         if not cls.path_settings_folder:
@@ -94,8 +98,6 @@ class MainBase:
         :param new:
         :return:
         """
-        # print('old: ', old, 'new: ', new)
-        mw.progress_bar(5, 'Copy files...')
         shutil.copytree(old, new, dirs_exist_ok=True)
 
     @classmethod
@@ -107,17 +109,16 @@ class MainBase:
         :return:
         """
         msg_text = "Remove old data?\n" \
-                   "If you press 'Yes' all you backup`s and settings data in old folder will be " \
+                   f"If you press 'Yes' all you backup`s and settings data in \n {old} \nwill be " \
                    "deleted."
         reply = mw.msg_two_button("WARNING!", msg_text)
         if reply == 'no':
             return
         else:
-            cls.del_source(old)
-            mw.progress_bar(5, 'Delete files...')
+            cls.del_item(old)
 
     @classmethod
-    def del_source(cls, item: str) -> None:
+    def del_item(cls, item: str) -> None:
         for _ in Path.iterdir(Path(item)):
 
             # TODO Problem remove rmtree readonly folder (from old backups. M.b. acces denied)

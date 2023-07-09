@@ -593,7 +593,7 @@ class SettingsDialog(object):
             MainBase.font_combo_index = 0
 
         else:
-            MainBase.font_size_dialog = '13Pt'
+            MainBase.font_size_dialog = '14Pt'
             MainBase.font_combo_index = 1
         self.font_msg_change.setCurrentIndex(MainBase.font_combo_index)
         MainBase.flag_change_settings = True

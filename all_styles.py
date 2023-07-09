@@ -1,4 +1,4 @@
-# from main_base import MainBase
+from main_base import MainBase
 
 SETTINGS_MAIN = """
             *{
@@ -161,11 +161,7 @@ PROGRESS_BAR: str = """
                 background-color: #2B79C2;
                 margin: 3px;
             }
-            QLabel {
-                font: 16pt \"Lexend Light\";
-                color: rgb(230, 230, 230);
-                border: no;
-            }
+            
             QLineEdit {
                 background-color: rgb(30, 30, 30);}
                 QLineEdit:disabled{
@@ -206,3 +202,4 @@ PROGRESS_BAR: str = """
                 font: 300 16pt \"Lexend Light\";
                 }
         """
+
