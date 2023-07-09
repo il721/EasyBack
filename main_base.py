@@ -36,7 +36,8 @@ class MainBase:
     def save_settings(cls):
         # if backup folders have changed, transfers all (settings and buckups) to a new location.
         # New folder must be an emty folder
-        print(*cls.flag_change_folder)
+        for _ in list(zip(cls.flag_change_folder[0::2], cls.flag_change_folder[1::2])):
+            print(f"{_[0]}\t-->\t{_[1]}")
         # if cls.flag_change_folder:
         #     msg_text = "ARE YOU SHURE?\n" \
         #                "If you press 'Yes' all you backup`s and settings data will be copied " \
