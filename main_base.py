@@ -26,14 +26,22 @@ class MainBase:
     start_folder_in_dialogs: str = r"F:"
 
     @classmethod
+    def save_settings_test(cls):
+        copy_list = list(zip(cls.change_folder[0::2], cls.change_folder[1::2]))
+        del_list = reversed(copy_list)
+        print('copy list:', *copy_list, sep='\n')
+        print()
+        print('del list:', *list(del_list), sep='\n')
+        print()
+
+        cls.change_folder = []
+        cls.flag_change_settings = True
+    @classmethod
     def save_settings(cls):
         # if backup folders have changed, transfers all (settings and buckups) to a new location.
         # New folder must be an emty folder
         copy_list = list(zip(cls.change_folder[0::2], cls.change_folder[1::2]))
         del_list = reversed(copy_list)
-        print(*copy_list, sep='\n')
-        print()
-        print(*list(del_list), sep='\n')
 
         try:
             if copy_list[0][0]:

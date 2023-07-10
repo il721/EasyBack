@@ -469,7 +469,7 @@ class SettingsDialog(object):
         mw.msg_one_button(title, main, 'info')
 
     def save_settings_bt(self):
-        MainBase.save_settings()
+        MainBase.save_settings_test()
 
         # if the main folder is not set, the dialog will not close
         if MainBase.settings_exist:
