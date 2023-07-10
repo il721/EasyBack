@@ -31,6 +31,9 @@ class MainBase:
         # New folder must be an emty folder
         copy_list = list(zip(cls.change_folder[0::2], cls.change_folder[1::2]))
         del_list = reversed(copy_list)
+        print(*copy_list, sep='\n')
+        print()
+        print(*list(del_list), sep='\n')
 
         try:
             if copy_list[0][0]:

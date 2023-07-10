@@ -1,4 +1,4 @@
-from main_base import MainBase
+# from main_base import MainBase
 
 SETTINGS_MAIN = """
             *{

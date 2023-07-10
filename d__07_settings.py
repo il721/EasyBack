@@ -522,8 +522,6 @@ class SettingsDialog(object):
                 # selected folder must be emty
                 if MainBase.check_folder_for_empty(filenames):
                     return
-                # MainBase.old_path_main_folder = MainBase.path_main_folder
-                # MainBase.old_path_settings_folder = MainBase.path_settings_folder
                 MainBase.change_folder.append(MainBase.path_settings_folder)
                 MainBase.path_settings_folder = filenames
                 MainBase.change_folder.append(MainBase.path_settings_folder)
