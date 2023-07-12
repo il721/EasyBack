@@ -22,7 +22,7 @@ class MainBase:
     path_data_folder: str = ""
     start_folder_in_dialogs: str = r"F:"
 
-    old_: tuple[str, str, str] = (path_main_folder, path_settings_folder, path_data_folder)
+    old_: tuple[str, str, str] = ('', '', '')
     new_: tuple[str, str, str] = ('', '', '')
 
     @classmethod
@@ -42,7 +42,7 @@ class MainBase:
         # if backup folders have changed, transfers all (settings and buckups) to a new location.
         # New folder must be an emty folder
         cls.change_folder = list(zip(cls.old_, cls.new_))
-        del_list = reversed(cls.change_folder)
+        del_list = list(reversed(cls.change_folder))
         print('copy list:', *cls.change_folder, sep='\n')
         print('del list:', *list(del_list), sep='\n')
         print('************************')
@@ -67,11 +67,11 @@ class MainBase:
                             if _[0]:
                                 cls.delete_source(_[0])
                                 mw.progress_bar(5, f'Delete {_[0]}')
+                    cls.path_main_folder, cls.path_settings_folder, cls.path_data_folder = cls.new_
                     cls.change_folder = []
                     cls.flag_change_settings = True
                     cls.settings_exist = True
                     cls.old_ = cls.new_
-                    cls.new_ = ('', '', '')
             except IndexError:
                 pass
 
@@ -222,7 +222,7 @@ class MainBase:
         """
         if old_folder_path == new_folder_path:
             MainBase.change_folder = ''
-            mw.msg_one_button("Nothing change", "You selected the same folder as it was. Try again",
+            mw.msg_one_button("Nothing change", "You selected the same folder as it was.",
                               "info")
             return True
         else:

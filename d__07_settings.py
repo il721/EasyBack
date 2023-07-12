@@ -363,6 +363,7 @@ class SettingsDialog(object):
         self.color_warn_test.setStyleSheet(f"background-color: {MainBase.font_color_warn};\n"
                                            f"border: no;")
         self.font_msg_change.setCurrentIndex(MainBase.font_combo_index)
+        self.save_settings.setEnabled(False)
         if MainBase.settings_exist:
             main_folder_path = MainBase.path_main_folder
             settings_folder_path = MainBase.path_settings_folder
@@ -477,7 +478,9 @@ class SettingsDialog(object):
             self.main_settings.setEnabled(True)
 
     def select_main_folder_bt(self):
-        print('settings exist: ', MainBase.settings_exist)
+        MainBase.old_ = (MainBase.path_main_folder,
+                         MainBase.path_settings_folder,
+                         MainBase.path_data_folder)
         dialog = mw.q_file_dialog_begin(MainBase.start_folder_in_dialogs,
                                         QFileDialog.FileMode.Directory)
         if dialog.exec():
@@ -496,15 +499,15 @@ class SettingsDialog(object):
                 self.data_folder.setText(MainBase.new_[2])
 
                 # first time check settings rule
-                if MainBase.settings_exist:
-                    MainBase.flag_change_settings = True
-                else:
+                if not MainBase.settings_exist:
                     MainBase.path_main_folder = filenames
                     MainBase.path_settings_folder = f"{filenames}/SETTINGS"
                     MainBase.path_data_folder = f"{filenames}/DATA"
                     MainBase.old_ = (MainBase.path_main_folder,
                                      MainBase.path_settings_folder,
                                      MainBase.path_data_folder)
+                MainBase.flag_change_settings = True
+                self.save_settings.setEnabled(True)
 
     def select_settings_folder_bt(self):
         """
@@ -536,6 +539,7 @@ class SettingsDialog(object):
                 # first time check settings rule
                 if MainBase.settings_exist:
                     MainBase.flag_change_settings = True
+                    self.save_settings.setEnabled(True)
 
     def select_data_folder_bt(self):
         """
@@ -563,6 +567,7 @@ class SettingsDialog(object):
                 # first time check settings rule
                 if MainBase.settings_exist:
                     MainBase.flag_change_settings = True
+                    self.save_settings.setEnabled(True)
 
     def data_radio_bt(self):
         self.select_frame.setEnabled(False)
@@ -581,6 +586,8 @@ class SettingsDialog(object):
             filenames = "".join(dialog.selectedFiles())
             if filenames:
                 MainBase.flag_change_settings = True
+                self.save_settings.setEnabled(True)
+
                 MainBase.start_folder_in_dialogs = filenames
                 self.start_folder_line.setText(filenames)
 
@@ -596,6 +603,7 @@ class SettingsDialog(object):
             MainBase.font_combo_index = 1
         self.font_msg_change.setCurrentIndex(MainBase.font_combo_index)
         MainBase.flag_change_settings = True
+        self.save_settings.setEnabled(True)
 
     def select_color_info_bt(self):
         color = QColorDialog.getColor()
@@ -604,6 +612,7 @@ class SettingsDialog(object):
                                            f"border: no;")
 
         MainBase.flag_change_settings = True
+        self.save_settings.setEnabled(True)
 
     def select_color_warn_bt(self):
         color = QColorDialog.getColor()
@@ -612,3 +621,4 @@ class SettingsDialog(object):
                                            f"border: no;")
 
         MainBase.flag_change_settings = True
+        self.save_settings.setEnabled(True)

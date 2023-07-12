@@ -401,7 +401,7 @@ border-color: #2B79C2;</string>
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="data_folder_2">
+             <widget class="QLineEdit" name="data_folder">
               <property name="minimumSize">
                <size>
                 <width>465</width>
@@ -462,7 +462,7 @@ border-color: #2B79C2;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="data_folder">
+             <widget class="QPushButton" name="data_folder_btn">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
