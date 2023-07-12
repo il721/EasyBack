@@ -20,9 +20,6 @@ class MainBase:
     path_main_folder: str = ""
     path_settings_folder: str = ""
     path_data_folder: str = ""
-    old_path_main_folder: str = ""
-    old_path_settings_folder: str = ""
-    old_path_data_folder: str = ""
     start_folder_in_dialogs: str = r"F:"
 
     old_: tuple[str, str, str] = (path_main_folder, path_settings_folder, path_data_folder)
@@ -47,32 +44,36 @@ class MainBase:
         cls.change_folder = list(zip(cls.old_, cls.new_))
         del_list = reversed(cls.change_folder)
         print('copy list:', *cls.change_folder, sep='\n')
+        print('del list:', *list(del_list), sep='\n')
         print('************************')
         print(cls.path_main_folder, cls.path_settings_folder, cls.path_data_folder, sep='\n')
         print('************************')
-        try:
-            if cls.change_folder[0][0]:
-                msg_text = "ARE YOU SHURE?\n" \
-                           "If you press 'Yes' all you backup`s and settings data will be copied " \
-                           f"to\n{cls.path_main_folder}"
-                reply = mw.msg_two_button("WARNING!", msg_text)
-                if reply == 'no':
-                    return
-                else:
-                    for _ in cls.change_folder:
-                        cls.copy_to_new_location(_[0], _[1])
-                        mw.progress_bar(5, f'Copy {_[0]}')
+        if cls.change_folder[0][0] != cls.change_folder[0][1]:
+            try:
+                if cls.change_folder[0][0]:
+                    msg_text = "ARE YOU SHURE?\n" \
+                               "If you press 'Yes' all you backup`s and settings data" \
+                               " will be copied " \
+                               f"to\n{cls.path_main_folder}"
+                    reply = mw.msg_two_button("WARNING!", msg_text)
+                    if reply == 'no':
+                        return
+                    else:
+                        for _ in cls.change_folder:
+                            cls.copy_to_new_location(_[0], _[1])
+                            mw.progress_bar(5, f'Copy {_[0]}')
 
-                    for _ in del_list:
-                        if _[0]:
-                            cls.delete_source(_[0])
-                            mw.progress_bar(5, f'Delete {_[0]}')
-                cls.change_folder = []
-                cls.flag_change_settings = True
-                cls.old_ = cls.new_
-                cls.new_ = ('', '', '')
-        except IndexError:
-            pass
+                        for _ in del_list:
+                            if _[0]:
+                                cls.delete_source(_[0])
+                                mw.progress_bar(5, f'Delete {_[0]}')
+                    cls.change_folder = []
+                    cls.flag_change_settings = True
+                    cls.settings_exist = True
+                    cls.old_ = cls.new_
+                    cls.new_ = ('', '', '')
+            except IndexError:
+                pass
 
         # check for emty settings field
         if not cls.path_settings_folder:

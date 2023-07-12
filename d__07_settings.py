@@ -477,6 +477,7 @@ class SettingsDialog(object):
             self.main_settings.setEnabled(True)
 
     def select_main_folder_bt(self):
+        print('settings exist: ', MainBase.settings_exist)
         dialog = mw.q_file_dialog_begin(MainBase.start_folder_in_dialogs,
                                         QFileDialog.FileMode.Directory)
         if dialog.exec():
@@ -497,6 +498,13 @@ class SettingsDialog(object):
                 # first time check settings rule
                 if MainBase.settings_exist:
                     MainBase.flag_change_settings = True
+                else:
+                    MainBase.path_main_folder = filenames
+                    MainBase.path_settings_folder = f"{filenames}/SETTINGS"
+                    MainBase.path_data_folder = f"{filenames}/DATA"
+                    MainBase.old_ = (MainBase.path_main_folder,
+                                     MainBase.path_settings_folder,
+                                     MainBase.path_data_folder)
 
     def select_settings_folder_bt(self):
         """

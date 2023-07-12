@@ -34,7 +34,7 @@ def first_time_check():
             MainBase.flag_change_settings = True
             path_or_regkey_not_exsit()  # show warning and start "settings" dialog
 
-        # If folder SETTINGS exist on disk and not emty
+        # If settings.ini is existing in MAIN folder
         else:
             # Initial set of some programm settings. Taken from registry key
             MainBase.settings_exist = True
