@@ -139,12 +139,12 @@ class SettingsDialog(object):
 
         self.horizontalLayout_3.addWidget(self.data_text)
 
-        self.data_folder_2 = QLineEdit(self.select_frame)
-        self.data_folder_2.setObjectName(u"data_folder_2")
-        self.data_folder_2.setMinimumSize(QSize(465, 0))
-        self.data_folder_2.setMaximumSize(QSize(460, 16777215))
+        self.data_folder = QLineEdit(self.select_frame)
+        self.data_folder.setObjectName(u"data_folder_2")
+        self.data_folder.setMinimumSize(QSize(465, 0))
+        self.data_folder.setMaximumSize(QSize(460, 16777215))
 
-        self.horizontalLayout_3.addWidget(self.data_folder_2)
+        self.horizontalLayout_3.addWidget(self.data_folder)
 
         self.verticalLayout_2.addLayout(self.horizontalLayout_3)
 
@@ -164,14 +164,14 @@ class SettingsDialog(object):
 
         self.horizontalLayout_4.addWidget(self.settings_folder)
 
-        self.data_folder = QPushButton(self.select_frame)
-        self.data_folder.setObjectName(u"data_folder")
-        sizePolicy.setHeightForWidth(self.data_folder.sizePolicy().hasHeightForWidth())
-        self.data_folder.setSizePolicy(sizePolicy)
-        self.data_folder.setMinimumSize(QSize(280, 50))
-        self.data_folder.setMaximumSize(QSize(280, 50))
+        self.data_folder_btn = QPushButton(self.select_frame)
+        self.data_folder_btn.setObjectName(u"data_folder")
+        sizePolicy.setHeightForWidth(self.data_folder_btn.sizePolicy().hasHeightForWidth())
+        self.data_folder_btn.setSizePolicy(sizePolicy)
+        self.data_folder_btn.setMinimumSize(QSize(280, 50))
+        self.data_folder_btn.setMaximumSize(QSize(280, 50))
 
-        self.horizontalLayout_4.addWidget(self.data_folder)
+        self.horizontalLayout_4.addWidget(self.data_folder_btn)
 
         self.verticalLayout_2.addLayout(self.horizontalLayout_4)
 
@@ -369,7 +369,7 @@ class SettingsDialog(object):
             data_folder_path = MainBase.path_data_folder
             self.main_folder.setText(main_folder_path)
             self.sett_folder.setText(settings_folder_path)
-            self.data_folder_2.setText(data_folder_path)
+            self.data_folder.setText(data_folder_path)
         else:
             self.main_settings.setEnabled(False)
 
@@ -383,7 +383,7 @@ class SettingsDialog(object):
         self.default_folder_rad.clicked.connect(self.data_radio_bt)
         self.select_folders_rad.clicked.connect(self.select_radio_bt)
         self.settings_folder.clicked.connect(self.select_settings_folder_bt)
-        self.data_folder.clicked.connect(self.select_data_folder_bt)
+        self.data_folder_btn.clicked.connect(self.select_data_folder_bt)
 
         # Menu 'Appearanse' ************************************************************************
         self.start_folder_line.setText(MainBase.start_folder_in_dialogs)
@@ -422,7 +422,7 @@ class SettingsDialog(object):
         self.data_text.setText(QCoreApplication.translate("Dialog", u"DATA:", None))
         self.settings_folder.setText(
             QCoreApplication.translate("Dialog", u"Select \"SETTINGS\" Folder", None))
-        self.data_folder.setText(
+        self.data_folder_btn.setText(
             QCoreApplication.translate("Dialog", u"Select \"DATA\" Folder", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_main),
                                   QCoreApplication.translate("Dialog", u"Main", None))
@@ -477,8 +477,6 @@ class SettingsDialog(object):
             self.main_settings.setEnabled(True)
 
     def select_main_folder_bt(self):
-        MainBase.change_folder = []
-        old = ()
         dialog = mw.q_file_dialog_begin(MainBase.start_folder_in_dialogs,
                                         QFileDialog.FileMode.Directory)
         if dialog.exec():
@@ -491,26 +489,10 @@ class SettingsDialog(object):
                 # selected folder must be emty
                 if MainBase.check_folder_for_empty(filenames):
                     return
-                old = (
-                    MainBase.path_main_folder,
-                    MainBase.path_settings_folder,
-                    MainBase.path_data_folder
-                )
-                # MainBase.change_folder.append(MainBase.path_main_folder)
-                MainBase.path_main_folder = filenames
-                # MainBase.change_folder.append(MainBase.path_main_folder)
-                # MainBase.change_folder.append(MainBase.path_settings_folder)
-                MainBase.path_settings_folder = f"{filenames}/SETTINGS"
-                # MainBase.change_folder.append(MainBase.path_settings_folder)
-                # MainBase.change_folder.append(MainBase.path_data_folder)
-                MainBase.path_data_folder = f"{filenames}/DATA"
-                # MainBase.change_folder.append(MainBase.path_data_folder)
-                self.main_folder.setText(filenames)
-                self.sett_folder.setText(MainBase.path_settings_folder)
-                self.data_folder_2.setText(MainBase.path_data_folder)
-                MainBase.change_folder.append((old[0], MainBase.path_main_folder))
-                MainBase.change_folder.append((old[1], MainBase.path_settings_folder))
-                MainBase.change_folder.append((old[2], MainBase.path_data_folder))
+                MainBase.new_ = (filenames, f"{filenames}/SETTINGS", f"{filenames}/DATA")
+                self.main_folder.setText(MainBase.new_[0])
+                self.sett_folder.setText(MainBase.new_[1])
+                self.data_folder.setText(MainBase.new_[2])
 
                 # first time check settings rule
                 if MainBase.settings_exist:
@@ -541,7 +523,7 @@ class SettingsDialog(object):
                 MainBase.change_folder.append(MainBase.path_main_folder)
                 self.main_folder.setText(MainBase.path_main_folder)
                 self.sett_folder.setText(MainBase.path_settings_folder)
-                self.data_folder_2.setText(MainBase.path_data_folder)
+                self.data_folder.setText(MainBase.path_data_folder)
 
                 # first time check settings rule
                 if MainBase.settings_exist:
@@ -568,7 +550,7 @@ class SettingsDialog(object):
                 MainBase.change_folder.append(MainBase.path_data_folder)
                 MainBase.path_data_folder = filenames
                 MainBase.change_folder.append(MainBase.path_data_folder)
-                self.data_folder_2.setText(MainBase.path_data_folder)
+                self.data_folder.setText(MainBase.path_data_folder)
 
                 # first time check settings rule
                 if MainBase.settings_exist:
