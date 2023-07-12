@@ -469,13 +469,16 @@ class SettingsDialog(object):
         mw.msg_one_button(title, main, 'info')
 
     def save_settings_bt(self):
-        MainBase.save_settings_test()
+        MainBase.save_settings()
+        # MainBase.save_settings_test()
 
         # if the main folder is not set, the dialog will not close
         if MainBase.settings_exist:
             self.main_settings.setEnabled(True)
 
     def select_main_folder_bt(self):
+        MainBase.change_folder = []
+        old = ()
         dialog = mw.q_file_dialog_begin(MainBase.start_folder_in_dialogs,
                                         QFileDialog.FileMode.Directory)
         if dialog.exec():
@@ -488,18 +491,26 @@ class SettingsDialog(object):
                 # selected folder must be emty
                 if MainBase.check_folder_for_empty(filenames):
                     return
-                MainBase.change_folder.append(MainBase.path_main_folder)
+                old = (
+                    MainBase.path_main_folder,
+                    MainBase.path_settings_folder,
+                    MainBase.path_data_folder
+                )
+                # MainBase.change_folder.append(MainBase.path_main_folder)
                 MainBase.path_main_folder = filenames
-                MainBase.change_folder.append(MainBase.path_main_folder)
-                MainBase.change_folder.append(MainBase.path_settings_folder)
+                # MainBase.change_folder.append(MainBase.path_main_folder)
+                # MainBase.change_folder.append(MainBase.path_settings_folder)
                 MainBase.path_settings_folder = f"{filenames}/SETTINGS"
-                MainBase.change_folder.append(MainBase.path_settings_folder)
-                MainBase.change_folder.append(MainBase.path_data_folder)
+                # MainBase.change_folder.append(MainBase.path_settings_folder)
+                # MainBase.change_folder.append(MainBase.path_data_folder)
                 MainBase.path_data_folder = f"{filenames}/DATA"
-                MainBase.change_folder.append(MainBase.path_data_folder)
+                # MainBase.change_folder.append(MainBase.path_data_folder)
                 self.main_folder.setText(filenames)
                 self.sett_folder.setText(MainBase.path_settings_folder)
                 self.data_folder_2.setText(MainBase.path_data_folder)
+                MainBase.change_folder.append((old[0], MainBase.path_main_folder))
+                MainBase.change_folder.append((old[1], MainBase.path_settings_folder))
+                MainBase.change_folder.append((old[2], MainBase.path_data_folder))
 
                 # first time check settings rule
                 if MainBase.settings_exist:
