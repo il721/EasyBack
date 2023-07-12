@@ -46,7 +46,10 @@ class MainBase:
         # New folder must be an emty folder
         cls.change_folder = list(zip(cls.old_, cls.new_))
         del_list = reversed(cls.change_folder)
+        print('copy list:', *cls.change_folder, sep='\n')
+        print('************************')
         print(cls.path_main_folder, cls.path_settings_folder, cls.path_data_folder, sep='\n')
+        print('************************')
         try:
             if cls.change_folder[0][0]:
                 msg_text = "ARE YOU SHURE?\n" \
@@ -166,11 +169,10 @@ class MainBase:
         return path.is_file()
 
     @classmethod
-    def check_reg_key(cls):
+    def check_reg_key(cls) -> dict:
         """
         If registry key in 'HKEY_LOCAL_MACHINE\\SOFTWARE' named 'EasyBack' not exist,
-        return 'key not exist'. Else return tuple:
-        ('key exist',main_path value, data_path value)
+        return emty dict MainBase.settings. Else return dict with settings data:
         """
         try:
             reg_key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE,
@@ -179,15 +181,12 @@ class MainBase:
 
             cls.get_all_settings_from_regkey(reg_key)
 
-            # print(*[[key, val] for key, val in MainBase.settings.items() if
-            #         key in ('main_path', 'settings_path', 'data_path')], sep="\n")
-            # print(*[[key, val] for key, val in MainBase.settings.items()], sep="\n")
-
             winreg.CloseKey(reg_key)
 
-            return MainBase.settings
         except FileNotFoundError:
-            return "key not exist"
+            pass
+
+        return MainBase.settings
 
     @classmethod
     def check_folder_for_empty(cls, folder_path: str) -> bool:
