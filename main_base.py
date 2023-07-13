@@ -156,7 +156,7 @@ class MainBase:
                     os.chmod(_, stat.S_IWRITE)
                     os.unlink(_)
 
-    # TODO ^^^^^^^^ Now don`t remove root folder. Solve this?? ^^^^^^^^^^^^^^
+    # TODO ^^^^^^^^ Now don`t remove root folder. Solve this or no?? ^^^^^^^^^^^^^^
     @staticmethod
     def rmtree_error(func, path_err, exc_info):
         os.chmod(path_err, stat.S_IWRITE)
