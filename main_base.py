@@ -41,14 +41,19 @@ class MainBase:
     def save_settings(cls):
         # if backup folders have changed, transfers all (settings and buckups) to a new location.
         # New folder must be an emty folder
-        cls.change_folder = list(zip(cls.old_, cls.new_))
+        temp_zip = zip(cls.old_, cls.new_)
+        for _ in temp_zip:
+            if _[0] != _[1]:
+                cls.change_folder.append(_)
         del_list = list(reversed(cls.change_folder))
+
         print('copy list:', *cls.change_folder, sep='\n')
         print('del list:', *list(del_list), sep='\n')
         print('************************')
         print(cls.path_main_folder, cls.path_settings_folder, cls.path_data_folder, sep='\n')
         print('************************')
-        if cls.change_folder[0][0] != cls.change_folder[0][1]:
+
+        if cls.change_folder:
             try:
                 if cls.change_folder[0][0]:
                     msg_text = "ARE YOU SHURE?\n" \
