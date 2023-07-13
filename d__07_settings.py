@@ -514,6 +514,9 @@ class SettingsDialog(object):
         Run when in separate choose folder mode clicked "Select SETTINGS folder" button
         :return:
         """
+        MainBase.old_ = (MainBase.path_main_folder,
+                         MainBase.path_settings_folder,
+                         MainBase.path_data_folder)
         dialog = mw.q_file_dialog_begin(MainBase.start_folder_in_dialogs,
                                         QFileDialog.FileMode.Directory)
         if dialog.exec():
@@ -526,20 +529,21 @@ class SettingsDialog(object):
                 # selected folder must be emty
                 if MainBase.check_folder_for_empty(filenames):
                     return
-                MainBase.change_folder.append(MainBase.path_settings_folder)
-                MainBase.path_settings_folder = filenames
-                MainBase.change_folder.append(MainBase.path_settings_folder)
-                MainBase.change_folder.append(MainBase.path_main_folder)
-                MainBase.path_main_folder = filenames
-                MainBase.change_folder.append(MainBase.path_main_folder)
-                self.main_folder.setText(MainBase.path_main_folder)
-                self.sett_folder.setText(MainBase.path_settings_folder)
-                self.data_folder.setText(MainBase.path_data_folder)
+                MainBase.new_ = (filenames, filenames, MainBase.path_data_folder)
+                self.main_folder.setText(MainBase.new_[0])
+                self.sett_folder.setText(MainBase.new_[1])
+                self.data_folder.setText(MainBase.new_[2])
 
                 # first time check settings rule
-                if MainBase.settings_exist:
-                    MainBase.flag_change_settings = True
-                    self.save_settings.setEnabled(True)
+                if not MainBase.settings_exist:
+                    MainBase.path_main_folder = filenames
+                    MainBase.path_settings_folder = filenames
+                    MainBase.path_data_folder = MainBase.path_data_folder
+                    MainBase.old_ = (MainBase.path_main_folder,
+                                     MainBase.path_settings_folder,
+                                     MainBase.path_data_folder)
+                MainBase.flag_change_settings = True
+                self.save_settings.setEnabled(True)
 
     def select_data_folder_bt(self):
         """

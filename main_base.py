@@ -146,18 +146,17 @@ class MainBase:
             if _.is_dir():
                 try:
                     shutil.rmtree(_, ignore_errors=False, onerror=cls.rmtree_error)
-                    # TODO Insert progress bar
                 except PermissionError:
                     mw.msg_one_button("Delete error", "Some files and folders were not deleted. "
                                                       "Please do it manually", "info")
             else:
                 try:
                     _.unlink()
-                    # TODO Insert progress bar
                 except PermissionError:
                     os.chmod(_, stat.S_IWRITE)
                     os.unlink(_)
 
+    # TODO ^^^^^^^^ Now don`t remove root folder. Solve this?? ^^^^^^^^^^^^^^
     @staticmethod
     def rmtree_error(func, path_err, exc_info):
         os.chmod(path_err, stat.S_IWRITE)
