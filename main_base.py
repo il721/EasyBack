@@ -41,15 +41,14 @@ class MainBase:
     def save_settings(cls):
         # if backup folders have changed, transfers all (settings and buckups) to a new location.
         # New folder must be an emty folder
-        del_list = cls.make_copy_and_del_lists()
+        done_list = cls.make_copy_and_del_lists()
 
-        print('copy list:', *cls.change_folder, sep='\n')
-        print('del list:', *list(del_list), sep='\n')
-        print('************************')
-        print(cls.path_main_folder, cls.path_settings_folder, cls.path_data_folder, sep='\n')
-        print('************************')
+        print('copy list:', *done_list, sep='\n')
+        # print('************************')
+        # print(cls.path_main_folder, cls.path_settings_folder, cls.path_data_folder, sep='\n')
+        # print('************************')
 
-        if cls.change_folder:
+        if done_list:
             try:
                 msg_text = "ARE YOU SHURE?\n" \
                            "If you press 'Yes' all you backup`s and settings data" \
@@ -59,14 +58,15 @@ class MainBase:
                 if reply == 'no':
                     return
                 else:
-                    for _ in cls.change_folder:
+                    for _ in done_list:
                         cls.copy_to_new_location(_[0], _[1])
-                        mw.progress_bar(5, f'Copy {_[0]}')
+                        cls.del_item(_[0])
+                        mw.progress_bar(3, f'Copy {_[0]}')
 
-                    for _ in del_list:
-                        if _[0]:
-                            cls.delete_source(_[0])
-                            mw.progress_bar(5, f'Delete {_[0]}')
+                    # for _ in del_list:
+                    #     if _[0]:
+                    #         cls.delete_source(_[0])
+                    #         mw.progress_bar(5, f'Delete {_[0]}')
                 cls.path_main_folder, cls.path_settings_folder, cls.path_data_folder = cls.new_
                 cls.change_folder = []
                 cls.flag_change_settings = True
@@ -96,7 +96,7 @@ class MainBase:
         if cls.path_data_folder:  # if DATA not set and needed, don`t create DATA folder
             if not cls.check_folder_exist(cls.path_data_folder):
                 Path.mkdir(Path(cls.path_data_folder))
-        path = Path(f"{MainBase.path_main_folder}/settings.ini")
+        path = Path(f"{MainBase.path_settings_folder}/settings.ini")
         with open(path, 'w') as f:
             json.dump(cls.settings, f)
         cls.settings_exist = True
@@ -111,13 +111,12 @@ class MainBase:
                                                  "Nothing to save", "info")
 
     @classmethod
-    def make_copy_and_del_lists(cls):
+    def make_copy_and_del_lists(cls) -> list:
         temp_zip = zip(cls.old_, cls.new_)
         for _ in temp_zip:
             if _[0] != _[1] and _ not in cls.change_folder and _[0]:
                 cls.change_folder.append(_)
-        del_list = list(set(reversed(cls.change_folder)))
-        return del_list
+        return list(reversed(cls.change_folder))
 
     @classmethod
     def copy_to_new_location(cls, old: str, new: str) -> None:
