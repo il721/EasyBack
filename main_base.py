@@ -22,8 +22,8 @@ class MainBase:
     path_data_folder: str = ""
     start_folder_in_dialogs: str = r"F:"
 
-    old_: tuple[str, str, str] = ('', '', '')
-    new_: tuple[str, str, str] = ('', '', '')
+    old_: tuple[str, str] = ('', '')
+    new_: tuple[str, str] = ('', '')
 
     @classmethod
     def save_settings_test(cls):
@@ -33,7 +33,7 @@ class MainBase:
         print('del list:', *list(del_list), sep='\n')
 
         cls.old_ = cls.new_
-        cls.new_ = ('', '', '')
+        cls.new_ = ('', '')
         cls.change_folder = []
         cls.flag_change_settings = False
 
@@ -43,7 +43,7 @@ class MainBase:
         # New folder must be an emty folder
         done_list = cls.make_copy_and_del_lists()
 
-        print('copy list:', *done_list, sep='\n')
+        # print('done list:', *done_list, sep='\n')
         # print('************************')
         # print(cls.path_main_folder, cls.path_settings_folder, cls.path_data_folder, sep='\n')
         # print('************************')
@@ -53,7 +53,9 @@ class MainBase:
                 msg_text = "ARE YOU SHURE?\n" \
                            "If you press 'Yes' all you backup`s and settings data" \
                            " will be copied " \
-                           f"to\n{cls.change_folder[0][1]}"
+                           f"to\n{cls.change_folder[0][1]}\n" \
+                           "and source folder will be deleted\n" \
+                           "(if you choose 'YES' in next 'Delete dialog')"
                 reply = mw.msg_two_button("WARNING!", msg_text)
                 if reply == 'no':
                     return
@@ -63,11 +65,7 @@ class MainBase:
                         cls.del_item(_[0])
                         mw.progress_bar(3, f'Copy {_[0]}')
 
-                    # for _ in del_list:
-                    #     if _[0]:
-                    #         cls.delete_source(_[0])
-                    #         mw.progress_bar(5, f'Delete {_[0]}')
-                cls.path_main_folder, cls.path_settings_folder, cls.path_data_folder = cls.new_
+                cls.path_settings_folder, cls.path_data_folder = cls.new_
                 cls.change_folder = []
                 cls.flag_change_settings = True
                 cls.settings_exist = True
@@ -130,41 +128,26 @@ class MainBase:
         shutil.copytree(old, new, dirs_exist_ok=True)
 
     @classmethod
-    def delete_source(cls, old: str) -> None:
+    def del_item(cls, item: str) -> None:
         """
-        Delete sourse files and folders after copy and accept warnings dialogs
+        Delete sourse files and folders after copy (if accept warnings dialogs)
         :param cls:
-        :param old: deleted items
+        :param item: deleted items
         :return:
         """
-        msg_text = "Remove old data?\n" \
-                   f"If you press 'Yes' all you backup`s and settings data in \n {old} \nwill be " \
-                   "deleted."
-        reply = mw.msg_two_button("WARNING!", msg_text)
+
+        # TODO Problem remove rmtree readonly folder (from old backups. M.b. acces denied)
+        msg_txt = f"Are you shure to delete folder\n{item}?"
+        reply = mw.msg_two_button("WARNING!", msg_txt)
         if reply == 'no':
             return
         else:
-            cls.del_item(old)
+            try:
+                shutil.rmtree(item, ignore_errors=False, onerror=cls.rmtree_error)
+            except PermissionError:
+                mw.msg_one_button("Delete error", "Some files and folders were not deleted. "
+                                                  "Please do it manually", "info")
 
-    @classmethod
-    def del_item(cls, item: str) -> None:
-        for _ in Path.iterdir(Path(item)):
-
-            # TODO Problem remove rmtree readonly folder (from old backups. M.b. acces denied)
-            if _.is_dir():
-                try:
-                    shutil.rmtree(_, ignore_errors=False, onerror=cls.rmtree_error)
-                except PermissionError:
-                    mw.msg_one_button("Delete error", "Some files and folders were not deleted. "
-                                                      "Please do it manually", "info")
-            else:
-                try:
-                    _.unlink()
-                except PermissionError:
-                    os.chmod(_, stat.S_IWRITE)
-                    os.unlink(_)
-
-    # TODO ^^^^^^^^ Now don`t remove root folder. Solve this or no?? ^^^^^^^^^^^^^^
     @staticmethod
     def rmtree_error(func, path_err, exc_info):
         os.chmod(path_err, stat.S_IWRITE)

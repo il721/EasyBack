@@ -478,9 +478,8 @@ class SettingsDialog(object):
             self.main_settings.setEnabled(True)
 
     def select_main_folder_bt(self):
-        MainBase.old_ = (MainBase.path_main_folder,
-                         MainBase.path_settings_folder,
-                         MainBase.path_data_folder)
+        MainBase.old_ = (MainBase.path_settings_folder,
+                         MainBase.path_data_folder,)
         dialog = mw.q_file_dialog_begin(MainBase.start_folder_in_dialogs,
                                         QFileDialog.FileMode.Directory)
         if dialog.exec():
@@ -493,18 +492,17 @@ class SettingsDialog(object):
                 # selected folder must be emty
                 if MainBase.check_folder_for_empty(filenames):
                     return
-                MainBase.new_ = (filenames, f"{filenames}/SETTINGS", f"{filenames}/DATA")
-                self.main_folder.setText(MainBase.new_[0])
-                self.sett_folder.setText(MainBase.new_[1])
-                self.data_folder.setText(MainBase.new_[2])
+                MainBase.new_ = (f"{filenames}/SETTINGS", f"{filenames}/DATA")
+                self.main_folder.setText(filenames)
+                self.sett_folder.setText(MainBase.new_[0])
+                self.data_folder.setText(MainBase.new_[1])
 
                 # first time check settings rule
                 if not MainBase.settings_exist:
                     MainBase.path_main_folder = filenames
                     MainBase.path_settings_folder = f"{filenames}/SETTINGS"
                     MainBase.path_data_folder = f"{filenames}/DATA"
-                    MainBase.old_ = (MainBase.path_main_folder,
-                                     MainBase.path_settings_folder,
+                    MainBase.old_ = (MainBase.path_settings_folder,
                                      MainBase.path_data_folder)
                 MainBase.flag_change_settings = True
                 self.save_settings.setEnabled(True)
@@ -514,8 +512,7 @@ class SettingsDialog(object):
         Run when in separate choose folder mode clicked "Select SETTINGS folder" button
         :return:
         """
-        MainBase.old_ = (MainBase.path_main_folder,
-                         MainBase.path_settings_folder,
+        MainBase.old_ = (MainBase.path_settings_folder,
                          MainBase.path_data_folder)
         dialog = mw.q_file_dialog_begin(MainBase.start_folder_in_dialogs,
                                         QFileDialog.FileMode.Directory)
@@ -529,18 +526,18 @@ class SettingsDialog(object):
                 # selected folder must be emty
                 if MainBase.check_folder_for_empty(filenames):
                     return
-                MainBase.new_ = (filenames, filenames, MainBase.path_data_folder)
-                self.main_folder.setText(MainBase.new_[0])
-                self.sett_folder.setText(MainBase.new_[1])
-                self.data_folder.setText(MainBase.new_[2])
+                MainBase.new_ = (filenames, MainBase.path_data_folder)
+                MainBase.path_main_folder = filenames
+                self.main_folder.setText(filenames)
+                self.sett_folder.setText(MainBase.new_[0])
+                self.data_folder.setText(MainBase.new_[1])
 
                 # first time check settings rule
                 if not MainBase.settings_exist:
                     MainBase.path_main_folder = filenames
                     MainBase.path_settings_folder = filenames
                     MainBase.path_data_folder = MainBase.path_data_folder
-                    MainBase.old_ = (MainBase.path_main_folder,
-                                     MainBase.path_settings_folder,
+                    MainBase.old_ = (MainBase.path_settings_folder,
                                      MainBase.path_data_folder)
                 MainBase.flag_change_settings = True
                 self.save_settings.setEnabled(True)
@@ -550,7 +547,7 @@ class SettingsDialog(object):
         Run when in separate choose folder mode clicked "Select DATA folder" button
         :return:
         """
-        MainBase.old_ = (MainBase.old_[0], MainBase.old_[1], MainBase.path_data_folder)
+        MainBase.old_ = (MainBase.old_[0], MainBase.path_data_folder)
         dialog = mw.q_file_dialog_begin(MainBase.start_folder_in_dialogs,
                                         QFileDialog.FileMode.Directory)
         if dialog.exec():
@@ -559,12 +556,12 @@ class SettingsDialog(object):
             # selected folder must be emty
             if MainBase.check_folder_for_empty(filenames):
                 return
-            MainBase.new_ = (MainBase.new_[0], MainBase.new_[1], filenames)
-            self.data_folder.setText(MainBase.new_[2])
+            MainBase.new_ = (MainBase.new_[0], filenames)
+            self.data_folder.setText(MainBase.new_[1])
 
             # first time check settings rule
             if not MainBase.path_data_folder:
-                MainBase.path_data_folder = MainBase.new_[2]
+                MainBase.path_data_folder = MainBase.new_[1]
             MainBase.flag_change_settings = True
             self.save_settings.setEnabled(True)
 
