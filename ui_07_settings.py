@@ -211,12 +211,12 @@ class Ui_Dialog(object):
 
         self.horizontalLayout_3.addWidget(self.data_text)
 
-        self.data_folder_2 = QLineEdit(self.select_frame)
-        self.data_folder_2.setObjectName(u"data_folder_2")
-        self.data_folder_2.setMinimumSize(QSize(465, 0))
-        self.data_folder_2.setMaximumSize(QSize(460, 16777215))
+        self.data_folder = QLineEdit(self.select_frame)
+        self.data_folder.setObjectName(u"data_folder")
+        self.data_folder.setMinimumSize(QSize(465, 0))
+        self.data_folder.setMaximumSize(QSize(460, 16777215))
 
-        self.horizontalLayout_3.addWidget(self.data_folder_2)
+        self.horizontalLayout_3.addWidget(self.data_folder)
 
 
         self.verticalLayout_2.addLayout(self.horizontalLayout_3)
@@ -237,14 +237,14 @@ class Ui_Dialog(object):
 
         self.horizontalLayout_4.addWidget(self.settings_folder)
 
-        self.data_folder = QPushButton(self.select_frame)
-        self.data_folder.setObjectName(u"data_folder")
-        sizePolicy.setHeightForWidth(self.data_folder.sizePolicy().hasHeightForWidth())
-        self.data_folder.setSizePolicy(sizePolicy)
-        self.data_folder.setMinimumSize(QSize(280, 50))
-        self.data_folder.setMaximumSize(QSize(280, 50))
+        self.data_folder_btn = QPushButton(self.select_frame)
+        self.data_folder_btn.setObjectName(u"data_folder_btn")
+        sizePolicy.setHeightForWidth(self.data_folder_btn.sizePolicy().hasHeightForWidth())
+        self.data_folder_btn.setSizePolicy(sizePolicy)
+        self.data_folder_btn.setMinimumSize(QSize(280, 50))
+        self.data_folder_btn.setMaximumSize(QSize(280, 50))
 
-        self.horizontalLayout_4.addWidget(self.data_folder)
+        self.horizontalLayout_4.addWidget(self.data_folder_btn)
 
 
         self.verticalLayout_2.addLayout(self.horizontalLayout_4)
@@ -456,7 +456,7 @@ class Ui_Dialog(object):
         self.sett_text.setText(QCoreApplication.translate("Dialog", u"SETTINGS:", None))
         self.data_text.setText(QCoreApplication.translate("Dialog", u"DATA:", None))
         self.settings_folder.setText(QCoreApplication.translate("Dialog", u"Select \"SETTINGS\" Folder", None))
-        self.data_folder.setText(QCoreApplication.translate("Dialog", u"Select \"DATA\" Folder", None))
+        self.data_folder_btn.setText(QCoreApplication.translate("Dialog", u"Select \"DATA\" Folder", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_main), QCoreApplication.translate("Dialog", u"Main", None))
         self.font_msg_sel.setText(QCoreApplication.translate("Dialog", u"Select font in messages", None))
         self.font_msg_change.setItemText(0, QCoreApplication.translate("Dialog", u"Large", None))

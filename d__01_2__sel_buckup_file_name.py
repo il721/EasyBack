@@ -110,43 +110,62 @@ class D012SelFileNameDialog(object):
 
         self.verticalLayout.addItem(self.verticalSpacer)
 
-        self.ok_01_2 = QPushButton(Dialog)
-        self.ok_01_2.setObjectName(u"ok_01_2")
-        sizePolicy.setHeightForWidth(self.ok_01_2.sizePolicy().hasHeightForWidth())
-        self.ok_01_2.setSizePolicy(sizePolicy)
-        self.ok_01_2.setMinimumSize(QSize(60, 60))
+        self.horizontalLayout_2 = QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.save_list = QPushButton(Dialog)
+        self.save_list.setObjectName(u"save_list")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.save_list.sizePolicy().hasHeightForWidth())
+        self.save_list.setSizePolicy(sizePolicy1)
+        self.save_list.setMinimumSize(QSize(420, 60))
+        self.save_list.setMaximumSize(QSize(420, 60))
         icon1 = QIcon()
-        icon1.addFile(u":/icon/icons/GREY/ok.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.ok_01_2.setIcon(icon1)
-        self.ok_01_2.setIconSize(QSize(40, 40))
+        icon1.addFile(u":/icon/icons/GREY/save.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.save_list.setIcon(icon1)
+        self.save_list.setIconSize(QSize(40, 40))
 
-        self.verticalLayout.addWidget(self.ok_01_2)
+        self.horizontalLayout_2.addWidget(self.save_list)
+
+        self.close = QPushButton(Dialog)
+        self.close.setObjectName(u"close")
+        sizePolicy1.setHeightForWidth(self.close.sizePolicy().hasHeightForWidth())
+        self.close.setSizePolicy(sizePolicy1)
+        self.close.setMinimumSize(QSize(150, 60))
+        self.close.setMaximumSize(QSize(150, 60))
+        icon2 = QIcon()
+        icon2.addFile(u":/icon/icons/GREY/main_menu.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.close.setIcon(icon2)
+        self.close.setIconSize(QSize(50, 50))
+
+        self.horizontalLayout_2.addWidget(self.close)
+
+        self.verticalLayout.addLayout(self.horizontalLayout_2)
 
         self.retranslateUi(Dialog)
 
         QMetaObject.connectSlotsByName(Dialog)
 
         # ************************  MY CODE (buttons)  *********************************************
-        self.ok_01_2.clicked.connect(self.ok_bt)
+        self.save_list.clicked.connect(self.save_list_bt)
+        self.close.clicked.connect(Dialog.reject)
         # ------------------------------------------------------------------------------------------
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(
-            QCoreApplication.translate("Dialog", "Add Item to Backup List", None))
+            QCoreApplication.translate("Dialog", u"Add Item to Backup List", None))
         self.info_enter_name.setText(QCoreApplication.translate("Dialog",
-                                                                u"Enter new buckup list file name "
-                                                                u"or select and owerwrite an"
-                                                                u" exiting file:",
+                                                                u"Enter new buckup list file name or select and owerwrite an exiting file:",
                                                                 None))
         self.input_file_name.setText("")
         self.input_file_name.setPlaceholderText(
             QCoreApplication.translate("Dialog", u"Input new name of backup file here", None))
         self.owerwrite_exist.setText("")
-        self.ok_01_2.setText(QCoreApplication.translate("Dialog", u"  Ok", None))
+        self.save_list.setText(QCoreApplication.translate("Dialog", u"     Save List", None))
+        self.close.setText(QCoreApplication.translate("Dialog", u"   Close", None))
 
     # ************************    MY CODE    *******************************************************
-    @staticmethod
-    def ok_bt():
+    def save_list_bt(self):
         print(base.base.all_items)
         base.base.save_base_to_disk()
-

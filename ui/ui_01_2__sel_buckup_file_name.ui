@@ -175,33 +175,78 @@ border-color: #2B79C2;
     </spacer>
    </item>
    <item>
-    <widget class="QPushButton" name="ok_01_2">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="minimumSize">
-      <size>
-       <width>60</width>
-       <height>60</height>
-      </size>
-     </property>
-     <property name="text">
-      <string>  Ok</string>
-     </property>
-     <property name="icon">
-      <iconset resource="dop_win_rc.qrc">
-       <normaloff>:/icon/icons/GREY/ok.svg</normaloff>:/icon/icons/GREY/ok.svg</iconset>
-     </property>
-     <property name="iconSize">
-      <size>
-       <width>40</width>
-       <height>40</height>
-      </size>
-     </property>
-    </widget>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QPushButton" name="save_list">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>420</width>
+         <height>60</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>420</width>
+         <height>60</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>     Save List</string>
+       </property>
+       <property name="icon">
+        <iconset resource="dop_win_rc.qrc">
+         <normaloff>:/icon/icons/GREY/save.svg</normaloff>:/icon/icons/GREY/save.svg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>40</width>
+         <height>40</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="close">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>150</width>
+         <height>60</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>150</width>
+         <height>60</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>   Close</string>
+       </property>
+       <property name="icon">
+        <iconset resource="dop_win_rc.qrc">
+         <normaloff>:/icon/icons/GREY/main_menu.svg</normaloff>:/icon/icons/GREY/main_menu.svg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>50</width>
+         <height>50</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
   </layout>
  </widget>
