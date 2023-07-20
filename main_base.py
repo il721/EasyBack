@@ -256,12 +256,15 @@ class MainBase:
         self.all_items.update(temp_dict)
 
     def save_base_to_disk(self):
-        name_of_backup_file = Path(f"{MainBase.path_main_folder}"
-                                   f"//SETTINGS/backup_lists/test.blf")
+        path_of_backup_file = f"{MainBase.path_settings_folder}\\backup_lists"
+        if not self.check_folder_exist(path_of_backup_file):
+            print(Path(path_of_backup_file))
+            Path.mkdir(Path(path_of_backup_file))
+
+        name_of_backup_file = Path(f"{MainBase.path_settings_folder}\\backup_lists\\test.blf")
 
         with open(name_of_backup_file, 'w') as f:
             json.dump(self.all_items, f)
-        # TODO save backup list
 
     def load_base_from_disk(self):
         pass

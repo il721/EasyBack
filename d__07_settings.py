@@ -507,6 +507,7 @@ class SettingsDialog(object):
                 MainBase.flag_change_settings = True
                 self.save_settings.setEnabled(True)
 
+    # TODO Optimize code for all "select...bt". Make funct.??
     def select_settings_folder_bt(self):
         """
         Run when in separate choose folder mode clicked "Select SETTINGS folder" button

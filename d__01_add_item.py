@@ -363,7 +363,6 @@ class AddItemDial01(object):
                 return
         else:
             base.add_item(self.temp_dict)
-            print(base.all_items)
             title = "Congradulations!"
             main = f"Entry with name {self.name_item} successfully added to backup base'\n"
             mw.msg_one_button(title, main, 'info')

@@ -3,6 +3,8 @@ from PySide6.QtGui import (QFont, QIcon)
 from PySide6.QtWidgets import (QHBoxLayout, QLabel, QLineEdit, QPushButton, QSizePolicy,
                                QSpacerItem, QVBoxLayout)
 import dop_win_rc
+import d__01_add_item as base
+from main_base import MainBase
 
 
 class D012SelFileNameDialog(object):
@@ -125,7 +127,7 @@ class D012SelFileNameDialog(object):
         QMetaObject.connectSlotsByName(Dialog)
 
         # ************************  MY CODE (buttons)  *********************************************
-        self.ok_01_2.clicked.connect(self.save_backup_list_bt)
+        self.ok_01_2.clicked.connect(self.ok_bt)
         # ------------------------------------------------------------------------------------------
 
     def retranslateUi(self, Dialog):
@@ -143,5 +145,8 @@ class D012SelFileNameDialog(object):
         self.ok_01_2.setText(QCoreApplication.translate("Dialog", u"  Ok", None))
 
     # ************************    MY CODE    *******************************************************
-    def ok_btn(self):
-        pass
+    @staticmethod
+    def ok_bt():
+        print(base.base.all_items)
+        base.base.save_base_to_disk()
+
