@@ -124,7 +124,9 @@ class D012SelFileNameDialog(object):
 
         QMetaObject.connectSlotsByName(Dialog)
 
-    # setupUi
+        # ************************  MY CODE (buttons)  *********************************************
+        self.ok_01_2.clicked.connect(self.save_backup_list_bt)
+        # ------------------------------------------------------------------------------------------
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(
@@ -139,4 +141,7 @@ class D012SelFileNameDialog(object):
             QCoreApplication.translate("Dialog", u"Input new name of backup file here", None))
         self.owerwrite_exist.setText("")
         self.ok_01_2.setText(QCoreApplication.translate("Dialog", u"  Ok", None))
-    # retranslateUi
+
+    # ************************    MY CODE    *******************************************************
+    def ok_btn(self):
+        pass
