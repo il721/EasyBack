@@ -76,7 +76,7 @@ border: no
       <string notr="true"/>
      </property>
      <property name="text">
-      <string>Enter new buckup file name or select and owerwrite an exiting file:</string>
+      <string>Enter new buckup list file name or select and owerwrite an exiting file:</string>
      </property>
     </widget>
    </item>
