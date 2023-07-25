@@ -247,8 +247,21 @@ class MainBase:
             winreg.SetValueEx(reg_key, name, 0, winreg.REG_SZ, value)
         winreg.CloseKey(reg_key)
 
+    @staticmethod
+    def load_base_from_disk(path: str) -> dict:
+        path_done = Path(path)
+        with open(path_done, 'r') as f:
+            dict_from_all = json.load(f)
+        print(dict_from_all)
+        return dict_from_all
+
     def __init__(self):
-        self.all_items: dict = {}
+        path = f"{MainBase.path_settings_folder}\\backup_lists\\all"
+        if self.check_file_exist(path):
+            self.all_items = self.load_base_from_disk(path)
+        else:
+            self.all_items: dict = {}
+
         self.name_of_base_file: str = ""
         self.list_saved: bool = False
 
@@ -258,14 +271,9 @@ class MainBase:
     def save_base_to_disk(self):
         path_of_backup_file = f"{MainBase.path_settings_folder}\\backup_lists"
         if not self.check_folder_exist(path_of_backup_file):
-            print(Path(path_of_backup_file))
             Path.mkdir(Path(path_of_backup_file))
 
-        name_of_backup_file = Path(f"{MainBase.path_settings_folder}\\backup_lists\\test")
+        name_of_backup_file = Path(f"{MainBase.path_settings_folder}\\backup_lists\\all")
 
-        with open(name_of_backup_file, 'w') as f:
+        with open(name_of_backup_file, 'a') as f:
             json.dump(self.all_items, f)
-
-    def load_base_from_disk(self):
-        pass
-    # TODO load backup list

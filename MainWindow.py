@@ -1,3 +1,4 @@
+from pathlib import Path
 import sys
 import time
 
@@ -9,7 +10,6 @@ from PySide6.QtWidgets import QFileDialog, QMainWindow, QDialog, QMessageBox, QP
 from d_MainWindow import UiMainWindow
 from d__01_add_item import AddItemDial01
 from d__07_settings import SettingsDialog
-# from d__progress_bar_cirkle import UiProgressBarCirkle
 from d__progress_bar import UiProgressBar
 import all_styles as st
 from main_base import MainBase
@@ -54,14 +54,17 @@ class MainWindowDialog(QMainWindow):
         """
         Open 'Edit Item In Base' dialog window
         """
-        progress_bar(5, 'Copy files...')
+        path = f"{MainBase.path_settings_folder}\\backup_lists\\all"
+        print(Path(path))
+        ttt = MainBase.load_base_from_disk(path)
+        print(ttt)
 
     @staticmethod
     def backup_all_bt():
         """
         Open 'Edit Item In Base' dialog window
         """
-        progress_dialog(10)
+        pass
 
     @staticmethod
     def settings_bt():

@@ -348,6 +348,7 @@ class AddItemDial01(object):
         # check name is already exist in backup base
         self.name_item = f"{self.suffix}{self.input_name.text()}"
         self.temp_dict[self.name_item] = tuple(self.list_of_file)
+
         if base.check_name(self.name_item):
             reply = mw.msg_two_button("WARNING!",
                                       "This name is already exist and wil be owerwrited if you "
