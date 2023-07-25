@@ -367,7 +367,11 @@ class AddItemDial01(object):
             main = f"Entry with name {self.name_item} successfully added to backup base'\n"
             mw.msg_one_button(title, main, 'info')
 
-    def view_list_bt(self):
+        self.list_files_and_folders.clear()
+        self.list_of_file = []
+
+    @staticmethod
+    def view_list_bt():
         dialog = QDialog()
         ui = D_01_1_ViewDialog()
         ui.setupUi(dialog)
@@ -375,7 +379,8 @@ class AddItemDial01(object):
 
     #         pass
 
-    def save_backup_list_bt(self):
+    @staticmethod
+    def save_backup_list_bt():
         dialog = QDialog()
         ui = D012SelFileNameDialog()
         ui.setupUi(dialog)

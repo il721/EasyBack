@@ -261,7 +261,7 @@ class MainBase:
             print(Path(path_of_backup_file))
             Path.mkdir(Path(path_of_backup_file))
 
-        name_of_backup_file = Path(f"{MainBase.path_settings_folder}\\backup_lists\\test.blf")
+        name_of_backup_file = Path(f"{MainBase.path_settings_folder}\\backup_lists\\test")
 
         with open(name_of_backup_file, 'w') as f:
             json.dump(self.all_items, f)

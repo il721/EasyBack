@@ -3,8 +3,7 @@ from PySide6.QtGui import (QFont, QIcon)
 from PySide6.QtWidgets import (QHBoxLayout, QLabel, QLineEdit, QPushButton, QSizePolicy,
                                QSpacerItem, QVBoxLayout)
 import dop_win_rc
-import d__01_add_item as base
-from main_base import MainBase
+import d__01_add_item as b
 
 
 class D012SelFileNameDialog(object):
@@ -167,5 +166,5 @@ class D012SelFileNameDialog(object):
 
     # ************************    MY CODE    *******************************************************
     def save_list_bt(self):
-        print(base.base.all_items)
-        base.base.save_base_to_disk()
+        print(b.base.all_items)
+        b.base.save_base_to_disk()
