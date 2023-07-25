@@ -9,17 +9,16 @@
 ################################################################################
 
 from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
-                            QMetaObject, QObject, QPoint, QRect,
-                            QSize, QTime, QUrl, Qt)
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
 from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
-                           QFont, QFontDatabase, QGradient, QIcon,
-                           QImage, QKeySequence, QLinearGradient, QPainter,
-                           QPalette, QPixmap, QRadialGradient, QTransform)
+    QFont, QFontDatabase, QGradient, QIcon,
+    QImage, QKeySequence, QLinearGradient, QPainter,
+    QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QDialog, QHBoxLayout, QLabel,
-                               QLineEdit, QPushButton, QSizePolicy, QSpacerItem,
-                               QVBoxLayout, QWidget)
+    QLineEdit, QPushButton, QSizePolicy, QSpacerItem,
+    QVBoxLayout, QWidget)
 import dop_win_rc_rc
-
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
@@ -28,45 +27,45 @@ class Ui_Dialog(object):
         Dialog.resize(600, 200)
         Dialog.setMaximumSize(QSize(600, 800))
         Dialog.setStyleSheet(u"*{\n"
-                             "background-color: rgb(30, 30, 30);\n"
-                             "font: 16pt \"Lexend Light\";\n"
-                             "border: 1px solid;\n"
-                             "color: rgb(230, 230, 230);\n"
-                             "border-color: #2B79C2;\n"
-                             "}\n"
-                             "QLabel{\n"
-                             "font: 12pt \"Lexend Light\";\n"
-                             "color: #2B79C2;\n"
-                             "border: no\n"
-                             "}\n"
-                             "QLineEdit{\n"
-                             "background-color: rgb(30, 30, 30);\n"
-                             "}\n"
-                             "\n"
-                             "QPushButton {\n"
-                             "border: 2px solid;\n"
-                             "color: rgb(230, 230, 230);\n"
-                             "border-color: rgb(110, 110, 110);\n"
-                             "border-radius: 15px;\n"
-                             "background-color: rgba(60,60, 60, 80);\n"
-                             "}\n"
-                             "\n"
-                             "QPushButton:hover {\n"
-                             "color: #2B79C2;\n"
-                             "border: 3px solid;\n"
-                             "background-color: rgba(30, 30, 30, 180);\n"
-                             "border-color: rgb(150,150, 150);\n"
-                             "}\n"
-                             "\n"
-                             "QPushButton:pressed {\n"
-                             "color: rgb(30, 30, 30);\n"
-                             "border: 2px solid;\n"
-                             "background-color: #2B79C2;\n"
-                             "border-color: rgb(230, 230, 230);\n"
-                             "}\n"
-                             "QRadioButton {\n"
-                             "border: no\n"
-                             "}")
+"background-color: rgb(30, 30, 30);\n"
+"font: 16pt \"Lexend Light\";\n"
+"border: 1px solid;\n"
+"color: rgb(230, 230, 230);\n"
+"border-color: #2B79C2;\n"
+"}\n"
+"QLabel{\n"
+"font: 12pt \"Lexend Light\";\n"
+"color: #2B79C2;\n"
+"border: no\n"
+"}\n"
+"QLineEdit{\n"
+"background-color: rgb(30, 30, 30);\n"
+"}\n"
+"\n"
+"QPushButton {\n"
+"border: 2px solid;\n"
+"color: rgb(230, 230, 230);\n"
+"border-color: rgb(110, 110, 110);\n"
+"border-radius: 15px;\n"
+"background-color: rgba(60,60, 60, 80);\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"color: #2B79C2;\n"
+"border: 3px solid;\n"
+"background-color: rgba(30, 30, 30, 180);\n"
+"border-color: rgb(150,150, 150);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"color: rgb(30, 30, 30);\n"
+"border: 2px solid;\n"
+"background-color: #2B79C2;\n"
+"border-color: rgb(230, 230, 230);\n"
+"}\n"
+"QRadioButton {\n"
+"border: no\n"
+"}")
         self.verticalLayout = QVBoxLayout(Dialog)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.info_enter_name = QLabel(Dialog)
@@ -94,8 +93,8 @@ class Ui_Dialog(object):
         font1.setItalic(False)
         self.input_file_name.setFont(font1)
         self.input_file_name.setStyleSheet(u"color: rgb(202, 202, 202);\n"
-                                           "border-color: #2B79C2;\n"
-                                           "")
+"border-color: #2B79C2;\n"
+"")
 
         self.horizontalLayout.addWidget(self.input_file_name)
 
@@ -117,6 +116,7 @@ class Ui_Dialog(object):
         self.owerwrite_exist.setIconSize(QSize(40, 40))
 
         self.horizontalLayout.addWidget(self.owerwrite_exist)
+
 
         self.verticalLayout.addLayout(self.horizontalLayout)
 
@@ -155,24 +155,22 @@ class Ui_Dialog(object):
 
         self.horizontalLayout_2.addWidget(self.close)
 
+
         self.verticalLayout.addLayout(self.horizontalLayout_2)
+
 
         self.retranslateUi(Dialog)
 
         QMetaObject.connectSlotsByName(Dialog)
-
     # setupUi
 
     def retranslateUi(self, Dialog):
-        Dialog.setWindowTitle(
-            QCoreApplication.translate("Dialog", u"Add Item to Backup List", None))
-        self.info_enter_name.setText(QCoreApplication.translate("Dialog",
-                                                                u"Enter new buckup list file name or select and owerwrite an exiting file:",
-                                                                None))
+        Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Add Item to Backup List", None))
+        self.info_enter_name.setText(QCoreApplication.translate("Dialog", u"Enter new buckup list file name or select and owerwrite an exiting file:", None))
         self.input_file_name.setText("")
-        self.input_file_name.setPlaceholderText(
-            QCoreApplication.translate("Dialog", u"Input new name of backup file here", None))
+        self.input_file_name.setPlaceholderText(QCoreApplication.translate("Dialog", u"Input new name of backup file here", None))
         self.owerwrite_exist.setText("")
         self.save_list.setText(QCoreApplication.translate("Dialog", u"     Save List", None))
         self.close.setText(QCoreApplication.translate("Dialog", u"   Close", None))
     # retranslateUi
+

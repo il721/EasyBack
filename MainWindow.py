@@ -46,7 +46,7 @@ class MainWindowDialog(QMainWindow):
         """
         dialog = QDialog()
         ui = AddItemDial01()
-        ui.setupUi_(dialog)
+        ui.setupUi(dialog)
         dialog.exec()
 
     @staticmethod

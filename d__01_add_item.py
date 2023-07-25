@@ -1,13 +1,11 @@
 from PySide6.QtCore import (QCoreApplication, QMetaObject, QSize, )
-from PySide6.QtGui import (QFont, QIcon, QPixmap)
+from PySide6.QtGui import (QFont, QIcon)
 from PySide6.QtWidgets import (QDialog, QFileDialog, QFrame, QHBoxLayout, QLabel, QLineEdit,
                                QListWidget, QPushButton, QRadioButton, QSizePolicy, QSpacerItem,
-                               QVBoxLayout, QMessageBox, )
+                               QVBoxLayout)
 import dop_win_rc
 from main_base import MainBase
 import MainWindow as mw
-from d__07_settings import SettingsDialog
-from d__01_1__view_buckup_file import D_01_1_ViewDialog
 from d__01_2__sel_buckup_file_name import D012SelFileNameDialog
 
 base = MainBase()
@@ -20,9 +18,9 @@ class AddItemDial01(object):
         self.name_item: str = ""
         self.suffix: str = "s_"
 
-    def setupUi_(self, Dialog):
+    def setupUi(self, Dialog):
         if not Dialog.objectName():
-            Dialog.setObjectName(u"Add Item")
+            Dialog.setObjectName(u"Dialog")
         Dialog.resize(600, 800)
         Dialog.setMaximumSize(QSize(600, 800))
         Dialog.setStyleSheet(u"*{\n"
@@ -153,17 +151,17 @@ class AddItemDial01(object):
 
         self.horizontalLayout_2.addItem(self.horizontalSpacer_4)
 
-        self.view_list = QPushButton(Dialog)
-        self.view_list.setObjectName(u"view_list")
-        sizePolicy.setHeightForWidth(self.view_list.sizePolicy().hasHeightForWidth())
-        self.view_list.setSizePolicy(sizePolicy)
-        self.view_list.setMinimumSize(QSize(180, 60))
+        self.clear_all = QPushButton(Dialog)
+        self.clear_all.setObjectName(u"clear_all")
+        sizePolicy.setHeightForWidth(self.clear_all.sizePolicy().hasHeightForWidth())
+        self.clear_all.setSizePolicy(sizePolicy)
+        self.clear_all.setMinimumSize(QSize(180, 60))
         icon2 = QIcon()
-        icon2.addFile(u":/icon/icons/GREY/view.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.view_list.setIcon(icon2)
-        self.view_list.setIconSize(QSize(50, 50))
+        icon2.addFile(u":/icon/icons/GREY/cancel.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.clear_all.setIcon(icon2)
+        self.clear_all.setIconSize(QSize(40, 40))
 
-        self.horizontalLayout_2.addWidget(self.view_list)
+        self.horizontalLayout_2.addWidget(self.clear_all)
 
         self.verticalLayout.addLayout(self.horizontalLayout_2)
 
@@ -253,7 +251,7 @@ class AddItemDial01(object):
         self.list_files_and_folders.clicked.connect(self.remove_line_bt)
         self.add_item.clicked.connect(self.add_item_01_bt)
         self.ok.clicked.connect(Dialog.reject)
-        self.view_list.clicked.connect(self.view_list_bt)
+        self.clear_all.clicked.connect(self.view_list_bt)
         self.save_backup_list.clicked.connect(self.save_backup_list_bt)
         # ------------------------------------------------------------------------------------------
 
@@ -280,7 +278,7 @@ class AddItemDial01(object):
         self.data_radio.setText(QCoreApplication.translate("Dialog", u"DATA Backup", None))
         self.add_folder.setText(QCoreApplication.translate("Dialog", u" Add Folder", None))
         self.add_file.setText(QCoreApplication.translate("Dialog", u"   Add Files", None))
-        self.view_list.setText(QCoreApplication.translate("Dialog", u"   View All", None))
+        self.clear_all.setText(QCoreApplication.translate("Dialog", u"   Clear All", None))
         self.info.setText(
             QCoreApplication.translate("Dialog", u"Click on a line to delete it from list below",
                                        None))
@@ -370,12 +368,8 @@ class AddItemDial01(object):
         self.list_files_and_folders.clear()
         self.list_of_file = []
 
-    @staticmethod
-    def view_list_bt():
-        dialog = QDialog()
-        ui = D_01_1_ViewDialog()
-        ui.setupUi(dialog)
-        dialog.exec()
+    def view_list_bt(self):
+        self.list_files_and_folders.clear()
 
     #         pass
 

@@ -255,7 +255,7 @@ border-color: #2B79C2;
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="view_list">
+      <widget class="QPushButton" name="clear_all">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
          <horstretch>0</horstretch>
@@ -269,16 +269,16 @@ border-color: #2B79C2;
         </size>
        </property>
        <property name="text">
-        <string>   View All</string>
+        <string>   Clear All</string>
        </property>
        <property name="icon">
         <iconset resource="dop_win_rc.qrc">
-         <normaloff>:/icon/icons/GREY/view.svg</normaloff>:/icon/icons/GREY/view.svg</iconset>
+         <normaloff>:/icon/icons/GREY/cancel.svg</normaloff>:/icon/icons/GREY/cancel.svg</iconset>
        </property>
        <property name="iconSize">
         <size>
-         <width>50</width>
-         <height>50</height>
+         <width>40</width>
+         <height>40</height>
         </size>
        </property>
       </widget>
