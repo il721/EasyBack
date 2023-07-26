@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>600</width>
+    <height>800</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Add Item to Backup List</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">*{
+background-color: rgb(30, 30, 30);
+font: 16pt &quot;Lexend Light&quot;;
+border: 1px solid;
+color: rgb(230, 230, 230);
+border-color: #2B79C2;
+}
+QLabel{
+font: 12pt &quot;Lexend Light&quot;;
+color: #2B79C2;
+border: no
+}
+QLineEdit{
+background-color: rgb(30, 30, 30);
+}
+
+QPushButton {
+border: 2px solid;
+color: rgb(230, 230, 230);
+border-color: rgb(110, 110, 110);
+border-radius: 15px;
+background-color: rgba(60,60, 60, 80);
+}
+
+QPushButton:hover {
+color: #2B79C2;
+border: 3px solid;
+background-color: rgba(30, 30, 30, 180);
+border-color: rgb(150,150, 150);
+}
+
+QPushButton:pressed {
+color: rgb(30, 30, 30);
+border: 2px solid;
+background-color: #2B79C2;
+border-color: rgb(230, 230, 230);
+}
+QRadioButton {
+border: no
+}</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>10</number>
+   </property>
+   <item>
+    <widget class="QLabel" name="info">
+     <property name="font">
+      <font>
+       <family>Lexend Light</family>
+       <pointsize>12</pointsize>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>Please select the backup list you would like to edit</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QListWidget" name="backup_lists">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>480</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(50, 50,50);
+color: rgb(230, 230, 230);
+font: 300 16pt &quot;Lexend Light&quot;;</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <spacer name="horizontalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="ok">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>180</width>
+         <height>60</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Main Menu</string>
+       </property>
+       <property name="icon">
+        <iconset resource="dop_win_rc.qrc">
+         <normaloff>:/icon/icons/GREY/main_menu.svg</normaloff>:/icon/icons/GREY/main_menu.svg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>50</width>
+         <height>50</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="dop_win_rc.qrc"/>
+ </resources>
+ <connections/>
+</ui>

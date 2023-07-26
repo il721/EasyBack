@@ -9,6 +9,7 @@ from PySide6.QtWidgets import QFileDialog, QMainWindow, QDialog, QMessageBox, QP
     QPushButton
 from d_MainWindow import UiMainWindow
 from d__01_add_item import AddItemDial01
+from d__02_edit_list_main import EditListMain
 from d__07_settings import SettingsDialog
 from d__progress_bar import UiProgressBar
 import all_styles as st
@@ -54,7 +55,11 @@ class MainWindowDialog(QMainWindow):
         """
         Open 'Edit Item In Base' dialog window
         """
-        pass
+        dialog = QDialog()
+        ui = EditListMain()
+        ui.setupUi(dialog)
+        dialog.setWindowFlags(QtCore.Qt.WindowType.FramelessWindowHint)
+        dialog.exec()
 
     @staticmethod
     def backup_all_bt():
