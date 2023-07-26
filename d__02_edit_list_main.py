@@ -3,6 +3,7 @@ from PySide6.QtGui import (QFont, QIcon, )
 from PySide6.QtWidgets import (QHBoxLayout, QLabel, QListWidget, QPushButton, QSizePolicy,
                                QSpacerItem, QVBoxLayout)
 import dop_win_rc
+import MainWindow as mw
 
 
 class EditListMain(object):
@@ -106,7 +107,8 @@ class EditListMain(object):
 
         # ************************  MY CODE (buttons)  *********************************************
         self.ok.clicked.connect(Dialog.reject)
-        self.ok.clicked.connect(self.main_menu_bt)
+        self.backup_lists.clicked.connect(self.edit_item_bt)
+        self.backup_lists.addItems(['TEST 01', 'TEST 02', 'TEST 03'])
         # ------------------------------------------------------------------------------------------
 
     def retranslateUi(self, Dialog):
@@ -118,5 +120,16 @@ class EditListMain(object):
         self.ok.setText(QCoreApplication.translate("Dialog", u"Main Menu", None))
 
     # ************************    MY CODE    ***************************************************
-    def main_menu_bt(self):
-        pass
+    def edit_item_bt(self):
+        """
+        Add/Remove row from opened backup list
+        """
+        row = self.backup_lists.currentRow()
+        reply = mw.msg_two_button("Remove Item", "Do You Want to Remove Item?")
+        if reply == 'yes':
+            print(row, "TEST****************************")
+            self.backup_lists.takeItem(row)
+
+        else:
+            return
+        #     self.list_of_file.remove(removed_row.text())
