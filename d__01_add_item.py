@@ -375,6 +375,7 @@ class AddItemDial01(object):
 
         self.list_files_and_folders.clear()
         self.list_of_file = []
+        self.input_name.clear()
 
     def clear_all_bt(self):
         self.list_files_and_folders.clear()
