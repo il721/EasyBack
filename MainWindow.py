@@ -54,10 +54,7 @@ class MainWindowDialog(QMainWindow):
         """
         Open 'Edit Item In Base' dialog window
         """
-        path = f"{MainBase.path_settings_folder}\\backup_lists\\all"
-        print(Path(path))
-        ttt = MainBase.load_base_from_disk(path)
-        print(ttt)
+        pass
 
     @staticmethod
     def backup_all_bt():

@@ -252,16 +252,11 @@ class MainBase:
         path_done = Path(path)
         with open(path_done, 'r') as f:
             dict_from_all = json.load(f)
-        print(dict_from_all)
         return dict_from_all
 
+    # init of MainBase -----------------------------------------------------------------------------
     def __init__(self):
-        path = f"{MainBase.path_settings_folder}\\backup_lists\\all"
-        if self.check_file_exist(path):
-            self.all_items = self.load_base_from_disk(path)
-        else:
-            self.all_items: dict = {}
-
+        self.all_items: dict = {}
         self.name_of_base_file: str = ""
         self.list_saved: bool = False
 
@@ -275,5 +270,5 @@ class MainBase:
 
         name_of_backup_file = Path(f"{MainBase.path_settings_folder}\\backup_lists\\all")
 
-        with open(name_of_backup_file, 'a') as f:
+        with open(name_of_backup_file, 'w') as f:
             json.dump(self.all_items, f)

@@ -251,7 +251,7 @@ class AddItemDial01(object):
         self.list_files_and_folders.clicked.connect(self.remove_line_bt)
         self.add_item.clicked.connect(self.add_item_01_bt)
         self.ok.clicked.connect(Dialog.reject)
-        self.clear_all.clicked.connect(self.view_list_bt)
+        self.clear_all.clicked.connect(self.clear_all_bt)
         self.save_backup_list.clicked.connect(self.save_backup_list_bt)
         # ------------------------------------------------------------------------------------------
 
@@ -345,6 +345,11 @@ class AddItemDial01(object):
             mw.msg_one_button("WARNING!", "Some fields are empty", 'warn')
             return
 
+        # load mackup database from file "all" in "backup_lists" folder if it exists
+        path = f"{MainBase.path_settings_folder}\\backup_lists\\all"
+        if base.check_file_exist(path):
+            base.all_items = base.load_base_from_disk(path)
+
         # check name is already exist in backup base
         self.name_item = f"{self.suffix}{self.input_name.text()}"
         self.temp_dict[self.name_item] = tuple(self.list_of_file)
@@ -355,6 +360,7 @@ class AddItemDial01(object):
                                       " press 'Yes'\n Press 'No' to cancel")
             if reply == 'yes':
                 base.add_item(self.temp_dict)
+                base.list_saved = True
                 title = "Congradulations!"
                 main = f"Entry with name: '{self.name_item}'\n was changed"
                 mw.msg_one_button(title, main, 'info')
@@ -362,6 +368,7 @@ class AddItemDial01(object):
                 return
         else:
             base.add_item(self.temp_dict)
+            base.list_saved = True
             title = "Congradulations!"
             main = f"Entry with name {self.name_item} successfully added to backup base'\n"
             mw.msg_one_button(title, main, 'info')
@@ -369,22 +376,27 @@ class AddItemDial01(object):
         self.list_files_and_folders.clear()
         self.list_of_file = []
 
-    def view_list_bt(self):
+    def clear_all_bt(self):
         self.list_files_and_folders.clear()
 
     #         pass
 
     @staticmethod
     def save_backup_list_bt():
-        dialog = QDialog()
-        ui = D012SelFileNameDialog()
-        ui.setupUi(dialog)
-        dialog.exec()
+        if base.list_saved:
+            base.save_base_to_disk()
+            title = "Congradulations!"
+            main = f"Backup list 'all' successfully saved"
+            mw.msg_one_button(title, main, 'info')
+            base.list_saved = False
+        else:
+            title = "Info"
+            main = f"There is nothing to save. You haven't made any changes"
+            mw.msg_one_button(title, main, 'info')
+            return
 
-    #     if base.list_saved:
-    #         base.save_base_to_disk()
-    #         title = "Congradulations!"
-    #         main = f"Backup list {self.name_item} successfully saved"
-    #         self.simple_message_box(title, main)
-    #     else:
-    # TODO end save list dialog
+        # dialog = QDialog()
+        # ui = D012SelFileNameDialog()
+        # ui.setupUi(dialog)
+        # dialog.exec()
+
