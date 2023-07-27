@@ -2,8 +2,11 @@ from PySide6.QtCore import (QCoreApplication, QMetaObject, QSize)
 from PySide6.QtGui import (QFont, QIcon, )
 from PySide6.QtWidgets import (QHBoxLayout, QLabel, QListWidget, QPushButton, QSizePolicy,
                                QSpacerItem, QVBoxLayout)
+from pathlib import Path
+import os
 import dop_win_rc
 import MainWindow as mw
+from main_base import MainBase
 
 
 class EditListMain(object):
@@ -108,7 +111,14 @@ class EditListMain(object):
         # ************************  MY CODE (buttons)  *********************************************
         self.ok.clicked.connect(Dialog.reject)
         self.backup_lists.clicked.connect(self.edit_item_bt)
-        self.backup_lists.addItems(['TEST 01', 'TEST 02', 'TEST 03'])
+        # ------------------------------------------------------------------------------------------
+
+        # ************************  MY CODE  *******************************************************
+        backup_list_path = Path(f"{MainBase.path_settings_folder}\\backup_lists")
+        list_of_list = os.listdir(backup_list_path)
+
+        self.backup_lists.addItems(list_of_list)
+        # self.backup_lists.addItems(['TEST 01', 'TEST 02', 'TEST 03'])
         # ------------------------------------------------------------------------------------------
 
     def retranslateUi(self, Dialog):
