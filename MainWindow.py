@@ -119,8 +119,7 @@ def msg_one_button(title: str, main: str, type_of_msg: str):
         f'font: {MainBase.font_size_dialog}\"Lexend Light\";'
         'QDialogButtonBox {'
         'border: 10px solid;'
-        'border-color: #FFFFFF;}'
-        '')
+        'border-color: #FFFFFF;}')
 
     msg_type = f":/icon/icons/GREY/msg_{type_of_msg}.svg"
     icon = QtGui.QPixmap(msg_type)

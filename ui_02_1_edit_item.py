@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ui_02_edit_list_main.ui'
+## Form generated from reading UI file 'ui_02_1_edit_item.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.5.1
 ##
@@ -24,14 +24,14 @@ class Ui_Dialog(object):
     def setupUi(self, Dialog):
         if not Dialog.objectName():
             Dialog.setObjectName(u"Dialog")
-        Dialog.resize(400, 400)
+        Dialog.resize(400, 800)
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(Dialog.sizePolicy().hasHeightForWidth())
         Dialog.setSizePolicy(sizePolicy)
-        Dialog.setMinimumSize(QSize(400, 400))
-        Dialog.setMaximumSize(QSize(400, 600))
+        Dialog.setMinimumSize(QSize(400, 800))
+        Dialog.setMaximumSize(QSize(400, 800))
         Dialog.setStyleSheet(u"*{\n"
 "background-color: rgb(30, 30, 30);\n"
 "font: 16pt \"Lexend Light\";\n"
@@ -89,7 +89,7 @@ class Ui_Dialog(object):
 
         self.backup_lists = QListWidget(Dialog)
         self.backup_lists.setObjectName(u"backup_lists")
-        self.backup_lists.setMinimumSize(QSize(0, 200))
+        self.backup_lists.setMinimumSize(QSize(0, 480))
         self.backup_lists.setStyleSheet(u"background-color: rgb(50, 50,50);\n"
 "color: rgb(230, 230, 230);\n"
 "font: 300 16pt \"Lexend Light\";")
@@ -104,9 +104,13 @@ class Ui_Dialog(object):
 
         self.ok = QPushButton(Dialog)
         self.ok.setObjectName(u"ok")
-        sizePolicy.setHeightForWidth(self.ok.sizePolicy().hasHeightForWidth())
-        self.ok.setSizePolicy(sizePolicy)
-        self.ok.setMinimumSize(QSize(180, 60))
+        sizePolicy1 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.ok.sizePolicy().hasHeightForWidth())
+        self.ok.setSizePolicy(sizePolicy1)
+        self.ok.setMinimumSize(QSize(130, 60))
+        self.ok.setMaximumSize(QSize(130, 60))
         icon = QIcon()
         icon.addFile(u":/icon/icons/GREY/main_menu.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.ok.setIcon(icon)
@@ -125,7 +129,7 @@ class Ui_Dialog(object):
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Add Item to Backup List", None))
-        self.info.setText(QCoreApplication.translate("Dialog", u"Please select the backup list you would like to edit", None))
-        self.ok.setText(QCoreApplication.translate("Dialog", u"Main Menu", None))
+        self.info.setText(QCoreApplication.translate("Dialog", u"Please select item you would like to edit", None))
+        self.ok.setText(QCoreApplication.translate("Dialog", u"  back", None))
     # retranslateUi
 

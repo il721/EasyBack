@@ -1,13 +1,15 @@
 import json.decoder
 
+from PySide6 import QtCore
 from PySide6.QtCore import (QCoreApplication, QMetaObject, QSize)
 from PySide6.QtGui import (QFont, QIcon, )
-from PySide6.QtWidgets import (QHBoxLayout, QLabel, QListWidget, QPushButton, QSizePolicy,
+from PySide6.QtWidgets import (QDialog, QHBoxLayout, QLabel, QListWidget, QPushButton, QSizePolicy,
                                QSpacerItem, QVBoxLayout)
 from pathlib import Path
 import os
 import dop_win_rc
 import MainWindow as mw
+from d__02_1_edit_item import ListBackupItemEdit
 from main_base import MainBase
 from all_styles import SETTINGS_MAIN
 
@@ -21,13 +23,14 @@ class EditListMain(object):
 
         if not Dialog.objectName():
             Dialog.setObjectName(u"Dialog")
-        Dialog.resize(400, 800)
+        Dialog.resize(400, 400)
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(Dialog.sizePolicy().hasHeightForWidth())
         Dialog.setSizePolicy(sizePolicy)
-        Dialog.setMaximumSize(QSize(600, 800))
+        Dialog.setMinimumSize(QSize(400, 400))
+        Dialog.setMaximumSize(QSize(400, 600))
         Dialog.setStyleSheet(SETTINGS_MAIN)
         self.verticalLayout = QVBoxLayout(Dialog)
         self.verticalLayout.setSpacing(10)
@@ -46,7 +49,7 @@ class EditListMain(object):
 
         self.backup_lists = QListWidget(Dialog)
         self.backup_lists.setObjectName(u"backup_lists")
-        self.backup_lists.setMinimumSize(QSize(0, 480))
+        self.backup_lists.setMinimumSize(QSize(0, 200))
         self.backup_lists.setStyleSheet(u"background-color: rgb(50, 50,50);\n"
                                         "color: rgb(230, 230, 230);\n"
                                         "font: 300 16pt \"Lexend Light\";")
@@ -107,10 +110,16 @@ class EditListMain(object):
         path = f"{self.backup_list_path}\\{self.list_of_backup_lists[row]}"
         try:
             backup_items = MainBase.load_base_from_disk(path)
-            print(backup_items)
-
+            dialog = QDialog()
+            ui = ListBackupItemEdit()
+            ui.setupUi(dialog)
+            dialog.setWindowFlags(QtCore.Qt.WindowType.FramelessWindowHint)
+            dialog.exec()
         except json.decoder.JSONDecodeError:
             mw.msg_one_button("Warning!", "Backup lists file is empty!", "warn")
+            return
+
+
 
     def del_row(self):
         """
