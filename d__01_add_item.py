@@ -6,7 +6,7 @@ from PySide6.QtWidgets import (QDialog, QFileDialog, QFrame, QHBoxLayout, QLabel
 import dop_win_rc
 from main_base import MainBase
 import MainWindow as mw
-from d__01_2__sel_buckup_file_name import D012SelFileNameDialog
+from all_styles import SETTINGS_MAIN
 
 base = MainBase()
 
@@ -23,46 +23,7 @@ class AddItemDial01(object):
             Dialog.setObjectName(u"Dialog")
         Dialog.resize(600, 800)
         Dialog.setMaximumSize(QSize(600, 800))
-        Dialog.setStyleSheet(u"*{\n"
-                             "background-color: rgb(30, 30, 30);\n"
-                             "font: 16pt \"Lexend Light\";\n"
-                             "border: 1px solid;\n"
-                             "color: rgb(230, 230, 230);\n"
-                             "border-color: #2B79C2;\n"
-                             "}\n"
-                             "QLabel{\n"
-                             "font: 12pt \"Lexend Light\";\n"
-                             "color: #2B79C2;\n"
-                             "border: no\n"
-                             "}\n"
-                             "QLineEdit{\n"
-                             "background-color: rgb(30, 30, 30);\n"
-                             "}\n"
-                             "\n"
-                             "QPushButton {\n"
-                             "border: 2px solid;\n"
-                             "color: rgb(230, 230, 230);\n"
-                             "border-color: rgb(110, 110, 110);\n"
-                             "border-radius: 15px;\n"
-                             "background-color: rgba(60,60, 60, 80);\n"
-                             "}\n"
-                             "\n"
-                             "QPushButton:hover {\n"
-                             "color: #2B79C2;\n"
-                             "border: 3px solid;\n"
-                             "background-color: rgba(30, 30, 30, 180);\n"
-                             "border-color: rgb(150,150, 150);\n"
-                             "}\n"
-                             "\n"
-                             "QPushButton:pressed {\n"
-                             "color: rgb(30, 30, 30);\n"
-                             "border: 2px solid;\n"
-                             "background-color: #2B79C2;\n"
-                             "border-color: rgb(230, 230, 230);\n"
-                             "}\n"
-                             "QRadioButton {\n"
-                             "border: no\n"
-                             "}")
+        Dialog.setStyleSheet(SETTINGS_MAIN)
         self.verticalLayout = QVBoxLayout(Dialog)
         self.verticalLayout.setSpacing(10)
         self.verticalLayout.setObjectName(u"verticalLayout")

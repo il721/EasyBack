@@ -1,3 +1,5 @@
+import json.decoder
+
 from PySide6.QtCore import (QCoreApplication, QMetaObject, QSize)
 from PySide6.QtGui import (QFont, QIcon, )
 from PySide6.QtWidgets import (QHBoxLayout, QLabel, QListWidget, QPushButton, QSizePolicy,
@@ -7,10 +9,16 @@ import os
 import dop_win_rc
 import MainWindow as mw
 from main_base import MainBase
+from all_styles import SETTINGS_MAIN
 
 
 class EditListMain(object):
+    def __init__(self):
+        self.list_of_backup_lists: list = []
+        self.backup_list_path = Path(f"{MainBase.path_settings_folder}\\backup_lists")
+
     def setupUi(self, Dialog):
+
         if not Dialog.objectName():
             Dialog.setObjectName(u"Dialog")
         Dialog.resize(400, 800)
@@ -20,46 +28,7 @@ class EditListMain(object):
         sizePolicy.setHeightForWidth(Dialog.sizePolicy().hasHeightForWidth())
         Dialog.setSizePolicy(sizePolicy)
         Dialog.setMaximumSize(QSize(600, 800))
-        Dialog.setStyleSheet(u"*{\n"
-                             "background-color: rgb(30, 30, 30);\n"
-                             "font: 16pt \"Lexend Light\";\n"
-                             "border: 1px solid;\n"
-                             "color: rgb(230, 230, 230);\n"
-                             "border-color: #2B79C2;\n"
-                             "}\n"
-                             "QLabel{\n"
-                             "font: 12pt \"Lexend Light\";\n"
-                             "color: #2B79C2;\n"
-                             "border: no\n"
-                             "}\n"
-                             "QLineEdit{\n"
-                             "background-color: rgb(30, 30, 30);\n"
-                             "}\n"
-                             "\n"
-                             "QPushButton {\n"
-                             "border: 2px solid;\n"
-                             "color: rgb(230, 230, 230);\n"
-                             "border-color: rgb(110, 110, 110);\n"
-                             "border-radius: 15px;\n"
-                             "background-color: rgba(60,60, 60, 80);\n"
-                             "}\n"
-                             "\n"
-                             "QPushButton:hover {\n"
-                             "color: #2B79C2;\n"
-                             "border: 3px solid;\n"
-                             "background-color: rgba(30, 30, 30, 180);\n"
-                             "border-color: rgb(150,150, 150);\n"
-                             "}\n"
-                             "\n"
-                             "QPushButton:pressed {\n"
-                             "color: rgb(30, 30, 30);\n"
-                             "border: 2px solid;\n"
-                             "background-color: #2B79C2;\n"
-                             "border-color: rgb(230, 230, 230);\n"
-                             "}\n"
-                             "QRadioButton {\n"
-                             "border: no\n"
-                             "}")
+        Dialog.setStyleSheet(SETTINGS_MAIN)
         self.verticalLayout = QVBoxLayout(Dialog)
         self.verticalLayout.setSpacing(10)
         self.verticalLayout.setObjectName(u"verticalLayout")
@@ -108,17 +77,17 @@ class EditListMain(object):
 
         QMetaObject.connectSlotsByName(Dialog)
 
-        # ************************  MY CODE (buttons)  *********************************************
-        self.ok.clicked.connect(Dialog.reject)
-        self.backup_lists.clicked.connect(self.edit_item_bt)
+        # ************************  MY CODE  *******************************************************
+
+        self.list_of_backup_lists = os.listdir(self.backup_list_path)
+        self.backup_lists.addItems(self.list_of_backup_lists)
+
         # ------------------------------------------------------------------------------------------
 
-        # ************************  MY CODE  *******************************************************
-        backup_list_path = Path(f"{MainBase.path_settings_folder}\\backup_lists")
-        list_of_list = os.listdir(backup_list_path)
+        # ************************  MY CODE (buttons)  *********************************************
+        self.backup_lists.clicked.connect(self.edit_item_bt)
 
-        self.backup_lists.addItems(list_of_list)
-        # self.backup_lists.addItems(['TEST 01', 'TEST 02', 'TEST 03'])
+        self.ok.clicked.connect(Dialog.reject)
         # ------------------------------------------------------------------------------------------
 
     def retranslateUi(self, Dialog):
@@ -131,6 +100,19 @@ class EditListMain(object):
 
     # ************************    MY CODE    ***************************************************
     def edit_item_bt(self):
+        """
+        When clicked on line in list, run dialog for edit this item
+        """
+        row = self.backup_lists.currentRow()
+        path = f"{self.backup_list_path}\\{self.list_of_backup_lists[row]}"
+        try:
+            backup_items = MainBase.load_base_from_disk(path)
+            print(backup_items)
+
+        except json.decoder.JSONDecodeError:
+            mw.msg_one_button("Warning!", "Backup lists file is empty!", "warn")
+
+    def del_row(self):
         """
         Add/Remove row from opened backup list
         """

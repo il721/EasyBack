@@ -26,18 +26,6 @@ class MainBase:
     new_: tuple[str, str] = ('', '')
 
     @classmethod
-    def save_settings_test(cls):
-        cls.change_folder = list(zip(cls.old_, cls.new_))
-        del_list = reversed(cls.change_folder)
-        print('copy list:', *cls.change_folder, sep='\n')
-        print('del list:', *list(del_list), sep='\n')
-
-        cls.old_ = cls.new_
-        cls.new_ = ('', '')
-        cls.change_folder = []
-        cls.flag_change_settings = False
-
-    @classmethod
     def save_settings(cls):
         # if backup folders have changed, transfers all (settings and buckups) to a new location.
         # New folder must be an emty folder
@@ -223,6 +211,7 @@ class MainBase:
 
     # end of chek section---------------------------------------------------------------------------
 
+    # registry section *****************************************************************************
     @classmethod
     def get_all_settings_from_regkey(cls, key: winreg.OpenKey) -> None:
         """
@@ -247,6 +236,8 @@ class MainBase:
             winreg.SetValueEx(reg_key, name, 0, winreg.REG_SZ, value)
         winreg.CloseKey(reg_key)
 
+    # end of registry section  ---------------------------------------------------------------------
+
     @staticmethod
     def load_base_from_disk(path: str) -> dict:
         path_done = Path(path)
@@ -254,7 +245,7 @@ class MainBase:
             dict_from_all = json.load(f)
         return dict_from_all
 
-    # init of MainBase -----------------------------------------------------------------------------
+    # init of MainBase *****************************************************************************
     def __init__(self):
         self.all_items: dict = {}
         self.name_of_base_file: str = ""
