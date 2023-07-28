@@ -96,7 +96,7 @@ border: no
     </widget>
    </item>
    <item>
-    <widget class="QListWidget" name="backup_lists">
+    <widget class="QListWidget" name="backup_items">
      <property name="minimumSize">
       <size>
        <width>0</width>

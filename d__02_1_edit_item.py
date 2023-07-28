@@ -6,7 +6,7 @@ import dop_win_rc
 
 
 class ListBackupItemEdit(object):
-    def setupUi(self, Dialog):
+    def setupUi(self, Dialog, ttt):
         if not Dialog.objectName():
             Dialog.setObjectName(u"Dialog")
         Dialog.resize(400, 800)
@@ -72,14 +72,14 @@ class ListBackupItemEdit(object):
 
         self.verticalLayout.addWidget(self.info)
 
-        self.backup_lists = QListWidget(Dialog)
-        self.backup_lists.setObjectName(u"backup_lists")
-        self.backup_lists.setMinimumSize(QSize(0, 480))
-        self.backup_lists.setStyleSheet(u"background-color: rgb(50, 50,50);\n"
+        self.backup_items = QListWidget(Dialog)
+        self.backup_items.setObjectName(u"backup_lists")
+        self.backup_items.setMinimumSize(QSize(0, 480))
+        self.backup_items.setStyleSheet(u"background-color: rgb(50, 50,50);\n"
                                         "color: rgb(230, 230, 230);\n"
                                         "font: 300 16pt \"Lexend Light\";")
 
-        self.verticalLayout.addWidget(self.backup_lists)
+        self.verticalLayout.addWidget(self.backup_items)
 
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
@@ -115,6 +115,9 @@ class ListBackupItemEdit(object):
 
         # ************************  MY CODE (buttons)  *********************************************
 
+        self.backup_items.clicked.connect(self.item_bt)
+
+        self.backup_items.addItems(list(ttt))
         self.ok.clicked.connect(Dialog.reject)
         # ------------------------------------------------------------------------------------------
 
@@ -125,4 +128,9 @@ class ListBackupItemEdit(object):
             QCoreApplication.translate("Dialog", u"Please select item you would like to edit",
                                        None))
         self.ok.setText(QCoreApplication.translate("Dialog", u"  back", None))
-    # retranslateUi
+
+    # ************************  MY CODE  *******************************************************
+    def item_bt(self):
+        print("tttt")
+
+

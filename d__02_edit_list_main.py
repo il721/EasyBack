@@ -109,10 +109,10 @@ class EditListMain(object):
         row = self.backup_lists.currentRow()
         path = f"{self.backup_list_path}\\{self.list_of_backup_lists[row]}"
         try:
-            backup_items = MainBase.load_base_from_disk(path)
+            backup_items: dict = MainBase.load_base_from_disk(path)
             dialog = QDialog()
             ui = ListBackupItemEdit()
-            ui.setupUi(dialog)
+            ui.setupUi(dialog, backup_items)
             dialog.setWindowFlags(QtCore.Qt.WindowType.FramelessWindowHint)
             dialog.exec()
         except json.decoder.JSONDecodeError:
