@@ -14,6 +14,7 @@ from d__07_settings import SettingsDialog
 from d__progress_bar import UiProgressBar
 import all_styles as st
 from main_base import MainBase
+from d__01_add_item import base
 
 
 class MainWindowDialog(QMainWindow):
@@ -66,7 +67,8 @@ class MainWindowDialog(QMainWindow):
         """
         Open 'Edit Item In Base' dialog window
         """
-        pass
+        path = f"{MainBase.path_settings_folder}\\backup_lists\\all"
+        print(*list((k, v) for k, v in MainBase.load_base_from_disk(path).items()), sep="\n")
 
     @staticmethod
     def settings_bt():
