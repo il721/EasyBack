@@ -68,7 +68,13 @@ class MainWindowDialog(QMainWindow):
         Open 'Edit Item In Base' dialog window
         """
         path = f"{MainBase.path_settings_folder}\\backup_lists\\all"
-        print(*list((k, v) for k, v in MainBase.load_base_from_disk(path).items()), sep="\n")
+        all_dict = MainBase.load_base_from_disk(path)
+        data_dict = {}
+
+        settings_dict = {k[2:]: v for k, v in all_dict.items() if k[0] == 's'}
+        if settings_dict != all_dict:
+            data_dict = {k[2:]: v for k, v in all_dict.items() if k[0] == 'd'}
+        print(settings_dict, data_dict, sep="\n")
 
     @staticmethod
     def settings_bt():
