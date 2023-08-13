@@ -1,4 +1,3 @@
-from pathlib import Path
 import sys
 import time
 
@@ -14,7 +13,6 @@ from d__07_settings import SettingsDialog
 from d__progress_bar import UiProgressBar
 import all_styles as st
 from main_base import MainBase
-from d__01_add_item import base
 
 
 class MainWindowDialog(QMainWindow):
@@ -65,7 +63,7 @@ class MainWindowDialog(QMainWindow):
     @staticmethod
     def backup_all_bt():
         """
-        Open 'Edit Item In Base' dialog window
+        Make backup list and copy files and folders from it in main backup folder
         """
         path = f"{MainBase.path_settings_folder}\\backup_lists\\all"
         all_dict = MainBase.load_base_from_disk(path)
