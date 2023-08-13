@@ -1,5 +1,7 @@
 import sys
 import time
+import shutil
+from  pathlib import Path
 
 from PySide6 import QtCore, QtGui
 from PySide6.QtCore import QSize, Qt
@@ -70,9 +72,22 @@ class MainWindowDialog(QMainWindow):
         data_dict = {}
 
         settings_dict = {k[2:]: v for k, v in all_dict.items() if k[0] == 's'}
-        if settings_dict != all_dict:
+        if len(settings_dict) != len(all_dict):
             data_dict = {k[2:]: v for k, v in all_dict.items() if k[0] == 'd'}
-        print(settings_dict, data_dict, sep="\n")
+        # print(settings_dict, data_dict, all_dict, sep="\n")
+
+        for name_item, value_item, in settings_dict.items():
+            # print(name_item, value_item)
+            path = f"{MainBase.path_settings_folder}/{name_item}"
+            if not MainBase.check_folder_exist(path):
+                Path.mkdir(Path(path))
+            for _ in value_item:
+                if Path.is_file(Path(_)):
+                    print("file")
+                else:
+                    print("folder")
+        # TODO Add "delete list"
+        # TODO Split to smallest functions
 
     @staticmethod
     def settings_bt():
