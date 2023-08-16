@@ -306,7 +306,7 @@ class AddItemDial01(object):
             mw.msg_one_button("WARNING!", "Some fields are empty", 'warn')
             return
 
-        # load mackup database from file "all" in "backup_lists" folder if it exists
+        # load backup database from file "all" in "backup_lists" folder if it exists
         path = f"{MainBase.path_settings_folder}\\backup_lists\\all"
         if base.check_file_exist(path):
             base.all_items = base.load_base_from_disk(path)

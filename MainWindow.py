@@ -78,15 +78,15 @@ class MainWindowDialog(QMainWindow):
 
         for name_item, value_item, in settings_dict.items():
             # print(name_item, value_item)
-            src_path = Path(f"{Path(''.join(value_item))}")
+
             dst_path = Path(f"{MainBase.path_settings_folder}\\{name_item}")
             for _ in value_item:
                 if Path.is_file(Path(_)):
-                    # shutil.copy2(src_path, dst_path)
-                    print(src_path, dst_path, sep="\t*--->\t")
+                    shutil.copy2(_, dst_path)
+                    print(_)
                 else:
-                    # shutil.copytree(src_path, dst_path)
-                    print(src_path, dst_path, sep="\t+--->\t")
+                    shutil.copytree(_, dst_path, dirs_exist_ok=True)
+                    print(_)
         # TODO Add "delete list"
         # TODO Split to smallest functions
 
