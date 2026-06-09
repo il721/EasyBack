@@ -5,7 +5,7 @@ from PySide6.QtWidgets import (QColorDialog, QComboBox, QFileDialog, QFrame, QHB
                                QTabWidget, QToolButton, QVBoxLayout, QWidget)
 import dop_win_rc
 from main_base import MainBase
-import MainWindow as mw
+from ui_helpers import q_file_dialog_begin, msg_one_button
 from all_styles import SETTINGS_MAIN
 
 
@@ -459,7 +459,7 @@ class SettingsDialog(object):
         main = 'Folders "SETTINGS" and "DATA" will be created automatically in the Main Folder. ' \
                'Program settings (settings.ini) and all backup lists are stored in the "SETTING"' \
                ' folder.'
-        mw.msg_one_button(title, main, 'info')
+        msg_one_button(title, main, 'info')
 
     @staticmethod
     def select_info_bt():
@@ -467,7 +467,7 @@ class SettingsDialog(object):
         main = 'You have to choose the folders "SETTINGS" and "DATA" yourself.' \
                ' The "SETTINGS" folder must be specified, ' \
                'it will store the program settings and buckup lists. "DATA" - as needed.'
-        mw.msg_one_button(title, main, 'info')
+        msg_one_button(title, main, 'info')
 
     def save_settings_bt(self):
         MainBase.save_settings()
@@ -480,7 +480,7 @@ class SettingsDialog(object):
     def select_main_folder_bt(self):
         MainBase.old_ = (MainBase.path_settings_folder,
                          MainBase.path_data_folder,)
-        dialog = mw.q_file_dialog_begin(MainBase.start_folder_in_dialogs,
+        dialog = q_file_dialog_begin(MainBase.start_folder_in_dialogs,
                                         QFileDialog.FileMode.Directory)
         if dialog.exec():
             filenames = "".join(dialog.selectedFiles())
@@ -515,7 +515,7 @@ class SettingsDialog(object):
         """
         MainBase.old_ = (MainBase.path_settings_folder,
                          MainBase.path_data_folder)
-        dialog = mw.q_file_dialog_begin(MainBase.start_folder_in_dialogs,
+        dialog = q_file_dialog_begin(MainBase.start_folder_in_dialogs,
                                         QFileDialog.FileMode.Directory)
         if dialog.exec():
             filenames = "".join(dialog.selectedFiles())
@@ -549,7 +549,7 @@ class SettingsDialog(object):
         :return:
         """
         MainBase.old_ = (MainBase.old_[0], MainBase.path_data_folder)
-        dialog = mw.q_file_dialog_begin(MainBase.start_folder_in_dialogs,
+        dialog = q_file_dialog_begin(MainBase.start_folder_in_dialogs,
                                         QFileDialog.FileMode.Directory)
         if dialog.exec():
             filenames = "".join(dialog.selectedFiles())
@@ -577,7 +577,7 @@ class SettingsDialog(object):
         self.sel_main_folder.setEnabled(False)
 
     def start_folder_select_bt(self):
-        dialog = mw.q_file_dialog_begin(MainBase.start_folder_in_dialogs,
+        dialog = q_file_dialog_begin(MainBase.start_folder_in_dialogs,
                                         QFileDialog.FileMode.Directory)
         if dialog.exec():
             filenames = "".join(dialog.selectedFiles())

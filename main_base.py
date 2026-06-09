@@ -4,7 +4,7 @@ import stat
 import winreg
 from pathlib import Path
 import shutil
-import MainWindow as mw
+from ui_helpers import msg_one_button, msg_two_button, progress_bar
 
 
 class MainBase:
@@ -44,14 +44,14 @@ class MainBase:
                            f"to\n{cls.change_folder[0][1]}\n" \
                            "and source folder will be deleted\n" \
                            "(if you choose 'YES' in next 'Delete dialog')"
-                reply = mw.msg_two_button("WARNING!", msg_text)
+                reply = msg_two_button("WARNING!", msg_text)
                 if reply == 'no':
                     return
                 else:
                     for _ in done_list:
                         cls.copy_to_new_location(_[0], _[1])
                         cls.del_item(_[0])
-                        mw.progress_bar(3, f'Copy {_[0]}')
+                        progress_bar(3, f'Copy {_[0]}')
 
                 cls.path_settings_folder, cls.path_data_folder = cls.new_
                 cls.change_folder = []
@@ -63,7 +63,7 @@ class MainBase:
 
         # check for emty settings field
         if not cls.path_settings_folder:
-            mw.msg_one_button("WARNING!", "You forget set the 'SETTINGS' folder", 'warn')
+            msg_one_button("WARNING!", "You forget set the 'SETTINGS' folder", 'warn')
             return
 
         # add keys to settings dictionary and regkey. ALL values must be str!!!---------------------
@@ -88,12 +88,12 @@ class MainBase:
         cls.settings_exist = True
         cls.create_reg_key(cls.settings)
         if cls.flag_change_settings or cls.change_folder:
-            mw.msg_one_button('Congradulation!', 'Settings is successfully saved in '
+            msg_one_button('Congradulation!', 'Settings is successfully saved in '
                                                  'settings.ini', 'info')
             cls.change_folder = []
             cls.flag_change_settings = False
         else:
-            mw.msg_one_button("Nothing changed", "You haven't changed anything in the settings. "
+            msg_one_button("Nothing changed", "You haven't changed anything in the settings. "
                                                  "Nothing to save", "info")
 
     @classmethod
@@ -126,14 +126,14 @@ class MainBase:
 
         # TODO Problem remove rmtree readonly folder (from old backups. M.b. acces denied)
         msg_txt = f"Are you shure to delete folder\n{item}?"
-        reply = mw.msg_two_button("WARNING!", msg_txt)
+        reply = msg_two_button("WARNING!", msg_txt)
         if reply == 'no':
             return
         else:
             try:
                 shutil.rmtree(item, ignore_errors=False, onerror=cls.rmtree_error)
             except PermissionError:
-                mw.msg_one_button("Delete error", "Some files and folders were not deleted. "
+                msg_one_button("Delete error", "Some files and folders were not deleted. "
                                                   "Please do it manually", "info")
 
     @staticmethod
@@ -176,7 +176,7 @@ class MainBase:
         """
         if tuple(Path(folder_path).iterdir()):
             main_text = f"Destination folder is not empty!!! Please select an emty folder"
-            mw.msg_one_button("Destination folder not empty!!!", main_text, 'warn')
+            msg_one_button("Destination folder not empty!!!", main_text, 'warn')
             return True
         else:
             return False
@@ -200,7 +200,7 @@ class MainBase:
         """
         if old_folder_path == new_folder_path:
             MainBase.change_folder = ''
-            mw.msg_one_button("Nothing change", "You selected the same folder as it was.",
+            msg_one_button("Nothing change", "You selected the same folder as it was.",
                               "info")
             return True
         else:

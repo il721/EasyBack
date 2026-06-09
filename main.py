@@ -2,6 +2,7 @@ import sys
 from pathlib import Path
 from PySide6.QtWidgets import QApplication
 import MainWindow as mw
+from ui_helpers import msg_one_button
 from main_base import MainBase
 
 
@@ -53,7 +54,7 @@ def appearance_initial(rez):
 
 
 def path_or_regkey_not_exsit():
-    mw.msg_one_button('Settings not found', 'It looks like you are entering the program'
+    msg_one_button('Settings not found', 'It looks like you are entering the program'
                                             ' for the first time. Please, '
                                             'go to SETTINGS and set some necessary '
                                             'parameters', 'warn')

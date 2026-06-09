@@ -5,7 +5,7 @@ from PySide6.QtWidgets import (QDialog, QFileDialog, QFrame, QHBoxLayout, QLabel
                                QVBoxLayout)
 import dop_win_rc
 from main_base import MainBase
-import MainWindow as mw
+from ui_helpers import q_file_dialog_begin, msg_one_button, msg_two_button
 from all_styles import SETTINGS_MAIN
 
 base = MainBase()
@@ -253,7 +253,7 @@ class AddItemDial01(object):
         Add folder (only one in each time, when press "Add folder" button) to ListWidget and
         backup_list_item
         """
-        dialog = mw.q_file_dialog_begin(MainBase.start_folder_in_dialogs,
+        dialog = q_file_dialog_begin(MainBase.start_folder_in_dialogs,
                                         QFileDialog.FileMode.Directory)
         if dialog.exec():
             filenames = dialog.selectedFiles()
@@ -265,7 +265,7 @@ class AddItemDial01(object):
         """
         Add file(`s) to ListWidget and backup_list_item when press "Add file" button
         """
-        dialog = mw.q_file_dialog_begin(MainBase.start_folder_in_dialogs,
+        dialog = q_file_dialog_begin(MainBase.start_folder_in_dialogs,
                                         QFileDialog.FileMode.ExistingFiles)
         if dialog.exec():
             filenames = dialog.selectedFiles()
@@ -285,7 +285,7 @@ class AddItemDial01(object):
         Remove line from ListWidget and backup_list_item when it selected in ListWidget
         """
         row = self.list_files_and_folders.currentRow()
-        reply = mw.msg_two_button("Remove Item", "Do You Want to Remove Item?")
+        reply = msg_two_button("Remove Item", "Do You Want to Remove Item?")
         if reply == 'yes':
             removed_row = self.list_files_and_folders.takeItem(row)
             self.list_of_file.remove(removed_row.text())
@@ -303,7 +303,7 @@ class AddItemDial01(object):
 
         # check for empty fields
         if not self.name_item or not self.list_of_file:
-            mw.msg_one_button("WARNING!", "Some fields are empty", 'warn')
+            msg_one_button("WARNING!", "Some fields are empty", 'warn')
             return
 
         # load backup database from file "all" in "backup_lists" folder if it exists
@@ -316,7 +316,7 @@ class AddItemDial01(object):
         self.temp_dict[self.name_item] = tuple(self.list_of_file)
 
         if base.check_name(self.name_item):
-            reply = mw.msg_two_button("WARNING!",
+            reply = msg_two_button("WARNING!",
                                       "This name is already exist and wil be owerwrited if you "
                                       " press 'Yes'\n Press 'No' to cancel")
             if reply == 'yes':
@@ -324,7 +324,7 @@ class AddItemDial01(object):
                 base.list_saved = True
                 title = "Congradulations!"
                 main = f"Entry with name: '{self.name_item}'\n was changed"
-                mw.msg_one_button(title, main, 'info')
+                msg_one_button(title, main, 'info')
             else:
                 return
         else:
@@ -332,7 +332,7 @@ class AddItemDial01(object):
             base.list_saved = True
             title = "Congradulations!"
             main = f"Entry with name {self.name_item} successfully added to backup base'\n"
-            mw.msg_one_button(title, main, 'info')
+            msg_one_button(title, main, 'info')
 
         self.list_files_and_folders.clear()
         self.list_of_file = []
@@ -349,12 +349,12 @@ class AddItemDial01(object):
             base.save_base_to_disk()
             title = "Congradulations!"
             main = f"Backup list 'all' successfully saved"
-            mw.msg_one_button(title, main, 'info')
+            msg_one_button(title, main, 'info')
             base.list_saved = False
         else:
             title = "Info"
             main = f"There is nothing to save. You haven't made any changes"
-            mw.msg_one_button(title, main, 'info')
+            msg_one_button(title, main, 'info')
             return
 
         # dialog = QDialog()

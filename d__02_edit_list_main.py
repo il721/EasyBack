@@ -8,7 +8,7 @@ from PySide6.QtWidgets import (QDialog, QHBoxLayout, QLabel, QListWidget, QPushB
 from pathlib import Path
 import os
 import dop_win_rc
-import MainWindow as mw
+from ui_helpers import msg_one_button, msg_two_button
 from d__02_1_edit_item import ListBackupItemEdit
 from main_base import MainBase
 from all_styles import SETTINGS_MAIN
@@ -116,7 +116,7 @@ class EditListMain(object):
             dialog.setWindowFlags(QtCore.Qt.WindowType.FramelessWindowHint)
             dialog.exec()
         except json.decoder.JSONDecodeError:
-            mw.msg_one_button("Warning!", "Backup lists file is empty!", "warn")
+            msg_one_button("Warning!", "Backup lists file is empty!", "warn")
             return
 
 
@@ -126,7 +126,7 @@ class EditListMain(object):
         Add/Remove row from opened backup list
         """
         row = self.backup_lists.currentRow()
-        reply = mw.msg_two_button("Remove Item", "Do You Want to Remove Item?")
+        reply = msg_two_button("Remove Item", "Do You Want to Remove Item?")
         if reply == 'yes':
             print(row, "TEST****************************")
             self.backup_lists.takeItem(row)
