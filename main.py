@@ -46,11 +46,14 @@ def first_time_check():
 
 
 def appearance_initial(rez):
-    MainBase.start_folder_in_dialogs = rez["start_folder"]
-    MainBase.font_size_dialog = rez["font_size_dialog"]
-    MainBase.font_combo_index = int(rez["font_combo_index"])
-    MainBase.font_color_info = rez["font_color_info"]
-    MainBase.font_color_warn = rez["font_color_warn"]
+    # Fall back to MainBase's class defaults for any key missing from the
+    # registry (e.g. a key written by an older version that predates the
+    # appearance settings), so we don't KeyError on upgrade.
+    MainBase.start_folder_in_dialogs = rez.get("start_folder", MainBase.start_folder_in_dialogs)
+    MainBase.font_size_dialog = rez.get("font_size_dialog", MainBase.font_size_dialog)
+    MainBase.font_combo_index = int(rez.get("font_combo_index", MainBase.font_combo_index))
+    MainBase.font_color_info = rez.get("font_color_info", MainBase.font_color_info)
+    MainBase.font_color_warn = rez.get("font_color_warn", MainBase.font_color_warn)
 
 
 def path_or_regkey_not_exsit():
