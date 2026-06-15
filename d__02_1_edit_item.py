@@ -3,12 +3,19 @@ from PySide6.QtGui import (QFont, QIcon, )
 from PySide6.QtWidgets import (QHBoxLayout, QLabel, QListWidget, QPushButton, QSizePolicy,
                                QSpacerItem, QVBoxLayout)
 import dop_win_rc
+from main_base import MainBase
+from ui_helpers import msg_one_button, msg_two_button
+import backup_lists
 
 
 class ListBackupItemEdit(object):
-    def setupUi(self, Dialog, ttt):
+    def setupUi(self, Dialog, items, name):
         if not Dialog.objectName():
             Dialog.setObjectName(u"Dialog")
+        self.dialog = Dialog
+        self.items = items          # working copy of this list's items
+        self.name = name            # list (file) name to save back to
+        self.base_dir = MainBase.backup_lists_dir()
         Dialog.resize(400, 800)
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -101,6 +108,21 @@ class ListBackupItemEdit(object):
         self.ok.setIcon(icon)
         self.ok.setIconSize(QSize(50, 50))
 
+        self.del_item = QPushButton(Dialog)
+        self.del_item.setObjectName(u"del_item")
+        self.del_item.setMinimumSize(QSize(110, 60))
+        self.horizontalLayout.addWidget(self.del_item)
+
+        self.add_item = QPushButton(Dialog)
+        self.add_item.setObjectName(u"add_item")
+        self.add_item.setMinimumSize(QSize(110, 60))
+        self.horizontalLayout.addWidget(self.add_item)
+
+        self.save = QPushButton(Dialog)
+        self.save.setObjectName(u"save")
+        self.save.setMinimumSize(QSize(110, 60))
+        self.horizontalLayout.addWidget(self.save)
+
         self.horizontalLayout.addWidget(self.ok)
 
         self.verticalLayout.addLayout(self.horizontalLayout)
@@ -115,10 +137,11 @@ class ListBackupItemEdit(object):
 
         # ************************  MY CODE (buttons)  *********************************************
 
-        self.backup_items.clicked.connect(self.item_bt)
-
-        self.backup_items.addItems(list(ttt))
         self.ok.clicked.connect(Dialog.reject)
+        self.del_item.clicked.connect(self.del_item_bt)
+        self.add_item.clicked.connect(self.add_item_bt)
+        self.save.clicked.connect(self.save_bt)
+        self._refresh_items()
         # ------------------------------------------------------------------------------------------
 
     def retranslateUi(self, Dialog):
@@ -128,9 +151,39 @@ class ListBackupItemEdit(object):
             QCoreApplication.translate("Dialog", u"Please select item you would like to edit",
                                        None))
         self.ok.setText(QCoreApplication.translate("Dialog", u"  back", None))
+        self.del_item.setText(QCoreApplication.translate("Dialog", u"Delete", None))
+        self.add_item.setText(QCoreApplication.translate("Dialog", u"Add item", None))
+        self.save.setText(QCoreApplication.translate("Dialog", u"Save", None))
 
     # ************************  MY CODE  *******************************************************
-    def item_bt(self):
-        print("tttt")
+    def _refresh_items(self):
+        self.backup_items.clear()
+        self.backup_items.addItems(list(self.items))
+
+    def del_item_bt(self):
+        row = self.backup_items.currentRow()
+        if row < 0:
+            return
+        key = self.backup_items.currentItem().text()
+        if msg_two_button("Delete item",
+                          f"Remove '{key}' from this list?") != 'yes':
+            return
+        self.items.pop(key, None)
+        self._refresh_items()
+
+    def add_item_bt(self):
+        # Local import avoids a load-time import cycle with d__01_add_item.
+        from d__01_add_item import AddItemDial01
+        from PySide6.QtWidgets import QDialog
+        dialog = QDialog()
+        ui = AddItemDial01(target=self.items)   # add into THIS list's copy
+        ui.setupUi(dialog)
+        dialog.exec()
+        self._refresh_items()
+
+    def save_bt(self):
+        backup_lists.save_list(self.base_dir, self.name, self.items)
+        msg_one_button("Saved", f"Backup list '{self.name}' saved", "info")
+        self.dialog.accept()
 
 

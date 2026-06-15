@@ -5,8 +5,6 @@ from PySide6.QtCore import (QCoreApplication, QMetaObject, QSize)
 from PySide6.QtGui import (QFont, QIcon, )
 from PySide6.QtWidgets import (QDialog, QHBoxLayout, QLabel, QListWidget, QPushButton, QSizePolicy,
                                QSpacerItem, QVBoxLayout, QInputDialog)
-from pathlib import Path
-import os
 import dop_win_rc
 from ui_helpers import msg_one_button, msg_two_button
 from d__02_1_edit_item import ListBackupItemEdit
@@ -18,7 +16,6 @@ import backup_lists
 class EditListMain(object):
     def __init__(self):
         self.list_of_backup_lists: list = []
-        self.backup_list_path = Path(f"{MainBase.path_settings_folder}\\backup_lists")
 
     def setupUi(self, Dialog):
 
@@ -117,21 +114,21 @@ class EditListMain(object):
 
     # ************************    MY CODE    ***************************************************
     def edit_item_bt(self):
-        """
-        When clicked on line in list, run dialog for edit this item
-        """
-        row = self.backup_lists.currentRow()
-        path = f"{self.backup_list_path}\\{self.list_of_backup_lists[row]}"
+        """When a list is clicked, open the per-list item editor."""
+        name = self._selected_name()
+        if name is None:
+            return
+        base_dir = MainBase.backup_lists_dir()
         try:
-            backup_items: dict = MainBase.load_base_from_disk(path)
-            dialog = QDialog()
-            ui = ListBackupItemEdit()
-            ui.setupUi(dialog, backup_items)
-            dialog.setWindowFlags(QtCore.Qt.WindowType.FramelessWindowHint)
-            dialog.exec()
+            items = backup_lists.load_list(base_dir, name)
         except json.decoder.JSONDecodeError:
             msg_one_button("Warning!", "Backup lists file is empty!", "warn")
             return
+        dialog = QDialog()
+        ui = ListBackupItemEdit()
+        ui.setupUi(dialog, items, name)
+        dialog.setWindowFlags(QtCore.Qt.WindowType.FramelessWindowHint)
+        dialog.exec()
 
 
 

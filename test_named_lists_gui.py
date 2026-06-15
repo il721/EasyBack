@@ -225,5 +225,38 @@ class TestEditListManagement(unittest.TestCase):
         self.assertEqual(bl.list_names(base_dir), ["photos", "work_pc"])
 
 
+class TestItemEditor(unittest.TestCase):
+    def _open_editor(self, items):
+        import d__02_1_edit_item as itemmod
+        MainBase.path_settings_folder = fresh_settings_dir()
+        bl.save_list(MainBase.backup_lists_dir(), "work_pc", items)
+        ui = itemmod.ListBackupItemEdit()
+        dlg = QDialog()
+        ui.setupUi(dlg, dict(items), "work_pc")
+        return itemmod, ui
+
+    def test_shows_items(self):
+        _itemmod, ui = self._open_editor({"s_Word": ["C:/x"], "d_Pics": ["D:/p"]})
+        self.assertEqual(ui.backup_items.count(), 2)
+
+    def test_delete_item_then_save_persists(self):
+        itemmod, ui = self._open_editor({"s_Word": ["C:/x"], "d_Pics": ["D:/p"]})
+        ui.backup_items.setCurrentRow(0)
+        with mock.patch.object(itemmod, "msg_two_button", return_value="yes"):
+            ui.del_item_bt()
+        with mock.patch.object(itemmod, "msg_one_button"):
+            ui.save_bt()
+        saved = bl.load_list(MainBase.backup_lists_dir(), "work_pc")
+        self.assertEqual(len(saved), 1)
+
+    def test_save_writes_working_copy(self):
+        itemmod, ui = self._open_editor({"s_Word": ["C:/x"]})
+        ui.items["d_New"] = ["D:/n"]   # simulate an added item
+        with mock.patch.object(itemmod, "msg_one_button"):
+            ui.save_bt()
+        saved = bl.load_list(MainBase.backup_lists_dir(), "work_pc")
+        self.assertIn("d_New", saved)
+
+
 if __name__ == "__main__":
     unittest.main()
