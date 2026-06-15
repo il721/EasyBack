@@ -4,12 +4,16 @@ from PySide6.QtWidgets import (QHBoxLayout, QLabel, QLineEdit, QPushButton, QSiz
                                QSpacerItem, QVBoxLayout)
 import dop_win_rc
 import d__01_add_item as b
+import backup_lists
+from main_base import MainBase
+from ui_helpers import msg_one_button, msg_two_button
 
 
 class D012SelFileNameDialog(object):
     def setupUi(self, Dialog):
         if not Dialog.objectName():
             Dialog.setObjectName(u"Dialog")
+        self.dialog = Dialog
         Dialog.resize(600, 200)
         Dialog.setMaximumSize(QSize(600, 800))
         Dialog.setStyleSheet(u"*{\n"
@@ -149,6 +153,7 @@ class D012SelFileNameDialog(object):
         # ************************  MY CODE (buttons)  *********************************************
         self.save_list.clicked.connect(self.save_list_bt)
         self.close.clicked.connect(Dialog.reject)
+        self.owerwrite_exist.hide()  # name collisions handled by overwrite prompt
         # ------------------------------------------------------------------------------------------
 
     def retranslateUi(self, Dialog):
@@ -166,5 +171,18 @@ class D012SelFileNameDialog(object):
 
     # ************************    MY CODE    *******************************************************
     def save_list_bt(self):
-        print(b.base.all_items)
-        b.base.save_base_to_disk()
+        name = self.input_file_name.text().strip()
+        if not backup_lists.valid_list_name(name):
+            msg_one_button("Invalid name",
+                           "Please enter a valid list name "
+                           "(no \\ / : * ? \" < > | characters).", "warn")
+            return
+        base_dir = MainBase.backup_lists_dir()
+        if backup_lists.list_exists(base_dir, name):
+            if msg_two_button("Overwrite?",
+                              f"A backup list named '{name}' already exists.\n"
+                              "Overwrite it?") != "yes":
+                return
+        backup_lists.save_list(base_dir, name, b.base.all_items)
+        msg_one_button("Saved", f"Backup list '{name}' successfully saved", "info")
+        self.dialog.accept()

@@ -345,20 +345,15 @@ class AddItemDial01(object):
 
     @staticmethod
     def save_backup_list_bt():
-        if base.list_saved:
-            base.save_base_to_disk()
-            title = "Congradulations!"
-            main = f"Backup list 'all' successfully saved"
-            msg_one_button(title, main, 'info')
-            base.list_saved = False
-        else:
-            title = "Info"
-            main = f"There is nothing to save. You haven't made any changes"
-            msg_one_button(title, main, 'info')
+        if not base.all_items:
+            msg_one_button("Nothing to save",
+                           "There is nothing to save. You haven't added any items.",
+                           "info")
             return
-
-        # dialog = QDialog()
-        # ui = D012SelFileNameDialog()
-        # ui.setupUi(dialog)
-        # dialog.exec()
+        # Local import avoids a circular import: d__01_2 imports this module.
+        from d__01_2__sel_buckup_file_name import D012SelFileNameDialog
+        dialog = QDialog()
+        ui = D012SelFileNameDialog()
+        ui.setupUi(dialog)
+        dialog.exec()
 

@@ -258,13 +258,3 @@ class MainBase:
 
     def add_item(self, temp_dict: dict) -> None:
         self.all_items.update(temp_dict)
-
-    def save_base_to_disk(self):
-        path_of_backup_file = f"{MainBase.path_settings_folder}\\backup_lists"
-        if not self.check_folder_exist(path_of_backup_file):
-            Path.mkdir(Path(path_of_backup_file))
-
-        name_of_backup_file = Path(f"{MainBase.path_settings_folder}\\backup_lists\\all")
-
-        with open(name_of_backup_file, 'w') as f:
-            json.dump(self.all_items, f)
