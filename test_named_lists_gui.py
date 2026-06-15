@@ -105,5 +105,46 @@ class TestSaveFlow(unittest.TestCase):
         self.assertEqual(additem.base.all_items, {"s_Word": ["C:/x"]})
 
 
+class TestWorkingSet(unittest.TestCase):
+    def test_add_item_targets_default_working_set(self):
+        import d__01_add_item as additem
+        additem.base.all_items.clear()
+        ui = additem.AddItemDial01()
+        dlg = QDialog()
+        ui.setupUi(dlg)
+        ui.input_name.setText("Word")
+        ui.suffix = "s_"
+        ui.list_of_file = ["C:/x"]
+        with mock.patch.object(additem, "msg_one_button"):
+            ui.add_item_01_bt()
+        self.assertEqual(additem.base.all_items, {"s_Word": ("C:/x",)})
+
+    def test_add_item_targets_given_dict(self):
+        import d__01_add_item as additem
+        target = {}
+        ui = additem.AddItemDial01(target=target)
+        dlg = QDialog()
+        ui.setupUi(dlg)
+        ui.input_name.setText("Photos")
+        ui.suffix = "d_"
+        ui.list_of_file = ["D:/p"]
+        with mock.patch.object(additem, "msg_one_button"):
+            ui.add_item_01_bt()
+        self.assertEqual(target, {"d_Photos": ("D:/p",)})
+
+    def test_clear_all_empties_working_set_when_confirmed(self):
+        import d__01_add_item as additem
+        additem.base.all_items.clear()
+        additem.base.all_items["s_Word"] = ("C:/x",)
+        ui = additem.AddItemDial01()
+        dlg = QDialog()
+        ui.setupUi(dlg)
+        ui.list_of_file = ["C:/x"]
+        with mock.patch.object(additem, "msg_two_button", return_value="yes"):
+            ui.clear_all_bt()
+        self.assertEqual(additem.base.all_items, {})
+        self.assertEqual(ui.list_of_file, [])
+
+
 if __name__ == "__main__":
     unittest.main()

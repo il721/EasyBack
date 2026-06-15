@@ -12,11 +12,14 @@ base = MainBase()
 
 
 class AddItemDial01(object):
-    def __init__(self):
+    def __init__(self, target=None):
         self.temp_dict: dict[str, tuple] = {}
         self.list_of_file: list[str] = []
         self.name_item: str = ""
         self.suffix: str = "s_"
+        # The working set this dialog adds items into. Defaults to the shared
+        # in-memory working set (the module-level singleton's all_items).
+        self.target = target if target is not None else base.all_items
 
     def setupUi(self, Dialog):
         if not Dialog.objectName():
@@ -292,56 +295,50 @@ class AddItemDial01(object):
 
     def add_item_01_bt(self):
         """
-        Checking fields and if all of them is not emty - add new entry of backup item to
-        main dict (all_backup_item):
-        "name_item": [list_files_and_folders]
-        If "name_item" is already exist in all_backup_item, open warning dialog and if "ok"
-        pressed, owerwrite key in dict
+        Validate fields and add one entry "<suffix>name": (files...) to the
+        target working set. If the name already exists, confirm overwrite.
         """
-
         self.name_item = self.input_name.text()
-
-        # check for empty fields
         if not self.name_item or not self.list_of_file:
             msg_one_button("WARNING!", "Some fields are empty", 'warn')
             return
 
-        # load backup database from file "all" in "backup_lists" folder if it exists
-        path = f"{MainBase.path_settings_folder}\\backup_lists\\all"
-        if base.check_file_exist(path):
-            base.all_items = base.load_base_from_disk(path)
-
-        # check name is already exist in backup base
         self.name_item = f"{self.suffix}{self.input_name.text()}"
-        self.temp_dict[self.name_item] = tuple(self.list_of_file)
-
-        if base.check_name(self.name_item):
+        if self.name_item in self.target:
             reply = msg_two_button("WARNING!",
-                                      "This name is already exist and wil be owerwrited if you "
-                                      " press 'Yes'\n Press 'No' to cancel")
-            if reply == 'yes':
-                base.add_item(self.temp_dict)
-                base.list_saved = True
-                title = "Congradulations!"
-                main = f"Entry with name: '{self.name_item}'\n was changed"
-                msg_one_button(title, main, 'info')
-            else:
+                                   "This name already exists and will be "
+                                   "overwritten if you press 'Yes'\n"
+                                   " Press 'No' to cancel")
+            if reply != 'yes':
                 return
+            self.target[self.name_item] = tuple(self.list_of_file)
+            msg_one_button("Congradulations!",
+                           f"Entry with name: '{self.name_item}'\n was changed",
+                           'info')
         else:
-            base.add_item(self.temp_dict)
-            base.list_saved = True
-            title = "Congradulations!"
-            main = f"Entry with name {self.name_item} successfully added to backup base'\n"
-            msg_one_button(title, main, 'info')
+            self.target[self.name_item] = tuple(self.list_of_file)
+            msg_one_button("Congradulations!",
+                           f"Entry with name {self.name_item} successfully "
+                           "added to backup base'\n", 'info')
 
+        base.list_saved = True
         self.list_files_and_folders.clear()
         self.list_of_file = []
         self.input_name.clear()
 
     def clear_all_bt(self):
+        if not base.all_items and not self.list_of_file:
+            self.list_files_and_folders.clear()
+            return
+        if msg_two_button("Clear All",
+                          "Clear the current working list?\n"
+                          "Unsaved items will be lost.") != 'yes':
+            return
+        base.all_items.clear()   # clear in place so target references stay valid
+        self.list_of_file = []
+        self.temp_dict = {}
         self.list_files_and_folders.clear()
-
-    #         pass
+        self.input_name.clear()
 
     @staticmethod
     def save_backup_list_bt():
