@@ -191,6 +191,11 @@ class MainBase:
         return Path(folder).exists()
 
     @classmethod
+    def backup_lists_dir(cls) -> str:
+        """Folder that holds the named backup-list files."""
+        return f"{cls.path_settings_folder}\\backup_lists"
+
+    @classmethod
     def check_select_same_folder(cls, old_folder_path: str, new_folder_path: str) -> bool:
         """
         Checks if the selected folder is the same as it was. If yes - return True
