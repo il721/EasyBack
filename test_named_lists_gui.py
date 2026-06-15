@@ -159,5 +159,31 @@ class TestWorkingSet(unittest.TestCase):
         self.assertEqual(additem.base.all_items, {"s_Global": ("G",)})  # global untouched
 
 
+class TestBackupAll(unittest.TestCase):
+    def test_empty_shows_message(self):
+        import MainWindow
+        MainBase.path_settings_folder = fresh_settings_dir()
+        with mock.patch.object(MainWindow, "msg_one_button") as m:
+            MainWindow.MainWindowDialog.backup_all_bt()
+        m.assert_called()
+
+    def test_aggregates_and_copies_from_all_lists(self):
+        import MainWindow
+        settings = fresh_settings_dir()
+        MainBase.path_settings_folder = settings
+        base_dir = MainBase.backup_lists_dir()
+        # A real source file that a settings item points at.
+        src = os.path.join(settings, "src.txt")
+        with open(src, "w") as f:
+            f.write("hi")
+        bl.save_list(base_dir, "list_a", {"s_Alpha": [src]})
+        bl.save_list(base_dir, "list_b", {"s_Beta": [src]})
+        with mock.patch.object(MainWindow, "msg_one_button"):
+            MainWindow.MainWindowDialog.backup_all_bt()
+        # Existing copy logic writes each settings item to {settings}\<item>.
+        self.assertTrue(os.path.isfile(os.path.join(settings, "Alpha")))
+        self.assertTrue(os.path.isfile(os.path.join(settings, "Beta")))
+
+
 if __name__ == "__main__":
     unittest.main()

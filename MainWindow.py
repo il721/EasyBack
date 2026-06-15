@@ -17,6 +17,7 @@ from d__progress_bar import UiProgressBar
 import all_styles as st
 from main_base import MainBase
 from ui_helpers import msg_one_button
+import backup_lists
 
 # Shown by edit_list_bt / backup_all_bt when no backup list has been saved yet
 # (the backup_lists folder / "all" file are only created on the first save).
@@ -77,33 +78,31 @@ class MainWindowDialog(QMainWindow):
     @staticmethod
     def backup_all_bt():
         """
-        Make backup list and copy files and folders from it in main backup folder
+        Aggregate the items from every saved backup list and copy their files
+        and folders into the main backup folder.
         """
-        path = f"{MainBase.path_settings_folder}\\backup_lists\\all"
-        if not MainBase.check_file_exist(path):
+        base_dir = MainBase.backup_lists_dir()
+        names = backup_lists.list_names(base_dir)
+        if not names:
             msg_one_button(NO_LISTS_TITLE, NO_LISTS_TEXT, 'info')
             return
-        all_dict = MainBase.load_base_from_disk(path)
-        data_dict = {}
 
+        all_dict = {}
+        for name in names:
+            all_dict.update(backup_lists.load_list(base_dir, name))  # last wins
+
+        data_dict = {}
         settings_dict = {k[2:]: v for k, v in all_dict.items() if k[0] == 's'}
         if len(settings_dict) != len(all_dict):
             data_dict = {k[2:]: v for k, v in all_dict.items() if k[0] == 'd'}
-        # print(settings_dict, data_dict, all_dict, sep="\n")
 
-        for name_item, value_item, in settings_dict.items():
-            # print(name_item, value_item)
-
+        for name_item, value_item in settings_dict.items():
             dst_path = Path(f"{MainBase.path_settings_folder}\\{name_item}")
             for _ in value_item:
                 if Path.is_file(Path(_)):
                     shutil.copy2(_, dst_path)
-                    print(_)
                 else:
                     shutil.copytree(_, dst_path, dirs_exist_ok=True)
-                    print(_)
-        # TODO Add "delete list"
-        # TODO Split to smallest functions
 
     @staticmethod
     def settings_bt():
