@@ -54,7 +54,8 @@ class TestSaveFlow(unittest.TestCase):
         ui.input_file_name.setText("bad/name")
         with mock.patch.object(seldlg, "msg_one_button") as warn:
             ui.save_list_bt()
-        warn.assert_called()
+        warn.assert_called_once()
+        self.assertEqual(warn.call_args[0][2], "warn")
         self.assertEqual(bl.list_names(MainBase.backup_lists_dir()), [])
 
     def test_overwrite_confirmed_replaces(self):
@@ -76,6 +77,32 @@ class TestSaveFlow(unittest.TestCase):
             ui.save_list_bt()
         self.assertEqual(bl.load_list(MainBase.backup_lists_dir(), "work_pc"),
                          {"s_Old": ["a"]})
+
+    def test_empty_name_warns_and_does_not_save(self):
+        seldlg, _additem, ui = self._make_dialog()
+        ui.input_file_name.setText("")
+        with mock.patch.object(seldlg, "msg_one_button") as warn:
+            ui.save_list_bt()
+        warn.assert_called_once()
+        self.assertEqual(warn.call_args[0][2], "warn")
+        self.assertEqual(bl.list_names(MainBase.backup_lists_dir()), [])
+
+    def test_save_blocked_when_settings_folder_unset(self):
+        seldlg, _additem, ui = self._make_dialog()
+        MainBase.path_settings_folder = ""   # simulate settings not loaded
+        ui.input_file_name.setText("work_pc")
+        with mock.patch.object(seldlg, "msg_one_button") as warn:
+            ui.save_list_bt()
+        warn.assert_called_once()
+        self.assertEqual(warn.call_args[0][2], "warn")
+
+    def test_save_does_not_mutate_working_set(self):
+        seldlg, additem, ui = self._make_dialog()
+        ui.input_file_name.setText("work_pc")
+        with mock.patch.object(seldlg, "msg_one_button"):
+            ui.save_list_bt()
+        # Saving persists a copy; the in-memory working set is unchanged.
+        self.assertEqual(additem.base.all_items, {"s_Word": ["C:/x"]})
 
 
 if __name__ == "__main__":

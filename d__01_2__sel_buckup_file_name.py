@@ -160,7 +160,7 @@ class D012SelFileNameDialog(object):
         Dialog.setWindowTitle(
             QCoreApplication.translate("Dialog", u"Add Item to Backup List", None))
         self.info_enter_name.setText(QCoreApplication.translate("Dialog",
-                                                                u"Enter new buckup list file name or select and owerwrite an exiting file:",
+                                                                u"Enter a name for this backup list:",
                                                                 None))
         self.input_file_name.setText("")
         self.input_file_name.setPlaceholderText(
@@ -176,6 +176,10 @@ class D012SelFileNameDialog(object):
             msg_one_button("Invalid name",
                            "Please enter a valid list name "
                            "(no \\ / : * ? \" < > | characters).", "warn")
+            return
+        if not MainBase.path_settings_folder:
+            msg_one_button("Not ready",
+                           "The settings folder is not configured yet.", "warn")
             return
         base_dir = MainBase.backup_lists_dir()
         if backup_lists.list_exists(base_dir, name):
