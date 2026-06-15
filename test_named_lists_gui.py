@@ -185,5 +185,45 @@ class TestBackupAll(unittest.TestCase):
         self.assertTrue(os.path.isfile(os.path.join(settings, "Beta")))
 
 
+class TestEditListManagement(unittest.TestCase):
+    def _editor_with_two_lists(self):
+        import d__02_edit_list_main as editmod
+        MainBase.path_settings_folder = fresh_settings_dir()
+        base_dir = MainBase.backup_lists_dir()
+        bl.save_list(base_dir, "work_pc", {"s_Word": ["C:/x"]})
+        bl.save_list(base_dir, "photos", {"d_Pics": ["D:/p"]})
+        ui = editmod.EditListMain()
+        dlg = QDialog()
+        ui.setupUi(dlg)
+        ui._dlg_ref = dlg   # keep the QDialog alive for the test's lifetime
+        return editmod, base_dir, ui
+
+    def test_lists_are_listed(self):
+        _editmod, _base_dir, ui = self._editor_with_two_lists()
+        self.assertEqual(ui.backup_lists.count(), 2)
+
+    def test_delete_removes_file_and_refreshes(self):
+        editmod, base_dir, ui = self._editor_with_two_lists()
+        ui.backup_lists.setCurrentRow(0)  # "photos" (sorted) — index 0
+        with mock.patch.object(editmod, "msg_two_button", return_value="yes"):
+            ui.delete_bt_clicked()
+        self.assertEqual(bl.list_names(base_dir), ["work_pc"])
+        self.assertEqual(ui.backup_lists.count(), 1)
+
+    def test_rename_changes_file_and_refreshes(self):
+        editmod, base_dir, ui = self._editor_with_two_lists()
+        ui.backup_lists.setCurrentRow(0)  # "photos"
+        with mock.patch.object(editmod, "msg_one_button"):
+            ui.do_rename("photos", "vacation")
+        self.assertEqual(bl.list_names(base_dir), ["vacation", "work_pc"])
+
+    def test_rename_collision_warns(self):
+        editmod, base_dir, ui = self._editor_with_two_lists()
+        with mock.patch.object(editmod, "msg_one_button") as warn:
+            ui.do_rename("photos", "work_pc")
+        warn.assert_called()
+        self.assertEqual(bl.list_names(base_dir), ["photos", "work_pc"])
+
+
 if __name__ == "__main__":
     unittest.main()
