@@ -13,7 +13,6 @@ base = MainBase()
 
 class AddItemDial01(object):
     def __init__(self, target=None):
-        self.temp_dict: dict[str, tuple] = {}
         self.list_of_file: list[str] = []
         self.name_item: str = ""
         self.suffix: str = "s_"
@@ -327,16 +326,15 @@ class AddItemDial01(object):
         self.input_name.clear()
 
     def clear_all_bt(self):
-        if not base.all_items and not self.list_of_file:
+        if not self.target and not self.list_of_file:
             self.list_files_and_folders.clear()
             return
         if msg_two_button("Clear All",
                           "Clear the current working list?\n"
                           "Unsaved items will be lost.") != 'yes':
             return
-        base.all_items.clear()   # clear in place so target references stay valid
+        self.target.clear()   # clear in place so external references stay valid
         self.list_of_file = []
-        self.temp_dict = {}
         self.list_files_and_folders.clear()
         self.input_name.clear()
 

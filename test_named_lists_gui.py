@@ -145,6 +145,19 @@ class TestWorkingSet(unittest.TestCase):
         self.assertEqual(additem.base.all_items, {})
         self.assertEqual(ui.list_of_file, [])
 
+    def test_clear_all_targets_given_dict_not_global(self):
+        import d__01_add_item as additem
+        additem.base.all_items.clear()
+        additem.base.all_items["s_Global"] = ("G",)
+        target = {"d_Local": ("L",)}
+        ui = additem.AddItemDial01(target=target)
+        dlg = QDialog()
+        ui.setupUi(dlg)
+        with mock.patch.object(additem, "msg_two_button", return_value="yes"):
+            ui.clear_all_bt()
+        self.assertEqual(target, {})                                    # edited list cleared
+        self.assertEqual(additem.base.all_items, {"s_Global": ("G",)})  # global untouched
+
 
 if __name__ == "__main__":
     unittest.main()
