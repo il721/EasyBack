@@ -1,4 +1,5 @@
 import sys
+import os
 import time
 import shutil
 from  pathlib import Path
@@ -15,6 +16,13 @@ from d__07_settings import SettingsDialog
 from d__progress_bar import UiProgressBar
 import all_styles as st
 from main_base import MainBase
+from ui_helpers import msg_one_button
+
+# Shown by edit_list_bt / backup_all_bt when no backup list has been saved yet
+# (the backup_lists folder / "all" file are only created on the first save).
+NO_LISTS_TITLE = "No backup lists yet"
+NO_LISTS_TEXT = ("You haven't created any backup lists yet.\n"
+                 "Please add an item first.")
 
 
 class MainWindowDialog(QMainWindow):
@@ -56,6 +64,10 @@ class MainWindowDialog(QMainWindow):
         """
         Open 'Edit Item In Base' dialog window
         """
+        backup_lists_path = f"{MainBase.path_settings_folder}\\backup_lists"
+        if not MainBase.check_folder_exist(backup_lists_path) or not os.listdir(backup_lists_path):
+            msg_one_button(NO_LISTS_TITLE, NO_LISTS_TEXT, 'info')
+            return
         dialog = QDialog()
         ui = EditListMain()
         ui.setupUi(dialog)
@@ -68,6 +80,9 @@ class MainWindowDialog(QMainWindow):
         Make backup list and copy files and folders from it in main backup folder
         """
         path = f"{MainBase.path_settings_folder}\\backup_lists\\all"
+        if not MainBase.check_file_exist(path):
+            msg_one_button(NO_LISTS_TITLE, NO_LISTS_TEXT, 'info')
+            return
         all_dict = MainBase.load_base_from_disk(path)
         data_dict = {}
 
