@@ -16,14 +16,14 @@ class ListBackupItemEdit(object):
         self.items = items          # working copy of this list's items
         self.name = name            # list (file) name to save back to
         self.base_dir = MainBase.backup_lists_dir()
-        Dialog.resize(400, 800)
+        Dialog.resize(520, 800)
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(Dialog.sizePolicy().hasHeightForWidth())
         Dialog.setSizePolicy(sizePolicy)
-        Dialog.setMinimumSize(QSize(400, 800))
-        Dialog.setMaximumSize(QSize(400, 800))
+        Dialog.setMinimumSize(QSize(520, 800))
+        Dialog.setMaximumSize(QSize(520, 800))
         Dialog.setStyleSheet(u"*{\n"
                              "background-color: rgb(30, 30, 30);\n"
                              "font: 16pt \"Lexend Light\";\n"
@@ -101,8 +101,8 @@ class ListBackupItemEdit(object):
         sizePolicy1.setVerticalStretch(0)
         sizePolicy1.setHeightForWidth(self.ok.sizePolicy().hasHeightForWidth())
         self.ok.setSizePolicy(sizePolicy1)
-        self.ok.setMinimumSize(QSize(130, 60))
-        self.ok.setMaximumSize(QSize(130, 60))
+        self.ok.setMinimumSize(QSize(120, 60))
+        self.ok.setMaximumSize(QSize(120, 60))
         icon = QIcon()
         icon.addFile(u":/icon/icons/GREY/main_menu.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.ok.setIcon(icon)
@@ -110,20 +110,26 @@ class ListBackupItemEdit(object):
 
         self.del_item = QPushButton(Dialog)
         self.del_item.setObjectName(u"del_item")
-        self.del_item.setMinimumSize(QSize(110, 60))
+        self.del_item.setMinimumSize(QSize(100, 60))
+        self.del_item.setMaximumSize(QSize(100, 60))
         self.horizontalLayout.addWidget(self.del_item)
 
         self.add_item = QPushButton(Dialog)
         self.add_item.setObjectName(u"add_item")
-        self.add_item.setMinimumSize(QSize(110, 60))
+        self.add_item.setMinimumSize(QSize(100, 60))
+        self.add_item.setMaximumSize(QSize(100, 60))
         self.horizontalLayout.addWidget(self.add_item)
 
         self.save = QPushButton(Dialog)
         self.save.setObjectName(u"save")
-        self.save.setMinimumSize(QSize(110, 60))
+        self.save.setMinimumSize(QSize(100, 60))
+        self.save.setMaximumSize(QSize(100, 60))
         self.horizontalLayout.addWidget(self.save)
 
         self.horizontalLayout.addWidget(self.ok)
+
+        self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(self.horizontalSpacer_4)
 
         self.verticalLayout.addLayout(self.horizontalLayout)
 

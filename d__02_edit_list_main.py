@@ -6,7 +6,7 @@ from PySide6.QtGui import (QFont, QIcon, )
 from PySide6.QtWidgets import (QDialog, QHBoxLayout, QLabel, QListWidget, QPushButton, QSizePolicy,
                                QSpacerItem, QVBoxLayout, QInputDialog)
 import dop_win_rc
-from ui_helpers import msg_one_button, msg_two_button
+from ui_helpers import msg_one_button, msg_two_button, MovableDialog
 from d__02_1_edit_item import ListBackupItemEdit
 from main_base import MainBase
 from all_styles import SETTINGS_MAIN
@@ -21,14 +21,14 @@ class EditListMain(object):
 
         if not Dialog.objectName():
             Dialog.setObjectName(u"Dialog")
-        Dialog.resize(400, 400)
+        Dialog.resize(480, 400)
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(Dialog.sizePolicy().hasHeightForWidth())
         Dialog.setSizePolicy(sizePolicy)
-        Dialog.setMinimumSize(QSize(400, 400))
-        Dialog.setMaximumSize(QSize(400, 600))
+        Dialog.setMinimumSize(QSize(480, 400))
+        Dialog.setMaximumSize(QSize(480, 600))
         Dialog.setStyleSheet(SETTINGS_MAIN)
         self.verticalLayout = QVBoxLayout(Dialog)
         self.verticalLayout.setSpacing(10)
@@ -64,7 +64,8 @@ class EditListMain(object):
         self.ok.setObjectName(u"ok")
         sizePolicy.setHeightForWidth(self.ok.sizePolicy().hasHeightForWidth())
         self.ok.setSizePolicy(sizePolicy)
-        self.ok.setMinimumSize(QSize(180, 60))
+        self.ok.setMinimumSize(QSize(160, 60))
+        self.ok.setMaximumSize(QSize(160, 60))
         icon = QIcon()
         icon.addFile(u":/icon/icons/GREY/main_menu.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.ok.setIcon(icon)
@@ -72,15 +73,20 @@ class EditListMain(object):
 
         self.rename_bt = QPushButton(Dialog)
         self.rename_bt.setObjectName(u"rename_bt")
-        self.rename_bt.setMinimumSize(QSize(120, 60))
+        self.rename_bt.setMinimumSize(QSize(110, 60))
+        self.rename_bt.setMaximumSize(QSize(110, 60))
         self.horizontalLayout.addWidget(self.rename_bt)
 
         self.delete_bt = QPushButton(Dialog)
         self.delete_bt.setObjectName(u"delete_bt")
-        self.delete_bt.setMinimumSize(QSize(120, 60))
+        self.delete_bt.setMinimumSize(QSize(110, 60))
+        self.delete_bt.setMaximumSize(QSize(110, 60))
         self.horizontalLayout.addWidget(self.delete_bt)
 
         self.horizontalLayout.addWidget(self.ok)
+
+        self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(self.horizontalSpacer_4)
 
         self.verticalLayout.addLayout(self.horizontalLayout)
 
@@ -124,7 +130,7 @@ class EditListMain(object):
         except json.decoder.JSONDecodeError:
             msg_one_button("Warning!", "Backup lists file is empty!", "warn")
             return
-        dialog = QDialog()
+        dialog = MovableDialog()
         ui = ListBackupItemEdit()
         ui.setupUi(dialog, items, name)
         dialog.setWindowFlags(QtCore.Qt.WindowType.FramelessWindowHint)
