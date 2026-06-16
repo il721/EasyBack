@@ -1,0 +1,104 @@
+{
+  "claude-code": {
+    "label": "Claude Code",
+    "kind": "client",
+    "include": [
+      "~/.claude/settings.json",
+      "~/.claude/CLAUDE.md",
+      "~/.claude/skills/**",
+      "~/.claude/agents/**",
+      "~/.claude/rules/**",
+      "~/.claude/commands/**",
+      "~/.claude/plugins/installed_plugins.json",
+      "~/.claude/plugins/known_marketplaces.json",
+      "~/.claude/statusline_model.ps1",
+      "~/.claude/widget_limits.json",
+      "~/.claude/widget_pos.txt",
+      "~/.claude/widget_opacity.txt",
+      "~/.claude/widget_simple.txt"
+    ],
+    "exclude": [
+      "**/.credentials.json",
+      "**/plugins/cache/**",
+      "**/plugins/repos/**"
+    ],
+    "restore_note": "Re-add marketplaces and /plugin install your plugins, then run `claude` to log in again."
+  },
+  "ollama": {
+    "label": "Ollama",
+    "kind": "runtime",
+    "special": "ollama",
+    "restore_note": "Run `ollama pull <name>` (or `ollama create` from the saved Modelfile) for each model."
+  },
+  "lmstudio": {
+    "label": "LM Studio",
+    "kind": "runtime",
+    "include": ["~/.lmstudio/**"],
+    "exclude": ["**/models/**", "**/.cache/**"],
+    "restore_note": "Re-download models in LM Studio; presets/config are restored."
+  },
+  "gpt4all": {
+    "label": "GPT4All",
+    "kind": "runtime",
+    "include": ["%LOCALAPPDATA%/nomic.ai/GPT4All/**"],
+    "exclude": ["**/*.gguf", "**/*.bin"],
+    "restore_note": "Re-download models in GPT4All; settings are restored."
+  },
+  "jan": {
+    "label": "Jan",
+    "kind": "runtime",
+    "include": ["~/.jan/**"],
+    "exclude": ["**/models/**"],
+    "restore_note": "Re-download models in Jan; assistants/threads/settings are restored."
+  },
+  "aichat": {
+    "label": "aichat",
+    "kind": "client",
+    "include": ["%APPDATA%/aichat/**", "~/.config/aichat/**"],
+    "exclude": ["**/*.key", "**/secrets*"],
+    "restore_note": "Set your provider API keys again; roles/sessions/config are restored."
+  },
+  "llm": {
+    "label": "llm (datasette)",
+    "kind": "client",
+    "include": ["%APPDATA%/io.datasette.llm/**", "~/.config/io.datasette.llm/**"],
+    "exclude": ["**/keys.json"],
+    "restore_note": "Run `llm keys set <provider>` again; templates/plugins/logs are restored."
+  },
+  "anthropic-cloud": {
+    "label": "Anthropic API",
+    "kind": "cloud",
+    "include": [],
+    "restore_note": "Set ANTHROPIC_API_KEY on the new machine."
+  },
+  "openai-cloud": {
+    "label": "OpenAI API",
+    "kind": "cloud",
+    "include": [],
+    "restore_note": "Set OPENAI_API_KEY on the new machine."
+  },
+  "google-cloud": {
+    "label": "Google AI API",
+    "kind": "cloud",
+    "include": [],
+    "restore_note": "Set GEMINI_API_KEY / GOOGLE_API_KEY on the new machine."
+  },
+  "mistral-cloud": {
+    "label": "Mistral API",
+    "kind": "cloud",
+    "include": [],
+    "restore_note": "Set MISTRAL_API_KEY on the new machine."
+  },
+  "groq-cloud": {
+    "label": "Groq API",
+    "kind": "cloud",
+    "include": [],
+    "restore_note": "Set GROQ_API_KEY on the new machine."
+  },
+  "local-weights": {
+    "label": "Local weight files",
+    "kind": "weights",
+    "special": "weights",
+    "restore_note": "Re-download the listed .gguf/.safetensors files; only their paths are recorded."
+  }
+}
