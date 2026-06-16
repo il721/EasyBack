@@ -41,6 +41,10 @@ def run():
         print("  FAIL: credentials were copied (must be excluded)"); ok = False
     if any("credential" in c.lower() for c in copied):
         print("  FAIL: credentials in copied list"); ok = False
+    if (dest / ".claude/plugins/cache/x.bin").exists():
+        print("  FAIL: plugins/cache file was copied (must be excluded)"); ok = False
+    if any("cache" in c.lower() for c in copied):
+        print("  FAIL: plugins/cache file in copied list"); ok = False
 
     print(f"  copied {len(copied)} files")
     print("RESULT:", "PASS" if ok else "FAIL")

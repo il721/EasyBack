@@ -37,6 +37,11 @@ def expand(spec: str, *, env, home) -> str:
 
 
 def _excluded(path: str, exclude_globs) -> bool:
+    # Match each exclude glob against the full path. The second form ("*/" +
+    # stripped pattern) lets a leading-anchored pattern such as "models/**" also
+    # match deeper in the tree; the catalog's "**/..." patterns already match via
+    # the direct form (fnmatch's * crosses "/"), so this is a belt-and-braces
+    # fallback for bare patterns a future catalog entry might use.
     p = path.replace("\\", "/")
     return any(fnmatch.fnmatch(p, pat) or fnmatch.fnmatch(p, "*/" + pat.lstrip("*/"))
                for pat in exclude_globs)
