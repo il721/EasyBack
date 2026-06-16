@@ -12,6 +12,7 @@ from PySide6.QtWidgets import QFileDialog, QMainWindow, QDialog, QMessageBox, QP
 from d_MainWindow import UiMainWindow
 from d__01_add_item import AddItemDial01
 from d__02_edit_list_main import EditListMain
+from d__ai_settings import AiSettings
 from d__07_settings import SettingsDialog
 from d__progress_bar import UiProgressBar
 import all_styles as st
@@ -79,13 +80,14 @@ class MainWindowDialog(QMainWindow):
     @staticmethod
     def ai_settings_bt():
         """
-        Open the 'AI Settings' dialog.
-
-        Placeholder: no AI settings dialog exists yet, so for now this just
-        informs the user. Wire it to the real dialog once it is built.
+        Open the 'AI Settings' popup: find every LLM available on this machine
+        (local + online) and list them as checkable rows.
         """
-        msg_one_button("AI Settings",
-                       "AI settings are not available yet.", 'info')
+        dialog = MovableDialog()
+        ui = AiSettings()
+        ui.setupUi(dialog)
+        dialog.setWindowFlags(QtCore.Qt.WindowType.FramelessWindowHint)
+        dialog.exec()
 
     @staticmethod
     def backup_all_bt():
