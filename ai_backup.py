@@ -124,3 +124,49 @@ def backup_local_weights(ai_dir, paths) -> None:
     root = Path(ai_dir) / "local-weights"
     root.mkdir(parents=True, exist_ok=True)
     (root / "weights_paths.txt").write_text("\n".join(paths) + "\n", encoding="utf-8")
+
+
+def _now_iso():
+    return datetime.now(timezone.utc).isoformat()
+
+
+def backup_selected(ai_dir, model_tool_pairs, catalog, *, env, home,
+                    modelfile, now=_now_iso) -> dict:
+    """Back up every tool referenced by the ticked (model, tool_id) pairs.
+
+    Groups pairs by tool, runs the right backup per tool kind (file-based copy,
+    Ollama variant A, or local-weights), then writes MANIFEST.json. Returns
+    {"tools": [...], "models": {tool: [...]}, "restore_notes": {tool: str}}.
+    """
+    Path(ai_dir).mkdir(parents=True, exist_ok=True)
+
+    by_tool = {}
+    for model, tool_id in model_tool_pairs:
+        by_tool.setdefault(tool_id, []).append(model)
+
+    restore_notes = {}
+    for tool_id, models in by_tool.items():
+        descriptor = catalog.get(tool_id, {})
+        special = descriptor.get("special")
+        if special == "ollama":
+            backup_ollama(ai_dir, models, modelfile=modelfile)
+        elif special == "weights":
+            backup_local_weights(ai_dir, models)
+        else:
+            backup_tool(ai_dir, tool_id, descriptor, env=env, home=home)
+        if descriptor.get("restore_note"):
+            restore_notes[tool_id] = descriptor["restore_note"]
+
+    manifest = {
+        "exportedAt": now(),
+        "tools": sorted(by_tool),
+        "models": {t: sorted(set(ms)) for t, ms in by_tool.items()},
+        "restore_notes": restore_notes,
+        "note": ("Portable AI settings. Secrets (API keys, credentials) were "
+                 "intentionally excluded; re-login / re-key on the target machine."),
+    }
+    with open(Path(ai_dir) / "MANIFEST.json", "w", encoding="utf-8") as f:
+        json.dump(manifest, f, indent=2)
+
+    return {"tools": manifest["tools"], "models": manifest["models"],
+            "restore_notes": restore_notes}
