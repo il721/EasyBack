@@ -18,6 +18,7 @@ import json
 import os
 import re
 import shutil
+import zipfile
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -170,3 +171,41 @@ def backup_selected(ai_dir, model_tool_pairs, catalog, *, env, home,
 
     return {"tools": manifest["tools"], "models": manifest["models"],
             "restore_notes": restore_notes}
+
+
+def export_ai(ai_dir, out_file) -> str:
+    """Zip the whole AI folder into a single file at out_file. Returns out_file."""
+    ai_dir = Path(ai_dir)
+    out_file = Path(out_file)
+    out_file.parent.mkdir(parents=True, exist_ok=True)
+    if out_file.exists():
+        out_file.unlink()
+    with zipfile.ZipFile(out_file, "w", zipfile.ZIP_DEFLATED) as z:
+        for f in ai_dir.rglob("*"):
+            if f.is_file():
+                z.write(f, f.relative_to(ai_dir).as_posix())
+    return str(out_file)
+
+
+def import_ai(in_file, ai_dir, *, backup_existing=True) -> list:
+    """Extract an exported AI zip into ai_dir, backing up any file it overwrites
+    into a timestamped import-backup-* folder. Returns the archive member names."""
+    ai_dir = Path(ai_dir)
+    ai_dir.mkdir(parents=True, exist_ok=True)
+    stamp = datetime.now().strftime("%Y%m%d-%H%M%S")
+    backup_root = ai_dir / f"import-backup-{stamp}"
+    names = []
+    with zipfile.ZipFile(in_file, "r") as z:
+        for member in z.namelist():
+            if member.endswith("/"):
+                continue
+            target = ai_dir / member
+            if backup_existing and target.is_file():
+                bk = backup_root / member
+                bk.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(target, bk)
+            target.parent.mkdir(parents=True, exist_ok=True)
+            with z.open(member) as src, open(target, "wb") as dst:
+                shutil.copyfileobj(src, dst)
+            names.append(member)
+    return names
