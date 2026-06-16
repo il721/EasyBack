@@ -16,7 +16,7 @@ from d__07_settings import SettingsDialog
 from d__progress_bar import UiProgressBar
 import all_styles as st
 from main_base import MainBase
-from ui_helpers import msg_one_button
+from ui_helpers import msg_one_button, MovableDialog
 import backup_lists
 
 # Shown by edit_list_bt / backup_all_bt when no backup list has been saved yet
@@ -36,6 +36,7 @@ class MainWindowDialog(QMainWindow):
         # self.ui.translit_button.setShortcut('Ctrl+t')
         self.ui.add_item.clicked.connect(self.add_item_01_bt)
         self.ui.edit_list.clicked.connect(self.edit_list_bt)
+        self.ui.ai_settings.clicked.connect(self.ai_settings_bt)
         self.ui.backup_all.clicked.connect(self.backup_all_bt)
 
         self.ui.settings.clicked.connect(self.settings_bt)
@@ -69,11 +70,22 @@ class MainWindowDialog(QMainWindow):
         if not MainBase.check_folder_exist(backup_lists_path) or not os.listdir(backup_lists_path):
             msg_one_button(NO_LISTS_TITLE, NO_LISTS_TEXT, 'info')
             return
-        dialog = QDialog()
+        dialog = MovableDialog()
         ui = EditListMain()
         ui.setupUi(dialog)
         dialog.setWindowFlags(QtCore.Qt.WindowType.FramelessWindowHint)
         dialog.exec()
+
+    @staticmethod
+    def ai_settings_bt():
+        """
+        Open the 'AI Settings' dialog.
+
+        Placeholder: no AI settings dialog exists yet, so for now this just
+        informs the user. Wire it to the real dialog once it is built.
+        """
+        msg_one_button("AI Settings",
+                       "AI settings are not available yet.", 'info')
 
     @staticmethod
     def backup_all_bt():

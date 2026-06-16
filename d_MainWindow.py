@@ -4,20 +4,26 @@ from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
                             QMetaObject, QObject, QPoint, QRect,
                             QSize, QTime, QUrl, Qt)
 from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
-                           QFont, QFontDatabase, QGradient, QIcon,
+                           QFont, QFontDatabase, QFontMetrics, QGradient, QIcon,
                            QImage, QKeySequence, QLinearGradient, QPainter,
                            QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QHBoxLayout, QLayout, QMainWindow,
                                QPushButton, QSizePolicy, QVBoxLayout, QWidget)
+import os
+
 import main_rc
+
+# Directory holding loose (non-resource) SVG icons, resolved relative to this
+# file so the path is correct regardless of the current working directory.
+_ICONS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ui", "icons")
 
 
 class UiMainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(600, 800)
-        MainWindow.setMaximumSize(QSize(600, 800))
+        MainWindow.resize(390, 592)
+        MainWindow.setMaximumSize(QSize(390, 592))
         MainWindow.setWindowOpacity(1.000000000000000)
         MainWindow.setStyleSheet(u"*{\n"
                                  "	background-color: rgb(30, 30, 30);\n"
@@ -25,6 +31,9 @@ class UiMainWindow(object):
                                  "\n"
                                  "\n"
                                  "QPushButton {\n"
+                                 "text-align: left;\n"
+                                 "padding-left: 20px;\n"
+                                 "padding-right: 16px;\n"
                                  "border: 2px solid;\n"
                                  "color: rgb(230, 230, 230);\n"
                                  "border-color: rgb(110, 110, 110);\n"
@@ -51,14 +60,14 @@ class UiMainWindow(object):
                                  "}")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
-        self.centralwidget.setMinimumSize(QSize(600, 800))
-        self.centralwidget.setMaximumSize(QSize(600, 800))
+        self.centralwidget.setMinimumSize(QSize(390, 592))
+        self.centralwidget.setMaximumSize(QSize(390, 592))
         self.centralwidget.setStyleSheet(u"")
         self.layoutWidget = QWidget(self.centralwidget)
         self.layoutWidget.setObjectName(u"layoutWidget")
-        self.layoutWidget.setGeometry(QRect(22, 10, 561, 763))
+        self.layoutWidget.setGeometry(QRect(14, 7, 365, 568))
         self.verticalLayout = QVBoxLayout(self.layoutWidget)
-        self.verticalLayout.setSpacing(15)
+        self.verticalLayout.setSpacing(10)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.add_item = QPushButton(self.layoutWidget)
@@ -69,11 +78,11 @@ class UiMainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.add_item.sizePolicy().hasHeightForWidth())
         self.add_item.setSizePolicy(sizePolicy)
-        self.add_item.setMinimumSize(QSize(559, 90))
-        self.add_item.setMaximumSize(QSize(559, 45))
+        self.add_item.setMinimumSize(QSize(363, 59))
+        self.add_item.setMaximumSize(QSize(363, 29))
         font = QFont()
         font.setFamilies([u"Lexend Light"])
-        font.setPointSize(25)
+        font.setPointSize(16)
         font.setBold(False)
         font.setItalic(False)
         self.add_item.setFont(font)
@@ -82,7 +91,7 @@ class UiMainWindow(object):
         icon = QIcon()
         icon.addFile(u":/icons_grey/icons/GREY/gr_add.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.add_item.setIcon(icon)
-        self.add_item.setIconSize(QSize(70, 70))
+        self.add_item.setIconSize(QSize(46, 46))
 
         self.verticalLayout.addWidget(self.add_item)
 
@@ -91,8 +100,8 @@ class UiMainWindow(object):
         self.edit_list.setEnabled(True)
         sizePolicy.setHeightForWidth(self.edit_list.sizePolicy().hasHeightForWidth())
         self.edit_list.setSizePolicy(sizePolicy)
-        self.edit_list.setMinimumSize(QSize(559, 90))
-        self.edit_list.setMaximumSize(QSize(559, 45))
+        self.edit_list.setMinimumSize(QSize(363, 59))
+        self.edit_list.setMaximumSize(QSize(363, 29))
         self.edit_list.setFont(font)
         self.edit_list.setLayoutDirection(Qt.LeftToRight)
         self.edit_list.setStyleSheet(u"")
@@ -100,24 +109,45 @@ class UiMainWindow(object):
         icon1.addFile(u":/icons_grey/icons/GREY/edit_list_main.svg", QSize(), QIcon.Normal,
                       QIcon.Off)
         self.edit_list.setIcon(icon1)
-        self.edit_list.setIconSize(QSize(77, 77))
+        self.edit_list.setIconSize(QSize(50, 50))
 
         self.verticalLayout.addWidget(self.edit_list)
+
+        self.ai_settings = QPushButton(self.layoutWidget)
+        self.ai_settings.setObjectName(u"ai_settings")
+        self.ai_settings.setEnabled(True)
+        sizePolicy.setHeightForWidth(self.ai_settings.sizePolicy().hasHeightForWidth())
+        self.ai_settings.setSizePolicy(sizePolicy)
+        self.ai_settings.setMinimumSize(QSize(363, 59))
+        self.ai_settings.setMaximumSize(QSize(363, 29))
+        self.ai_settings.setFont(font)
+        self.ai_settings.setLayoutDirection(Qt.LeftToRight)
+        self.ai_settings.setStyleSheet(u"")
+        icon_ai = QIcon()
+        icon_ai.addFile(os.path.join(_ICONS_DIR, "AI_Main.svg"), QSize(), QIcon.Normal,
+                        QIcon.Off)
+        self.ai_settings.setIcon(icon_ai)
+        # Sized to sit inside the button with a margin from the borders; width is
+        # the viewBox ratio (109.09/72.95) of the height to keep the wide "AI"
+        # logo proportional.
+        self.ai_settings.setIconSize(QSize(69, 46))
+
+        self.verticalLayout.addWidget(self.ai_settings)
 
         self.backup_all = QPushButton(self.layoutWidget)
         self.backup_all.setObjectName(u"backup_all")
         self.backup_all.setEnabled(True)
         sizePolicy.setHeightForWidth(self.backup_all.sizePolicy().hasHeightForWidth())
         self.backup_all.setSizePolicy(sizePolicy)
-        self.backup_all.setMinimumSize(QSize(559, 90))
-        self.backup_all.setMaximumSize(QSize(559, 45))
+        self.backup_all.setMinimumSize(QSize(363, 59))
+        self.backup_all.setMaximumSize(QSize(363, 29))
         self.backup_all.setFont(font)
         self.backup_all.setLayoutDirection(Qt.LeftToRight)
         self.backup_all.setStyleSheet(u"")
         icon2 = QIcon()
         icon2.addFile(u":/icons_grey/icons/GREY/gr_back_all.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.backup_all.setIcon(icon2)
-        self.backup_all.setIconSize(QSize(110, 110))
+        self.backup_all.setIconSize(QSize(72, 72))
 
         self.verticalLayout.addWidget(self.backup_all)
 
@@ -126,15 +156,15 @@ class UiMainWindow(object):
         self.backup_selected.setEnabled(True)
         sizePolicy.setHeightForWidth(self.backup_selected.sizePolicy().hasHeightForWidth())
         self.backup_selected.setSizePolicy(sizePolicy)
-        self.backup_selected.setMinimumSize(QSize(559, 90))
-        self.backup_selected.setMaximumSize(QSize(559, 45))
+        self.backup_selected.setMinimumSize(QSize(363, 59))
+        self.backup_selected.setMaximumSize(QSize(363, 29))
         self.backup_selected.setFont(font)
         self.backup_selected.setLayoutDirection(Qt.LeftToRight)
         self.backup_selected.setStyleSheet(u"")
         icon3 = QIcon()
         icon3.addFile(u":/icons_grey/icons/GREY/gr_back_sel.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.backup_selected.setIcon(icon3)
-        self.backup_selected.setIconSize(QSize(110, 110))
+        self.backup_selected.setIconSize(QSize(72, 72))
 
         self.verticalLayout.addWidget(self.backup_selected)
 
@@ -143,15 +173,15 @@ class UiMainWindow(object):
         self.restore_all.setEnabled(True)
         sizePolicy.setHeightForWidth(self.restore_all.sizePolicy().hasHeightForWidth())
         self.restore_all.setSizePolicy(sizePolicy)
-        self.restore_all.setMinimumSize(QSize(559, 90))
-        self.restore_all.setMaximumSize(QSize(559, 45))
+        self.restore_all.setMinimumSize(QSize(363, 59))
+        self.restore_all.setMaximumSize(QSize(363, 29))
         self.restore_all.setFont(font)
         self.restore_all.setLayoutDirection(Qt.LeftToRight)
         self.restore_all.setStyleSheet(u"")
         icon4 = QIcon()
         icon4.addFile(u":/icons_grey/icons/GREY/gr_rest_all.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.restore_all.setIcon(icon4)
-        self.restore_all.setIconSize(QSize(110, 110))
+        self.restore_all.setIconSize(QSize(72, 72))
 
         self.verticalLayout.addWidget(self.restore_all)
 
@@ -160,33 +190,33 @@ class UiMainWindow(object):
         self.restore_selected.setEnabled(True)
         sizePolicy.setHeightForWidth(self.restore_selected.sizePolicy().hasHeightForWidth())
         self.restore_selected.setSizePolicy(sizePolicy)
-        self.restore_selected.setMinimumSize(QSize(559, 90))
-        self.restore_selected.setMaximumSize(QSize(559, 45))
+        self.restore_selected.setMinimumSize(QSize(363, 59))
+        self.restore_selected.setMaximumSize(QSize(363, 29))
         self.restore_selected.setFont(font)
         self.restore_selected.setLayoutDirection(Qt.LeftToRight)
         self.restore_selected.setStyleSheet(u"")
         icon5 = QIcon()
         icon5.addFile(u":/icons_grey/icons/GREY/gr_rest_sel.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.restore_selected.setIcon(icon5)
-        self.restore_selected.setIconSize(QSize(110, 110))
+        self.restore_selected.setIconSize(QSize(72, 72))
 
         self.verticalLayout.addWidget(self.restore_selected)
 
         self.horizontalLayout = QHBoxLayout()
-        self.horizontalLayout.setSpacing(10)
+        self.horizontalLayout.setSpacing(7)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.horizontalLayout.setSizeConstraint(QLayout.SetDefaultConstraint)
-        self.horizontalLayout.setContentsMargins(-1, 50, -1, -1)
+        self.horizontalLayout.setContentsMargins(-1, 33, -1, -1)
         self.settings = QPushButton(self.layoutWidget)
         self.settings.setObjectName(u"settings")
         self.settings.setEnabled(True)
         sizePolicy.setHeightForWidth(self.settings.sizePolicy().hasHeightForWidth())
         self.settings.setSizePolicy(sizePolicy)
-        self.settings.setMinimumSize(QSize(270, 80))
-        self.settings.setMaximumSize(QSize(270, 80))
+        self.settings.setMinimumSize(QSize(176, 52))
+        self.settings.setMaximumSize(QSize(176, 52))
         font1 = QFont()
         font1.setFamilies([u"Lexend Light"])
-        font1.setPointSize(20)
+        font1.setPointSize(13)
         font1.setBold(False)
         font1.setItalic(False)
         self.settings.setFont(font1)
@@ -195,7 +225,7 @@ class UiMainWindow(object):
         icon6 = QIcon()
         icon6.addFile(u":/icons_grey/icons/GREY/gr_settings.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.settings.setIcon(icon6)
-        self.settings.setIconSize(QSize(60, 60))
+        self.settings.setIconSize(QSize(39, 39))
 
         self.horizontalLayout.addWidget(self.settings)
 
@@ -204,15 +234,15 @@ class UiMainWindow(object):
         self.exit.setEnabled(True)
         sizePolicy.setHeightForWidth(self.exit.sizePolicy().hasHeightForWidth())
         self.exit.setSizePolicy(sizePolicy)
-        self.exit.setMinimumSize(QSize(270, 80))
-        self.exit.setMaximumSize(QSize(270, 80))
+        self.exit.setMinimumSize(QSize(176, 52))
+        self.exit.setMaximumSize(QSize(176, 52))
         self.exit.setFont(font1)
         self.exit.setLayoutDirection(Qt.LeftToRight)
         self.exit.setStyleSheet(u"")
         icon7 = QIcon()
         icon7.addFile(u":/icons_grey/icons/GREY/gr_exit.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.exit.setIcon(icon7)
-        self.exit.setIconSize(QSize(60, 60))
+        self.exit.setIconSize(QSize(39, 39))
 
         self.horizontalLayout.addWidget(self.exit)
 
@@ -228,20 +258,42 @@ class UiMainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.add_item.setText(
-            QCoreApplication.translate("MainWindow", u"                    Add Item To Base", None))
-        self.edit_list.setText(
-            QCoreApplication.translate("MainWindow", u"                     Edit Backup List",
-                                       None))
-        self.backup_all.setText(
-            QCoreApplication.translate("MainWindow", u"                        Back Up All", None))
+        self.add_item.setText(QCoreApplication.translate("MainWindow", u"Add Item To Base", None))
+        self.edit_list.setText(QCoreApplication.translate("MainWindow", u"Edit Backup List", None))
+        self.ai_settings.setText(QCoreApplication.translate("MainWindow", u"AI Settings", None))
+        self.backup_all.setText(QCoreApplication.translate("MainWindow", u"Back Up All", None))
         self.backup_selected.setText(
-            QCoreApplication.translate("MainWindow", u"              Back Up Selected", None))
-        self.restore_all.setText(
-            QCoreApplication.translate("MainWindow", u"                          Restore All",
-                                       None))
+            QCoreApplication.translate("MainWindow", u"Back Up Selected", None))
+        self.restore_all.setText(QCoreApplication.translate("MainWindow", u"Restore All", None))
         self.restore_selected.setText(
-            QCoreApplication.translate("MainWindow", u"               Restore Selected", None))
-        self.settings.setText(QCoreApplication.translate("MainWindow", u"     Settings", None))
-        self.exit.setText(QCoreApplication.translate("MainWindow", u"       Exit", None))
+            QCoreApplication.translate("MainWindow", u"Restore Selected", None))
+        self.settings.setText(QCoreApplication.translate("MainWindow", u"Settings", None))
+        self.exit.setText(QCoreApplication.translate("MainWindow", u"Exit", None))
+        # Icons stay pinned to the left (text-align:left); the visible label is
+        # pushed to the right edge by _align_texts_right.
+        self._align_texts_right()
     # retranslateUi
+
+    def _align_texts_right(self):
+        """
+        Right-align every button's text while its icon stays on the left.
+
+        Qt draws a QPushButton's icon and text together as a single left-aligned
+        block, so the text cannot simply be right-aligned via the stylesheet
+        without moving the icon too. Instead the label is prefixed with however
+        many spaces fill the gap between the icon and the right padding, measured
+        with the button's own font. pad_left/pad_right must match the
+        padding-left/padding-right set on QPushButton in the stylesheet above.
+        """
+        pad_left, pad_right, border, icon_gap = 20, 16, 2, 4
+        for btn in (self.add_item, self.edit_list, self.ai_settings,
+                    self.backup_all, self.backup_selected, self.restore_all,
+                    self.restore_selected, self.settings, self.exit):
+            text = btn.text().strip()
+            fm = QFontMetrics(btn.font())
+            space_w = fm.horizontalAdvance(" ") or 1
+            target_right = btn.maximumWidth() - border - pad_right
+            text_start = border + pad_left + btn.iconSize().width() + icon_gap
+            gap = target_right - text_start - fm.horizontalAdvance(text)
+            btn.setText(" " * max(0, round(gap / space_w)) + text)
+    # _align_texts_right
