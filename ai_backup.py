@@ -88,3 +88,39 @@ def backup_tool(ai_dir, tool_id, descriptor, *, env, home, copy=shutil.copy2) ->
         copy(src, dst)
         written.append(rel.replace("\\", "/"))
     return written
+
+
+_FNAME_BAD = re.compile(r'[\\/:*?"<>|]')
+
+
+def _safe_filename(name: str) -> str:
+    """Make a model name safe as a Windows filename (e.g. 'llama3.2:3b')."""
+    return _FNAME_BAD.sub("_", name)
+
+
+def backup_ollama(ai_dir, model_names, *, modelfile) -> list:
+    """Variant A: save each model's Modelfile recipe + a names list.
+
+    `modelfile` is a callable name -> recipe_text|None (see
+    llm_scan.ollama_modelfile). Models with no readable recipe are still listed
+    in models.txt so they can be re-pulled by name. Returns recipe files written.
+    """
+    root = Path(ai_dir) / "ollama"
+    models_dir = root / "models"
+    models_dir.mkdir(parents=True, exist_ok=True)
+    written = []
+    for name in model_names:
+        text = modelfile(name)
+        if text:
+            f = models_dir / f"{_safe_filename(name)}.modelfile"
+            f.write_text(text, encoding="utf-8")
+            written.append(name)
+    (root / "models.txt").write_text("\n".join(model_names) + "\n", encoding="utf-8")
+    return written
+
+
+def backup_local_weights(ai_dir, paths) -> None:
+    """Record loose weight-file paths only (variant A — files are not copied)."""
+    root = Path(ai_dir) / "local-weights"
+    root.mkdir(parents=True, exist_ok=True)
+    (root / "weights_paths.txt").write_text("\n".join(paths) + "\n", encoding="utf-8")
