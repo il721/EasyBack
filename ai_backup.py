@@ -116,7 +116,8 @@ def backup_ollama(ai_dir, model_names, *, modelfile) -> list:
             f = models_dir / f"{_safe_filename(name)}.modelfile"
             f.write_text(text, encoding="utf-8")
             written.append(name)
-    (root / "models.txt").write_text("\n".join(model_names) + "\n", encoding="utf-8")
+    (root / "models.txt").write_text(
+        "\n".join(model_names) + ("\n" if model_names else ""), encoding="utf-8")
     return written
 
 
@@ -124,7 +125,8 @@ def backup_local_weights(ai_dir, paths) -> None:
     """Record loose weight-file paths only (variant A — files are not copied)."""
     root = Path(ai_dir) / "local-weights"
     root.mkdir(parents=True, exist_ok=True)
-    (root / "weights_paths.txt").write_text("\n".join(paths) + "\n", encoding="utf-8")
+    (root / "weights_paths.txt").write_text(
+        "\n".join(paths) + ("\n" if paths else ""), encoding="utf-8")
 
 
 def _now_iso():
@@ -192,7 +194,8 @@ def import_ai(in_file, ai_dir, *, backup_existing=True) -> list:
     into a timestamped import-backup-* folder. Returns the archive member names."""
     ai_dir = Path(ai_dir)
     ai_dir.mkdir(parents=True, exist_ok=True)
-    stamp = datetime.now().strftime("%Y%m%d-%H%M%S")
+    ai_dir_resolved = ai_dir.resolve()
+    stamp = datetime.now(timezone.utc).strftime("%Y%m%d-%H%M%SZ")
     backup_root = ai_dir / f"import-backup-{stamp}"
     names = []
     with zipfile.ZipFile(in_file, "r") as z:
@@ -200,6 +203,12 @@ def import_ai(in_file, ai_dir, *, backup_existing=True) -> list:
             if member.endswith("/"):
                 continue
             target = ai_dir / member
+            # Guard against zip-slip: skip any member that resolves outside
+            # ai_dir (e.g. "../evil" or an absolute path).
+            try:
+                target.resolve().relative_to(ai_dir_resolved)
+            except ValueError:
+                continue
             if backup_existing and target.is_file():
                 bk = backup_root / member
                 bk.parent.mkdir(parents=True, exist_ok=True)
