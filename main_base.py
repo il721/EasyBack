@@ -196,6 +196,11 @@ class MainBase:
         return f"{cls.path_settings_folder}\\backup_lists"
 
     @classmethod
+    def ai_dir(cls) -> str:
+        """Folder that holds backed-up AI-model settings (one subfolder per tool)."""
+        return f"{cls.path_settings_folder}\\AI"
+
+    @classmethod
     def check_select_same_folder(cls, old_folder_path: str, new_folder_path: str) -> bool:
         """
         Checks if the selected folder is the same as it was. If yes - return True
