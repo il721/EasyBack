@@ -3,7 +3,7 @@ One-off reproduction / regression test.
 
 Bug: clicking "Edit backup list" or "Back up all" before any backup list has
 been saved crashes with FileNotFoundError, because the `backup_lists` folder and
-its `all` file are only created lazily on the first save (main_base.save_base_to_disk).
+its per-list files are only created lazily on the first save (backup_lists.save_list).
 
 Two scenarios are checked, both headless (GUI message box + modal exec stubbed):
 
