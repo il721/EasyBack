@@ -148,12 +148,8 @@ def build_report(sections):
     return "\n".join(lines).strip() + "\n"
 
 
-def scan_local_llms(*, env=None, which=shutil.which, run=subprocess.run, home=None):
-    """Scan the machine for LLMs. Returns (report_text, model_names).
-
-    All I/O is via injected callables so tests pass fakes. No individual probe
-    failure may raise: each degrades to a 'none/unreachable' line.
-    """
+def scan_sections(*, env=None, which=shutil.which, run=subprocess.run, home=None):
+    """Scan the machine and return the raw ScanSections (all I/O injected)."""
     env = os.environ if env is None else env
     home_fn = Path.home if home is None else home
     home_dir = Path(home_fn())
@@ -207,4 +203,70 @@ def scan_local_llms(*, env=None, which=shutil.which, run=subprocess.run, home=No
     for provider in detect_cloud_providers(env, which):
         sections.cloud.append((provider, CLOUD_CATALOG[provider]))
 
+    return sections
+
+
+def scan_local_llms(*, env=None, which=shutil.which, run=subprocess.run, home=None):
+    """Scan the machine for LLMs. Returns (report_text, model_names)."""
+    sections = scan_sections(env=env, which=which, run=run, home=home)
     return build_report(sections), collect_models(sections)
+
+
+_RUNTIME_TOOL = {
+    "LM Studio": "lmstudio",
+    "LM Studio (cache)": "lmstudio",
+    "GPT4All": "gpt4all",
+    "Jan": "jan",
+}
+
+_PROVIDER_CLOUD_TOOL = {
+    "anthropic": "anthropic-cloud",
+    "openai": "openai-cloud",
+    "google": "google-cloud",
+    "mistral": "mistral-cloud",
+    "groq": "groq-cloud",
+}
+
+
+def model_tool_map(sections) -> dict:
+    """Return {model_name: tool_id} mapping each found model to the tool that
+    owns its settings. First-seen wins, mirroring collect_models()."""
+    mapping = {}
+
+    def put(name, tool):
+        if name and name not in mapping:
+            mapping[name] = tool
+
+    for name in sections.ollama_models:
+        put(name, "ollama")
+    for rname, entries in sections.runtimes:
+        for e in entries:
+            put(e, _RUNTIME_TOOL.get(rname, "local-weights"))
+    for path, _gb in sections.weights:
+        put(Path(path).stem, "local-weights")
+
+    has_claude_cli = any(name == "claude" for name, _ in sections.cli_tools)
+    for provider, variants in sections.cloud:
+        if provider == "anthropic" and has_claude_cli:
+            tool = "claude-code"
+        else:
+            tool = _PROVIDER_CLOUD_TOOL.get(provider, f"{provider}-cloud")
+        for v in variants:
+            put(v, tool)
+    return mapping
+
+
+def ollama_modelfile(name, *, run=subprocess.run, which=shutil.which):
+    """Return `ollama show --modelfile <name>` text, or None if ollama is absent
+    or the call fails. This is a model's full recipe (FROM/TEMPLATE/PARAMETER/
+    SYSTEM) — variant A backs this up instead of the weights."""
+    if not which("ollama"):
+        return None
+    try:
+        proc = run(["ollama", "show", "--modelfile", name],
+                   capture_output=True, text=True, timeout=30)
+        if proc.returncode == 0:
+            return proc.stdout
+    except Exception:  # noqa: BLE001 - any failure -> nothing to back up
+        return None
+    return None
