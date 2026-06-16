@@ -16,6 +16,36 @@ from PySide6.QtWidgets import QFileDialog, QMessageBox, QPushButton, QDialog
 import all_styles as st
 
 
+class MovableDialog(QDialog):
+    """A frameless dialog the user can reposition by dragging its body.
+
+    The custom dialogs are shown with FramelessWindowHint (no title bar), so Qt
+    gives them no built-in way to move. Pressing the left mouse button on the
+    dialog background (anywhere a child widget does not consume the event) and
+    dragging now moves the whole window.
+    """
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._drag_offset = None
+
+    def mousePressEvent(self, event):
+        if event.button() == QtCore.Qt.MouseButton.LeftButton:
+            self._drag_offset = (event.globalPosition().toPoint()
+                                 - self.frameGeometry().topLeft())
+            event.accept()
+
+    def mouseMoveEvent(self, event):
+        if (self._drag_offset is not None
+                and event.buttons() & QtCore.Qt.MouseButton.LeftButton):
+            self.move(event.globalPosition().toPoint() - self._drag_offset)
+            event.accept()
+
+    def mouseReleaseEvent(self, event):
+        self._drag_offset = None
+        event.accept()
+
+
 def q_file_dialog_begin(start_folder: str, type_select: QFileDialog.FileMode) -> QFileDialog:
     """
     Repeted part of code in some file select dialog`s

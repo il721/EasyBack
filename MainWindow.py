@@ -16,7 +16,7 @@ from d__07_settings import SettingsDialog
 from d__progress_bar import UiProgressBar
 import all_styles as st
 from main_base import MainBase
-from ui_helpers import msg_one_button
+from ui_helpers import msg_one_button, MovableDialog
 import backup_lists
 
 # Shown by edit_list_bt / backup_all_bt when no backup list has been saved yet
@@ -69,7 +69,7 @@ class MainWindowDialog(QMainWindow):
         if not MainBase.check_folder_exist(backup_lists_path) or not os.listdir(backup_lists_path):
             msg_one_button(NO_LISTS_TITLE, NO_LISTS_TEXT, 'info')
             return
-        dialog = QDialog()
+        dialog = MovableDialog()
         ui = EditListMain()
         ui.setupUi(dialog)
         dialog.setWindowFlags(QtCore.Qt.WindowType.FramelessWindowHint)
