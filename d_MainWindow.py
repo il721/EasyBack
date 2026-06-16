@@ -229,19 +229,19 @@ class UiMainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.add_item.setText(
-            QCoreApplication.translate("MainWindow", u"                    Add Item To Base", None))
+            QCoreApplication.translate("MainWindow", u"           Add Item To Base", None))
         self.edit_list.setText(
-            QCoreApplication.translate("MainWindow", u"                     Edit Backup List",
+            QCoreApplication.translate("MainWindow", u"           Edit Backup List",
                                        None))
         self.backup_all.setText(
-            QCoreApplication.translate("MainWindow", u"                        Back Up All", None))
+            QCoreApplication.translate("MainWindow", u"            Back Up All", None))
         self.backup_selected.setText(
-            QCoreApplication.translate("MainWindow", u"              Back Up Selected", None))
+            QCoreApplication.translate("MainWindow", u"       Back Up Selected", None))
         self.restore_all.setText(
-            QCoreApplication.translate("MainWindow", u"                          Restore All",
+            QCoreApplication.translate("MainWindow", u"             Restore All",
                                        None))
         self.restore_selected.setText(
-            QCoreApplication.translate("MainWindow", u"               Restore Selected", None))
-        self.settings.setText(QCoreApplication.translate("MainWindow", u"     Settings", None))
-        self.exit.setText(QCoreApplication.translate("MainWindow", u"       Exit", None))
+            QCoreApplication.translate("MainWindow", u"        Restore Selected", None))
+        self.settings.setText(QCoreApplication.translate("MainWindow", u"   Settings", None))
+        self.exit.setText(QCoreApplication.translate("MainWindow", u"    Exit", None))
     # retranslateUi
