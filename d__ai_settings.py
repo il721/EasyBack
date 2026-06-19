@@ -213,7 +213,7 @@ class AiSettings(object):
         measured with the button's own font. pad_left/pad_right must match the
         padding set on the side buttons in _make_side_button.
         """
-        pad_left, pad_right, border, icon_gap = 20, 2, 2, 4
+        pad_left, pad_right, border, icon_gap = 10, 2, 2, 4
         for btn in (self.sel_all_bt, self.dsel_all_bt, self.sel_local_bt,
                     self.dsel_local_bt, self.sel_global_bt, self.dsel_global_bt):
             text = btn.text().strip()
@@ -222,7 +222,9 @@ class AiSettings(object):
             target_right = btn.maximumWidth() - border - pad_right
             text_start = border + pad_left + btn.iconSize().width() + icon_gap
             gap = target_right - text_start - fm.horizontalAdvance(text)
-            btn.setText(" " * max(0, round(gap / space_w)) + text)
+            # floor (not round) so the label never overshoots the right border,
+            # even for short labels that need many filler spaces.
+            btn.setText(" " * max(0, int(gap / space_w)) + text)
 
     # ************************    MY CODE    ***************************************************
     def _make_side_button(self, Dialog, name, icon_file):
@@ -242,7 +244,7 @@ class AiSettings(object):
         bt.setIconSize(QSize(24, 48))
         # Icon pinned left; the label is pushed to the right edge by
         # _align_side_texts_right (same approach as the main menu buttons).
-        bt.setStyleSheet(u"text-align: left; padding-left: 20px; padding-right: 2px;")
+        bt.setStyleSheet(u"text-align: left; padding-left: 10px; padding-right: 2px;")
         return bt
 
     @staticmethod
