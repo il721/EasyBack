@@ -13,7 +13,7 @@ across re-scans within the open dialog; persisting them to disk is a follow-up.
 import os
 from PySide6.QtCore import (QCoreApplication, QMetaObject, QSize, Qt, QThread,
                             Signal)
-from PySide6.QtGui import QFont, QIcon
+from PySide6.QtGui import QFont, QFontMetrics, QIcon
 from PySide6.QtWidgets import (QFileDialog, QHBoxLayout, QLabel, QListWidget,
                                QListWidgetItem, QPushButton, QSizePolicy,
                                QSpacerItem, QVBoxLayout)
@@ -24,6 +24,14 @@ from main_base import MainBase
 from ai_catalog import load_catalog
 from ai_backup import backup_selected, export_ai, import_ai
 from llm_scan import scan_sections, collect_models, model_tool_map, ollama_modelfile
+
+# Selection-helper icons live on disk (not in the compiled Qt resource), so load
+# them by absolute path relative to this module.
+_ICON_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ui", "icons")
+
+
+def _side_icon(name):
+    return QIcon(os.path.join(_ICON_DIR, name))
 
 
 class _ScanWorker(QThread):
@@ -76,16 +84,46 @@ class AiSettings(object):
         self.info.setStyleSheet(u"")
         self.verticalLayout.addWidget(self.info)
 
+        # The list and the vertical select/deselect column mirror the bottom
+        # button row's geometry: the list is exactly as wide as the
+        # FindLLM+Backup+Export+Import block (so its right edge meets Import's),
+        # then a 10px gap, then a 210px column aligned under 'Main Menu'. Both
+        # rows total 750px and are centred by matching expanding spacers.
+        self.listRow = QHBoxLayout()
+        self.listRow.setObjectName(u"listRow")
+        self.listRow.setSpacing(10)
+        self.listRow.addItem(QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum))
+
         self.found_list = QListWidget(Dialog)
         self.found_list.setObjectName(u"found_list")
-        self.found_list.setMinimumSize(QSize(0, 380))
+        self.found_list.setMinimumSize(QSize(530, 380))
+        self.found_list.setMaximumWidth(530)
         self.found_list.setStyleSheet(u"background-color: rgb(50, 50,50);\n"
                                       "color: rgb(230, 230, 230);\n"
                                       "font: 300 16pt \"Lexend Light\";")
-        self.verticalLayout.addWidget(self.found_list)
+        self.listRow.addWidget(self.found_list)
+
+        self.selectColumn = QVBoxLayout()
+        self.selectColumn.setObjectName(u"selectColumn")
+        self.selectColumn.setSpacing(10)
+        self.sel_all_bt = self._make_side_button(Dialog, u"sel_all_bt", "Sel_ALL.svg")
+        self.dsel_all_bt = self._make_side_button(Dialog, u"dsel_all_bt", "Dsel_ALL.svg")
+        self.sel_local_bt = self._make_side_button(Dialog, u"sel_local_bt", "Sel_local.svg")
+        self.dsel_local_bt = self._make_side_button(Dialog, u"dsel_local_bt", "Dsel_local.svg")
+        self.sel_global_bt = self._make_side_button(Dialog, u"sel_global_bt", "Sel_global.svg")
+        self.dsel_global_bt = self._make_side_button(Dialog, u"dsel_global_bt", "Dsel_global.svg")
+        for bt in (self.sel_all_bt, self.dsel_all_bt, self.sel_local_bt,
+                   self.dsel_local_bt, self.sel_global_bt, self.dsel_global_bt):
+            self.selectColumn.addWidget(bt)
+        self.selectColumn.addStretch(1)
+        self.listRow.addLayout(self.selectColumn)
+
+        self.listRow.addItem(QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum))
+        self.verticalLayout.addLayout(self.listRow)
 
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.horizontalLayout.setSpacing(10)
         self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
         self.horizontalLayout.addItem(self.horizontalSpacer_3)
 
@@ -139,6 +177,12 @@ class AiSettings(object):
         self.export_bt.clicked.connect(self.export_bt_clicked)
         self.import_bt.clicked.connect(self.import_bt_clicked)
         self.ok.clicked.connect(Dialog.reject)
+        self.sel_all_bt.clicked.connect(self.select_all_clicked)
+        self.dsel_all_bt.clicked.connect(self.deselect_all_clicked)
+        self.sel_local_bt.clicked.connect(self.select_local_clicked)
+        self.dsel_local_bt.clicked.connect(self.deselect_local_clicked)
+        self.sel_global_bt.clicked.connect(self.select_global_clicked)
+        self.dsel_global_bt.clicked.connect(self.deselect_global_clicked)
         # ------------------------------------------------------------------------------------------
 
     def retranslateUi(self, Dialog):
@@ -153,8 +197,88 @@ class AiSettings(object):
         self.export_bt.setText(QCoreApplication.translate("Dialog", u"Export", None))
         self.import_bt.setText(QCoreApplication.translate("Dialog", u"Import", None))
         self.ok.setText(QCoreApplication.translate("Dialog", u"Main Menu", None))
+        self.sel_all_bt.setText(QCoreApplication.translate("Dialog", u"Select All", None))
+        self.dsel_all_bt.setText(QCoreApplication.translate("Dialog", u"Deselect All", None))
+        self.sel_local_bt.setText(QCoreApplication.translate("Dialog", u"Select Local", None))
+        self.dsel_local_bt.setText(QCoreApplication.translate("Dialog", u"Deselect Local", None))
+        self.sel_global_bt.setText(QCoreApplication.translate("Dialog", u"Select Global", None))
+        self.dsel_global_bt.setText(QCoreApplication.translate("Dialog", u"Deselect Global", None))
+        self._align_side_texts_right()
+
+    def _align_side_texts_right(self):
+        """Right-align each side button's label while its icon stays on the left.
+
+        Qt draws a button's icon+text as one left-aligned block, so the label is
+        prefixed with however many spaces fill the gap to the right padding,
+        measured with the button's own font. pad_left/pad_right must match the
+        padding set on the side buttons in _make_side_button.
+        """
+        pad_left, pad_right, border, icon_gap = 10, 2, 2, 4
+        for btn in (self.sel_all_bt, self.dsel_all_bt, self.sel_local_bt,
+                    self.dsel_local_bt, self.sel_global_bt, self.dsel_global_bt):
+            text = btn.text().strip()
+            fm = QFontMetrics(btn.font())
+            space_w = fm.horizontalAdvance(" ") or 1
+            target_right = btn.maximumWidth() - border - pad_right
+            text_start = border + pad_left + btn.iconSize().width() + icon_gap
+            gap = target_right - text_start - fm.horizontalAdvance(text)
+            # floor (not round) so the label never overshoots the right border,
+            # even for short labels that need many filler spaces.
+            btn.setText(" " * max(0, int(gap / space_w)) + text)
 
     # ************************    MY CODE    ***************************************************
+    def _make_side_button(self, Dialog, name, icon_file):
+        """A fixed-width row button (icon left, label right) for the select column."""
+        bt = QPushButton(Dialog)
+        bt.setObjectName(name)
+        bt.setMinimumSize(QSize(210, 55))
+        bt.setMaximumSize(QSize(210, 55))
+        # Match the rendered font so _align_side_texts_right measures correctly.
+        font = QFont()
+        font.setFamilies([u"Lexend Light"])
+        font.setPointSize(16)
+        font.setBold(False)
+        font.setItalic(False)
+        bt.setFont(font)
+        bt.setIcon(_side_icon(icon_file))
+        bt.setIconSize(QSize(24, 48))
+        # Icon pinned left; the label is pushed to the right edge by
+        # _align_side_texts_right (same approach as the main menu buttons).
+        bt.setStyleSheet(u"text-align: left; padding-left: 10px; padding-right: 2px;")
+        return bt
+
+    @staticmethod
+    def _is_global(item):
+        """A row is 'global' (online) when its tool is a cloud provider; every
+        local runtime / weight file is 'local'."""
+        tool = item.data(Qt.UserRole) or ""
+        return tool.endswith("-cloud") or tool == "claude-code"
+
+    def _set_check_state(self, predicate, state):
+        """Set every row matching predicate to the given check state."""
+        for row in range(self.found_list.count()):
+            item = self.found_list.item(row)
+            if predicate(item):
+                item.setCheckState(state)
+
+    def select_all_clicked(self):
+        self._set_check_state(lambda i: True, Qt.Checked)
+
+    def deselect_all_clicked(self):
+        self._set_check_state(lambda i: True, Qt.Unchecked)
+
+    def select_local_clicked(self):
+        self._set_check_state(lambda i: not self._is_global(i), Qt.Checked)
+
+    def deselect_local_clicked(self):
+        self._set_check_state(lambda i: not self._is_global(i), Qt.Unchecked)
+
+    def select_global_clicked(self):
+        self._set_check_state(self._is_global, Qt.Checked)
+
+    def deselect_global_clicked(self):
+        self._set_check_state(self._is_global, Qt.Unchecked)
+
     def find_llm_bt(self):
         """Scan the machine for LLMs on a worker thread and fill the list."""
         if self._worker is not None:        # a scan is already running
