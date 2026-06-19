@@ -54,6 +54,32 @@ def run():
     if man["tools"] != ["ollama"]:
         print("  FAIL: manifest tools", man["tools"]); ok = False
 
+    # Selection helper buttons. Rows: llama3.2:3b (local/ollama),
+    # claude-opus (global/claude-code).
+    def checked():
+        return {ui.found_list.item(i).text()
+                for i in range(ui.found_list.count())
+                if ui.found_list.item(i).checkState() == Qt.Checked}
+
+    ui.select_all_clicked()
+    if checked() != {"llama3.2:3b", "claude-opus"}:
+        print("  FAIL: select all", checked()); ok = False
+    ui.deselect_all_clicked()
+    if checked() != set():
+        print("  FAIL: deselect all", checked()); ok = False
+    ui.select_local_clicked()
+    if checked() != {"llama3.2:3b"}:
+        print("  FAIL: select local", checked()); ok = False
+    ui.select_global_clicked()
+    if checked() != {"llama3.2:3b", "claude-opus"}:
+        print("  FAIL: select global", checked()); ok = False
+    ui.deselect_local_clicked()
+    if checked() != {"claude-opus"}:
+        print("  FAIL: deselect local", checked()); ok = False
+    ui.deselect_global_clicked()
+    if checked() != set():
+        print("  FAIL: deselect global", checked()); ok = False
+
     print("RESULT:", "PASS" if ok else "FAIL")
     return ok
 
